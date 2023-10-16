@@ -1,0 +1,108 @@
+<div class="account-bg">
+	<div class="account">
+		<div class="account-box">
+			<div class="account-box-bg"></div>
+			<div class="Register-title">
+				<div class="sub-title">Log in to your account</div>
+			</div>
+
+			<form class="Register-form" (ngSubmit)="Register(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
+				<div class="form-group" [ngClass]="{ 'invalid-data': Email.invalid }">
+					<label for="Email">{{'Email'}}</label>
+					<div class="input-icon">
+						<input
+							type="text"
+							class="form-control"
+							id="Email"
+							name="Email"
+							[(ngModel)]="Credentials.Email"
+							#Email="ngModel"
+							placeholder="{{'Email'}}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group" [ngClass]="{ 'invalid-data': Password.invalid }">
+					<label for="Password">{{'Password'}}</label>
+					<div class="input-icon">
+						<i class="fa fa-eye right" *ngIf="!showPW" (click)="toggleShowPW()"></i>
+						<i class="fa fa-eye-slash right" *ngIf="showPW" (click)="toggleShowPW()"></i>
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="Password"
+							name="Password"
+							[(ngModel)]="Credentials.Password"
+							#Password="ngModel"
+							placeholder="{{'Password'}}"
+							required />
+					</div>
+				</div>
+				<div class="form-group" [ngClass]="{ 'invalid-data': RePassword.invalid }">
+					<label for="RePassword">{{'RePassword'}}</label>
+					<div class="input-icon">
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="RePassword"
+							name="RePassword"
+							[(ngModel)]="Credentials.RePassword"
+							#RePassword="ngModel"
+							placeholder="{{'RePassword'}}"
+							required />
+					</div>
+				</div>
+				<div class="form-group" [ngClass]="{ 'invalid-data': FirstName.invalid }">
+					<label for="FirstName">{{'FirstName'}}</label>
+					<div class="input-icon">
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="FirstName"
+							name="FirstName"
+							[(ngModel)]="Credentials.FirstName"
+							#FirstName="ngModel"
+							placeholder="{{'FirstName'}}"
+							required />
+					</div>
+				</div>
+				<div class="form-group" [ngClass]="{ 'invalid-data': LastName.invalid }">
+					<label for="LastName">{{'LastName'}}</label>
+					<div class="input-icon">
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="LastName"
+							name="LastName"
+							[(ngModel)]="Credentials.LastName"
+							#LastName="ngModel"
+							placeholder="{{'LastName'}}"
+							required />
+					</div>
+				</div>
+				<div class="form-group" [ngClass]="{ 'invalid-data': BirthDate.invalid }">
+					<label for="BirthDate">{{'BirthDate'}}</label>
+					<div class="input-icon">
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="BirthDate"
+							name="BirthDate"
+							[(ngModel)]="Credentials.BirthDate"
+							#BirthDate="ngModel"
+							placeholder="{{'BirthDate'}}"
+							required />
+					</div>
+				</div>
+				<div [ngClass]="{ 'invalid-data': Error }">
+					<div class="invalid-message pb-2">{{Error}}</div>
+				</div>
+
+				<div class="d-grid">
+					<button type="submit" class="btn btn-primary">Register</button>
+				</div>
+			</form>
+		</div>
+		<div class="copyright">Copyright © {{Year}}. All rights reserved.</div>
+	</div>
+</div>

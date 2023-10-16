@@ -7,18 +7,18 @@
 			</div>
 
 			<form class="login-form" (ngSubmit)="Login(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
-				<div class="form-group" [ngClass]="{ 'invalid-data': Username.invalid }">
-					<label for="Username">{{'Username'}}</label>
+				<div class="form-group" [ngClass]="{ 'invalid-data': Email.invalid }">
+					<label for="Email">{{'Email'}}</label>
 					<div class="input-icon">
 						<i class="fa fa-user left"></i>
 						<input
 							type="text"
 							class="form-control"
-							id="Username"
-							name="Username"
+							id="Email"
+							name="Email"
 							[(ngModel)]="Credentials.Email"
-							#Username="ngModel"
-							placeholder="{{'Username'}}"
+							#Email="ngModel"
+							placeholder="{{'Email'}}"
 							required />
 					</div>
 				</div>
@@ -45,13 +45,11 @@
 				</div>
 
 				<div class="d-grid">
-					<button type="submit" class="btn-first btn btn-lg">Login</button>
+					<button type="submit" class="btn btn-primary">Login</button>
 				</div>
+				<span>Don't have an account yet? <a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">Register</a></span>
 			</form>
-			<!-- <div class="forgot-password">
-				<a href="auth-recoverpw.html"><i class="fa fa-lock"></i> Forgot your password?</a>
-			</div> -->
 		</div>
-		<div class="copyright">Copyright © 2023. All rights reserved.</div>
+		<div class="copyright">Copyright © {{Year}}. All rights reserved.</div>
 	</div>
 </div>

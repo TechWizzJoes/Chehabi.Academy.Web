@@ -16,10 +16,10 @@ import { Constants } from '@App/Common/Settings/Constants';
 @Component({
 	standalone: true,
 	imports: [FormsModule, CommonModule, RouterModule],
-	templateUrl: './Login.html',
-	styleUrls: ['./Login.scss']
+	templateUrl: './Register.html',
+	styleUrls: ['./Register.scss']
 })
-export class LoginComponent {
+export class RegisterComponent {
 	RoutePaths = RoutePaths;
 	Year = Constants.GetYear();
 
@@ -27,7 +27,7 @@ export class LoginComponent {
 	showPW: boolean = false;
 	PWInputType: string = 'password';
 
-	Credentials = new AuthModels.LoginModel('', '');
+	Credentials = new AuthModels.RegisterModel();
 	ReturnUrl: any;
 
 	constructor(
@@ -47,7 +47,7 @@ export class LoginComponent {
 		this.PWInputType = this.PWInputType == 'password' ? 'text' : 'password';
 	}
 
-	Login(frm: NgForm) {
+	Register(frm: NgForm) {
 		if (frm.invalid) {
 			// this.NotifyService.Error('InvalidFormMsg');
 			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
@@ -56,12 +56,15 @@ export class LoginComponent {
 
 		let requestModel = {
 			Email: this.Credentials.Email.trim(),
-			Password: this.Credentials.Password.trim()
-		} as AuthModels.LoginReqModel;
+			Password: this.Credentials.Password.trim(),
+			FirstName: this.Credentials.FirstName.trim(),
+			LastName: this.Credentials.LastName.trim(),
+			BirthDate: this.Credentials.BirthDate,
+		} as AuthModels.RegisterReqModel;
 
 		this.ReturnUrl = this.ActivatedRoute.snapshot.queryParams['returnUrl'];
-		// let httpEndPoint = HttpEndPoints.AccountApi.Login;
-		// 	this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
+		// let httpEndPoint = HttpEndPoints.AccountApi.Register;
+		// 	this.HttpService.Post<AuthModels.RegisterReqModel, AuthModels.RegisterResModel>(
 		// 		httpEndPoint,
 		// 		requestModel,
 		// 		ApiEnum.AccountApi
@@ -74,11 +77,11 @@ export class LoginComponent {
 		// 			this.NavigateTo(response.CurrentUser);
 		// },
 		// 		error: (errorResponse) => {
-		// 			// to show the error on login panel
+		// 			// to show the error on Register panel
 		// 			this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
 		// 		}
 		// 	});
-		this.Router.navigateByUrl(RoutePaths.Default);
+		this.Router.navigateByUrl(RoutePaths.Home);
 	}
 
 	NavigateTo(currentUser: AuthModels.CurrentUserResModel) {
