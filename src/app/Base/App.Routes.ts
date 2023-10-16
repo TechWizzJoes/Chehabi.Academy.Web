@@ -8,12 +8,15 @@ import { AppComponent } from './AppComponent';
 export const routes: Routes = [
 	{
 		path: 'forget-password',
-		loadChildren: () =>
-			import('@App/Features/Account/ForgetPassword/ForgetPassword.Module').then((m) => m.ForgetPasswordModule)
+		loadComponent: () =>
+			import('@App/Features/Account/ForgetPassword/ForgetPassword').then((m) => m.ForgetPasswordComponent)
 	},
 	{
 		path: 'login',
-		loadChildren: () => import('@App/Features/Account/Login/Login.Module').then((m) => m.LoginModule)
+		loadComponent: () => import('@App/Features/Account/Login/Login').then((m) => m.LoginComponent)
+	}, {
+		path: 'register',
+		loadComponent: () => import('@App/Features/Account/Register/Register').then((m) => m.RegisterComponent)
 	},
 	{
 		path: 'home',

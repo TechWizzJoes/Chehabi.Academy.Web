@@ -1,11 +1,19 @@
 export namespace AuthModels {
-	export class LoginReqModel {}
+	export class LoginReqModel { }
+	export class RegisterReqModel {
+		Email!: string;
+		Password!: string;
+		RePassword!: string;
+		BirthDate!: string;
+		FirstName!: string;
+		LastName!: string;
+	}
 
-	export class RefreshTokenReqModel {}
+	export class RefreshTokenReqModel { }
 
-	export class CurrentUserResModel {}
+	export class CurrentUserResModel { }
 
-	export class ExtensionPasswordResModel {}
+	export class ExtensionPasswordResModel { }
 
 	export class LoginResModel {
 		AccessToken!: string;
@@ -24,6 +32,16 @@ export namespace AuthModels {
 	}
 
 	export class LoginModel {
-		constructor(public Email: string, public Password: string) {}
+		constructor(public Email: string, public Password: string) { }
+	}
+
+	export class RegisterModel {
+		Email: string = '';
+		Password: string = '';
+		RePassword: string = '';
+		BirthDate: string = '';
+		FirstName: string = '';
+		LastName: string = '';
+		// constructor(public Email: string, public Password: string, public RePassword: string, public BirthDate: Date, public FirstName: string, public LastName: string) { }
 	}
 }
