@@ -1,0 +1,57 @@
+<div class="account-bg">
+	<div class="account">
+		<div class="account-box">
+			<div class="account-box-bg"></div>
+			<div class="login-title">
+				<div class="sub-title">Log in to your account</div>
+			</div>
+
+			<form class="login-form" (ngSubmit)="Login(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
+				<div class="form-group" [ngClass]="{ 'invalid-data': Username.invalid }">
+					<label for="Username">{{'Username'}}</label>
+					<div class="input-icon">
+						<i class="fa fa-user left"></i>
+						<input
+							type="text"
+							class="form-control"
+							id="Username"
+							name="Username"
+							[(ngModel)]="Credentials.Email"
+							#Username="ngModel"
+							placeholder="{{'Username'}}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group" [ngClass]="{ 'invalid-data': Password.invalid }">
+					<label for="Password">{{'Password'}}</label>
+					<div class="input-icon">
+						<i class="fa fa-lock left"></i>
+						<i class="fa fa-eye right" *ngIf="!showPW" (click)="toggleShowPW()"></i>
+						<i class="fa fa-eye-slash right" *ngIf="showPW" (click)="toggleShowPW()"></i>
+						<input
+							[type]="PWInputType"
+							class="form-control"
+							id="Password"
+							name="Password"
+							[(ngModel)]="Credentials.Password"
+							#Password="ngModel"
+							placeholder="{{'Password'}}"
+							required />
+					</div>
+				</div>
+				<div [ngClass]="{ 'invalid-data': Error }">
+					<div class="invalid-message pb-2">{{Error}}</div>
+				</div>
+
+				<div class="d-grid">
+					<button type="submit" class="btn-first btn btn-lg">Login</button>
+				</div>
+			</form>
+			<!-- <div class="forgot-password">
+				<a href="auth-recoverpw.html"><i class="fa fa-lock"></i> Forgot your password?</a>
+			</div> -->
+		</div>
+		<div class="copyright">Copyright © 2023. All rights reserved.</div>
+	</div>
+</div>

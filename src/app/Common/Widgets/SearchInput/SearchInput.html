@@ -1,0 +1,5 @@
+<div class="form-group has-search">
+	<span class="fa fa-search"></span>
+	<span (click)="ClearSearch()" class="fa fa-close"></span>
+	<input type="text" class="form-control filtersearch" [(ngModel)]="SearchText" (ngModelChange)="TextChanged()" placeholder="Search" />
+</div>

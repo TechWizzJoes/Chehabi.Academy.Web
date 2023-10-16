@@ -1,0 +1,63 @@
+.input-icon {
+	position: relative;
+
+	i {
+		color: #aaa;
+		position: absolute;
+		z-index: 3;
+		font-size: 16px;
+		right: 20px;
+		left: auto;
+		top: 50%;
+		transform: translateY(-50%);
+		font-style: normal !important;
+		cursor: pointer !important;
+	}
+}
+
+::ng-deep ngb-datepicker-navigation-select > .custom-select {
+	margin: 0.1rem;
+}
+
+:host-context([dir='rtl']) {
+	.form-control {
+		padding: 7px 10px 7px 40px;
+	}
+
+	.input-icon {
+		i {
+			left: 10px;
+			right: auto;
+		}
+	}
+	::ng-deep ngb-datepicker.dropdown-menu.show {
+		right: 0;
+		width: 20.9rem !important;
+	}
+
+	::ng-deep .ngb-dp-navigation-chevron {
+		-webkit-transform: rotate(45deg) !important;
+		transform: rotate(45deg) !important;
+	}
+
+	::ng-deep .right .ngb-dp-navigation-chevron {
+		-webkit-transform: rotate(-135deg) !important;
+		transform: rotate(-135deg) !important;
+	}
+
+	::ng-deep .ngb-dp-weekday {
+		width: 2.9rem !important;
+	}
+
+	::ng-deep .ngb-dp-day {
+		width: 2.9rem !important;
+	}
+
+	::ng-deep .ngb-dp-week-number {
+		width: 2.9rem !important;
+	}
+
+	::ng-deep .custom-select {
+		// background: #fff url('../../../../assets/img/DateSort.svg') left 0.75rem center/8px 10px no-repeat;
+	}
+}

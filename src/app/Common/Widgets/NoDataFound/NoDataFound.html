@@ -1,0 +1,8 @@
+<div class="text-center my-3">
+	<ng-container *ngIf="ErrorText">
+		<!-- <h5 class="text-danger">Error Fetching Data</h5> -->
+		<h5 class="text-danger">{{ErrorText}}</h5>
+		<button class="btn btn-cancel-outline" (click)="OnRetry()"><i class="fa fa-repeat"></i> <span>Retry</span></button>
+	</ng-container>
+	<h5 *ngIf="!ErrorText">There is no data found</h5>
+</div>

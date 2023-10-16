@@ -1,0 +1,2 @@
+<!-- <textarea style="display: none" class="form-control" rows="6" name="EditorInput" [(ngModel)]="TextContent" #script="ngModel" required></textarea> -->
+<ckeditor #ckeditor name="EditorInput" required [(ngModel)]="TextContent" (ngModelChange)="OnCkeditorChange($event)" [config]="editorConfig"></ckeditor>

@@ -1,0 +1,26 @@
+.container {
+	background-color: #f0f0f0;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: center;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	color: #333;
+}
+
+button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	margin-top: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #0056b3;
+}

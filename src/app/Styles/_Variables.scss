@@ -1,0 +1,27 @@
+// https://stackoverflow.com/questions/67016460/difference-between-scss-variables-and-css-variables
+// https://css-tricks.com/difference-between-types-of-css-variables/
+
+:root {
+	--primary-color: #0fa6d9;
+}
+
+$primary-color: #58697a;
+
+$error-color: #dc3545;
+
+$color-green: #28a745;
+$color-red: #dc3545;
+$color-white: #fff;
+$color-blue: rgb(21, 85, 202);
+
+$font-color-first: #4e5e6a;
+
+$border-color: #ced4da;
+
+$color-01: #12889a;
+$color-02: #12889a;
+$color-03: #e6e6e6;
+
+$background-color-01: #fbfbfb;
+$background-color-02: slategrey;
+// $background-color-03: #f5f5f5;

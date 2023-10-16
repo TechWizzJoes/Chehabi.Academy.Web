@@ -1,0 +1,12 @@
+<!-- <div class="buttons"> -->
+<button
+	type="button"
+	class="btn btn-outline-secondary me-2"
+	[ngbPopover]="popContent"
+	[popoverTitle]="popTitle"
+	triggers="manual"
+	#p1="ngbPopover"
+	(click)="toggleWithGreeting(p1)"
+	[autoClose]="'outside' || TogglePop">
+	{{PopName}}
+</button>

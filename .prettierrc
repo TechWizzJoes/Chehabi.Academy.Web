@@ -1,0 +1,23 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"singleQuote": true,
+	"bracketSameLine": true,
+	"printWidth": 80,
+	"endOfLine": "crlf",
+	"trailingComma": "none",
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"options": {
+				"printWidth": 120
+			}
+		},
+		{
+			"files": ["*.html"],
+			"options": {
+				"printWidth": 160
+			}
+		}
+	]
+}

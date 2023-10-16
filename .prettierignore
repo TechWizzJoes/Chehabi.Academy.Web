@@ -1,0 +1,16 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+.angular
+
+#*.*
+#!*.ts 
+# !*.js
+# !*.json
+# !*.css
+# !*.scss
+# !*.html
+
+
+# https://github.com/prettier/prettier/issues/8288

@@ -1,0 +1,20 @@
+<div class="input-icon">
+	<i class="fa fa-calendar" *ngIf="IsDisabled != true && !Date" (click)="d.toggle()"></i>
+	<i *ngIf="IsDisabled != true && Date" (click)="Cancel()">x</i>
+
+	<input
+		class="form-control"
+		placeholder="{{Placeholder}}"
+		name="dp"
+		[(ngModel)]="DateObj"
+		ngbDatepicker
+		[minDate]="MinDateObj"
+		[maxDate]="MaxDateObj"
+		#d="ngbDatepicker"
+		(click)="d.toggle()"
+		(ngModelChange)="ChangeDate()"
+		[readOnly]="true"
+		[required]="IsRequired"
+		[disabled]="IsDisabled"
+		[firstDayOfWeek]="6" />
+</div>
