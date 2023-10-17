@@ -23,8 +23,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm i
-            - run: npm run build 
-            - run: cp -r  /var/www/action-runner/webapp/chehabi-academy.web/chehabi-academy.web/dist/* /var/www/html/
+            - run: npm run build
+            - run: cp -r  /var/www/action-runner-web/webapp/chehabi.academy.web/chehabi.academy.web/dist/* /var/www/html/
             - run: pm2 stop main
             - run: pm2 start main
             - run: sudo service nginx restart
