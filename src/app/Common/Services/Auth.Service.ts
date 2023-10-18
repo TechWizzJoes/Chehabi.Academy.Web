@@ -5,7 +5,6 @@ import { StorageService, StorageEnum } from './Storage.Service';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AppConfig } from '@App/Base/AppConfig';
 import { HttpService } from './Http.Service';
-import { ApiEnum, HttpEndPoints } from '../Settings/HttpEndPoints';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -22,11 +21,11 @@ export class AuthService {
 		private StorageService: StorageService,
 		private AppConfig: AppConfig,
 		private HttpService: HttpService
-	) {}
+	) { }
 
-	SignIn(loginResModel: AuthModels.LoginResModel) {}
+	SignIn(loginResModel: AuthModels.LoginResModel) { }
 
-	SignOut() {}
+	SignOut() { }
 
 	get AccessToken(): string {
 		let token = this.StorageService.GetLocalStorage<string>(StorageEnum.AccessToken);
@@ -64,7 +63,7 @@ export class AuthService {
 		return Object.keys(this.CurrentUser).length != 0 ? true : false;
 	}
 
-	GetUserDIDs() {}
+	GetUserDIDs() { }
 
-	RefreshAccessToken(): any {}
+	RefreshAccessToken(): any { }
 }

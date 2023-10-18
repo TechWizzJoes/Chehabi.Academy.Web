@@ -1,6 +1,7 @@
 @import '_Variables.scss';
 @import 'Library/Library.scss';
 @import 'Custom/_Custom.scss';
+@import 'Layout/_Layout.scss';
 :root {
 	/* ====== Editing on offcanvas bootstrap attributes ====== */
 	app-menu .offcanvas-backdrop.show {

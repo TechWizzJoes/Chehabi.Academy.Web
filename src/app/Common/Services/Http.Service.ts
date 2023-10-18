@@ -1,38 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { catchError, throwError } from 'rxjs';
-import { StorageEnum, StorageService } from './Storage.Service';
-import { AuthModels } from '../Models/Auth.Models';
+import { StorageService } from './Storage.Service';
 import { AppConfig } from '@App/Base/AppConfig';
-import { ApiEnum } from '../Settings/HttpEndPoints';
+import { AuthModels } from '../Models/Auth.Models';
 
 @Injectable({ providedIn: 'root' })
 export class HttpService {
 	ApiUrl: string = '';
-	AccountApiUrl: string = '';
-	PbxApiUrl: string = '';
 
 	DefaultMaxTries: number = 3;
 
-	constructor(private HttpClient: HttpClient, private StorageService: StorageService, private AppConfig: AppConfig) {}
-
-	GetHostApi(apiEnum: ApiEnum): string {
-		return apiEnum;
+	constructor(private HttpClient: HttpClient, private StorageService: StorageService, private AppConfig: AppConfig) {
+		this.SetApiUrl()
 	}
 
-	// Get<T>(endPoint: string, options: any = null) {
-	// 	let endPointUrl = this.ApiUrlCore + endPoint;
-	// 	if (options) {
-	// 		return this.HttpClient.get<T>(endPointUrl, options);
-	// 	} else {
-	// 		return this.HttpClient.get<T>(endPointUrl);
-	// 	}
-	// }
+	SetApiUrl() {
+		this.AppConfig.ApiUrl.subscribe((url) => {
+			(this.ApiUrl = url)
+		});
+	}
 
-	Get<T>(endPoint: string, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Get<T>(endPoint: string) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.get<T>(endPointUrl).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -41,14 +32,8 @@ export class HttpService {
 		);
 	}
 
-	Post<Req, Res>(
-		endPoint: string,
-		model: Req,
-		apiEnum: ApiEnum = ApiEnum.Api,
-		retryCount: number = this.DefaultMaxTries
-	) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Post<Req, Res>(endPoint: string, model: Req,) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.post<Res>(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -57,9 +42,8 @@ export class HttpService {
 		);
 	}
 
-	Put<Req>(endPoint: string, model: Req, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Put<Req>(endPoint: string, model: Req) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.put(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -68,9 +52,8 @@ export class HttpService {
 		);
 	}
 
-	Put2<Req, Res>(endPoint: string, model: Req, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Put2<Req, Res>(endPoint: string, model: Req) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.put<Res>(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -79,9 +62,8 @@ export class HttpService {
 		);
 	}
 
-	Delete(endPoint: string, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Delete(endPoint: string) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.delete(endPointUrl).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -90,9 +72,8 @@ export class HttpService {
 		);
 	}
 
-	GetWithOptions<T>(endPoint: string, options: any, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	GetWithOptions<T>(endPoint: string, options: any) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.get<T>(endPointUrl, options).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -101,15 +82,8 @@ export class HttpService {
 		);
 	}
 
-	GetWithParams<T>(apiEnum: ApiEnum, endPoint: string, params: any) {
-		// 	let options = {
-		// 		responseType: 'blob' as 'json',
-		// 		params: {
-		// 			fileName: fileName,
-		// 		}
-		// 	};
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	GetWithParams<T>(endPoint: string, params: any) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		let options = {
 			params: params
 		};
@@ -121,9 +95,8 @@ export class HttpService {
 		);
 	}
 
-	PostWithOptions<Req, Res>(endPoint: string, model: Req, options: any, apiEnum: ApiEnum = ApiEnum.Api) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	PostWithOptions<Req, Res>(endPoint: string, model: Req, options: any) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.post<Res>(endPointUrl, model, options).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -132,9 +105,8 @@ export class HttpService {
 		);
 	}
 
-	PutWithRes<Req, Res>(apiEnum: ApiEnum, endPoint: string, model: Req) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	PutWithRes<Req, Res>(endPoint: string, model: Req) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.put<Res>(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -143,9 +115,8 @@ export class HttpService {
 		);
 	}
 
-	Patch(apiEnum: ApiEnum, endPoint: string, model: any) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	Patch(endPoint: string, model: any) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.patch(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -153,9 +124,8 @@ export class HttpService {
 			})
 		);
 	}
-	PatchWithRes<Res>(apiEnum: ApiEnum, endPoint: string, model: any) {
-		const hostApi = this.GetHostApi(apiEnum);
-		const endPointUrl = hostApi + endPoint;
+	PatchWithRes<Res>(endPoint: string, model: any) {
+		const endPointUrl = this.ApiUrl + endPoint;
 		return this.HttpClient.patch<Res>(endPointUrl, model).pipe(
 			catchError((error) => {
 				// console.error(error);
@@ -163,19 +133,4 @@ export class HttpService {
 			})
 		);
 	}
-
-	// post(endpoint: string, body: any, reqOpts?: any) {
-	//     return this.HttpClient.post(endpoint, body, reqOpts);
-	// }
-
-	// Put<Req, Res>(endPoint: string, model: Req, apiEnum?: ApiEnum) {
-
-	// 	let endPointUrl = this.ApiUrlCore + endPoint;
-	// 	return this.HttpClient.put<Res>(endPointUrl, model);
-	// }
-
-	// Get<T>(endPoint: string, reqOpts?: any) {
-	// 	let endPointUrl = this.ApiUrlCore + endPoint;
-	// 	return this.HttpClient.get<T>(endPointUrl, reqOpts);
-	// }
 }

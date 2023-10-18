@@ -1,4 +1,8 @@
-export enum ApiEnum {
-	Api = 'Api'
+
+export class HttpEndPoints {
+
+	public static Account = {
+		Login: 'account/login',
+		Register: 'account/register',
+	}
 }
-export class HttpEndPoints {}

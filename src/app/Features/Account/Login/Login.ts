@@ -58,27 +58,22 @@ export class LoginComponent {
 			Email: this.Credentials.Email.trim(),
 			Password: this.Credentials.Password.trim()
 		} as AuthModels.LoginReqModel;
-
 		this.ReturnUrl = this.ActivatedRoute.snapshot.queryParams['returnUrl'];
-		// let httpEndPoint = HttpEndPoints.AccountApi.Login;
-		// 	this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
-		// 		httpEndPoint,
-		// 		requestModel,
-		// 		ApiEnum.AccountApi
-		// 	).subscribe({
-		// 		next: (response) => {
-		// 			console.log(response);
-		// 			this.AuthService.SignIn(response);
-
-		// 			// this.Router.navigateByUrl(this.RoutePaths.Dashboard);
-		// 			this.NavigateTo(response.CurrentUser);
-		// },
-		// 		error: (errorResponse) => {
-		// 			// to show the error on login panel
-		// 			this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
-		// 		}
-		// 	});
-		this.Router.navigateByUrl(RoutePaths.Default);
+		let httpEndPoint = HttpEndPoints.Account.Login;
+		this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
+			httpEndPoint,
+			requestModel,
+		).subscribe({
+			next: (response) => {
+				console.log(response);
+				this.AuthService.SignIn(response);
+				this.NavigateTo(response.CurrentUser);
+			},
+			error: (errorResponse) => {
+				// to show the error on login panel
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+			}
+		});
 	}
 
 	NavigateTo(currentUser: AuthModels.CurrentUserResModel) {

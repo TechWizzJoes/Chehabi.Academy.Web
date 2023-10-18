@@ -1,94 +1,67 @@
-body {
-	background: #eee;
-	text-align: center;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	cursor: default;
-	letter-spacing: 5px;
-	font-family: 'M PLUS Code Latin', sans-serif;
-}
-
-::ng-deep {
-	body:after {
-		content: '';
-		background-image: url(../../../assets/bg.gif);
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		position: absolute;
-		z-index: -1;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	}
-}
-
-#container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	width: 100%;
-}
-
-#avatar {
-	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
-	border-radius: 5%;
-	width: 250px;
-	animation: bounce cubic-bezier(0.19, 1, 0.22, 1) 0.2s alternate infinite;
-	-webkit-animation: bounce cubic-bezier(0.19, 1, 0.22, 1) 0.2s alternate
-		infinite;
-}
-
-@keyframes bounce {
-	to {
-		transform: translateY(-5px) scale(1);
-		box-shadow: 0 0 10px #fff, 0 0 20px #dc2537, 0 0 30px #dc2537,
-			0 0 40px #dc2537, 0 0 70px #f14658, 0 0 80px #f14658;
-	}
-}
-
-@-webkit-keyframes bounce {
-	to {
-		-webkit-transform: translateY(-5px) scale(1);
-		box-shadow: 0 0 10px #fff, 0 0 20px #dc2537, 0 0 30px #dc2537,
-			0 0 40px #dc2537, 0 0 70px #f14658, 0 0 80px #f14658;
-	}
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+h1 {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 4em;
+	color: #333;
+	-webkit-text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6),
+		0 0 2px rgba(0, 0, 0, 0.7);
+	-moz-text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.7);
+	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.7);
+	word-spacing: 16px;
 }
 
 p {
-	color: rgba(0, 0, 0, 0.25);
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75);
-	font-family: 'Libre Barcode 39 Text', cursive;
-	font-size: 2.2em;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #222;
+	text-shadow: 0 0 40px #ffffff, 0 0 30px #ffffff, 0 0 20px #ffffff;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans');
-.type-wrap {
-	font-size: 50px;
-	padding: 20px;
-	color: #fff;
-	margin-top: 2%;
+.container {
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
 }
 
-.typed-cursor {
-	opacity: 1;
-	-webkit-animation: blink 0.7s infinite;
-	-moz-animation: blink 0.7s infinite;
-	animation: blink 0.7s infinite;
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	height: auto;
+	display: table;
 }
 
-@keyframes blink {
-	0% {
-		opacity: 1;
+.content {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.item {
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+	padding: 8px;
+}
+
+@media only screen and (min-width: 800px) {
+	h1 {
+		font-size: 6em;
 	}
-	50% {
-		opacity: 0;
+	p {
+		font-size: 1.6em;
 	}
-	100% {
-		opacity: 1;
+}
+
+@media only screen and (max-width: 320px) {
+	h1 {
+		font-size: 2em;
+	}
+	p {
+		font-size: 1.2em;
 	}
 }

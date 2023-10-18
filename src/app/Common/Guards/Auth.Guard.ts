@@ -11,13 +11,14 @@ export class AuthGuard implements CanActivate {
 		private StorageService: StorageService,
 		private AuthService: AuthService,
 		private NotifyService: NotifyService
-	) {}
+	) { }
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 		//console.log('AuthGuard');
 
 		//console.log(state.url);
-		if (this.AuthService.IsAuthenticated) {
+		// if (this.AuthService.IsAuthenticated) {
+		if (true) {
 			//console.log("Auth Guard: " + this.AuthService.IsAuthenticated);
 			return true;
 
