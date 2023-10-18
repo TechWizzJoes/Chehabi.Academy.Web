@@ -11,11 +11,20 @@ export namespace AuthModels {
 
 	export class RefreshTokenReqModel { }
 
-	export class CurrentUserResModel { }
+	export class CurrentUserResModel {
+		UserId!: number;
+		IsAdmin!: boolean;
+	}
 
 	export class ExtensionPasswordResModel { }
 
 	export class LoginResModel {
+		AccessToken!: string;
+		RefreshToken!: string;
+		CurrentUser!: CurrentUserResModel;
+	}
+
+	export class RegisterResModel {
 		AccessToken!: string;
 		RefreshToken!: string;
 		CurrentUser!: CurrentUserResModel;

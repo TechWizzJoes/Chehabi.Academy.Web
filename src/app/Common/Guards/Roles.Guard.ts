@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthModels } from '../Models/Auth.Models';
 import { StorageEnum, StorageService } from '../Services/Storage.Service';
-import { RolesEnum } from '../Enums/Roles.Enum';
 import { NotifyService } from '../Services/Notify.Service';
 import { RoutePaths } from '../Settings/RoutePaths';
+import { RolesEnum } from '../Enums/Roles.Enum';
 
 @Injectable({ providedIn: 'root' })
 export class RolesGuard {
-	constructor(private router: Router, private StorageService: StorageService, private NotifyService: NotifyService) {}
+	constructor(private router: Router, private StorageService: StorageService, private NotifyService: NotifyService) { }
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 		const CurrentUser = this.StorageService.GetLocalStorage<AuthModels.CurrentUserResModel>(

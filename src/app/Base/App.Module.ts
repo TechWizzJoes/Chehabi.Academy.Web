@@ -15,15 +15,10 @@ import { LogInterceptor } from '@App/Common/Interceptors/Log.Interceptor';
 import { ErrorInterceptor } from '@App/Common/Interceptors/Error.Interceptor';
 import { GlobalErrorHandler } from '@App/Common/Exceptions/GlobalErrorHandler';
 import { RetryInterceptor } from '@App/Common/Interceptors/Retry.Interceptor';
-import { HeaderComponent } from './Components/Header/Header';
-import { MenuComponent } from './Components/Menu/Menu';
-import { FooterComponent } from './Components/Footer/Footer';
 import { routes } from './App.Routes';
 
-const blockUI_whitelist = [''];
-
 @NgModule({
-	declarations: [AppComponent, HeaderComponent, MenuComponent, FooterComponent],
+	declarations: [AppComponent],
 	imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true }), HttpClientModule],
 	providers: [
 		{
@@ -41,4 +36,4 @@ const blockUI_whitelist = [''];
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

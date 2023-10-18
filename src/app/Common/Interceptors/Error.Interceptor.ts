@@ -21,7 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 		private NotifyService: NotifyService,
 		private ErrorCodesService: ErrorCodesService,
 		private AppConfig: AppConfig
-	) {}
+	) { }
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return next.handle(req).pipe(
@@ -29,7 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 				// after all retrys if any
 
 				// return login error to handle in the component
-				if (req.url.includes('Login')) {
+				if (req.url.includes('login')) {
 					return throwError(() => error);
 				}
 
