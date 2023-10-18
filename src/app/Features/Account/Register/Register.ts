@@ -49,7 +49,6 @@ export class RegisterComponent {
 
 	Register(frm: NgForm) {
 		if (frm.invalid) {
-			// this.NotifyService.Error('InvalidFormMsg');
 			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
 			return;
 		}
@@ -63,25 +62,23 @@ export class RegisterComponent {
 		} as AuthModels.RegisterReqModel;
 
 		this.ReturnUrl = this.ActivatedRoute.snapshot.queryParams['returnUrl'];
-		// let httpEndPoint = HttpEndPoints.AccountApi.Register;
-		// 	this.HttpService.Post<AuthModels.RegisterReqModel, AuthModels.RegisterResModel>(
-		// 		httpEndPoint,
-		// 		requestModel,
-		// 		ApiEnum.AccountApi
-		// 	).subscribe({
-		// 		next: (response) => {
-		// 			console.log(response);
-		// 			this.AuthService.SignIn(response);
+		let httpEndPoint = HttpEndPoints.Account.Register;
+		this.HttpService.Post<AuthModels.RegisterReqModel, AuthModels.RegisterResModel>(
+			httpEndPoint,
+			requestModel,
+		).subscribe({
+			next: (response) => {
+				console.log(response);
+				this.AuthService.SignIn(response);
 
-		// 			// this.Router.navigateByUrl(this.RoutePaths.Dashboard);
-		// 			this.NavigateTo(response.CurrentUser);
-		// },
-		// 		error: (errorResponse) => {
-		// 			// to show the error on Register panel
-		// 			this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
-		// 		}
-		// 	});
-		this.Router.navigateByUrl(RoutePaths.Home);
+				// this.Router.navigateByUrl(this.RoutePaths.Dashboard);
+				this.NavigateTo(response.CurrentUser);
+			},
+			error: (errorResponse) => {
+				// to show the error on Register panel
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+			}
+		});
 	}
 
 	NavigateTo(currentUser: AuthModels.CurrentUserResModel) {
