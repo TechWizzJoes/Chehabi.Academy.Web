@@ -12,7 +12,7 @@ import { HeaderComponent } from './Components/Header/Header';
 import { MenuComponent } from './Components/Menu/Menu';
 
 @NgModule({
+	imports: [CommonModule, FormsModule, InnerContainerRoutes],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
-	imports: [CommonModule, FormsModule, InnerContainerRoutes]
 })
 export class InnerContainerModule { }

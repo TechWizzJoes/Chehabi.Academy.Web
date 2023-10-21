@@ -12,7 +12,7 @@ export namespace AuthModels {
 	export class RefreshTokenReqModel { }
 
 	export class CurrentUserResModel {
-		UserId!: number;
+		Id!: number;
 		IsAdmin!: boolean;
 	}
 
