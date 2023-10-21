@@ -5,6 +5,7 @@ import { StorageService, StorageEnum } from './Storage.Service';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AppConfig } from '@App/Base/AppConfig';
 import { HttpService } from './Http.Service';
+import { HttpEndPoints } from '../Settings/HttpEndPoints';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -23,9 +24,17 @@ export class AuthService {
 		private HttpService: HttpService
 	) { }
 
-	SignIn(loginResModel: AuthModels.LoginResModel) { }
+	SignIn(loginResModel: AuthModels.LoginResModel) {
+		this.StorageService.SetLocalStorage(StorageEnum.AccessToken, loginResModel.AccessToken);
+		this.StorageService.SetLocalStorage(StorageEnum.RefreshToken, loginResModel.RefreshToken);
+		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, loginResModel.CurrentUser);
+	}
 
-	SignOut() { }
+	SignOut() {
+		this.StorageService.RemoveLocalStorage(StorageEnum.AccessToken);
+		this.StorageService.RemoveLocalStorage(StorageEnum.RefreshToken);
+		this.StorageService.RemoveLocalStorage(StorageEnum.CurrentUser);
+	}
 
 	get AccessToken(): string {
 		let token = this.StorageService.GetLocalStorage<string>(StorageEnum.AccessToken);
@@ -65,5 +74,22 @@ export class AuthService {
 
 	GetUserDIDs() { }
 
-	RefreshAccessToken(): any { }
+	RefreshAccessToken(): any {
+		let requestModel = {
+			Id: this.CurrentUser.Id,
+			AccessToken: this.AccessToken, // send it and check in backend if valid
+			RefreshToken: this.RefreshToken
+		} as AuthModels.RefreshTokenReqModel;
+
+		let httpEndPoint = HttpEndPoints.Account.Refresh;
+		return this.HttpService.Post<AuthModels.RefreshTokenReqModel, AuthModels.RefreshTokenResModel>(
+			httpEndPoint,
+			requestModel,
+		).pipe(
+			tap((data) => {
+				this.AccessToken = data.AccessToken;
+				this.RefreshToken = data.RefreshToken;
+			})
+		);
+	}
 }

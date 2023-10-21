@@ -12,11 +12,30 @@ export const routes: Routes = [
 		path: '',
 		component: InnerContainer,
 		canActivate: [AuthGuard],
-		//canActivateChild: [RoleGuard],
 		children: [
 			{
 				path: 'home',
 				loadComponent: () => import('@App/Features/Home/Home').then((c) => c.HomeComponent)
+			},
+			{
+				path: 'about',
+				loadComponent: () => import('@App/Features/About/About').then((c) => c.AboutComponent)
+			},
+			{
+				path: 'courses',
+				loadComponent: () => import('@App/Features/Courses/Courses').then((c) => c.CoursesComponent)
+			},
+			{
+				path: 'feedback',
+				loadComponent: () => import('@App/Features/Feedback/Feedback').then((c) => c.FeedbackComponent)
+			},
+			{
+				path: 'contactus',
+				loadComponent: () => import('@App/Features/ContactUs/ContactUs').then((c) => c.ContactUsComponent)
+			},
+			{
+				path: 'founder',
+				loadComponent: () => import('@App/Features/Founder/Founder').then((c) => c.FounderComponent)
 			},
 			{
 				path: 'unauthorized',
