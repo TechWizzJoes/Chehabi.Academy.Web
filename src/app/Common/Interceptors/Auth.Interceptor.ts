@@ -26,7 +26,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		let httpRequest = req;
-		debugger
 		if (this.RequireRefresh(req)) {
 			// console.log('token 60s for expiry');
 			let refreshToken = this.AuthService.RefreshToken;
