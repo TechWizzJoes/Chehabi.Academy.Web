@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
 		private StorageService: StorageService
-	) {}
+	) { }
 
-	ngOnInit() {}
+	ngOnInit() { }
 }
