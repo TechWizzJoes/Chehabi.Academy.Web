@@ -46,6 +46,9 @@
 
 				<div class="d-grid">
 					<button type="submit" class="btn btn-primary">Login</button>
+					<asl-google-signin-button>
+						<button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
+					</asl-google-signin-button>
 				</div>
 				<span>Don't have an account yet? <a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">Register</a></span>
 			</form>

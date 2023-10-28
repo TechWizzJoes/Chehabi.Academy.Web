@@ -12,10 +12,16 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
+import {
+	SocialAuthService,
+	GoogleLoginProvider,
+	SocialUser,
+	GoogleSigninButtonModule
+} from '@abacritt/angularx-social-login';
 
 @Component({
 	standalone: true,
-	imports: [FormsModule, CommonModule, RouterModule],
+	imports: [FormsModule, CommonModule, RouterModule, GoogleSigninButtonModule],
 	templateUrl: './Login.html',
 	styleUrls: ['./Login.scss']
 })
@@ -26,6 +32,8 @@ export class LoginComponent {
 	Error!: string;
 	showPW: boolean = false;
 	PWInputType: string = 'password';
+	socialUser!: SocialUser;
+	isLoggedin?: boolean;
 
 	Credentials = new AuthModels.LoginModel('', '');
 	ReturnUrl: any;
@@ -35,18 +43,28 @@ export class LoginComponent {
 		private ActivatedRoute: ActivatedRoute,
 		private HttpService: HttpService,
 		private NotifyService: NotifyService,
-		private AuthService: AuthService
-	) { }
+		private AuthService: AuthService,
+		private socialAuthService: SocialAuthService
+	) {}
 
 	ngOnInit() {
 		this.AuthService.SignOut();
+		this.socialAuthService.authState.subscribe((user) => {
+			this.socialUser = user;
+			this.isLoggedin = user != null;
+			console.log(this.socialUser);
+		});
 	}
 
 	toggleShowPW() {
 		this.showPW = this.showPW ? false : true;
 		this.PWInputType = this.PWInputType == 'password' ? 'text' : 'password';
 	}
-
+	loginWithGoogle(): void {
+		this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID, {
+			scope: 'https://www.googleapis.com/auth/user.birthday'
+		});
+	}
 	Login(frm: NgForm) {
 		if (frm.invalid) {
 			// this.NotifyService.Error('InvalidFormMsg');
@@ -60,20 +78,20 @@ export class LoginComponent {
 		} as AuthModels.LoginReqModel;
 		this.ReturnUrl = this.ActivatedRoute.snapshot.queryParams['returnUrl'];
 		let httpEndPoint = HttpEndPoints.Account.Login;
-		this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
-			httpEndPoint,
-			requestModel,
-		).subscribe({
-			next: (response) => {
-				console.log(response);
-				this.AuthService.SignIn(response);
-				this.NavigateTo(response.CurrentUser);
-			},
-			error: (errorResponse) => {
-				// to show the error on login panel
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+		this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(httpEndPoint, requestModel).subscribe(
+			{
+				next: (response) => {
+					console.log(response);
+					this.AuthService.SignIn(response);
+					this.NavigateTo(response.CurrentUser);
+				},
+				error: (errorResponse) => {
+					// to show the error on login panel
+					this.Error =
+						Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+				}
 			}
-		});
+		);
 	}
 
 	NavigateTo(currentUser: AuthModels.CurrentUserResModel) {
