@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" [routerLink]="['home']">Logo</a>
+		<a class="navbar-brand" [routerLink]="['home']" class="logo">
+			<img src="/assets/full-logo.png" alt="logo-img" class="logo-img" />
+		</a>
 		<button
 			class="navbar-toggler"
 			type="button"
@@ -11,37 +13,68 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+
 		<div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" aria-current="page" [routerLink]="['home']" routerLinkActive="active">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['about']" routerLinkActive="active">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['courses']" routerLinkActive="active">Courses</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['feedback']" routerLinkActive="active">Feedback</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['contactus']" routerLinkActive="active">Contact</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['founder']" routerLinkActive="active">Founder</a>
-				</li>
-				<!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown link
+					<a
+						class="nav-link"
+						aria-current="page"
+						[routerLink]="['home']"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
+						Home
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul>
-				</li> -->
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['about']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+						>About</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['courses']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+						Courses
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['feedback']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+						Feedback
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['contactus']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+						Contact
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['founder']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+						Founder
+					</a>
+				</li>
 			</ul>
 		</div>
+
+		<!-- user popup -->
+		<button
+			type="button"
+			class="profile-pic"
+			data-bs-toggle="collapse"
+			data-bs-target=".navbar-collapse.show"
+			[ngbPopover]="popContent"
+			container="body"
+			popoverClass="user-popover">
+			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/default-pp.png'" alt="User Profile" data-toggle="dropdown" />
+		</button>
+		<ng-template #popContent>
+			<div class="greeting">
+				<strong> Hello, </strong>
+				<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
+				<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
+			</div>
+			<hr />
+			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
+			<button class="btn btn-danger btn-sm" (click)="signOut()">Sign Out</button>
+		</ng-template>
 	</div>
 </nav>
