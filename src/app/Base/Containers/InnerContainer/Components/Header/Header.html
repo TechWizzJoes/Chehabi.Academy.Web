@@ -28,27 +28,52 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['about']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					<a
+						class="nav-link"
+						[routerLink]="[RoutePaths.About]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show"
 						>About</a
 					>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['courses']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+					<a
+						class="nav-link"
+						[routerLink]="[RoutePaths.Courses]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
 						Courses
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['feedback']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+					<a
+						class="nav-link"
+						[routerLink]="[RoutePaths.Feedback]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
 						Feedback
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['contactus']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+					<a
+						class="nav-link"
+						[routerLink]="[RoutePaths.Contactus]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
 						Contact
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['founder']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+					<a
+						class="nav-link"
+						[routerLink]="[RoutePaths.Founder]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
 						Founder
 					</a>
 				</li>
@@ -67,14 +92,19 @@
 			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/default-pp.png'" alt="User Profile" data-toggle="dropdown" />
 		</button>
 		<ng-template #popContent>
-			<div class="greeting">
+			<div class="text-center">
 				<strong> Hello, </strong>
 				<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
 				<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<button class="btn btn-danger btn-sm" (click)="signOut()">Sign Out</button>
+			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">Sign Out</button>
+			<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
+				Want to join the academy ? <br />
+				It'll only take a few minutes
+			</div>
+			<button class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">Sign In</button>
 		</ng-template>
 	</div>
 </nav>

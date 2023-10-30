@@ -14,10 +14,10 @@ declare var $: any; // Declare jQuery as any type
 export class HeaderComponent {
 	CurrentUser: AuthModels.CurrentUserResModel
 	@ViewChild('NavbarCollapse') NavbarCollapse!: ElementRef;
-
+	RoutePaths = RoutePaths
 	constructor(
 		private Router: Router,
-		private AuthService: AuthService,
+		protected AuthService: AuthService,
 		private socialAuthService: SocialAuthService
 	) {
 		window.addEventListener("scroll", function () {

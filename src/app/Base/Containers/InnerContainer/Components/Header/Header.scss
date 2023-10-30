@@ -114,13 +114,10 @@
 
 ::ng-deep {
 	.user-popover {
-		width: 200px;
+		width: 220px;
 		.popover-body {
 			display: flex;
 			flex-direction: column;
-			.greeting {
-				text-align: center;
-			}
 		}
 	}
 }
