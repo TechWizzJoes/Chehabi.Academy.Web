@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" [routerLink]="['home']" class="logo">
+		<a class="navbar-brand" [routerLink]="['home']" class="logo" (click)="useLanguage('en')">
 			<img src="/assets/full-logo.png" alt="logo-img" class="logo-img" />
 			<img src="/assets/white-full-logo.png" alt="logo-img" class="white-logo-img" />
 		</a>
@@ -25,7 +25,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						Home
+						{{'home' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -34,9 +34,9 @@
 						[routerLink]="[RoutePaths.About]"
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
-						data-bs-target=".navbar-collapse.show"
-						>About</a
-					>
+						data-bs-target=".navbar-collapse.show">
+						{{'about' | translate}}
+					</a>
 				</li>
 				<li class="nav-item">
 					<a
@@ -45,7 +45,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						Courses
+						{{'courses' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -55,7 +55,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						Feedback
+						{{'feedback' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -65,7 +65,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						Contact
+						{{'contact' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -75,8 +75,19 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						Founder
+						{{'founder' | translate}}
 					</a>
+				</li>
+				<li>
+					<!-- language popup -->
+					<button type="button" class="language-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
+						<i class="fa fa-globe"></i>
+					</button>
+					<ng-template #languagePopup>
+						<div *ngFor="let language of AvailableLanguages">
+							<button class="btn" (click)="useLanguage(language.Key)">{{language.Name | translate}}</button>
+						</div>
+					</ng-template>
 				</li>
 			</ul>
 		</div>
@@ -87,25 +98,25 @@
 			class="profile-pic"
 			data-bs-toggle="collapse"
 			data-bs-target=".navbar-collapse.show"
-			[ngbPopover]="popContent"
+			[ngbPopover]="userPopup"
 			container="body"
 			popoverClass="user-popover">
-			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/default-pp.png'" alt="User Profile" data-toggle="dropdown" />
+			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/default-pp.png'" [alt]="'User Profile' | translate" data-toggle="dropdown" />
 		</button>
-		<ng-template #popContent>
+		<ng-template #userPopup>
 			<div class="text-center">
-				<strong> Hello, </strong>
+				<strong> {{'Hello' | translate}}, </strong>
 				<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
 				<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">Sign Out</button>
+			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</button>
 			<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
-				Want to join the academy ? <br />
-				It'll only take a few minutes
+				{{'Want to join the academy' | translate}}?<br />
+				{{"It'll only take a few minutes" | translate}}
 			</div>
-			<button class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">Sign In</button>
+			<button class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Sign In' | translate}}</button>
 		</ng-template>
 	</div>
 </nav>
