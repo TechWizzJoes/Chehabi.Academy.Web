@@ -4,8 +4,12 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-declare var $: any; // Declare jQuery as any type
+import { TranslateService } from '@ngx-translate/core';
 
+export class Language {
+	Name!: string;
+	Key!: string;
+}
 @Component({
 	selector: 'app-header',
 	templateUrl: './Header.html',
@@ -15,10 +19,14 @@ export class HeaderComponent {
 	CurrentUser: AuthModels.CurrentUserResModel
 	@ViewChild('NavbarCollapse') NavbarCollapse!: ElementRef;
 	RoutePaths = RoutePaths
+
+	AvailableLanguages: Language[] = [{ Name: 'English', Key: 'en' }, { Name: 'German', Key: 'de' }]
+
 	constructor(
 		private Router: Router,
 		protected AuthService: AuthService,
-		private socialAuthService: SocialAuthService
+		private socialAuthService: SocialAuthService,
+		private TranslateService: TranslateService
 	) {
 		window.addEventListener("scroll", function () {
 			const navbar = document.querySelector(".navbar");
@@ -36,6 +44,10 @@ export class HeaderComponent {
 	}
 
 	goToSettings() {
+	}
+
+	useLanguage(language: string): void {
+		this.TranslateService.use(language);
 	}
 
 	signOut() {

@@ -12,9 +12,10 @@ import { MenuComponent } from './Components/Menu/Menu';
 import { HeaderComponent } from './Components/Header/Header';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule],
+	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
 })
 export class InnerContainerModule { }

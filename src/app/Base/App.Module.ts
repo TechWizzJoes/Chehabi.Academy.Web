@@ -18,9 +18,23 @@ import { RetryInterceptor } from '@App/Common/Interceptors/Retry.Interceptor';
 import { routes } from './App.Routes';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true }), HttpClientModule, SocialLoginModule],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(routes, { useHash: true }),
+		HttpClientModule,
+		SocialLoginModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient]
+			}
+		})],
 	providers: [
 		{
 			provide: APP_INITIALIZER,
@@ -50,3 +64,8 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+	return new TranslateHttpLoader(http);
+}
