@@ -12,10 +12,12 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
+import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 
 @Component({
 	standalone: true,
-	imports: [FormsModule, CommonModule, RouterModule],
+	imports: [FormsModule, CommonModule, RouterModule, GoogleSigninButtonModule],
 	templateUrl: './Login.html',
 	styleUrls: ['./Login.scss']
 })
@@ -30,17 +32,24 @@ export class LoginComponent {
 	Credentials = new AuthModels.LoginModel('', '');
 	ReturnUrl: any;
 
+	socialUser!: SocialUser;
+
 	constructor(
 		private Router: Router,
 		private ActivatedRoute: ActivatedRoute,
 		private HttpService: HttpService,
 		private NotifyService: NotifyService,
-		private AuthService: AuthService
+		private AuthService: AuthService,
+		private socialAuthService: SocialAuthService,
+		private ErrorCodesService: ErrorCodesService
 	) { }
 
-	ngOnInit() {
+	async ngOnInit() {
 		this.AuthService.SignOut();
+		this.SocialLogin.Google.AuthStateSubscribe()
 	}
+
+
 
 	toggleShowPW() {
 		this.showPW = this.showPW ? false : true;
@@ -81,5 +90,49 @@ export class LoginComponent {
 		const route = !!this.ReturnUrl ? this.ReturnUrl : RoutePaths.Default;
 		// const route = (!!returnUrl) ? returnUrl : this.AuthService.GetRoleDefaultRoute(role);
 		this.Router.navigateByUrl(route);
+	}
+
+	SocialLogin = {
+		Google: {
+			AuthStateSubscribe: (): void => {
+				this.socialAuthService.authState.subscribe((user) => {
+					this.socialUser = user;
+					this.AuthService.isGoogleLoggedin = user != null;
+					console.log(this.socialUser);
+					if (user)
+						this.SocialLogin.Google.Login(this.socialUser.idToken)
+				});
+			},
+
+			ClientLogin: (): void => {
+				this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+			},
+
+			Logout: (): void => {
+				this.socialAuthService.signOut(true);
+			},
+
+			Login: (idToken: string) => {
+				let requestModel = {
+					IdToken: idToken,
+				} as AuthModels.GoogleLoginReqModel;
+				this.ReturnUrl = this.ActivatedRoute.snapshot.queryParams['returnUrl'];
+				let httpEndPoint = HttpEndPoints.Account.SocialLogin.Google;
+				this.HttpService.Post<AuthModels.GoogleLoginReqModel, AuthModels.LoginResModel>(
+					httpEndPoint,
+					requestModel,
+				).subscribe({
+					next: (response) => {
+						console.log(response);
+						this.AuthService.SignIn(response);
+						this.NavigateTo(response.CurrentUser);
+					},
+					error: (errorResponse) => {
+						// to show the error on login panel
+						this.Error = this.ErrorCodesService.GetErrorCode(errorResponse.error)
+					}
+				});
+			}
+		}
 	}
 }

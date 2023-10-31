@@ -1,5 +1,12 @@
 export namespace AuthModels {
-	export class LoginReqModel { }
+	export class LoginReqModel {
+		Email!: string;
+		Password!: string;
+	}
+
+	export class GoogleLoginReqModel {
+		IdToken!: string
+	}
 	export class RegisterReqModel {
 		Email!: string;
 		Password!: string;
@@ -13,7 +20,11 @@ export namespace AuthModels {
 
 	export class CurrentUserResModel {
 		Id!: number;
+		FirstName!: string;
+		LastName!: string;
+		Email!: string;
 		IsAdmin!: boolean;
+		ProfilePicturePath?: string;
 	}
 
 	export class ExtensionPasswordResModel { }

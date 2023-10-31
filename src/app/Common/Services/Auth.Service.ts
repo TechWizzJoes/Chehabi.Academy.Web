@@ -10,13 +10,7 @@ import { HttpEndPoints } from '../Settings/HttpEndPoints';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 	CurrentUserSub!: Subscription;
-
-	UserMenu = [
-		{
-			Id: 1,
-			ParentId: 0
-		}
-	];
+	isGoogleLoggedin!: boolean;
 
 	constructor(
 		private StorageService: StorageService,
@@ -71,8 +65,6 @@ export class AuthService {
 	get IsAuthenticated(): boolean {
 		return Object.keys(this.CurrentUser).length != 0 ? true : false;
 	}
-
-	GetUserDIDs() { }
 
 	RefreshAccessToken(): any {
 		let requestModel = {

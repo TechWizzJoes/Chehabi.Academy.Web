@@ -8,11 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { InnerContainerRoutes } from './InnerContainer.Routes';
 import { InnerContainer } from './InnerContainer';
 import { FooterComponent } from './Components/Footer/Footer';
-import { HeaderComponent } from './Components/Header/Header';
 import { MenuComponent } from './Components/Menu/Menu';
+import { HeaderComponent } from './Components/Header/Header';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, InnerContainerRoutes],
+	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
 })
 export class InnerContainerModule { }

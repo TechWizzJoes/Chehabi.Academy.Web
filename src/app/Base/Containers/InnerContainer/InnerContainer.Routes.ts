@@ -11,7 +11,7 @@ export const routes: Routes = [
 	{
 		path: '',
 		component: InnerContainer,
-		canActivate: [AuthGuard],
+		// canActivate: [AuthGuard],
 		children: [
 			{
 				path: 'home',

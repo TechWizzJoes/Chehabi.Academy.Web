@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
 			// console.log('token 60s for expiry');
 			let refreshToken = this.AuthService.RefreshToken;
 			if (!refreshToken) {
-				this.router.navigate([RoutePaths.Login]);
+				// this.router.navigate([RoutePaths.Login]);
 				return EMPTY;
 			}
 			// this.IsCurrentlyRefreshing = true; //comment to avoid unauthorized after waiting till the access token expiration
@@ -75,7 +75,7 @@ export class AuthInterceptor implements HttpInterceptor {
 		let accessToken = this.AuthService.AccessToken;
 		// access token doesnot exist return to login page directly
 		if (!accessToken) {
-			this.router.navigate([RoutePaths.Login]);
+			// this.router.navigate([RoutePaths.Login]);
 			return false;
 		}
 

@@ -1,12 +1,23 @@
 .navbar {
 	background-color: transparent !important;
-	transition: background-color 0.3s ease;
-	.container-fluid:has(.show),
-	.container-fluid:has(.collapsing) {
-		background-color: white;
-		.navbar-collapse {
-			padding-top: 10px;
+	transition: all 0.3s ease;
+	&:has(.show),
+	&:has(.collapsing) {
+		box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+		background-color: white !important;
+		.container-fluid {
+			background-color: white;
+			.navbar-collapse {
+				padding-top: 10px;
+			}
 		}
+	}
+	.logo-img {
+		height: 40px;
+	}
+	.white-logo-img {
+		height: 40px;
+		display: none;
 	}
 	a {
 		color: var(--primary-color1) !important;
@@ -34,11 +45,27 @@
 			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(54, 69, 85, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 		}
 	}
+	.profile-pic {
+		border: none;
+		background-color: transparent;
+		padding: 0;
+		img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+		}
+	}
 }
 
 .navbar.navbar-scrolled {
 	background-color: var(--primary-color1) !important;
 	box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+	.logo-img {
+		display: none;
+	}
+	.white-logo-img {
+		display: block;
+	}
 	a {
 		color: white !important;
 		margin: 0 5px;
@@ -64,6 +91,39 @@
 		border-color: white;
 		.navbar-toggler-icon {
 			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.navbar {
+		.container-fluid {
+			// background-color: red;
+			.navbar-toggler {
+				order: 1;
+			}
+			.logo {
+				order: 2;
+			}
+			.profile-pic {
+				order: 3;
+			}
+			&:has(.show),
+			&:has(.collapsing) {
+				.navbar-collapse {
+					order: 4;
+				}
+			}
+		}
+	}
+}
+
+::ng-deep {
+	.user-popover {
+		width: 220px;
+		.popover-body {
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }
