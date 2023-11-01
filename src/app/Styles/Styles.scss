@@ -2,17 +2,3 @@
 @import 'Library/Library.scss';
 @import 'Custom/_Custom.scss';
 @import 'Layout/_Layout.scss';
-:root {
-	/* ====== Editing on offcanvas bootstrap attributes ====== */
-	app-menu .offcanvas-backdrop.show {
-		display: none;
-	}
-	app-filter .offcanvas-backdrop.show {
-		display: block !important;
-	}
-	@media (max-width: 600px) {
-		app-menu .offcanvas-backdrop.show {
-			display: block;
-		}
-	}
-}
