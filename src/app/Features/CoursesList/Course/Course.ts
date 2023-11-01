@@ -8,15 +8,20 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+export class Course {
+	Name!: string;
+	Description!: string;
+}
 
 @Component({
 	standalone: true,
-	templateUrl: './Courses.html',
-	styleUrls: ['Courses.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule]
+	templateUrl: './Course.html',
+	styleUrls: ['Course.scss'],
+	imports: [FormsModule, CommonModule]
 })
-export class CoursesComponent implements OnInit {
+export class CourseComponent implements OnInit {
+
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
@@ -27,5 +32,6 @@ export class CoursesComponent implements OnInit {
 		private StorageService: StorageService
 	) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+	}
 }

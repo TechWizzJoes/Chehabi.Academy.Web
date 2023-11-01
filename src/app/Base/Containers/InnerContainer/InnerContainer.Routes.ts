@@ -23,7 +23,11 @@ export const routes: Routes = [
 			},
 			{
 				path: 'courses',
-				loadComponent: () => import('@App/Features/Courses/Courses').then((c) => c.CoursesComponent)
+				loadComponent: () => import('@App/Features/CoursesList/CoursesList').then((c) => c.CoursesListComponent)
+			},
+			{
+				path: 'course/:id',
+				loadComponent: () => import('@App/Features/CoursesList/Course/Course').then((c) => c.CourseComponent)
 			},
 			{
 				path: 'feedback',

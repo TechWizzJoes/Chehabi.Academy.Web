@@ -4,7 +4,8 @@ export class RoutePaths {
 	public static Login = 'login';
 	public static Register = 'register';
 	public static About = 'about'
-	public static Courses = 'courses'
+	public static Courses = 'courses';
+	public static Course = 'course'
 	public static Feedback = 'feedback'
 	public static Contactus = 'contactus'
 	public static Founder = 'founder'
