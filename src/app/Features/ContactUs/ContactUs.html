@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="wrapper">
 		<div class="content">
 			<div class="item">
@@ -6,5 +6,36 @@
 				<p>Chehabi academy is under construction.</p>
 			</div>
 		</div>
+	</div>
+</div> -->
+<div class="container">
+	<div class="form-container">
+		<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+			<div class="form-grid">
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name" />
+				</div>
+
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name" />
+				</div>
+
+				<div class="form-group">
+					<label for="age">Age</label>
+					<input type="number" class="form-control" id="age" formControlName="age" placeholder="Age" />
+				</div>
+
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea class="form-control" id="description" formControlName="description" placeholder="Description"></textarea>
+				</div>
+			</div>
+
+			<div class="submit-button">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
 	</div>
 </div>
