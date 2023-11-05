@@ -14,6 +14,7 @@ export class Course {
 	Id!: number;
 	Name!: string;
 	Description!: string;
+	ImageUrl!: string
 }
 
 @Component({
@@ -25,11 +26,11 @@ export class Course {
 export class CoursesListComponent implements OnInit {
 
 	Courses: Course[] = [
-		{ Id: 1, Name: 'course 1', Description: 'lorwndcmldsljs kcsmcks' },
-		{ Id: 2, Name: 'course 2', Description: 'kljnbahcd vyabsnkj' },
-		{ Id: 3, Name: 'course 3', Description: 'lorwndcmldsljs kcsmcks' },
-		{ Id: 4, Name: 'course 4', Description: 'lorwndcmldsljs kcsmcks' },
-		{ Id: 5, Name: 'course 5', Description: 'lorwndcmldsljs kcsmcks' },
+		{ Id: 1, Name: 'course 1', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c1.jpeg' },
+		{ Id: 2, Name: 'course 2', Description: 'kljnbahcd vyabsnkj', ImageUrl: 'assets/courses/c2.jpeg' },
+		{ Id: 3, Name: 'course 3', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c3.jpeg' },
+		{ Id: 4, Name: 'course 4', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c4.jpeg' },
+		{ Id: 5, Name: 'course 5', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c5.jpeg' },
 	]
 	constructor(
 		private router: Router,
