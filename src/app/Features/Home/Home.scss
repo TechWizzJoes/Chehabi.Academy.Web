@@ -1,6 +1,20 @@
-.container {
-	height: 200vh;
-	.wrapper {
-		height: calc(100vh - 56px);
-	}
+.page-inner {
+    .page-section {
+        justify-content: space-between;
+        .graphics {
+            // min-width: 200px;
+            padding: 0 !important;
+            align-self: start;
+        }
+        .content {
+            padding-left: 50px;
+            max-width: 500px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .graphics {
+        display: none !important;
+    }
 }

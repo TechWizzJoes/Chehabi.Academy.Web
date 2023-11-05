@@ -1,33 +1,22 @@
-@mixin button(
-	$color,
-	$alt-color,
-	$background-color,
-	$alt-background-color,
-	$border-color,
-	$alt-border-color
-) {
-	color: $color !important;
-	background-color: $background-color !important;
-	border: 1px solid $border-color !important;
-	&:hover,
-	&:focus,
-	&:active,
-	&.active {
-		color: $alt-color !important;
-		background-color: $alt-background-color !important;
-		border-color: $alt-border-color !important;
-		box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
-			0 1px 3px rgba(0, 0, 0, 0.08);
-	}
+@mixin button( $color, $alt-color, $background-color, $alt-background-color, $border-color, $alt-border-color) {
+    color: $color !important;
+    background-color: $background-color !important;
+    border: 1px solid $border-color !important;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: $alt-color !important;
+        background-color: $alt-background-color !important;
+        border-color: $alt-border-color !important;
+        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
 }
 
 .btn-primary {
-	@include button(
-		#fff,
-		#fff,
-		var(--primary-color1),
-		var(--primary-color2),
-		var(--primary-color1),
-		var(--primary-color2)
-	);
+    @include button( #fff, #fff, var(--primary-color1), var(--primary-color2), var(--primary-color1), var(--primary-color2));
+}
+
+.btn-outline-primary {
+    @include button( var(--primary-color1), #fff, #fff, var(--primary-color2), var(--primary-color1), var(--primary-color1));
 }
