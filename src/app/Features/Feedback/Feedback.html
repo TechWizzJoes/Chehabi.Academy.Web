@@ -1,16 +1,25 @@
 <div class="page-inner">
-    <div class="page-section">
-        <div class="partition graphics">
-            <img src="assets/feedback-rating.png" alt="" class="image" />
-        </div>
-        <div class="partition content">
-            <h1>We'd Appreciate Your Feedback</h1>
-            <p>
-                We're committed to enhance your learning experience. <br /> Share your insights with us.
-            </p>
-            <div>
-                <button class="btn btn-primary">Share your thoughts</button>
-            </div>
-        </div>
-    </div>
+	<div class="page-section">
+		<div class="partition graphics">
+			<img src="assets/feedback-rating.png" alt="" class="image" />
+		</div>
+		<div class="partition content">
+			<h1>We'd Appreciate Your Feedback</h1>
+			<p>
+				We're committed to enhance your learning experience. <br />
+				Share your insights with us.
+			</p>
+			<div>
+				<a class="btn btn-primary me-2">Share your thoughts</a>
+				<a (click)="scrollToTarget()" class="btn btn-outline-primary">Browse feedbacks</a>
+			</div>
+		</div>
+	</div>
+	<div id="feedbacks" class="page-section no-min">
+		<div class="page-container feedbacks">
+			<div class="feedback" *ngFor="let feedback of Feedbacks">
+				<app-feedback-card [Feedback]="feedback"></app-feedback-card>
+			</div>
+		</div>
+	</div>
 </div>

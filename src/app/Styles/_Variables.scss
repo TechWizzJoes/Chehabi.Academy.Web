@@ -1,17 +1,26 @@
 // https://stackoverflow.com/questions/67016460/difference-between-scss-variables-and-css-variables
 // https://css-tricks.com/difference-between-types-of-css-variables/
 :root {
-    --primary-color1: #364555;
-    --primary-color2: #536d87;
-    --primary-color3: #cfd8d9;
-    --primary-font-color: white;
-    --header-height: 56px;
-    --page-inner-content-padding: 20px;
-    --page-inner-sm-content-padding: 100px;
-    --carousel-width: 500px;
-    --carousel-sm-width: 300px; // --primary-color: #000000;
-    // --primary-color: #ffffff;
-    .dark {
-        --primary-font-color: black;
-    }
+	--primary-color1: #364555;
+	--primary-color2: #536d87;
+	--primary-color3: rgba(207, 216, 217, 1);
+	--primary-font-color: rgba(255, 255, 255, 1);
+	--header-height: 56px;
+	--page-inner-content-padding: 20px;
+	--page-inner-sm-content-padding: 100px;
+	--carousel-width: 500px;
+	--carousel-sm-width: 300px;
+	--background-horizontal-gradient-180: linear-gradient(
+		180deg,
+		var(--primary-font-color) 0%,
+		var(--primary-color3) 100%
+	);
+	--background-horizontal-gradient-0: linear-gradient(
+		0deg,
+		var(--primary-font-color) 0%,
+		var(--primary-color3) 100%
+	);
+	.dark {
+		--primary-font-color: black;
+	}
 }
