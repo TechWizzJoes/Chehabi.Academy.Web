@@ -1,3 +1,5 @@
+import { Constants } from '@App/Common/Settings/Constants';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +8,10 @@ import { Component } from '@angular/core';
 	styleUrls: ['./Footer.scss']
 })
 export class FooterComponent {
-	constructor() {}
+	Year = Constants.GetYear();
+	RoutePaths = RoutePaths
 
-	ngOnInit() {}
+	constructor() { }
+
+	ngOnInit() { }
 }
