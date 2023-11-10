@@ -1,1 +1,35 @@
-<div class="page-inner"></div>
+<div class="page-inner bg-gradient-3">
+	<div class="page-section" *ngIf="!IsLoaded">
+		<app-loader></app-loader>
+	</div>
+	<div *ngIf="IsLoaded">
+		<h1>{{Course.Name}}</h1>
+		<div class="page-section no-min">
+			<div class="partition content">
+				<p>{{Course.Description}}</p>
+			</div>
+			<div class="partition image">
+				<img *ngIf="!Course.VideoPath" [src]="Course.ImageUrl" alt="" />
+				<!-- [src]="Course.VideoPath | safe" -->
+				<!-- "VideoPath": "https://www.youtube.com/embed/qYsHLUAlH_8si=gE0Pdo0We7cmyWmk", -->
+
+				<iframe
+					*ngIf="Course.VideoPath"
+					[src]="'https://www.youtube.com/embed/' + Course.VideoPath | safe"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen></iframe>
+				<span class="instructor">{{Course.Instructor}}</span>
+				<div class="rating">
+					<span class="rate">{{Course.Rating}} </span>
+					<ngb-rating [max]="5" [rate]="Course.Rating " [readonly]="true"></ngb-rating> ({{Course.Raters}})
+				</div>
+				<div class="price">{{Course.Price | currency}}</div>
+				<a href="#" class="btn btn-primary me-2" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Join Now</a>
+				<a href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</a>
+				<hr />
+			</div>
+		</div>
+	</div>
+</div>

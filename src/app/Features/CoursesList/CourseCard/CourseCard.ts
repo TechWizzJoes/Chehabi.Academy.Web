@@ -10,13 +10,14 @@ import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { Course } from '../CoursesList';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	standalone: true,
 	templateUrl: './CourseCard.html',
 	styleUrls: ['CourseCard.scss'],
 	selector: 'app-course-card',
-	imports: [FormsModule, CommonModule, RouterModule]
+	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule]
 })
 export class CourseCardComponent implements OnInit {
 	@Input('Course') Course!: Course;
@@ -33,4 +34,8 @@ export class CourseCardComponent implements OnInit {
 	) { }
 
 	ngOnInit() { }
+
+	GotoCourse(id: number) {
+		this.router.navigate(['/', RoutePaths.Course, id.toString()])
+	}
 }

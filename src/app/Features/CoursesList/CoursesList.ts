@@ -9,29 +9,36 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { CourseCardComponent } from './CourseCard/CourseCard';
+import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
+import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 
 export class Course {
 	Id!: number;
 	Name!: string;
 	Description!: string;
-	ImageUrl!: string
+	ImageUrl!: string;
+	Instructor!: string;
+	Rating!: number;
+	Raters!: number;
+	Price!: string;
+
+	VideoPath!: string;
+	FilePath!: string;
+	IsActive!: boolean;
+	IsDeleted!: boolean;
 }
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursesList.html',
 	styleUrls: ['CoursesList.scss'],
-	imports: [FormsModule, CommonModule, CourseCardComponent]
+	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent]
 })
 export class CoursesListComponent implements OnInit {
 
-	Courses: Course[] = [
-		{ Id: 1, Name: 'course 1', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c1.jpeg' },
-		{ Id: 2, Name: 'course 2', Description: 'kljnbahcd vyabsnkj', ImageUrl: 'assets/courses/c2.jpeg' },
-		{ Id: 3, Name: 'course 3', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c3.jpeg' },
-		{ Id: 4, Name: 'course 4', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c4.jpeg' },
-		{ Id: 5, Name: 'course 5', Description: 'lorwndcmldsljs kcsmcks', ImageUrl: 'assets/courses/c5.jpeg' },
-	]
+	Courses!: Course[]
+	IsLoaded: boolean = false;
+
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
@@ -43,5 +50,11 @@ export class CoursesListComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		let endPoint = HttpEndPoints.Courses.GetAll
+		this.HttpService.Get<Course[]>(endPoint).subscribe(data => {
+			this.IsLoaded = true
+			this.Courses = data
+		})
 	}
 }
+

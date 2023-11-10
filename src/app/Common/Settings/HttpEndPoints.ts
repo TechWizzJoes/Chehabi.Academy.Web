@@ -9,4 +9,10 @@ export class HttpEndPoints {
 		Register: 'account/register',
 		Refresh: 'account/refresh',
 	}
+
+	public static Courses = {
+		GetOne: 'courses/{id}',
+		GetAll: 'courses/list/all',
+
+	}
 }

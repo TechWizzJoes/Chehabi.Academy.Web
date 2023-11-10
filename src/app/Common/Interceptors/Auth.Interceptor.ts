@@ -26,34 +26,33 @@ export class AuthInterceptor implements HttpInterceptor {
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		let httpRequest = req;
-		if (this.RequireRefresh(req)) {
-			// console.log('token 60s for expiry');
-			let refreshToken = this.AuthService.RefreshToken;
-			if (!refreshToken) {
-				// this.router.navigate([RoutePaths.Login]);
-				return EMPTY;
-			}
-			// this.IsCurrentlyRefreshing = true; //comment to avoid unauthorized after waiting till the access token expiration
-			return this.AuthService.RefreshAccessToken().pipe(
-				switchMap((data: any) => {
-					// Retry the not sent request with the new access token
-					const modifiedRequest = this.AddAccessToken(req, data.AccessToken);
-					this.IsCurrentlyRefreshing = false;
-					return next.handle(modifiedRequest);
-				}),
-				catchError((err) => {
-					// If refresh token also fails, navigate to login
-					this.router.navigateByUrl('login');
-					this.IsCurrentlyRefreshing = false;
-					return EMPTY;
-				})
-			);
-		}
+		// if (this.RequireRefresh(req)) {
+		// 	// console.log('token 60s for expiry');
+		// 	let refreshToken = this.AuthService.RefreshToken;
+		// 	if (!refreshToken) {
+		// 		// this.router.navigate([RoutePaths.Login]);
+		// 		return EMPTY;
+		// 	}
+		// 	// this.IsCurrentlyRefreshing = true; //comment to avoid unauthorized after waiting till the access token expiration
+		// 	return this.AuthService.RefreshAccessToken().pipe(
+		// 		switchMap((data: any) => {
+		// 			// Retry the not sent request with the new access token
+		// 			const modifiedRequest = this.AddAccessToken(req, data.AccessToken);
+		// 			this.IsCurrentlyRefreshing = false;
+		// 			return next.handle(modifiedRequest);
+		// 		}),
+		// 		catchError((err) => {
+		// 			// If refresh token also fails, navigate to login
+		// 			this.router.navigateByUrl('login');
+		// 			this.IsCurrentlyRefreshing = false;
+		// 			return EMPTY;
+		// 		})
+		// 	);
+		// }
 
 		// console.log('proceed adding token active');
 		let accessToken = this.AuthService.AccessToken;
 		httpRequest = this.AddAccessToken(req, accessToken);
-
 		return next.handle(httpRequest).pipe(
 			catchError((error, caught) => {
 				//return the error to the method that called it
