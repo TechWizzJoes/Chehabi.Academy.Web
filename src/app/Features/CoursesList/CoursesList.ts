@@ -11,6 +11,7 @@ import { HttpService } from '@App/Common/Services/Http.Service';
 import { CourseCardComponent } from './CourseCard/CourseCard';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 export class Course {
 	Id!: number;
@@ -38,6 +39,7 @@ export class CoursesListComponent implements OnInit {
 
 	Courses!: Course[]
 	IsLoaded: boolean = false;
+	RoutePaths = RoutePaths
 
 	constructor(
 		private router: Router,
@@ -55,6 +57,10 @@ export class CoursesListComponent implements OnInit {
 			this.IsLoaded = true
 			this.Courses = data
 		})
+	}
+
+	GotoCourse(id: number) {
+		this.router.navigate(['/', RoutePaths.Course, id.toString()])
 	}
 }
 

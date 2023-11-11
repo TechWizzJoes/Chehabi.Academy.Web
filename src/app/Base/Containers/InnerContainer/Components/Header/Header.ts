@@ -30,7 +30,7 @@ export class HeaderComponent {
 	) {
 		window.addEventListener("scroll", function () {
 			const navbar = document.querySelector(".navbar");
-			if (window.scrollY > 56) {
+			if (window.scrollY > 1) {
 				navbar?.classList.add("navbar-scrolled");
 			} else {
 				navbar?.classList.remove("navbar-scrolled");

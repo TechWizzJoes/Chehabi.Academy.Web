@@ -9,7 +9,6 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { Course } from '../CoursesList';
-import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -21,7 +20,6 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CourseCardComponent implements OnInit {
 	@Input('Course') Course!: Course;
-	RoutePaths = RoutePaths
 
 	constructor(
 		private router: Router,
@@ -35,7 +33,5 @@ export class CourseCardComponent implements OnInit {
 
 	ngOnInit() { }
 
-	GotoCourse(id: number) {
-		this.router.navigate(['/', RoutePaths.Course, id.toString()])
-	}
+
 }

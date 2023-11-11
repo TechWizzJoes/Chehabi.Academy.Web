@@ -6,7 +6,7 @@
 	<div class="page-section" *ngIf="IsLoaded">
 		<div class="page-container courses">
 			<div *ngFor="let course of Courses">
-				<app-course-card [Course]="course"></app-course-card>
+				<app-course-card [Course]="course" (click)="GotoCourse(course.Id)"></app-course-card>
 			</div>
 		</div>
 	</div>
