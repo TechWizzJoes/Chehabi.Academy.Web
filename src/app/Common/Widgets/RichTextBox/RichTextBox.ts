@@ -44,7 +44,7 @@ export class RichTextBoxComponent implements OnInit {
 		private HttpService: HttpService,
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.editorConfig.height = this.Height;
@@ -85,7 +85,7 @@ export class RichTextBoxComponent implements OnInit {
 			// 	name: 'youssef',
 			// 	command: 'myCommand',
 			// 	toolbar: 'test',
-			// 	icon: './../../../assets/img/logo.png'
+			// 	icon: './../../../assets/Images/img/logo.png'
 			// });
 
 			editor.toolbar = [...editor.toolbar, { name: 'test', items: ['youssef'] }];

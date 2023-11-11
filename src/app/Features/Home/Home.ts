@@ -12,12 +12,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { LaptopComponent } from './Laptop/Laptop';
 
 @Component({
 	standalone: true,
 	templateUrl: './Home.html',
 	styleUrls: ['Home.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule]
+	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule, LaptopComponent]
 })
 export class HomeComponent implements OnInit {
 	images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
