@@ -24,7 +24,10 @@
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/app/Styles/Styles.scss"],
+						"styles": [
+							"src/app/Styles/Styles.scss",
+							"node_modules/ngx-toastr/toastr.css"
+						],
 						"scripts": [
 							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
 							"node_modules/sweetalert2/dist/sweetalert2.min.js"

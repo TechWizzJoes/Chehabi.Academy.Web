@@ -38,8 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
 				deps: [HttpClient]
 			}
 		}),
-		// BrowserAnimationsModule, // required animations module
-		// ToastrModule.forRoot(), // ToastrModule added
+		BrowserAnimationsModule, // required animations module
+		ToastrModule.forRoot(), // ToastrModule added
 	],
 	providers: [
 		{

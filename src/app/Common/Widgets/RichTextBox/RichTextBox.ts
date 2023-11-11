@@ -44,7 +44,7 @@ export class RichTextBoxComponent implements OnInit {
 		private HttpService: HttpService,
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.editorConfig.height = this.Height;

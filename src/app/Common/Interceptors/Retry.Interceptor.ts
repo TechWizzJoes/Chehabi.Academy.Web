@@ -12,7 +12,7 @@ import { AppConfig } from '@App/Base/AppConfig';
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
-	constructor() {}
+	constructor() { }
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return next.handle(req).pipe(
