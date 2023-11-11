@@ -1,50 +1,52 @@
 .content {
-    max-width: 500px;
+	max-width: 500px;
 }
-
 
 /* Container for the form */
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
-
 
 /* Style for the form */
 
 .form-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Create a grid for form controls */
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
 }
-
 
 /* Adjust form elements */
-
-.form-group {
-    margin-bottom: 15px;
+.form-container {
+	border: none;
+	border-radius: 5px;
+	box-shadow: none;
+	&.form-group {
+		margin-bottom: 15px;
+		&.email {
+			width: 100%;
+		}
+	}
 }
-
 
 /* Center the submit button */
 
 .submit-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }

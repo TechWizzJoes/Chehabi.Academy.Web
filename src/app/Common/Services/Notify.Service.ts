@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 declare let $: any;
 import { HelperService } from '@App/Common/Services/Helper.Service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({ providedIn: 'root' })
 export class NotifyService {
 	constructor(
 		// private Toastr: ToastrService,
 		private HelperService: HelperService
-	) {}
+	) { }
 
 	ToastrOptions = {
 		timeOut: 2000,
@@ -22,20 +23,20 @@ export class NotifyService {
 	};
 
 	Success(message: string, title: string = '') {
-		//this.Toastr.success(message, title, this.ToastrOptions);
-		Swal.fire({
-			position: 'top-end',
-			icon: 'success',
-			//title: title,
-			text: message,
-			showConfirmButton: false,
-			timer: 1500
-			//toast:true
-		});
+		// this.Toastr.success(message, title, this.ToastrOptions);
+		// Swal.fire({
+		// 	position: 'top-end',
+		// 	icon: 'success',
+		// 	//title: title,
+		// 	text: message,
+		// 	showConfirmButton: false,
+		// 	timer: 1500
+		// 	//toast:true
+		// });
 	}
 
 	Error(message: string, title: string = '', timer = 5000) {
-		//this.Toastr.error(message, title, this.ToastrOptions);
+		// this.Toastr.error(message, title, this.ToastrOptions);
 		Swal.fire({
 			position: 'top-end',
 			icon: 'error',

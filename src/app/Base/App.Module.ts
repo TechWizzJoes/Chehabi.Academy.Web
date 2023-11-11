@@ -20,6 +20,9 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import * as animations from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -34,7 +37,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 				useFactory: HttpLoaderFactory,
 				deps: [HttpClient]
 			}
-		})],
+		}),
+		// BrowserAnimationsModule, // required animations module
+		// ToastrModule.forRoot(), // ToastrModule added
+	],
 	providers: [
 		{
 			provide: APP_INITIALIZER,

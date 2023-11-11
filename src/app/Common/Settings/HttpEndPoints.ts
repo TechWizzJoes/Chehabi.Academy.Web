@@ -13,6 +13,10 @@ export class HttpEndPoints {
 	public static Courses = {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
+	}
+
+	public static Email = {
+		EmailSender: 'EmailSender/send-welcome',
 
 	}
 }
