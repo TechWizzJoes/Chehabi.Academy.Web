@@ -27,7 +27,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 		return next.handle(req).pipe(
 			catchError((error, caught) => {
 				// after all retrys if any
-
 				// return login error to handle in the component
 				if (req.url.includes('login')) {
 					return throwError(() => error);
