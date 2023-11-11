@@ -1,8 +1,15 @@
 <div class="card">
-    <img class="card-img-top" [src]="Course.ImageUrl" alt="Card image cap" />
-    <div class="card-body">
-        <h5 class="card-title">{{Course.Name}}</h5>
-        <p class="card-text">{{Course.Description}}</p>
-        <a href="#" class="btn btn-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Go somewhere</a>
-    </div>
+	<img class="card-img-top" [src]="Course.ImageUrl" alt="Card image cap" />
+	<div class="card-body">
+		<h5 class="card-title">{{Course.Name}}</h5>
+		<span class="instructor">{{Course.Instructor}}</span>
+		<!-- <p class="card-text">{{Course.Description}}</p> -->
+		<div class="rating">
+			<span class="rate">{{Course.Rating}} </span>
+
+			<ngb-rating [max]="5" [rate]="Course.Rating" [readonly]="true"></ngb-rating> ({{Course.Raters}})
+		</div>
+		<div class="price">{{Course.Price | currency}}</div>
+		<!-- <a href="#" class="btn btn-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Go somewhere</a> -->
+	</div>
 </div>

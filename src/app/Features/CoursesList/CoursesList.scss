@@ -1,8 +1,17 @@
-.courses {
-    // background-image: url('/assets/pattern.png');
-    // background-attachment: fixed;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-auto-rows: minmax(300px, auto);
-    grid-gap: 20px;
+.page-inner {
+	min-height: calc(100vh - var(--header-height));
+	h1 {
+		padding-inline-start: var(--page-inner-content-padding);
+	}
+	.page-section {
+		min-height: auto !important;
+		.courses {
+			// background-image: url('/assets/pattern.png');
+			// background-attachment: fixed;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+			grid-auto-rows: minmax(300px, auto);
+			grid-gap: 20px;
+		}
+	}
 }

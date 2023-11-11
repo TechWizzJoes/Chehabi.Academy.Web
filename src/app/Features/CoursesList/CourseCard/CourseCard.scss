@@ -1,7 +1,32 @@
 .card {
-    height: 100%;
-    img {
-        max-height: 120px;
-        object-fit: cover;
-    }
+	cursor: pointer;
+	height: 100%;
+	transition: all 0.1s ease-in-out;
+	img {
+		max-height: 120px;
+		object-fit: cover;
+	}
+	&:hover {
+		scale: 1.01;
+		box-shadow: var(--box-shadow-course-card);
+		-webkit-box-shadow: var(--box-shadow-course-card);
+		-moz-box-shadow: var(--box-shadow-course-card);
+	}
+	.card-body {
+		.card-title {
+			margin: 0;
+		}
+		.instructor {
+			color: var(--primary-color2);
+			font-size: 14px;
+		}
+		.rating {
+			.rate {
+				font-weight: 600;
+			}
+		}
+		.price {
+			font-weight: 600;
+		}
+	}
 }

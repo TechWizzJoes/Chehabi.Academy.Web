@@ -8,18 +8,17 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { Course } from '../CoursesList';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { Feedback } from '../Feedback';
 
 @Component({
 	standalone: true,
-	templateUrl: './CourseCard.html',
-	styleUrls: ['CourseCard.scss'],
-	selector: 'app-course-card',
-	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule]
+	templateUrl: './FeedbackCard.html',
+	styleUrls: ['FeedbackCard.scss'],
+	selector: 'app-feedback-card',
+	imports: [FormsModule, CommonModule, RouterModule]
 })
-export class CourseCardComponent implements OnInit {
-	@Input('Course') Course!: Course;
+export class FeedbackCardComponent implements OnInit {
+	@Input('Feedback') Feedback!: Feedback;
 
 	constructor(
 		private router: Router,
@@ -32,6 +31,4 @@ export class CourseCardComponent implements OnInit {
 	) { }
 
 	ngOnInit() { }
-
-
 }
