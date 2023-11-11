@@ -1,5 +1,8 @@
 .content {
-	max-width: 500px;
+	max-width: 650px;
+	p {
+		margin: 0;
+	}
 }
 
 /* Container for the form */
@@ -31,6 +34,7 @@
 }
 
 /* Adjust form elements */
+
 .form-container {
 	border: none;
 	border-radius: 5px;
