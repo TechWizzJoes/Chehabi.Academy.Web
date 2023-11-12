@@ -53,7 +53,6 @@ export class SceneGraph implements OnInit {
 }
 
 
-
 @Component({
 	selector: 'Scene',
 	standalone: true,
