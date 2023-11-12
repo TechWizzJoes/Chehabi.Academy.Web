@@ -16,15 +16,15 @@
   "private": false,
   "dependencies": {
     "@abacritt/angularx-social-login": "2.1.0",
-    "@angular/animations": "^16.2.12",
+    "@angular/animations": "^17.0.2",
     "@angular/cdk": "17.0.0",
-    "@angular/common": "16.2.12",
-    "@angular/compiler": "16.2.12",
-    "@angular/core": "16.2.12",
-    "@angular/forms": "16.2.12",
-    "@angular/platform-browser": "16.2.12",
-    "@angular/platform-browser-dynamic": "16.2.12",
-    "@angular/router": "16.2.12",
+    "@angular/common": "17.0.2",
+    "@angular/compiler": "17.0.2",
+    "@angular/core": "17.0.2",
+    "@angular/forms": "17.0.2",
+    "@angular/platform-browser": "17.0.2",
+    "@angular/platform-browser-dynamic": "17.0.2",
+    "@angular/router": "17.0.2",
     "@angular/youtube-player": "^17.0.0",
     "@ng-bootstrap/ng-bootstrap": "14.0.1",
     "@ng-select/ng-select": "10.0.3",
@@ -46,13 +46,13 @@
     "tslib": "2.3.0",
     "uuid": "9.0.0",
     "xlsx": "0.18.5",
-    "zone.js": "~0.13.3"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "16.2.10",
-    "@angular/cli": "~16.2.10",
-    "@angular/compiler-cli": "16.2.12",
-    "@angular/localize": "16.2.12",
+    "@angular-devkit/build-angular": "17.0.0",
+    "@angular/cli": "~17.0.0",
+    "@angular/compiler-cli": "17.0.2",
+    "@angular/localize": "17.0.2",
     "@types/d3": "7.4.0",
     "@types/jasmine": "~4.0.0",
     "@types/uuid": "9.0.1",
@@ -65,6 +65,6 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "lint-staged": "13.0.3",
     "prettier": "2.8.8",
-    "typescript": "~4.9.5"
+    "typescript": "~5.2.2"
   }
 }
