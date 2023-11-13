@@ -12,7 +12,7 @@ export class NotifyService {
 	) { }
 
 	ToastrOptions = {
-		timeOut: 2000,
+		timeOut: 3000,
 		easing: 'easeOutQuint',
 		easeTime: 500,
 		closeButton: true,
