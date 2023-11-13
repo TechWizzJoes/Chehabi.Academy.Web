@@ -26,9 +26,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return next.handle(req).pipe(
 			catchError((error, caught) => {
+				console.log('error interceptor');
+
 				// after all retrys if any
 				// return login error to handle in the component
-				if (req.url.includes('login')) {
+				if (req.url.includes('account')) {
 					return throwError(() => error);
 				}
 
@@ -45,13 +47,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 				}
 
 				// handle http known errors except listing for now to show the notfound component
-				if (error instanceof HttpErrorResponse && !req.url.includes('list/current-user')) {
-					// Handle HTTP errors
-					const errMsg = error.error.message;
-					this.NotifyService.Error(this.ErrorCodesService.GetErrorCode(errMsg));
-					return EMPTY;
+				if (error instanceof HttpErrorResponse && error.status == 401) {
+					return throwError(() => error);
 				}
-				return throwError(() => error);
+				return EMPTY
 			})
 		) as any;
 	}
