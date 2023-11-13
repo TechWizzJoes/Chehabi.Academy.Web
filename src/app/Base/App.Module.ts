@@ -39,7 +39,10 @@ import { ToastrModule } from 'ngx-toastr';
 			}
 		}),
 		BrowserAnimationsModule, // required animations module
-		ToastrModule.forRoot(), // ToastrModule added
+		ToastrModule.forRoot({
+			preventDuplicates: true,
+			countDuplicates: true
+		}), // ToastrModule added
 	],
 	providers: [
 		{

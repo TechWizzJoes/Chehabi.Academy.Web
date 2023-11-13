@@ -12,13 +12,15 @@ export class NotifyService {
 	) { }
 
 	ToastrOptions = {
-		timeOut: 2000,
+		timeOut: 3000,
 		easing: 'easeOutQuint',
 		easeTime: 500,
 		closeButton: true,
 		progressBar: true,
 		// progressAnimation:'increasing',
-		positionClass: 'toast-top-right'
+		positionClass: 'toast-top-right',
+		preventDuplicates: true,
+		countDuplicates: true,
 	};
 
 	Success(message: string, title: string = '') {
