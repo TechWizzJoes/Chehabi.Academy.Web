@@ -3,6 +3,7 @@ import { NavigationEnd, Router, } from '@angular/router';
 import { PlatformLocation } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
 	selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
 		private modalService: NgbModal,
 		private PlatformLocation: PlatformLocation,
 		private translate: TranslateService,
-		private Router: Router
+		private Router: Router,
+		private socialAuthService: SocialAuthService,
 	) {
 		console.log(`browser's language: ${translate.getBrowserLang()}`);
 		let browserLang = translate.getBrowserLang()
@@ -31,6 +33,9 @@ export class AppComponent {
 				window.scrollTo(0, 0);
 			}
 		});
+
+		// this.socialAuthService.refreshAccessToken(GoogleLoginProvider.PROVIDER_ID)
+
 	}
 
 

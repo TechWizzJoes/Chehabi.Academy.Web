@@ -6,6 +6,7 @@ import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AppConfig } from '@App/Base/AppConfig';
 import { HttpService } from './Http.Service';
 import { HttpEndPoints } from '../Settings/HttpEndPoints';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,8 +16,11 @@ export class AuthService {
 	constructor(
 		private StorageService: StorageService,
 		private AppConfig: AppConfig,
-		private HttpService: HttpService
-	) { }
+		private HttpService: HttpService,
+		private socialAuthService: SocialAuthService,
+	) {
+		this.AuthStateSubscribe()
+	}
 
 	SignIn(loginResModel: AuthModels.LoginResModel) {
 		this.StorageService.SetLocalStorage(StorageEnum.AccessToken, loginResModel.AccessToken);
@@ -69,7 +73,7 @@ export class AuthService {
 	RefreshAccessToken(): any {
 		let requestModel = {
 			Id: this.CurrentUser.Id,
-			AccessToken: this.AccessToken, // send it and check in backend if valid
+			AccessToken: this.AccessToken,
 			RefreshToken: this.RefreshToken
 		} as AuthModels.RefreshTokenReqModel;
 
@@ -79,9 +83,17 @@ export class AuthService {
 			requestModel,
 		).pipe(
 			tap((data) => {
+				console.log('access token refreshed');
+
 				this.AccessToken = data.AccessToken;
 				this.RefreshToken = data.RefreshToken;
 			})
 		);
+	}
+
+	AuthStateSubscribe(): void {
+		this.socialAuthService.authState.subscribe((user) => {
+			console.log('auth state sub', user);
+		});
 	}
 }

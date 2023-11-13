@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 
-	constructor(private ngZone: NgZone, ToastService: NotifyService) { }
+	constructor(private ngZone: NgZone) { }
 
 	handleError(error: any): void {
 		this.ngZone.run(() => {

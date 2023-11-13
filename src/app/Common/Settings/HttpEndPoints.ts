@@ -19,4 +19,9 @@ export class HttpEndPoints {
 		EmailSender: 'EmailSender/send-welcome',
 
 	}
+
+	public static Profile = {
+		getInfo: 'account/info',
+
+	}
 }

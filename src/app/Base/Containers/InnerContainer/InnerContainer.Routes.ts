@@ -42,6 +42,11 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Founder/Founder').then((c) => c.FounderComponent)
 			},
 			{
+				canActivate: [AuthGuard],
+				path: 'profile',
+				loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
+			},
+			{
 				path: 'unauthorized',
 				loadComponent: () =>
 					import('@App/Base/Containers/InnerContainer/Components/UnAuthorized/UnAuthorized').then((c) => c.UnAuthorizedComponent)
