@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
+// import { ToastifyService } from '@App/Common/Services/Toastify.Service';
+
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
@@ -31,6 +33,9 @@ export class ContactUsComponent implements OnInit {
 		private AuthService: AuthService,
 		private StorageService: StorageService,
 		private FormBuilder: FormBuilder,
+
+
+
 	) {
 		this.contactForm = this.FormBuilder.group({
 			firstName: ['', Validators.required],
@@ -43,7 +48,10 @@ export class ContactUsComponent implements OnInit {
 
 	}
 
+
 	onSubmit() {
+
+
 		if (this.contactForm.valid) {
 			this.ReqContactusModel.FirstName = this.contactForm.value['firstName'];
 			this.ReqContactusModel.LastName = this.contactForm.value['lastName'];
@@ -55,17 +63,19 @@ export class ContactUsComponent implements OnInit {
 			).subscribe(
 				{
 					next: (response) => {
+						this.NotifyService.Success("Email Sent", "check your email");
 						this.contactForm.reset();
-						this.NotifyService.Success("Email Sent", "check your email")
+
 
 
 
 					},
 					error: (errorResponse) => {
-						console.log("Error");
-						console.log(errorResponse);
-						// to show the error on login panel
-						console.log(this.ErrorCodesService.GetErrorCode(errorResponse.error));
+						this.NotifyService.Error('Erro', errorResponse)
+						// 	console.log("Error");
+						// 	console.log(errorResponse);
+						// 	// to show the error on login panel
+						// 	console.log(this.ErrorCodesService.GetErrorCode(errorResponse.error));
 					}
 				}
 			);
@@ -74,6 +84,7 @@ export class ContactUsComponent implements OnInit {
 
 		}
 		else {
+			this.NotifyService.Error('Erro', 'Enter All fields')
 			// console.log(this.contactForm.);
 		}
 	}
