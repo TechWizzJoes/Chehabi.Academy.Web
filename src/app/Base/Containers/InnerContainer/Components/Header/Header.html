@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
 		<a class="navbar-brand" [routerLink]="['home']" class="logo" (click)="useLanguage('en')">
-			<img src="/assets/full-logo.png" alt="logo-img" class="logo-img" />
-			<img src="/assets/white-full-logo.png" alt="logo-img" class="white-logo-img" />
+			<img src="/assets/Images/full-logo.png" alt="logo-img" class="logo-img" />
+			<img src="/assets/Images/white-full-logo.png" alt="logo-img" class="white-logo-img" />
 		</a>
 		<button
 			class="navbar-toggler"
@@ -96,7 +96,7 @@
 			[ngbPopover]="userPopup"
 			container="body"
 			popoverClass="user-popover">
-			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/default-pp.png'" [alt]="'User Profile' | translate" data-toggle="dropdown" />
+			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/Images/default-pp.png'" [alt]="'User Profile' | translate" data-toggle="dropdown" />
 		</button>
 		<ng-template #userPopup>
 			<div class="text-center">

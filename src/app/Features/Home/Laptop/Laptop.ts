@@ -12,35 +12,24 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
-import { LaptopComponent } from './Laptop/Laptop';
 
 @Component({
 	standalone: true,
-	templateUrl: './Home.html',
-	styleUrls: ['Home.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule, LaptopComponent]
+	selector: 'app-landing-laptop',
+	templateUrl: './Laptop.html',
+	styleUrls: ['Laptop.scss'],
+	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule]
 })
-export class HomeComponent implements OnInit {
-	images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-	RoutePaths = RoutePaths
-
+export class LaptopComponent implements OnInit {
 	constructor(
-		private router: Router,
-		private route: ActivatedRoute,
+		private Router: Router,
+		private ActivatedRoute: ActivatedRoute,
 		private HttpService: HttpService,
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
 		private StorageService: StorageService
 	) {
-		window.addEventListener("scroll", function () {
-			const page = document.querySelector("#home-page");
-			if (window.scrollY > 56) {
-				page?.classList.add("page-scrolled");
-			} else {
-				page?.classList.remove("page-scrolled");
-			}
-		});
 	}
 
 	ngOnInit() { }

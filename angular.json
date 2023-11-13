@@ -23,7 +23,10 @@
 						"polyfills": "src/polyfills.ts",
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
-						"assets": ["src/favicon.ico", "src/assets"],
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
 						"styles": [
 							"src/app/Styles/Styles.scss",
 							"node_modules/ngx-toastr/toastr.css"
@@ -92,7 +95,10 @@
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
 						"inlineStyleLanguage": "scss",
-						"assets": ["src/favicon.ico", "src/assets"],
+						"assets": [
+							"src/favicon.ico",
+							"src/assets/Images"
+						],
 						"styles": [
 							"src/styles.scss",
 							"node_modules/ngx-toastr/toastr.css"

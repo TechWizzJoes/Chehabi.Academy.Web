@@ -85,7 +85,7 @@ export class RichTextBoxComponent implements OnInit {
 			// 	name: 'youssef',
 			// 	command: 'myCommand',
 			// 	toolbar: 'test',
-			// 	icon: './../../../assets/img/logo.png'
+			// 	icon: './../../../assets/Images/img/logo.png'
 			// });
 
 			editor.toolbar = [...editor.toolbar, { name: 'test', items: ['youssef'] }];
