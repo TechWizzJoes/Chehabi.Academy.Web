@@ -24,4 +24,9 @@ export class HttpEndPoints {
 		getInfo: 'account/info',
 
 	}
+	public static Notifications = {
+		Subscribe: 'notifications/subscribe',
+		Publish: 'notifications/publish',
+
+	}
 }
