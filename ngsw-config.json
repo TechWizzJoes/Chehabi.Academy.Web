@@ -1,6 +1,6 @@
 {
   "appData": {
-    "version": "0.0.16"
+    "version": "0.0.19"
   },
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",

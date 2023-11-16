@@ -8,6 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { SwPush, SwUpdate, VersionEvent } from '@angular/service-worker';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 @Component({
 	selector: 'app-root',
@@ -96,6 +97,20 @@ export class AppComponent {
 				error: err => console.log(err)
 			});
 		}).catch(console.log);
+
+		this.swPush.messages.subscribe(message => console.log)
+
+		this.swPush.notificationClicks.subscribe(
+			({ action, notification }) => {
+				// do whatever you want according to the action or the notification
+				// but don't use httpclient, only fetch() due to SW limitations
+				console.log(notification); // the whole not object payload
+				if (action === "go") {
+					this.Router.navigate(['/', RoutePaths.Courses])
+				}
+			}
+		)
+
 	}
 
 }
