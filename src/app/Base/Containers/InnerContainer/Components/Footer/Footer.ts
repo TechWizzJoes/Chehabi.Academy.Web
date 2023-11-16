@@ -1,3 +1,4 @@
+import { ApplicationService } from '@App/Common/Services/Application.Service';
 import { Constants } from '@App/Common/Settings/Constants';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { Component } from '@angular/core';
@@ -11,7 +12,7 @@ export class FooterComponent {
 	Year = Constants.GetYear();
 	RoutePaths = RoutePaths
 
-	constructor() { }
+	constructor(protected ApplicationService: ApplicationService) { }
 
 	ngOnInit() { }
 }

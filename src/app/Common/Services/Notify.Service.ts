@@ -109,19 +109,19 @@ export class NotifyService {
 		this.Toastr.show(message, title, this.ToastrOptions);
 	}
 
-	// Confirm(title: string, message: string, confirmButtonText: string, cancelButtonText: string) {
-	// 	return Swal.fire({
-	// 		title: title,
-	// 		text: message,
-	// 		icon: 'question',
-	// 		iconHtml: '؟',
-	// 		showCancelButton: true,
-	// 		confirmButtonText: confirmButtonText,
-	// 		cancelButtonText: cancelButtonText,
-	// 		confirmButtonColor: '#26C281',
-	// 		cancelButtonColor: '#434343'
-	// 	}).then((result) => result.value);
-	// }
+	Confirm(title: string, message: string, confirmButtonText: string, cancelButtonText: string) {
+		return Swal.fire({
+			title: title,
+			text: message,
+			icon: 'question',
+			iconHtml: '?',
+			showCancelButton: true,
+			confirmButtonText: confirmButtonText,
+			cancelButtonText: cancelButtonText,
+			confirmButtonColor: 'var(--primary-color1)',
+			cancelButtonColor: 'var(--primary-color3)'
+		}).then((result) => result.value);
+	}
 
 	// ConfirmDelete(): Promise<boolean> {
 	// 	return this.Confirm('Confirm Delete', 'Are you sure that you want delete this row?', 'Yes', 'No');

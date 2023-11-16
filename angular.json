@@ -25,7 +25,9 @@
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							"src/favicon.ico",
-							"src/assets"
+							"src/assets",
+							"src/manifest.webmanifest",
+							"src/manifest.webmanifest"
 						],
 						"styles": [
 							"src/app/Styles/Styles.scss",
@@ -34,7 +36,9 @@
 						"scripts": [
 							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
 							"node_modules/sweetalert2/dist/sweetalert2.min.js"
-						]
+						],
+						"serviceWorker": true,
+						"ngswConfigPath": "ngsw-config.json"
 					},
 					"configurations": {
 						"production": {
@@ -72,19 +76,19 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
-            "production": {
-              "buildTarget": "chehabiacademy:build:production"
+						"production": {
+							"buildTarget": "chehabiacademy:build:production"
 						},
-            "development": {
-              "buildTarget": "chehabiacademy:build:development"
+						"development": {
+							"buildTarget": "chehabiacademy:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "chehabiacademy:build"
+					"options": {
+						"buildTarget": "chehabiacademy:build"
 					}
 				},
 				"test": {
@@ -97,7 +101,9 @@
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							"src/favicon.ico",
-							"src/assets/Images"
+							"src/assets/Images",
+							"src/manifest.webmanifest",
+							"src/manifest.webmanifest"
 						],
 						"styles": [
 							"src/styles.scss",

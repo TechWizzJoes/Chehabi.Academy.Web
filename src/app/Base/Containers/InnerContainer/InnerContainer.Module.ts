@@ -13,9 +13,11 @@ import { HeaderComponent } from './Components/Header/Header';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { ApplicationService } from '@App/Common/Services/Application.Service';
 
 @NgModule({
 	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
+	providers: [ApplicationService]
 })
 export class InnerContainerModule { }
