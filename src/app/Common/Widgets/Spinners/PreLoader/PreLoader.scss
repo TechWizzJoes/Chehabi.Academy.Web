@@ -1,0 +1,27 @@
+.preloader {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: 100;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: init 0.5s ease-out;
+
+	img {
+		height: 10vh;
+	}
+}
+
+@keyframes init {
+	from {
+		top: -20px;
+		scale: 0.5;
+	}
+	to {
+		top: 0;
+		scale: 1;
+	}
+}

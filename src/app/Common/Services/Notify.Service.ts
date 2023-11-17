@@ -36,8 +36,8 @@ export class NotifyService {
 		// });
 	}
 
-	Error(message: string, title: string = '', timer = 5000) {
-		this.Toastr.error(message, title, this.ToastrOptions);
+	Error(message: string, title: string = '', timeOut = 3000) {
+		this.Toastr.error(message, title, { ...this.ToastrOptions, timeOut });
 		// Swal.fire({
 		// 	position: 'top-end',
 		// 	icon: 'error',
