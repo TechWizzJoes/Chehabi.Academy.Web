@@ -16,7 +16,7 @@ export class HttpEndPoints {
 	}
 
 	public static Email = {
-		EmailSender: 'EmailSender/send-welcome',
+		EmailSender: 'emailSender/send-welcome',
 
 	}
 

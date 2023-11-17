@@ -47,7 +47,9 @@ export class AppComponent {
 
 	PreLoaderListener() {
 		const startTime = new Date().getTime();
-
+		setTimeout(() => {
+			this.IsLoaded = true;
+		}, 5000);
 		// Add an event listener to execute code when the window is loaded
 		window.addEventListener('load', () => {
 			const currentTime = new Date().getTime();
