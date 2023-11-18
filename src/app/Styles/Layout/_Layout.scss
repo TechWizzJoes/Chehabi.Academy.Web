@@ -1,34 +1,13 @@
 @import './Scroll.scss';
-html {
-	// min-height: calc(100% + env(safe-area-inset-top));
-	// padding: env(safe-area-inset-top) env(safe-area-inset-right)
-	// 	env(safe-area-inset-bottom) env(safe-area-inset-left);
-	// background-attachment: fixed;
-	// // background-image: url('/bg.svg');
-	// // background-color: aqua;
-	// background-position: center;
-	// background-repeat: no-repeat;
-	// background-size: cover;
-}
+@import './SafeArea.scss';
+
 body {
 	scroll-behavior: smooth;
-
-	// height: 100svh;
-}
-//new
-:host {
-	display: flex;
-	flex-direction: column;
-	align-items: center; // Center content vertically in portrait mode
-	height: 100svh;
-	padding-top: constant(safe-area-inset-top); // Adjust for iOS top safe area
-	padding-bottom: constant(
-		safe-area-inset-bottom
-	); // Adjust for iOS bottom safe area
 }
 
 .inner-container {
 	width: 100%;
+	background-color: var(--primary-bg-color);
 	.page-master {
 		width: 100%;
 		min-height: 100vh;
@@ -117,36 +96,6 @@ body {
 				}
 			}
 		}
-	}
-}
-
-// your-component.component.scss
-
-@media screen and (orientation: landscape) {
-	:host {
-		/* Landscape styles */
-		display: block;
-		flex-direction: row;
-		justify-content: center; // Center content horizontally in landscape mode
-		align-items: stretch;
-		width: 100%; // Set initial height to 100% of viewport height
-		padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
-			constant(safe-area-inset-bottom) constant(safe-area-inset-left); // Adjust for safe area at the top
-		overflow-x: hidden;
-
-		box-sizing: border-box;
-	}
-}
-
-@media screen and (orientation: portrait) {
-	:host {
-		/* Portrait styles */
-		display: block;
-		height: 100svh; // Set initial height to 100% of viewport height
-		padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
-			constant(safe-area-inset-bottom) constant(safe-area-inset-left); // Adjust for safe area at the top
-
-		box-sizing: border-box;
 	}
 }
 

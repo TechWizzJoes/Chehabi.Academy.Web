@@ -17,6 +17,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 export class AppComponent {
 	private readonly VAPID_PUBLIC_KEY: string = 'BHECh-IJilGwLFwpKQhlsHvqT939nhAcVtU4DW63QimcoT0qsdk_po8_QYgrUjercp8hvwiZHSeTwtx-4HT3J2g'
 	IsLoaded: boolean = false;
+	ErrorToast!: number;
 	constructor(
 		private modalService: NgbModal,
 		private PlatformLocation: PlatformLocation,
@@ -38,11 +39,15 @@ export class AppComponent {
 	ngOnInit() {
 		this.PreLoaderListener();
 		this.ScrollUpSub();
+		this.CheckIOS();
+		this.ScrollChanges();
+
 		setTimeout(() => {
 			this.ConnectionSub();
 			this.UpdateVersionPrompt();
 			this.PushNotificationSub();
 		}, 0);
+
 	}
 
 	PreLoaderListener() {
@@ -77,10 +82,11 @@ export class AppComponent {
 
 	ConnectionSub() {
 		addEventListener('offline', e => {
-			this.NotifyService.Error('No internet connection', '', 0);
+			this.ErrorToast = this.NotifyService.Error('No internet connection', '', 0);
 		});
 
 		addEventListener('online', e => {
+			this.NotifyService.RemoveToast(this.ErrorToast);
 			this.NotifyService.Success('Re-connected');
 		})
 	}
@@ -132,6 +138,32 @@ export class AppComponent {
 			}
 		)
 
+	}
+
+	CheckIOS() {
+		// Check if the user is using an iOS device
+		function isIOS() {
+			return /iPad|iPhone|iPod/.test(navigator.userAgent);
+		}
+
+		// Add a class to the body if it's an iOS device
+		if (isIOS()) {
+			document.body.classList.add('ios-device');
+		}
+	}
+
+	ScrollChanges() {
+		window.addEventListener("scroll", function () {
+			const navbar = document.querySelector(".navbar");
+			const body = document.querySelector("body");
+			if (window.scrollY > 1) {
+				navbar?.classList.add("navbar-scrolled");
+				body!.style.backgroundColor = 'var(--primary-color1)'
+			} else {
+				navbar?.classList.remove("navbar-scrolled");
+				body!.style.backgroundColor = ''
+			}
+		});
 	}
 
 }

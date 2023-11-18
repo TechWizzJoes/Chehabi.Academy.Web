@@ -46,8 +46,8 @@ import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLo
 			countDuplicates: true
 		}),
 		ServiceWorkerModule.register('ngsw-worker.js', {
-			enabled: true,
-			// enabled: !isDevMode(),
+			// enabled: false,
+			enabled: !isDevMode(),
 			registrationStrategy: 'registerWhenStable:30000'
 		}),
 		PreLoaderComponent
