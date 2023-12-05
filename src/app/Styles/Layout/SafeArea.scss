@@ -1,0 +1,12 @@
+@media screen and (orientation: landscape) {
+	body {
+		&.ios-device {
+			.inner-container {
+				.navbar {
+					padding-left: 30px;
+					padding-right: 30px;
+				}
+			}
+		}
+	}
+}

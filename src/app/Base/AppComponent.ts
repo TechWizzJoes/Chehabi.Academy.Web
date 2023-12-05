@@ -16,7 +16,8 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 })
 export class AppComponent {
 	private readonly VAPID_PUBLIC_KEY: string = 'BHECh-IJilGwLFwpKQhlsHvqT939nhAcVtU4DW63QimcoT0qsdk_po8_QYgrUjercp8hvwiZHSeTwtx-4HT3J2g'
-
+	IsLoaded: boolean = false;
+	ErrorToast!: number;
 	constructor(
 		private modalService: NgbModal,
 		private PlatformLocation: PlatformLocation,
@@ -36,31 +37,57 @@ export class AppComponent {
 	}
 
 	ngOnInit() {
-		this.PlatformLocation.onPopState((event) => {
-			if (this.modalService.hasOpenModals()) this.modalService.dismissAll();
+		this.PreLoaderListener();
+		this.ScrollUpSub();
+		this.CheckIOS();
+		this.ScrollChanges();
+
+		setTimeout(() => {
+			this.ConnectionSub();
+			this.UpdateVersionPrompt();
+			this.PushNotificationSub();
+		}, 0);
+
+	}
+
+	PreLoaderListener() {
+		const startTime = new Date().getTime();
+		setTimeout(() => {
+			this.IsLoaded = true;
+		}, 5000);
+		// Add an event listener to execute code when the window is loaded
+		window.addEventListener('load', () => {
+			const currentTime = new Date().getTime();
+			const elapsedTime = currentTime - startTime;
+
+			const minLoadingTime = 1000;
+			if (elapsedTime >= minLoadingTime) {
+				this.IsLoaded = true;
+			} else {
+				setTimeout(() => {
+					this.IsLoaded = true;
+				}, minLoadingTime - elapsedTime);
+			}
 		});
+	}
+
+	ScrollUpSub() {
 		this.Router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
 				// Scroll to the top of the page when a new route is navigated
 				window.scrollTo(0, 0);
 			}
 		});
-
-		setTimeout(() => {
-			this.ConnectionSub();
-			this.UpdateVersionPrompt();
-			this.PushNotificationSub();
-
-		}, 0);
 	}
 
 	ConnectionSub() {
 		addEventListener('offline', e => {
-			this.NotifyService.Error('No internet connection');
+			this.ErrorToast = this.NotifyService.Error('No internet connection', '', 0);
 		});
 
 		addEventListener('online', e => {
-			this.NotifyService.Success('Rconnected');
+			this.NotifyService.RemoveToast(this.ErrorToast);
+			this.NotifyService.Success('Re-connected');
 		})
 	}
 
@@ -111,6 +138,32 @@ export class AppComponent {
 			}
 		)
 
+	}
+
+	CheckIOS() {
+		// Check if the user is using an iOS device
+		function isIOS() {
+			return /iPad|iPhone|iPod/.test(navigator.userAgent);
+		}
+
+		// Add a class to the body if it's an iOS device
+		if (isIOS()) {
+			document.body.classList.add('ios-device');
+		}
+	}
+
+	ScrollChanges() {
+		window.addEventListener("scroll", function () {
+			const navbar = document.querySelector(".navbar");
+			const body = document.querySelector("body");
+			if (window.scrollY > 1) {
+				navbar?.classList.add("navbar-scrolled");
+				body!.style.backgroundColor = 'var(--primary-color1)'
+			} else {
+				navbar?.classList.remove("navbar-scrolled");
+				body!.style.backgroundColor = ''
+			}
+		});
 	}
 
 }

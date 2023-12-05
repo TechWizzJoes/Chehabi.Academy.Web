@@ -28,15 +28,6 @@ export class HeaderComponent {
 		private socialAuthService: SocialAuthService,
 		private TranslateService: TranslateService
 	) {
-		window.addEventListener("scroll", function () {
-			const navbar = document.querySelector(".navbar");
-			if (window.scrollY > 1) {
-				navbar?.classList.add("navbar-scrolled");
-			} else {
-				navbar?.classList.remove("navbar-scrolled");
-			}
-		});
-
 		this.CurrentUser = this.AuthService.CurrentUser
 	}
 

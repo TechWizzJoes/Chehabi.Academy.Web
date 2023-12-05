@@ -24,6 +24,7 @@ import * as animations from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLoader';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -45,11 +46,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 			countDuplicates: true
 		}),
 		ServiceWorkerModule.register('ngsw-worker.js', {
+			// enabled: false,
 			enabled: !isDevMode(),
-			// Register the ServiceWorker as soon as the application is stable
-			// or after 30 seconds (whichever comes first).
 			registrationStrategy: 'registerWhenStable:30000'
-		}), // ToastrModule added
+		}),
+		PreLoaderComponent
 	],
 	providers: [
 		{

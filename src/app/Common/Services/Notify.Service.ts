@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { ActiveToast, ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 declare let $: any;
 import { HelperService } from '@App/Common/Services/Helper.Service';
@@ -36,8 +36,8 @@ export class NotifyService {
 		// });
 	}
 
-	Error(message: string, title: string = '', timer = 5000) {
-		this.Toastr.error(message, title, this.ToastrOptions);
+	Error(message: string, title: string = '', timeOut = 3000): number {
+		return this.Toastr.error(message, title, { ...this.ToastrOptions, timeOut }).toastId;
 		// Swal.fire({
 		// 	position: 'top-end',
 		// 	icon: 'error',
@@ -137,6 +137,10 @@ export class NotifyService {
 	// 		confirmButtonColor: '#434343'
 	// 	}).then((result) => result.value);
 	// }
+
+	RemoveToast(id: number) {
+		this.Toastr.clear(id);
+	}
 
 	Close() {
 		Swal.close();

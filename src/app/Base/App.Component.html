@@ -1,1 +1,2 @@
-<router-outlet></router-outlet>
+<app-preloader *ngIf="!IsLoaded"></app-preloader>
+<router-outlet *ngIf="IsLoaded"></router-outlet>
