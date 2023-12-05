@@ -6,7 +6,11 @@
 		<h1>{{Course.Name}}</h1>
 		<div class="page-section no-min">
 			<div class="partition content">
-				<p>{{Course.Description}}</p>
+				<p [innerText]="Course.Description"></p>
+				<h3>What you'll learn?</h3>
+				<p [innerText]="Course.ToBeLearned"></p>
+				<h3>Prerequisites</h3>
+				<p [innerText]="Course.Prerequisite"></p>
 			</div>
 			<div class="partition image">
 				<img *ngIf="!Course.VideoPath" [src]="Course.ImageUrl" alt="" />

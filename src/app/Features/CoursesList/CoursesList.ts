@@ -17,16 +17,19 @@ export class Course {
 	Id!: number;
 	Name!: string;
 	Description!: string;
-	ImageUrl!: string;
 	Instructor!: string;
-	Rating!: number;
-	Raters!: number;
-	Price!: string;
-
+	Duration!: number;
 	VideoPath!: string;
 	FilePath!: string;
+	StartDate!: Date;
 	IsActive!: boolean;
 	IsDeleted!: boolean;
+	Rating!: number;
+	Raters!: number;
+	ImageUrl!: string;
+	Prerequisite!: string;
+	ToBeLearned!: string;
+	Price!: number;
 }
 
 @Component({
