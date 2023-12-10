@@ -27,7 +27,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 		return next.handle(req).pipe(
 			catchError((error, caught) => {
 				console.log('error interceptor');
-
 				// after all retrys if any
 				// return login error to handle in the component
 				if (req.url.includes('account')) {
@@ -49,6 +48,16 @@ export class ErrorInterceptor implements HttpInterceptor {
 				// handle http known errors except listing for now to show the notfound component
 				if (error instanceof HttpErrorResponse && error.status == 401) {
 					return throwError(() => error);
+				}
+
+				// handle http known errors except listing for now to show the notfound component
+				if (error instanceof HttpErrorResponse) {
+					// Handle HTTP errors
+					const errMsg = error.error.Message;
+					const customMsg = this.ErrorCodesService.GetErrorCode(errMsg)
+					if (customMsg)
+						this.NotifyService.Error(customMsg);
+					return EMPTY;
 				}
 				return EMPTY
 			})

@@ -6,6 +6,19 @@
 		<h1>{{Course.Name}}</h1>
 		<div class="page-section no-min">
 			<div class="partition content">
+				<div *ngIf="IsJoinClass" class="classes" [@fadeInOut]>
+					<h3>classes</h3>
+					<ul
+						*ngFor="let class of Course.Classes"
+						class="class-instance"
+						(click)="SelectClass(class)"
+						[ngClass]="{'selected-class': SelectedClass && class.Id == SelectedClass.Id}">
+						Starts at {{class.StartDate}}
+						<br />
+						<li *ngFor="let occ of class.ClassOccurances" class="occurance-instance">{{occ.Occurance}}</li>
+					</ul>
+				</div>
+
 				<p [innerText]="Course.Description"></p>
 				<h3>What you'll learn?</h3>
 				<p [innerText]="Course.ToBeLearned"></p>
@@ -30,7 +43,8 @@
 					<ngb-rating [max]="5" [rate]="Course.Rating " [readonly]="true"></ngb-rating> ({{Course.Raters}})
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
-				<a href="#" class="btn btn-primary me-2" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Join Now</a>
+				<button href="#" class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
+				<button href="#" class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
 				<a href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</a>
 				<hr />
 			</div>

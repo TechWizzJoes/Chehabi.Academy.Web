@@ -10,8 +10,8 @@ import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
-import { Course } from '../CoursesList/CoursesList';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
+import { CourseModels } from '@App/Common/Models/Course.Models';
 
 @Component({
 	standalone: true,
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
 
 	ngOnInit() {
 		let endPoint = HttpEndPoints.Profile.getInfo
-		this.HttpService.Get<Course[]>(endPoint).subscribe(data => {
+		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.data = data
 		})

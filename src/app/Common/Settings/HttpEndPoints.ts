@@ -15,6 +15,10 @@ export class HttpEndPoints {
 		GetAll: 'courses/list/all',
 	}
 
+	public static Classes = {
+		JoinClass: 'class/join/{classId}',
+	}
+
 	public static Email = {
 		EmailSender: 'emailSender/send-welcome',
 
