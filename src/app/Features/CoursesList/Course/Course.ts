@@ -65,6 +65,10 @@ export class CourseComponent implements OnInit {
 
 	}
 
+	SelectClass(selectedClass: CourseModels.Class) {
+		this.SelectedClass = selectedClass
+	}
+
 	getCourse(id: string) {
 		let endPoint = HttpEndPoints.Courses.GetOne;
 		endPoint = endPoint.replace('{id}', id)
@@ -99,7 +103,7 @@ export class CourseComponent implements OnInit {
 		})
 	}
 
-	SelectClass(selectedClass: CourseModels.Class) {
-		this.SelectedClass = selectedClass
+	DownloadMaterial() {
+		// download
 	}
 }

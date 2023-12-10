@@ -7,7 +7,7 @@
 		<div class="page-section no-min">
 			<div class="partition content">
 				<div *ngIf="IsJoinClass" class="classes" [@fadeInOut]>
-					<h3>classes</h3>
+					<h3>Classes</h3>
 					<ul
 						*ngFor="let class of Course.Classes"
 						class="class-instance"
@@ -37,7 +37,7 @@
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowfullscreen></iframe>
-				<span class="instructor">{{Course.Instructor}}</span>
+				<div class="instructor">{{Course.Instructor}}</div>
 				<div class="rating">
 					<span class="rate">{{Course.Rating}} </span>
 					<ngb-rating [max]="5" [rate]="Course.Rating " [readonly]="true"></ngb-rating> ({{Course.Raters}})
@@ -45,7 +45,7 @@
 				<div class="price">{{Course.Price | currency}}</div>
 				<button href="#" class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
 				<button href="#" class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
-				<a href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</a>
+				<button href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</button>
 				<hr />
 			</div>
 		</div>
