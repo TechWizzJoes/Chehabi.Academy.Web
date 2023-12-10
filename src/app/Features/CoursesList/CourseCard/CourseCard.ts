@@ -8,8 +8,8 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { Course } from '../CoursesList';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { CourseModels } from '@App/Common/Models/Course.Models';
 
 @Component({
 	standalone: true,
@@ -19,7 +19,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule]
 })
 export class CourseCardComponent implements OnInit {
-	@Input('Course') Course!: Course;
+	@Input('Course') Course!: CourseModels.Course;
 
 	constructor(
 		private router: Router,

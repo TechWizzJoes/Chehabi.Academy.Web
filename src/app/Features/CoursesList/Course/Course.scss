@@ -11,6 +11,29 @@
 		justify-content: space-between;
 		.content {
 			padding: var(--page-inner-content-padding);
+			font-size: 14px;
+			.classes {
+				// display: none;
+				transition: all 0.3s ease-in-out;
+				// &.show {
+				// 	display: block;
+				// }
+				.class-instance {
+					&:hover {
+						// background-color: lightgray;
+						cursor: default;
+						cursor: pointer;
+						background-color: rgb(194, 194, 194);
+					}
+					&.selected-class {
+						background-color: rgb(194, 194, 194);
+					}
+					.occurance-instance {
+						&:hover {
+						}
+					}
+				}
+			}
 		}
 		.image {
 			// flex-grow: 1;

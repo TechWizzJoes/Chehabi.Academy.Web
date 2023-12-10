@@ -12,25 +12,8 @@ import { CourseCardComponent } from './CourseCard/CourseCard';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { CourseModels } from '@App/Common/Models/Course.Models';
 
-export class Course {
-	Id!: number;
-	Name!: string;
-	Description!: string;
-	Instructor!: string;
-	Duration!: number;
-	VideoPath!: string;
-	FilePath!: string;
-	StartDate!: Date;
-	IsActive!: boolean;
-	IsDeleted!: boolean;
-	Rating!: number;
-	Raters!: number;
-	ImageUrl!: string;
-	Prerequisite!: string;
-	ToBeLearned!: string;
-	Price!: number;
-}
 
 @Component({
 	standalone: true,
@@ -40,7 +23,7 @@ export class Course {
 })
 export class CoursesListComponent implements OnInit {
 
-	Courses!: Course[]
+	Courses!: CourseModels.Course[]
 	IsLoaded: boolean = false;
 	RoutePaths = RoutePaths
 
@@ -56,7 +39,7 @@ export class CoursesListComponent implements OnInit {
 
 	ngOnInit() {
 		let endPoint = HttpEndPoints.Courses.GetAll
-		this.HttpService.Get<Course[]>(endPoint).subscribe(data => {
+		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Courses = data
 		})
