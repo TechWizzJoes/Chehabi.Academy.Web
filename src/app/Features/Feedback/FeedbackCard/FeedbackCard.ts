@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { Feedback } from '../Feedback';
+import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
 
 @Component({
 	standalone: true,
@@ -18,7 +18,7 @@ import { Feedback } from '../Feedback';
 	imports: [FormsModule, CommonModule, RouterModule]
 })
 export class FeedbackCardComponent implements OnInit {
-	@Input('Feedback') Feedback!: Feedback;
+	@Input('Feedback') Feedback!: FeedbackModels.Feedback;
 
 	constructor(
 		private router: Router,

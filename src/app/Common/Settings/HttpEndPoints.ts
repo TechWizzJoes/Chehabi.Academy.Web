@@ -28,9 +28,17 @@ export class HttpEndPoints {
 		getInfo: 'account/info',
 
 	}
+
 	public static Notifications = {
 		Subscribe: 'notifications/subscribe',
 		Publish: 'notifications/publish',
+	}
 
+	public static WhatsNew = {
+		GetAll: 'whatsnew/list/all',
+	}
+
+	public static Feeback = {
+		GetAll: 'feedback/list/all',
 	}
 }

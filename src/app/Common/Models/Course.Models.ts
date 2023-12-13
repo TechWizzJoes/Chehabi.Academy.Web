@@ -1,10 +1,11 @@
+import { UserModels } from "./User.Models";
+
 export namespace CourseModels {
 
 	export class Course {
 		Id!: number;
 		Name!: string;
 		Description!: string;
-		Instructor!: string;
 		Duration!: number;
 		VideoPath!: string;
 		FilePath!: string;
@@ -18,6 +19,7 @@ export namespace CourseModels {
 		ToBeLearned!: string;
 		Price!: number;
 		Classes!: Class[]
+		Instructor!: UserModels.User;
 
 	}
 
