@@ -13,6 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { LaptopComponent } from './Laptop/Laptop';
+import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
+import { WhatsNewModels } from '@App/Common/Models/WhatsNew.Models';
 
 @Component({
 	standalone: true,
@@ -21,7 +23,8 @@ import { LaptopComponent } from './Laptop/Laptop';
 	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule, LaptopComponent]
 })
 export class HomeComponent implements OnInit {
-	images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+	WhatsNew!: WhatsNewModels.WhatsNew[];
+
 	RoutePaths = RoutePaths
 
 	constructor(
@@ -43,5 +46,14 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.getWhatsNew()
+	}
+
+	getWhatsNew() {
+		let endPoint = HttpEndPoints.WhatsNew.GetAll;
+		this.HttpService.Get<WhatsNewModels.WhatsNew[]>(endPoint).subscribe(data => {
+			this.WhatsNew = data
+		})
+	}
 }
