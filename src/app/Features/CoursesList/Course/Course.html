@@ -45,7 +45,7 @@
 				<div class="price">{{Course.Price | currency}}</div>
 				<button href="#" class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
 				<button href="#" class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
-				<button href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</button>
+				<button href="#" class="btn btn-outline-primary" (click)="DownloadMaterial()">Download Material</button>
 				<hr />
 			</div>
 		</div>

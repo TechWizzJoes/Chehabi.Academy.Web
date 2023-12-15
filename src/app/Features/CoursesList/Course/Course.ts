@@ -104,6 +104,19 @@ export class CourseComponent implements OnInit {
 	}
 
 	DownloadMaterial() {
-		// download
+		let endPoint = HttpEndPoints.Courses.Material;
+		endPoint = endPoint.replace('{id}', this.Course.Id.toString())
+		this.HttpService.GetWithOptions<any>(endPoint, { responseType: 'blob' }).subscribe((data: any) => {
+
+			const blob = new Blob([data], { type: 'application/pdf' });
+			const url = window.URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = `${this.Course.Name}.pdf`;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+
+		})
 	}
 }

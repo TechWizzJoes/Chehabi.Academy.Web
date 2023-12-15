@@ -13,6 +13,7 @@ export class HttpEndPoints {
 	public static Courses = {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
+		Material: 'courses/material/{id}',
 	}
 
 	public static Classes = {

@@ -44,13 +44,13 @@
 					<div class="invalid-message pb-2">{{Error}}</div>
 				</div>
 
-				<div class="d-grid">
-					<button type="submit" class="btn btn-primary">Login</button>
-				</div>
 				<div>
 					<asl-google-signin-button type="icon" size="medium">
 						<button type="button" (click)="SocialLogin.Google.ClientLogin()">Login with Google</button>
 					</asl-google-signin-button>
+				</div>
+				<div class="d-grid">
+					<button type="submit" class="btn btn-primary">Login</button>
 				</div>
 				<span>Don't have an account yet? <a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">Register</a></span>
 			</form>

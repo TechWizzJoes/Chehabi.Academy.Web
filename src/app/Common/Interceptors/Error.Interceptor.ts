@@ -27,6 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 		return next.handle(req).pipe(
 			catchError((error, caught) => {
 				console.log('error interceptor');
+				debugger
 				// after all retrys if any
 				// return login error to handle in the component
 				if (req.url.includes('account')) {
@@ -57,7 +58,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 					const customMsg = this.ErrorCodesService.GetErrorCode(errMsg)
 					if (customMsg)
 						this.NotifyService.Error(customMsg);
-					return EMPTY;
+					return throwError(() => error);
 				}
 				return EMPTY
 			})
