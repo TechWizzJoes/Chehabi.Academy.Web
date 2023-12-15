@@ -27,7 +27,10 @@ export class HttpEndPoints {
 
 	public static Profile = {
 		getInfo: 'account/info',
+	}
 
+	public static User = {
+		getInstructorClasses: 'user/classes',
 	}
 
 	public static Notifications = {

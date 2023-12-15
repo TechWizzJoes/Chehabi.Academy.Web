@@ -70,6 +70,10 @@ export class AuthService {
 		return Object.keys(this.CurrentUser).length != 0 ? true : false;
 	}
 
+	get IsAdmin(): boolean {
+		return this.CurrentUser.IsAdmin;
+	}
+
 	RefreshAccessToken(): any {
 		let requestModel = {
 			Id: this.CurrentUser.Id,

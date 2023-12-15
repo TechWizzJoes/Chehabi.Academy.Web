@@ -1,4 +1,15 @@
 <div class="page-inner">
 	<app-loader *ngIf="!IsLoaded"></app-loader>
-	<div class="page-section" *ngIf="IsLoaded">User profile {{data}}</div>
+	<div class="page-section" *ngIf="IsLoaded">
+		Welcome {{CurrentUser.FirstName}}
+		<br />
+		<div *ngFor="let course of Courses">
+			{{course.Name}}
+			<div *ngFor="let class of course.Classes">
+				Date: {{class.StartDate}} Students:
+				<div *ngFor="let occ of class.ClassOccurances">{{occ.Occurance}}</div>
+			</div>
+			<br />
+		</div>
+	</div>
 </div>

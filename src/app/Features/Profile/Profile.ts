@@ -12,6 +12,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { AuthModels } from '@App/Common/Models/Auth.Models';
 
 @Component({
 	standalone: true,
@@ -22,6 +23,9 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 export class ProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
 	data: any
+	Courses!: CourseModels.Course[];
+	CurrentUser!: AuthModels.CurrentUserResModel;
+
 	constructor(
 		private Router: Router,
 		private ActivatedRoute: ActivatedRoute,
@@ -33,10 +37,20 @@ export class ProfileComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.CurrentUser = this.AuthService.CurrentUser;
 		let endPoint = HttpEndPoints.Profile.getInfo
 		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.data = data
+		})
+		this.GetInstructorClasses();
+	}
+
+	GetInstructorClasses() {
+		let endPoint = HttpEndPoints.User.getInstructorClasses
+		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
+			console.log(data);
+			this.Courses = data
 		})
 	}
 }
