@@ -1,4 +1,24 @@
 .page-section {
-	display: flex;
-	flex-direction: column;
+	flex-direction: column !important;
+	justify-content: flex-start !important;
+	align-items: flex-start !important;
+	padding: 10px;
+
+	.course {
+		padding: 10px 0;
+		.title {
+			font-weight: 600;
+		}
+		.class {
+			padding: 5px;
+		}
+		.date {
+		}
+		.period {
+		}
+		.students {
+		}
+		.current {
+		}
+	}
 }

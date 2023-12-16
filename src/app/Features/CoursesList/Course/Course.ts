@@ -40,7 +40,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class CourseComponent implements OnInit {
 	RoutePaths = RoutePaths
 	Course!: CourseModels.Course;
-	Occurances!: CourseModels.ClassOccurance;
 
 	IsLoaded: boolean = false;
 	IsJoinClass!: boolean;
@@ -75,19 +74,19 @@ export class CourseComponent implements OnInit {
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Course = data
-			// this.Occurances = data.Classes
 		})
 	}
 
-	JoinClass() {
+	async JoinClass() {
 		if (this.AuthService.IsAuthenticated) {
-
 			this.IsJoinClass! = true
 			return
 		}
-		console.log(this.Router.url);
+		let signin: boolean = await this.NotifyService.Confirm('You need to be logged in!', 'Sign in?', 'Yes', 'Later')
+		if (signin) {
+			this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
 
-		this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
+		}
 	}
 
 	JoinNow() {

@@ -3,13 +3,15 @@
 	<div class="page-section" *ngIf="IsLoaded">
 		Welcome {{CurrentUser.FirstName}}
 		<br />
-		<div *ngFor="let course of Courses">
-			{{course.Name}}
-			<div *ngFor="let class of course.Classes">
-				Date: {{class.StartDate}} Students:
-				<div *ngFor="let occ of class.ClassOccurances">{{occ.Occurance}}</div>
+		<div class="course" *ngFor="let course of Courses">
+			<span class="title">{{course.Name}}</span>
+			<div class="class" *ngFor="let class of course.Classes">
+				<div class="date"><span class="title">Starting:</span> {{class.StartDate}}</div>
+				<div class="period"><span class="title">Time:</span> {{class.Period}}</div>
+				<div class="students"><span class="title">Students:</span> {{class.Users.length}} of {{class.MaxCapacity}}</div>
+				<div class="current-index"><span class="title">sessions completed:</span> {{class.CurrentIndex}}</div>
 			</div>
-			<br />
 		</div>
+		<br />
 	</div>
 </div>

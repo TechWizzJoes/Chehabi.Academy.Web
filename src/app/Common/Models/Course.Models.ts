@@ -33,12 +33,6 @@ export namespace CourseModels {
 		CurrentIndex!: number;
 		IsActive!: boolean;
 		IsDeleted!: boolean;
-		ClassOccurances!: ClassOccurance[];
-	}
-
-	export class ClassOccurance {
-		Id!: number;
-		ClassId!: number;
-		Occurance!: string;
+		Users!: UserModels.User[]
 	}
 }
