@@ -1,4 +1,8 @@
 .page-inner {
+	min-height: calc(100vh - var(--header-height));
+	&.bg-gradient-3 {
+		background: var(--background-horizontal-gradient-180);
+	}
 	h1 {
 		padding-inline-start: var(--page-inner-content-padding);
 	}
@@ -16,9 +20,6 @@
 			img {
 				width: 100%;
 			}
-		}
-		&.bg-gradient-3 {
-			background: var(--background-horizontal-gradient-180);
 		}
 	}
 }
