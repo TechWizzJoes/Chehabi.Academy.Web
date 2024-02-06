@@ -1,0 +1,65 @@
+<div class="page-inner">
+	<!-- <app-loader *ngIf="!IsLoaded"></app-loader> -->
+	<div class="page-section" *ngIf="true">
+		<div class="left-section">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link active" href="#">
+						<i class="fa fa-th-large" aria-hidden="true"></i>
+						Dashboard
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						Edit Profile
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+						Password
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="right-section">
+			<h6 class="title">Dashboard</h6>
+			<div class="row-custom">
+				<p class="sub-title">Courses</p>
+				<button class="btn btn-primary" (click)="openModal('Add Course', 'updateCourse')">Add</button>
+			</div>
+			<div class="courses-container row">
+				<div class="card" *ngFor="let course of courses; let i = index" (click)="viewDetails(course.id)">
+					<div class="card-body">
+						<div class="upper-section">
+							<h5 class="card-title">Special title treatment</h5>
+							<span class="status">Active</span>
+						</div>
+						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<div class="middle-section">
+							<div class="instructor">
+								<span class="initials">NS</span>
+								<p>Nesma Safa</p>
+							</div>
+							<small>20/10/2024</small>
+						</div>
+						<div class="lower-section">
+							<span class="rating">
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+							</span>
+							<span>
+								<i class="fa fa-usd" aria-hidden="true"></i>
+								<small class="ps-2">200</small>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

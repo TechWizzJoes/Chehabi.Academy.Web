@@ -1,0 +1,148 @@
+.page-section {
+	// min-height: calc(100vh - var(--header-height) - 100.5px) !important;
+	align-items: flex-start !important;
+	padding: 1rem 0;
+
+	.left-section {
+		width: 20%;
+		padding: 0;
+		border-radius: 5px;
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+		display: flex;
+		justify-content: center;
+		background-color: #f7f6f6;
+
+		ul {
+			border: none;
+			width: 100%;
+
+			a {
+				color: var(--primary-color1) !important;
+				padding: 1rem 2rem;
+				margin-top: 0;
+
+				border-radius: 5px;
+				&:hover.nav-link {
+					color: white !important;
+					background-color: var(--primary-color2);
+					opacity: 0.7;
+					border-radius: 0;
+				}
+				&.active.nav-link {
+					color: white !important;
+					background-color: var(--primary-color2);
+					border-radius: 0;
+				}
+			}
+		}
+	}
+
+	.right-section {
+		width: 77%;
+		padding: 1rem;
+		border-radius: 5px;
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		background-color: #f7f6f6;
+
+		.card {
+			border: none;
+			border-radius: 10px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				height: 100%;
+				width: 100%;
+				background: linear-gradient(45deg, #000000, transparent);
+				z-index: 0;
+				opacity: 0.7;
+				border-radius: 10px;
+			}
+
+			img {
+				border-radius: 10px;
+			}
+
+			.card-img-overlay {
+				top: auto;
+			}
+		}
+
+		.group {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+
+			.section {
+				margin: 0.75rem 0;
+				padding: 1rem;
+				border-radius: 10px;
+				background: rgb(230 230 230 / 50%);
+
+				button.btn-edit {
+					padding: 5px;
+					margin: 5px 5px 5px 0;
+					width: 30px;
+					display: inline-flex;
+					height: 30px;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+
+			.left-group {
+				width: 72%;
+				i.btn-custom {
+					opacity: 0;
+					transition: 0.08s;
+
+					&:hover {
+						color: rgba(83, 83, 83, 0.7);
+					}
+				}
+
+				div:hover i {
+					opacity: 1;
+				}
+			}
+
+			.right-group {
+				width: 26%;
+
+				.class {
+					border: 1px solid rgba(131, 131, 131, 0.2);
+					border-radius: 20px;
+					padding: 0.5rem 1rem;
+					margin: 0.75rem 0;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					p {
+						font-size: 0.9rem;
+						font-weight: 500;
+					}
+				}
+			}
+
+			.row-custom {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.btn-custom {
+				color: var(--primary-color1);
+				cursor: pointer;
+				margin-bottom: 8px;
+				font-size: 1.1rem;
+			}
+		}
+	}
+}

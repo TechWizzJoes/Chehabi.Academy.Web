@@ -6,6 +6,7 @@ import { InnerContainer } from './InnerContainer';
 import { RolesGuard } from '@App/Common/Guards/Roles.Guard';
 import { AuthGuard } from '@App/Common/Guards/Auth.Guard';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { path } from 'd3';
 
 export const routes: Routes = [
 	{
@@ -42,9 +43,25 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Founder/Founder').then((c) => c.FounderComponent)
 			},
 			{
-				canActivate: [AuthGuard],
+				canActivate: [],
 				path: 'profile',
 				loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
+			},
+			{
+				canActivate: [],
+				path: 'dashboard',
+				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),
+				// children: [
+				// 	{
+				// 		path: 'course/:id',
+				// 		loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
+				// 	}
+				// ]
+			},
+			{
+				canActivate: [],
+				path: 'dashboard/course/:id',
+				loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
 			},
 			{
 				path: 'unauthorized',

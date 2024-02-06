@@ -1,0 +1,170 @@
+<div class="page-inner">
+	<!-- <app-loader *ngIf="!IsLoaded"></app-loader> -->
+	<div class="page-section" *ngIf="true">
+		<div class="left-section">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link active" href="#">
+						<i class="fa fa-th-large" aria-hidden="true"></i>
+						Dashboard
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						Edit Profile
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+						Password
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="right-section">
+			<h6 class="title">Courses > Course Title</h6>
+			<div class="card bg-dark text-white">
+				<img
+					src="https://www.shutterstock.com/image-photo/hand-writing-on-blackboard-language-600nw-480440053.jpg"
+					class="card-img"
+					alt="..."
+					height="275px" />
+				<div class="card-img-overlay">
+					<h5 class="card-title">Course Title</h5>
+					<p class="card-text">
+						This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+					</p>
+					<p class="card-text">Last updated 3 mins ago</p>
+				</div>
+			</div>
+			<div class="group">
+				<div class="left-group">
+					<div class="course-overview section">
+						<div class="row-custom">
+							<h6 class="title">Course Overview</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal('Edit Course Overview')"></i>
+						</div>
+						<p class="text">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque adipisci qui est libero, sapiente magni error illum voluptas, id
+							sunt earum repudiandae reiciendis voluptates dolore, vitae eum eaque consectetur fugiat.
+						</p>
+					</div>
+					<div class="skills section">
+						<div class="row-custom">
+							<h6 class="title">Skills You Would Gain</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal('Edit Skills')"></i>
+						</div>
+						<p class="text">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque adipisci qui est libero, sapiente magni error illum voluptas, id
+							sunt earum repudiandae reiciendis voluptates dolore, vitae eum eaque consectetur fugiat.
+						</p>
+					</div>
+					<div class="prerequisites section">
+						<div class="row-custom">
+							<h6 class="title">Prerequisites</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal('Edit Prerequisites')"></i>
+						</div>
+						<p class="text">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque adipisci qui est libero, sapiente magni error illum voluptas, id
+							sunt earum repudiandae reiciendis voluptates dolore, vitae eum eaque consectetur fugiat.
+						</p>
+					</div>
+					<div class="sections section">
+						<div class="row-custom">
+							<h6 class="title">Course Sessions</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal('Edit Sessions', 'updateSections')"></i>
+						</div>
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button
+										class="accordion-button"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseOne"
+										aria-expanded="true"
+										aria-controls="collapseOne">
+										Accordion Item #1
+									</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the
+										appropriate classes that we use to style each element. These classes control the overall appearance, as well as the
+										showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.
+										It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+										does limit overflow.
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingTwo">
+									<button
+										class="accordion-button collapsed"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseTwo"
+										aria-expanded="false"
+										aria-controls="collapseTwo">
+										Accordion Item #2
+									</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the
+										appropriate classes that we use to style each element. These classes control the overall appearance, as well as the
+										showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.
+										It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+										does limit overflow.
+									</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingThree">
+									<button
+										class="accordion-button collapsed"
+										type="button"
+										data-bs-toggle="collapse"
+										data-bs-target="#collapseThree"
+										aria-expanded="false"
+										aria-controls="collapseThree">
+										Accordion Item #3
+									</button>
+								</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the
+										appropriate classes that we use to style each element. These classes control the overall appearance, as well as the
+										showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.
+										It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+										does limit overflow.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="right-group">
+					<div class="info section">
+						<div class="row-custom">
+							<h6 class="title">Upcoming Classes</h6>
+							<!-- <i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal('Edit Classes', 'updateClasses')"></i> -->
+						</div>
+						<div class="list-group">
+							<div class="class">
+								<p class="mb-1">C1</p>
+								<small>03/10/2024</small>
+							</div>
+							<div class="class">
+								<p class="mb-1">C1</p>
+								<small>03/10/2024</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

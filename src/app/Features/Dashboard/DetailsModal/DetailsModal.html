@@ -1,0 +1,90 @@
+<div class="modal-header">
+	<h5 class="modal-title title">{{title}}</h5>
+	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div [ngSwitch]="state">
+	<div class="modal-body" *ngSwitchCase="'updateSections'">
+		<div class="mb-3">
+			<label for="session" class="form-label">Title</label>
+			<input type="text" class="form-control" id="session" />
+		</div>
+		<div class="mb-3">
+			<label for="content" class="form-label">Content</label>
+			<textarea class="form-control" id="content" rows="2">hh</textarea>
+		</div>
+	</div>
+	<div class="modal-body" *ngSwitchCase="'updateClasses'">
+		<div class="mb-3">
+			<label for="class" class="form-label">Title</label>
+			<input type="text" class="form-control" id="class" />
+		</div>
+		<div class="mb-3">
+			<label for="capacity" class="form-label">Capacity</label>
+			<input type="number" class="form-control" id="capacity" />
+		</div>
+		<div class="mb-3">
+			<label for="start" class="form-label">Starts In</label>
+			<input type="date" class="form-control" id="start" />
+		</div>
+		<div class="mb-3">
+			<label for="end" class="form-label">Ends In</label>
+			<input type="date" class="form-control" id="end" />
+		</div>
+	</div>
+	<div class="modal-body" *ngSwitchCase="'updateCourse'">
+		<div class="mb-3">
+			<label for="class" class="form-label">Name</label>
+			<input type="text" class="form-control" id="class" />
+		</div>
+		<div class="mb-3">
+			<label for="class" class="form-label">Instructor?</label>
+			<input type="text" class="form-control" id="class" />
+		</div>
+		<div class="mb-3">
+			<label for="description" class="form-label">Description</label>
+			<textarea class="form-control" id="description" rows="2">hh</textarea>
+		</div>
+		<div class="mb-3">
+			<label for="start" class="form-label">Starts In</label>
+			<input type="date" class="form-control" id="start" />
+		</div>
+		<div class="mb-3">
+			<label for="duration" class="form-label">Duration</label>
+			<input type="number" class="form-control" id="duration" />
+		</div>
+		<div class="mb-3">
+			<label for="videopath" class="form-label">Video Url</label>
+			<input type="text" class="form-control" id="videopath" />
+		</div>
+		<div class="mb-3">
+			<label for="image" class="form-label">Image Url</label>
+			<input type="text" class="form-control" id="image" />
+		</div>
+		<div class="mb-3">
+			<label for="filepath" class="form-label">File</label>
+			<input type="text" class="form-control" id="filepath" />
+		</div>
+		<div class="mb-3">
+			<label for="prerequisite" class="form-label">Prerequisite</label>
+			<textarea class="form-control" id="prerequisite" rows="2">hh</textarea>
+		</div>
+		<div class="mb-3">
+			<label for="prerequisite" class="form-label">Skills You'll Learn</label>
+			<textarea class="form-control" id="prerequisite" rows="2">hh</textarea>
+		</div>
+		<div class="mb-3">
+			<label for="price" class="form-label">Price</label>
+			<input type="number" class="form-control" id="price" />
+		</div>
+	</div>
+	<div class="modal-body" *ngSwitchDefault>
+		<div class="mb-3">
+			<label for="description" class="form-label">Description</label>
+			<textarea class="form-control" id="description" rows="2">hh</textarea>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
+	<button type="button" class="btn btn-primary" (click)="activeModal.close('save')">Save</button>
+</div>

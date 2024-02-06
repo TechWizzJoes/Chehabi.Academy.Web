@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
@@ -12,6 +12,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { UserModels } from '@App/Common/Models/User.Models';
 
 @Component({
 	standalone: true,
@@ -34,9 +35,15 @@ export class ProfileComponent implements OnInit {
 
 	ngOnInit() {
 		let endPoint = HttpEndPoints.Profile.getInfo
-		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
-			this.IsLoaded = true
-			this.data = data
-		})
+		// this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
+		// 	this.IsLoaded = true
+		// 	this.data = data
+		// })
+	}
+
+	onProfilePicChange(event: any) { }
+
+	onSubmit(form: NgForm) {
+		console.log(form)
 	}
 }
