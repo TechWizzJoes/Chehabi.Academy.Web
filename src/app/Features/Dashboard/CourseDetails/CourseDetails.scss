@@ -47,6 +47,35 @@
 		flex-direction: column;
 		background-color: #f7f6f6;
 
+		.btn-header {
+			opacity: 0;
+			transition: 0.08s;
+			cursor: pointer;
+			position: absolute;
+			top: 5%;
+			right: 2%;
+			background-color: #f8f9fa;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			i.btn-custom {
+				color: var(--primary-color1);
+				font-size: 1.1rem;
+			}
+
+			&:hover {
+				background-color: rgba(247, 249, 250, 0.7);
+			}
+		}
+
+		div:hover .btn-header {
+			opacity: 1;
+		}
+
 		.card {
 			border: none;
 			border-radius: 10px;
@@ -67,6 +96,7 @@
 
 			img {
 				border-radius: 10px;
+				object-fit: cover;
 			}
 
 			.card-img-overlay {
@@ -84,16 +114,6 @@
 				padding: 1rem;
 				border-radius: 10px;
 				background: rgb(230 230 230 / 50%);
-
-				button.btn-edit {
-					padding: 5px;
-					margin: 5px 5px 5px 0;
-					width: 30px;
-					display: inline-flex;
-					height: 30px;
-					align-items: center;
-					justify-content: center;
-				}
 			}
 
 			.left-group {
@@ -110,12 +130,51 @@
 				div:hover i {
 					opacity: 1;
 				}
+
+				.accordion {
+					.accordion-item {
+						margin: 1rem 0;
+						border: none;
+						border-radius: 10px;
+
+						.accordion-body {
+							padding: 0.5rem 1.25rem;
+
+							.class:last-child {
+								margin-bottom: 0;
+							}
+
+							.class:first-child {
+								margin-top: 0;
+							}
+						}
+
+						button {
+							border-radius: 10px;
+							outline: none;
+							padding: 0.75rem;
+							font-size: 0.9rem;
+							font-weight: 500;
+
+							&:focus {
+								border: none;
+								box-shadow: none;
+							}
+						}
+					}
+
+					.accordion-button:not(.collapsed) {
+						background-color: transparent;
+						box-shadow: none;
+						color: inherit;
+					}
+				}
 			}
 
 			.right-group {
 				width: 26%;
 
-				.class {
+				.session {
 					border: 1px solid rgba(131, 131, 131, 0.2);
 					border-radius: 20px;
 					padding: 0.5rem 1rem;
@@ -143,6 +202,37 @@
 				margin-bottom: 8px;
 				font-size: 1.1rem;
 			}
+
+			.class {
+				margin: 0.75rem 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				p {
+					font-size: 0.85rem;
+					font-weight: 500;
+					margin: 0;
+				}
+
+				small {
+					font-size: 0.85rem;
+					opacity: 0.8;
+				}
+			}
 		}
 	}
+}
+
+.accordion-button::after {
+	/* Your custom styles for the icon */
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg>');
+	background-color: #8080802e;
+	border-radius: 3px;
+}
+
+.accordion-button:not(.collapsed)::after {
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/></svg>');
+	background-color: #8080802e;
+	border-radius: 3px;
 }

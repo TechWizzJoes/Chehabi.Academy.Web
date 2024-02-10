@@ -13,7 +13,8 @@
 			<textarea class="form-control" id="content" rows="2">hh</textarea>
 		</div>
 	</div>
-	<div class="modal-body" *ngSwitchCase="'updateClasses'">
+	<div class="modal-body" *ngSwitchCase="'classesList'"></div>
+	<div class="modal-body" *ngSwitchCase="'updateClass'">
 		<div class="mb-3">
 			<label for="class" class="form-label">Title</label>
 			<input type="text" class="form-control" id="class" />
@@ -34,10 +35,6 @@
 	<div class="modal-body" *ngSwitchCase="'updateCourse'">
 		<div class="mb-3">
 			<label for="class" class="form-label">Name</label>
-			<input type="text" class="form-control" id="class" />
-		</div>
-		<div class="mb-3">
-			<label for="class" class="form-label">Instructor?</label>
 			<input type="text" class="form-control" id="class" />
 		</div>
 		<div class="mb-3">
