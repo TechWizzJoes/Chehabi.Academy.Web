@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '@App/Common/Services/Auth.Service';
@@ -21,7 +21,7 @@ import { DetailsModalComponent } from './DetailsModal/DetailsModal';
     standalone: true,
     templateUrl: './Dashboard.html',
     styleUrls: ['Dashboard.scss'],
-    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent]
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent]
 })
 export class DashboardComponent implements OnInit {
     IsLoaded: boolean = false;
@@ -44,16 +44,6 @@ export class DashboardComponent implements OnInit {
         // 	this.IsLoaded = true
         // 	this.data = data
         // })
-    }
-
-    viewDetails(id: number) {
-        this.Router.navigate(['/', RoutePaths.Dashboard, RoutePaths.Course, 0])
-    }
-
-    openModal(title: string, state: string = '') {
-        const modalRef = this.modalService.open(DetailsModalComponent, { centered: true });
-        modalRef.componentInstance.state = state;
-        modalRef.componentInstance.title = title;
     }
 
 }

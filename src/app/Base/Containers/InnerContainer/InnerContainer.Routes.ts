@@ -48,20 +48,23 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
 			},
 			{
-				canActivate: [],
+				canActivate: [AuthGuard],
 				path: 'dashboard',
 				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),
-				// children: [
-				// 	{
-				// 		path: 'course/:id',
-				// 		loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
-				// 	}
-				// ]
-			},
-			{
-				canActivate: [],
-				path: 'dashboard/course/:id',
-				loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
+				children: [
+					{
+						path: 'courses',
+						loadComponent: () => import('@App/Features/Dashboard/Courses/Courses').then((c) => c.CoursesComponent)
+					},
+					{
+						path: 'courses/:id',
+						loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
+					},
+					{
+						path: 'profile',
+						loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
+					}
+				]
 			},
 			{
 				path: 'unauthorized',

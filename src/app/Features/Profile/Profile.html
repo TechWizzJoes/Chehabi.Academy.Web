@@ -1,63 +1,36 @@
-<div class="page-inner">
-	<!-- <app-loader *ngIf="!IsLoaded"></app-loader> -->
-	<div class="page-section" *ngIf="true">
-		<div class="left-section">
-			<ul class="nav flex-column">
-				<li class="nav-item">
-					<a class="nav-link" href="#">
-						<i class="fa fa-th-large" aria-hidden="true"></i>
-						Dashboard
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="#">
-						<i class="fa fa-user" aria-hidden="true"></i>
-						Edit Profile
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">
-						<i class="fa fa-unlock-alt" aria-hidden="true"></i>
-						Password
-					</a>
-				</li>
-			</ul>
+<div class="right-section">
+	<h6 class="title">Edit Profile</h6>
+	<form>
+		<div class="mb-3 image-container">
+			<img src="assets/Images/default-pp.png" />
+			<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
+			<button class="btn btn-danger">Delete</button>
+			<input
+				type="file"
+				name="profile-pic"
+				accept="image/x-png,image/gif,image/jpeg"
+				id="profile-pic"
+				#fileInput
+				class="fileInput"
+				(change)="onProfilePicChange($event.target)" />
 		</div>
-		<div class="right-section">
-			<h6 class="title">Edit Profile</h6>
-			<form>
-				<div class="mb-3 image-container">
-					<img src="assets/Images/default-pp.png" />
-					<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
-					<button class="btn btn-danger">Delete</button>
-					<input
-						type="file"
-						name="profile-pic"
-						accept="image/x-png,image/gif,image/jpeg"
-						id="profile-pic"
-						#fileInput
-						class="fileInput"
-						(change)="onProfilePicChange($event.target)" />
-				</div>
-				<div class="mb-3">
-					<label for="first-name" class="form-label">First Name</label>
-					<input type="text" class="form-control" id="first-name" placeholder="First Name" />
-				</div>
-				<div class="mb-3">
-					<label for="last-name" class="form-label">Last Name</label>
-					<input type="text" class="form-control" id="last-name" placeholder="Last Name" />
-				</div>
-				<div class="mb-3">
-					<label for="email" class="form-label">E-mail</label>
-					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" />
-					<div id="emailHelp" class="form-text">email should be...</div>
-				</div>
-				<div class="mb-3">
-					<label for="birthdate" class="form-label">Birthdate</label>
-					<input type="date" class="form-control" id="birthdate" />
-				</div>
-				<button type="submit" class="btn btn-primary float-end">Save</button>
-			</form>
+		<div class="mb-3">
+			<label for="first-name" class="form-label">First Name</label>
+			<input type="text" class="form-control" id="first-name" placeholder="First Name" />
 		</div>
-	</div>
+		<div class="mb-3">
+			<label for="last-name" class="form-label">Last Name</label>
+			<input type="text" class="form-control" id="last-name" placeholder="Last Name" />
+		</div>
+		<div class="mb-3">
+			<label for="email" class="form-label">E-mail</label>
+			<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" />
+			<div id="emailHelp" class="form-text">email should be...</div>
+		</div>
+		<div class="mb-3">
+			<label for="birthdate" class="form-label">Birthdate</label>
+			<input type="date" class="form-control" id="birthdate" />
+		</div>
+		<button type="submit" class="btn btn-primary float-end">Save</button>
+	</form>
 </div>

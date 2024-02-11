@@ -1,97 +1,50 @@
-.page-section {
-	// min-height: calc(100vh - var(--header-height) - 100.5px) !important;
-	align-items: flex-start !important;
-	padding: 1rem 0;
-
-	.left-section {
-		width: 20%;
-		padding: 0;
-		border-radius: 5px;
-		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-		display: flex;
-		justify-content: center;
-
-		ul {
-			border: none;
-			width: 100%;
-
-			a {
-				color: var(--primary-color1) !important;
-				padding: 1rem 2rem;
-				margin-top: 0;
-
-				border-radius: 5px;
-				&:hover.nav-link {
-					color: white !important;
-					background-color: var(--primary-color2);
-					opacity: 0.7;
-					border-radius: 0;
-				}
-				&.active.nav-link {
-					color: white !important;
-					background-color: var(--primary-color2);
-					border-radius: 0;
-				}
-			}
-		}
+.right-section {
+	.title {
+		font-weight: 700;
+		font-size: 1.1rem;
+		margin-bottom: 1.25rem;
+		letter-spacing: 0.35px;
 	}
 
-	.right-section {
-		width: 77%;
-		padding: 1rem;
-		border-radius: 5px;
-		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
+	form {
+		.image-container {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
 
-		.title {
-			font-weight: 700;
-			font-size: 1.1rem;
-			margin-bottom: 1.25rem;
-			letter-spacing: 0.35px;
+			img {
+				width: 65px;
+				height: 65px;
+				border-radius: 50%;
+				border: 3px solid #e2e2e2c4;
+			}
+
+			.fileInput {
+				display: none;
+			}
+
+			label.file-label {
+				width: fit-content;
+			}
+
+			.btn {
+				margin-top: 0;
+				width: 150px;
+				padding: 0.25rem 0.75rem;
+				font-size: 0.9rem;
+				margin-left: 2rem;
+
+				&.btn-danger {
+					width: fit-content;
+					margin-left: 1rem;
+				}
+			}
 		}
 
-		form {
-			.image-container {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-
-				img {
-					width: 65px;
-					height: 65px;
-					border-radius: 50%;
-					border: 3px solid #e2e2e2c4;
-				}
-
-				.fileInput {
-					display: none;
-				}
-
-				label.file-label {
-					width: fit-content;
-				}
-
-				.btn {
-					margin-top: 0;
-					width: 150px;
-					padding: 0.25rem 0.75rem;
-					font-size: 0.9rem;
-					margin-left: 2rem;
-
-					&.btn-danger {
-						width: fit-content;
-						margin-left: 1rem;
-					}
-				}
-			}
-
-			button {
-				padding: 0.25rem 2rem;
-				width: 200px;
-				margin-top: 1rem;
-			}
+		button {
+			padding: 0.25rem 2rem;
+			width: 200px;
+			margin-top: 1rem;
 		}
 	}
 }

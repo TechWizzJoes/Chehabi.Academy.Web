@@ -12,26 +12,45 @@
 		justify-content: center;
 		background-color: #f7f6f6;
 
-		ul {
+		.list-group {
 			border: none;
 			width: 100%;
+			border-radius: 5px;
 
 			a {
 				color: var(--primary-color1) !important;
 				padding: 1rem 2rem;
 				margin-top: 0;
+				&:last-of-type {
+					border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+				}
 
-				border-radius: 5px;
-				&:hover.nav-link {
+				&:hover {
 					color: white !important;
 					background-color: var(--primary-color2);
 					opacity: 0.7;
-					border-radius: 0;
+
+					&:last-of-type {
+						border-bottom-left-radius: 5px;
+						border-bottom-right-radius: 5px;
+					}
 				}
-				&.active.nav-link {
+
+				&.active {
 					color: white !important;
 					background-color: var(--primary-color2);
-					border-radius: 0;
+					border-color: var(--primary-color2);
+
+					&:last-of-type {
+						border-bottom-left-radius: 5px;
+						border-bottom-right-radius: 5px;
+					}
+
+					&:first-of-type {
+						border-top-left-radius: 5px;
+						border-top-right-radius: 5px;
+					}
 				}
 			}
 		}
@@ -46,98 +65,5 @@
 		justify-content: center;
 		flex-direction: column;
 		background-color: #f7f6f6;
-
-		.title {
-			font-weight: 700;
-			font-size: 1.1rem;
-			margin-bottom: 1.25rem;
-			letter-spacing: 0.35px;
-		}
-
-		.sub-title {
-			font-weight: 600;
-			font-size: 1.1rem;
-			letter-spacing: 0.35px;
-			color: rgba(54, 69, 85, 0.7);
-		}
-
-		.row-custom {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.courses-container {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-
-			.card {
-				margin: 1rem;
-				width: 30%;
-				border: none;
-				border-radius: 10px;
-
-				&:hover {
-					cursor: pointer;
-					background-color: rgba(0, 0, 0, 0.2);
-				}
-
-				.upper-section {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.status {
-						border-radius: 15px;
-						font-size: 0.7rem;
-						padding: 0.05rem 0.7rem;
-						background-color: rgb(217, 248, 169);
-						margin-bottom: 8px;
-					}
-				}
-
-				.middle-section {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.instructor {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
-						p {
-							margin: 0;
-						}
-					}
-
-					.initials {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						width: 40px;
-						height: 40px;
-						color: white;
-						background-color: var(--primary-color1);
-						border-radius: 25%;
-						font-weight: 700;
-						margin-right: 10px;
-					}
-				}
-
-				.lower-section {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					margin-top: 30px;
-
-					i {
-						font-size: 0.9rem;
-						margin-right: 5px;
-					}
-				}
-			}
-		}
 	}
 }

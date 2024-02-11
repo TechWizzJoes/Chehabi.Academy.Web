@@ -1,0 +1,41 @@
+<div class="right-section">
+	<h6 class="title">Dashboard</h6>
+	<div class="row-custom">
+		<p class="sub-title">Courses</p>
+		<button class="btn btn-primary" (click)="openModal('Add Course', 'updateCourse')">
+			<i class="fa fa-plus" aria-hidden="true"></i>
+			Add new course
+		</button>
+	</div>
+	<div class="courses-container row">
+		<div class="card" *ngFor="let course of courses; let i = index" (click)="viewDetails(course.id)">
+			<div class="card-body">
+				<div class="upper-section">
+					<h5 class="card-title">Special title treatment</h5>
+					<span class="status">Active</span>
+				</div>
+				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<div class="middle-section">
+					<div class="instructor">
+						<span class="initials">NS</span>
+						<p>Nesma Safa</p>
+					</div>
+					<small>20/10/2024</small>
+				</div>
+				<div class="lower-section">
+					<span class="rating">
+						<i class="fa fa-star-o" aria-hidden="true"></i>
+						<i class="fa fa-star-o" aria-hidden="true"></i>
+						<i class="fa fa-star-o" aria-hidden="true"></i>
+						<i class="fa fa-star-o" aria-hidden="true"></i>
+						<i class="fa fa-star-o" aria-hidden="true"></i>
+					</span>
+					<span>
+						<i class="fa fa-usd" aria-hidden="true"></i>
+						<small class="ps-2">200</small>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
