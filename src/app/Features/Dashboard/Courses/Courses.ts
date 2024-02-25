@@ -16,6 +16,7 @@ import { UserModels } from '@App/Common/Models/User.Models';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
+import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 
 @Component({
     standalone: true,
@@ -25,8 +26,9 @@ import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 })
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
-    data: any
-    courses: any[] = [1, 2, 3]
+    Courses: CourseModels.Course[] = [];
+    ModalPropertyEnum = ModalPropertyEnum;
+
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,
@@ -39,21 +41,36 @@ export class CoursesComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        let endPoint = HttpEndPoints.Profile.getInfo
-        // this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
-        // 	this.IsLoaded = true
-        // 	this.data = data
-        // })
+        this.getCourses();
     }
 
-    viewDetails(id: number) {
-        this.Router.navigate(['/', RoutePaths.Dashboard, RoutePaths.Courses, 0])
+    gotoCourse(id: number) {
+        this.Router.navigate(['/', RoutePaths.Dashboard, RoutePaths.Courses, id.toString()])
     }
 
-    openModal(title: string, state: string = '') {
+    getInitials(instructor: UserModels.User): string {
+        let initials = instructor.FirstName[0].toUpperCase() + instructor.LastName[0].toUpperCase();
+        return initials;
+    }
+
+    openModal(property: ModalPropertyEnum, isEdit: boolean = false) {
         const modalRef = this.modalService.open(DetailsModalComponent, { centered: true, modalDialogClass: 'course-modal' });
-        modalRef.componentInstance.state = state;
-        modalRef.componentInstance.title = title;
+        modalRef.componentInstance.property = property;
+        modalRef.componentInstance.isEdit = isEdit;
+
+        modalRef.closed.subscribe((data) => {
+            if (data == 'save') {
+                this.getCourses();
+            }
+        })
+    }
+
+    getCourses() {
+        let endPoint = HttpEndPoints.Courses.GetAll
+        this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
+            this.IsLoaded = true
+            this.Courses = data
+        })
     }
 
 }

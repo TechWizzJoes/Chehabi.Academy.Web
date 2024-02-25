@@ -43,11 +43,6 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Founder/Founder').then((c) => c.FounderComponent)
 			},
 			{
-				canActivate: [],
-				path: 'profile',
-				loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
-			},
-			{
 				canActivate: [AuthGuard],
 				path: 'dashboard',
 				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),
@@ -63,6 +58,10 @@ export const routes: Routes = [
 					{
 						path: 'profile',
 						loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
+					},
+					{
+						path: 'password',
+						loadComponent: () => import('@App/Features/Password/Password').then((c) => c.PasswordComponent)
 					}
 				]
 			},

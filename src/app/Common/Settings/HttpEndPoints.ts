@@ -13,10 +13,14 @@ export class HttpEndPoints {
 	public static Courses = {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
+		EditCourse: 'courses/{id}',
+		AddCourse: 'courses',
 	}
 
 	public static Classes = {
 		JoinClass: 'class/join/{classId}',
+		AddClass: 'class',
+		EditClass: 'class/{id}',
 	}
 
 	public static Email = {
@@ -25,8 +29,8 @@ export class HttpEndPoints {
 	}
 
 	public static Profile = {
-		getInfo: 'account/info',
-
+		GetInfo: 'account/info',
+		EditInfo: 'account/edit'
 	}
 
 	public static Notifications = {

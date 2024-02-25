@@ -1,6 +1,6 @@
 <div class="right-section">
 	<h6 class="title">Edit Profile</h6>
-	<form>
+	<form (ngSubmit)="onSubmit(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="mb-3 image-container">
 			<img src="assets/Images/default-pp.png" />
 			<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
@@ -16,20 +16,45 @@
 		</div>
 		<div class="mb-3">
 			<label for="first-name" class="form-label">First Name</label>
-			<input type="text" class="form-control" id="first-name" placeholder="First Name" />
+			<input
+				type="text"
+				class="form-control"
+				id="first-name"
+				placeholder="First Name"
+				name="firstName"
+				[(ngModel)]="Account.FirstName"
+				#firstName="ngModel"
+				required />
 		</div>
 		<div class="mb-3">
 			<label for="last-name" class="form-label">Last Name</label>
-			<input type="text" class="form-control" id="last-name" placeholder="Last Name" />
+			<input
+				type="text"
+				class="form-control"
+				id="last-name"
+				placeholder="Last Name"
+				name="lastName"
+				[(ngModel)]="Account.LastName"
+				#lastName="ngModel"
+				required />
 		</div>
 		<div class="mb-3">
 			<label for="email" class="form-label">E-mail</label>
-			<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail" />
+			<input
+				type="email"
+				class="form-control"
+				id="email"
+				aria-describedby="emailHelp"
+				placeholder="E-mail"
+				name="email"
+				[(ngModel)]="Account.Email"
+				#email="ngModel"
+				required />
 			<div id="emailHelp" class="form-text">email should be...</div>
 		</div>
 		<div class="mb-3">
 			<label for="birthdate" class="form-label">Birthdate</label>
-			<input type="date" class="form-control" id="birthdate" />
+			<input type="date" class="form-control" id="birthdate" name="birthdate" [(ngModel)]="Account.Birthdate" #birthdate="ngModel" />
 		</div>
 		<button type="submit" class="btn btn-primary float-end">Save</button>
 	</form>

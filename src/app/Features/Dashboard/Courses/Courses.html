@@ -2,25 +2,26 @@
 	<h6 class="title">Dashboard</h6>
 	<div class="row-custom">
 		<p class="sub-title">Courses</p>
-		<button class="btn btn-primary" (click)="openModal('Add Course', 'updateCourse')">
+		<button class="btn btn-primary" (click)="openModal(ModalPropertyEnum.Course)">
 			<i class="fa fa-plus" aria-hidden="true"></i>
 			Add new course
 		</button>
 	</div>
 	<div class="courses-container row">
-		<div class="card" *ngFor="let course of courses; let i = index" (click)="viewDetails(course.id)">
+		<div class="card" *ngFor="let Course of Courses; let i = index" (click)="gotoCourse(Course.Id)">
 			<div class="card-body">
 				<div class="upper-section">
-					<h5 class="card-title">Special title treatment</h5>
-					<span class="status">Active</span>
+					<h5 class="card-title">{{Course.Name}}</h5>
+					<span class="status" *ngIf="Course.IsActive">Active</span>
+					<span class="status" *ngIf="!Course.IsActive">Inactive</span>
 				</div>
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<p class="card-text">{{Course.Description.substring(0,75) + '...'}}</p>
 				<div class="middle-section">
 					<div class="instructor">
-						<span class="initials">NS</span>
-						<p>Nesma Safa</p>
+						<span class="initials">{{getInitials(Course.Instructor)}}</span>
+						<p>{{Course.Instructor.FirstName + ' ' + Course.Instructor.LastName}}</p>
 					</div>
-					<small>20/10/2024</small>
+					<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
 				</div>
 				<div class="lower-section">
 					<span class="rating">
@@ -32,7 +33,7 @@
 					</span>
 					<span>
 						<i class="fa fa-usd" aria-hidden="true"></i>
-						<small class="ps-2">200</small>
+						<small class="ps-2">{{Course.Price}}</small>
 					</span>
 				</div>
 			</div>

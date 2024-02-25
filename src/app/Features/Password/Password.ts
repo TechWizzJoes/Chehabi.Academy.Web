@@ -15,14 +15,14 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 
 @Component({
 	standalone: true,
-	templateUrl: './Profile.html',
-	styleUrls: ['Profile.scss'],
+	templateUrl: './Password.html',
+	styleUrls: ['Password.scss'],
 	imports: [FormsModule, CommonModule, LoaderComponent]
 })
-export class ProfileComponent implements OnInit {
-	IsLoaded: boolean = false;
+export class PasswordComponent implements OnInit {
 	Account: UserModels.User = new UserModels.User();
 	Error!: string;
+	Password: { NewPassword: string, ReNewPassword: string } = { NewPassword: '', ReNewPassword: '' };
 
 	constructor(
 		private Router: Router,
@@ -35,14 +35,7 @@ export class ProfileComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		let endPoint = HttpEndPoints.Profile.GetInfo
-		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
-			this.IsLoaded = true
-			this.Account = data;
-		})
 	}
-
-	onProfilePicChange(event: any) { }
 
 	onSubmit(form: NgForm) {
 		if (form.invalid) {

@@ -7,10 +7,12 @@
 					<i class="fa fa-th-large" aria-hidden="true"></i>
 					Dashboard
 				</a>
-				<a [routerLink]="['/','dashboard','profile']" class="list-group-item list-group-item-action">
+				<a [routerLink]="['/','dashboard','profile']" routerLinkActive="active" class="list-group-item list-group-item-action">
 					<i class="fa fa-user" aria-hidden="true"></i> Edit Profile</a
 				>
-				<a href="#" class="list-group-item list-group-item-action"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Password</a>
+				<a [routerLink]="['/','dashboard','password']" class="list-group-item list-group-item-action"
+					><i class="fa fa-unlock-alt" aria-hidden="true"></i> Password</a
+				>
 			</div>
 		</div>
 		<div class="right-section">
