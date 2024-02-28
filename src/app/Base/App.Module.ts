@@ -72,7 +72,7 @@ import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLo
 				providers: [
 					{
 						id: GoogleLoginProvider.PROVIDER_ID,
-						provider: new GoogleLoginProvider('983824447249-2pjqpa8scedeumrbmhqqjacgg6o1673u.apps.googleusercontent.com'),
+						provider: new GoogleLoginProvider('983824447249-2pjqpa8scedeumrbmhqqjacgg6o1673u.apps.googleusercontent.com', { oneTapEnabled: false }),
 					},
 				],
 			} as SocialAuthServiceConfig,

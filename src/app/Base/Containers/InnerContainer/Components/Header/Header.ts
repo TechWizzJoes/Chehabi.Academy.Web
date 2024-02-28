@@ -29,6 +29,11 @@ export class HeaderComponent {
 		private TranslateService: TranslateService
 	) {
 		this.CurrentUser = this.AuthService.CurrentUser
+		this.AuthService.CurrentUserSub.subscribe(isExisting => {
+			if (isExisting) {
+				this.CurrentUser = this.AuthService.CurrentUser
+			}
+		})
 	}
 
 	goToProfile() {
@@ -43,8 +48,6 @@ export class HeaderComponent {
 
 	signOut() {
 		this.AuthService.SignOut();
-		if (this.AuthService.isGoogleLoggedin)
-			this.socialAuthService.signOut();
 		this.Router.navigate([RoutePaths.Login])
 	}
 }
