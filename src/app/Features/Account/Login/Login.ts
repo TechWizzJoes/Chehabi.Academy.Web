@@ -12,7 +12,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
-import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonModule, SocialAuthService } from '@abacritt/angularx-social-login';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 
 @Component({
@@ -76,7 +76,9 @@ export class LoginComponent {
 			},
 			error: (errorResponse) => {
 				// to show the error on login panel
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+				console.log(errorResponse);
+
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error.Message)];
 			}
 		});
 	}
@@ -113,7 +115,7 @@ export class LoginComponent {
 					},
 					error: (errorResponse) => {
 						// to show the error on login panel
-						this.Error = this.ErrorCodesService.GetErrorCode(errorResponse.error)
+						this.Error = this.ErrorCodesService.GetErrorCode(errorResponse.Message)
 					}
 				});
 			}
