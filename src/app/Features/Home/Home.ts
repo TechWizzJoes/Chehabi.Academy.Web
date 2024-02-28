@@ -53,6 +53,8 @@ export class HomeComponent implements OnInit {
 	getWhatsNew() {
 		let endPoint = HttpEndPoints.WhatsNew.GetAll;
 		this.HttpService.Get<WhatsNewModels.WhatsNew[]>(endPoint).subscribe(data => {
+			console.log(data);
+
 			this.WhatsNew = data
 		})
 	}
