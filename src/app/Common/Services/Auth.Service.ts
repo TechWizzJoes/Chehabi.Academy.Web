@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscription, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 import { StorageService, StorageEnum } from './Storage.Service';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AppConfig } from '@App/Base/AppConfig';
 import { HttpService } from './Http.Service';
 import { HttpEndPoints } from '../Settings/HttpEndPoints';
-import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-	CurrentUserSub!: Subscription;
-	isGoogleLoggedin!: boolean;
+	CurrentUserSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	private isGoogleLoggedin!: boolean;
+	private socialUser!: SocialUser;
 
 	constructor(
 		private StorageService: StorageService,
@@ -32,6 +33,9 @@ export class AuthService {
 		this.StorageService.RemoveLocalStorage(StorageEnum.AccessToken);
 		this.StorageService.RemoveLocalStorage(StorageEnum.RefreshToken);
 		this.StorageService.RemoveLocalStorage(StorageEnum.CurrentUser);
+
+		if (this.isGoogleLoggedin)
+			this.socialAuthService.signOut();
 	}
 
 	get AccessToken(): string {
@@ -94,6 +98,32 @@ export class AuthService {
 	AuthStateSubscribe(): void {
 		this.socialAuthService.authState.subscribe((user) => {
 			console.log('auth state sub', user);
+			this.socialUser = user;
+			this.isGoogleLoggedin = user != null;
+			if (user)
+				this.SocialLogin.Google.Login(this.socialUser.idToken)
 		});
+	}
+
+	SocialLogin = {
+		Google: {
+			Login: (idToken: string) => {
+				let requestModel = {
+					IdToken: idToken,
+				} as AuthModels.GoogleLoginReqModel;
+
+				let httpEndPoint = HttpEndPoints.Account.SocialLogin.Google;
+				this.HttpService.Post<AuthModels.GoogleLoginReqModel, AuthModels.LoginResModel>(
+					httpEndPoint,
+					requestModel,
+				).subscribe({
+					next: (response) => {
+						console.log(response);
+						this.SignIn(response);
+						this.CurrentUserSub.next(true)
+					}
+				});
+			}
+		}
 	}
 }
