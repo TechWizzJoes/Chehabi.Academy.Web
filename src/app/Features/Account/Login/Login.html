@@ -47,12 +47,12 @@
 				<div class="d-grid">
 					<button type="submit" class="btn btn-primary">Login</button>
 				</div>
-				<div>
-					<asl-google-signin-button type="icon" size="medium">
-						<button type="button" (click)="SocialLogin.Google.ClientLogin()">Login with Google</button>
-					</asl-google-signin-button>
+				<div class="text-center">
+					Don't have an account yet? <a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">Register</a>
 				</div>
-				<span>Don't have an account yet? <a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">Register</a></span>
+				<div class="text-center mb-2">Or</div>
+				<asl-google-signin-button type="standard" logo_alignment="center"> </asl-google-signin-button>
+				<!-- type="standard" size="large" shape="rectangular" text="continue_with" width="400" logo_alignment="center" -->
 			</form>
 		</div>
 		<div class="copyright">Copyright © {{Year}}. All rights reserved.</div>

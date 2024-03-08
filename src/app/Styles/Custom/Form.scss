@@ -1,0 +1,246 @@
+.invalid-message {
+	display: none;
+}
+
+.form-submitted {
+	.invalid-data {
+		.form-control,
+		.form-check-input {
+			border-color: $error-color !important;
+		}
+
+		i,
+		.form-check-label {
+			color: $error-color !important;
+		}
+
+		.invalid-message {
+			font-size: 15px;
+			display: block !important;
+			margin-top: 3px;
+			color: $error-color;
+		}
+
+		.ng-select-container {
+			border-color: $error-color !important;
+		}
+
+		.ng-select .ng-arrow-wrapper .ng-arrow {
+			border-color: $error-color transparent transparent !important;
+		}
+
+		.date-select {
+			border: 1.5px solid $error-color;
+
+			hr {
+				background: $error-color !important;
+			}
+		}
+
+		.ck.ck-toolbar {
+			border-color: $error-color !important;
+		}
+
+		.ck.ck-editor__main > .ck-editor__editable {
+			border-color: $error-color !important;
+		}
+
+		.input-group .input-group-prepend > .input-group-text {
+			border-color: $error-color !important;
+		}
+
+		.input-group .input-group-append > .input-group-text {
+			border-color: $error-color !important;
+		}
+		.cke_editor_editor1 {
+			border-color: $error-color !important;
+		}
+	}
+}
+
+.form-field {
+	margin-bottom: 15px;
+
+	.form-label {
+		margin-bottom: 0px;
+		&.required {
+			&::after {
+				content: '\002A';
+				color: $error-color;
+				font-size: 16px;
+				padding: 0 3px;
+			}
+		}
+	}
+}
+
+.form-control,
+.cke_editor_editor1 {
+	border-radius: 3px !important;
+	padding: 7px 10px 7px 10px;
+
+	&.lg {
+		padding: 16px 10px 16px 10px;
+	}
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		box-shadow: none;
+		border: 1px solid #ced4da;
+	}
+}
+
+// .form-control:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: none;
+// }
+
+textarea {
+	resize: none;
+}
+
+.input-group {
+	.form-control {
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+
+	> button {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+
+	&.input-group-lg {
+		> button {
+			font-size: 14px;
+		}
+	}
+}
+
+// .form-group {
+// 	.check-item {
+// 		font-size: 16px;
+// 		margin: 2px 2px;
+
+// 		a {
+// 			color: $font-color-first;
+// 			font-weight: 600;
+// 		}
+// 	}
+
+// 	.form-control-plaintext {
+// 		padding: 7px 10px;
+// 		height: auto;
+// 		border-radius: 0;
+// 		border: 1px solid #ced4da !important;
+
+// 		&:focus {
+// 			border-radius: 0;
+// 			border: 1px solid #ced4da !important;
+// 		}
+// 	}
+// }
+
+.form-control-readonly {
+	padding: 7px 10px;
+	border: 1px solid #ced4da;
+	background-color: #fff;
+	min-height: 40px;
+}
+
+.form-control:disabled {
+	background-color: #e9ecef;
+}
+
+.ng-select {
+	&.ng-select-single {
+		.ng-select-container {
+			height: 40px;
+			border-radius: 3px;
+			padding: 10px 0;
+		}
+	}
+}
+
+.ng-select-container {
+	.ng-value-container .ng-placeholder {
+		color: #666 !important;
+	}
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+	padding-top: 0 !important;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+	border: 1px solid #ced4da;
+	box-shadow: none;
+}
+
+.ng-select.ng-select-multiple
+	.ng-select-container
+	.ng-value-container
+	.ng-input {
+	padding-bottom: 0 !important;
+}
+
+.ng-select.ng-select-multiple
+	.ng-select-container
+	.ng-value-container
+	.ng-value {
+	margin-bottom: 0 !important;
+}
+
+.ng-select.ng-select-multiple
+	.ng-select-container
+	.ng-value-container
+	.ng-placeholder {
+	top: 7px !important;
+}
+
+.ng-select.ng-select-disabled > .ng-select-container {
+	background-color: #e9ecef !important;
+}
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	font-size: 14px;
+	padding: 4px 12px;
+}
+
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+[dir='rtl'] {
+	form {
+		text-align: right !important;
+	}
+}
+
+/////////////////////////////////////////////////////
+
+// .ng-select .ng-option.ng-option-disabled{
+//     display: none !important;  //for 'no items found' option
+// }
+
+//To handle responsive of inline form
+.form-inline {
+	@media (max-width: 1000px) {
+		margin: 5px;
+		padding: 1%;
+	}
+}

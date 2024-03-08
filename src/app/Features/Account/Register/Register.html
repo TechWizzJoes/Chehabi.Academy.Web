@@ -3,17 +3,17 @@
 		<div class="account-box">
 			<div class="account-box-bg"></div>
 			<div class="Register-title">
-				<div class="sub-title">Log in to your account</div>
+				<div class="sub-title">Register a new account</div>
 			</div>
 
 			<form class="Register-form" (ngSubmit)="Register(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
 				<div class="form-group" [ngClass]="{ 'invalid-data': Email.invalid }">
-					<label for="Email">{{'Email'}}</label>
+					<label for="re-Email">{{'Email'}}</label>
 					<div class="input-icon">
 						<input
 							type="text"
 							class="form-control"
-							id="Email"
+							id="re-Email"
 							name="Email"
 							[(ngModel)]="Credentials.Email"
 							#Email="ngModel"
@@ -23,18 +23,19 @@
 				</div>
 
 				<div class="form-group" [ngClass]="{ 'invalid-data': Password.invalid }">
-					<label for="Password">{{'Password'}}</label>
+					<label for="re-Password">{{'Password'}}</label>
 					<div class="input-icon">
 						<i class="fa fa-eye right" *ngIf="!showPW" (click)="toggleShowPW()"></i>
 						<i class="fa fa-eye-slash right" *ngIf="showPW" (click)="toggleShowPW()"></i>
 						<input
 							[type]="PWInputType"
 							class="form-control"
-							id="Password"
+							id="re-Password"
 							name="Password"
 							[(ngModel)]="Credentials.Password"
 							#Password="ngModel"
 							placeholder="{{'Password'}}"
+							autocomplete="new-password"
 							required />
 					</div>
 				</div>
@@ -56,7 +57,6 @@
 					<label for="FirstName">{{'FirstName'}}</label>
 					<div class="input-icon">
 						<input
-							[type]="PWInputType"
 							class="form-control"
 							id="FirstName"
 							name="FirstName"
@@ -70,7 +70,6 @@
 					<label for="LastName">{{'LastName'}}</label>
 					<div class="input-icon">
 						<input
-							[type]="PWInputType"
 							class="form-control"
 							id="LastName"
 							name="LastName"
@@ -84,7 +83,7 @@
 					<label for="BirthDate">{{'BirthDate'}}</label>
 					<div class="input-icon">
 						<input
-							[type]="PWInputType"
+							type="date"
 							class="form-control"
 							id="BirthDate"
 							name="BirthDate"
