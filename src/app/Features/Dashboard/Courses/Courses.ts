@@ -27,6 +27,7 @@ import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
     Courses: CourseModels.Course[] = [];
+    MaxRating: number = 5;
     ModalPropertyEnum = ModalPropertyEnum;
 
     constructor(
@@ -69,8 +70,23 @@ export class CoursesComponent implements OnInit {
         let endPoint = HttpEndPoints.Courses.GetAll
         this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
-            this.Courses = data
+            this.Courses = data;
         })
     }
+
+    changeRating(event: Event, course: CourseModels.Course, index: number) {
+        event.stopPropagation();
+        event.preventDefault();
+        course.Rating = index;
+        this.editCourse(course);
+    }
+
+    editCourse(course: CourseModels.Course) {
+        let endPoint = HttpEndPoints.Courses.EditCourse;
+        endPoint = endPoint.replace('{id}', course.Id.toString())
+        this.HttpService.Put<CourseModels.Course>(endPoint, course).subscribe(data => {
+        })
+    }
+
 
 }

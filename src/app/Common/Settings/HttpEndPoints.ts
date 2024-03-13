@@ -14,6 +14,7 @@ export class HttpEndPoints {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
 		EditCourse: 'courses/{id}',
+		UploadImage: 'courses/upload/image/{id}',
 		AddCourse: 'courses',
 	}
 
@@ -29,8 +30,8 @@ export class HttpEndPoints {
 	}
 
 	public static Profile = {
-		GetInfo: 'account/info',
-		EditInfo: 'account/edit'
+		GetProfile: 'user/{id}',
+		EditProfile: 'user'
 	}
 
 	public static Notifications = {

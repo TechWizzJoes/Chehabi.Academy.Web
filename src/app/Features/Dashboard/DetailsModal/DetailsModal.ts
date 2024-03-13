@@ -3,6 +3,7 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { CommonModule, NgSwitch } from '@angular/common';
+import { HttpHeaders } from '@angular/common/http';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,7 @@ export class DetailsModalComponent implements OnInit {
     NewCourse: CourseModels.Course = new CourseModels.Course();
     ModalPropertyEnum = ModalPropertyEnum;
     DynamicValue: string = '';
+    Image!: File
 
     @Input() property!: ModalPropertyEnum;
     @Input() isEdit: string = '';
@@ -56,11 +58,13 @@ export class DetailsModalComponent implements OnInit {
 
     initClass() {
         this.NewClass.CourseId = this.course.Id;
+        this.NewClass.Id = this.course.Classes[+this.index].Id;
         this.NewClass.StartDate = this.course.Classes[+this.index].StartDate;
         this.NewClass.EndDate = this.course.Classes[+this.index].EndDate;
         this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
         this.NewClass.Period = this.course.Classes[+this.index].Period;
         this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
+        this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
     }
 
     saveChanges() {
@@ -98,6 +102,8 @@ export class DetailsModalComponent implements OnInit {
         if (this.index) {
             (this.NewCourse as any)[this.index] = this.DynamicValue;
         }
+
+
         let endPoint = HttpEndPoints.Courses.EditCourse;
         endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
         this.IsDisabled = true;
@@ -123,6 +129,23 @@ export class DetailsModalComponent implements OnInit {
         this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
             this.IsDisabled = false;
             this.activeModal.close('save');
+        })
+    }
+
+    onFileChange(event: any) {
+        this.Image = event.target.files[0];
+
+        let endPoint = HttpEndPoints.Courses.UploadImage;
+        endPoint = endPoint.replace('{id}', this.course.Id.toString())
+
+        const formData = new FormData();
+        formData.append('file', this.Image);
+
+        this.IsDisabled = true;
+        this.HttpService.Post(endPoint, formData).subscribe((data: any) => {
+            this.IsDisabled = false;
+            let filePath = this.HttpService.ApiUrl + data.filePath.replaceAll('\\', '/');
+            this.NewCourse.ImageUrl = filePath;
         })
     }
 }

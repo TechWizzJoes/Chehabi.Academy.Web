@@ -35,7 +35,8 @@ export class ProfileComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		let endPoint = HttpEndPoints.Profile.GetInfo
+		let endPoint = HttpEndPoints.Profile.GetProfile
+		endPoint = endPoint.replace('{id}', this.AuthService.CurrentUser.Id.toString())
 		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Account = data;
@@ -50,23 +51,26 @@ export class ProfileComponent implements OnInit {
 			return;
 		}
 
-		// let requestModel = {
-		// 	Email: this.Credentials.Email.trim(),
-		// 	Password: this.Credentials.Password.trim()
-		// } as AuthModels.LoginReqModel;
+		let newProfile = new UserModels.UserReqModel();
+		newProfile.Id = this.Account.Id;
+		newProfile.FirstName = this.Account.FirstName;
+		newProfile.LastName = this.Account.LastName;
+		newProfile.Birthdate = this.Account.Birthdate;
+		newProfile.Email = this.Account.Email;
+		newProfile.ProfilePicturePath = this.Account.ProfilePicturePath;
 
-		// let httpEndPoint = HttpEndPoints.Account.Login;
-		// this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
-		// 	httpEndPoint,
-		// 	requestModel,
-		// ).subscribe({
-		// 	next: (response) => {
-		// 		console.log(response);
-		// 	},
-		// 	error: (errorResponse) => {
-		// 		// to show the error on login panel
-		// 		this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
-		// 	}
-		// });
+
+		let httpEndPoint = HttpEndPoints.Profile.EditProfile;
+		this.HttpService.Put<UserModels.UserReqModel>(
+			httpEndPoint,
+			newProfile,
+		).subscribe({
+			next: (response) => {
+				console.log(response);
+			},
+			error: (errorResponse) => {
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+			}
+		});
 	}
 }

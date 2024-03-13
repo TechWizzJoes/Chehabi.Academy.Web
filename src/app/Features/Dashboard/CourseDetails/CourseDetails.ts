@@ -30,7 +30,7 @@ export class CourseDetailsComponent implements OnInit {
     LastUpdated: string = '';
     ModalPropertyEnum = ModalPropertyEnum;
     ClassesCounter: any = { start: 0, end: 3 };
-
+    UpcomingSessions: any[] = [];
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,
@@ -62,7 +62,6 @@ export class CourseDetailsComponent implements OnInit {
         modalRef.closed.subscribe((data) => {
             if (data == 'save') {
                 this.getCourse(this.Course.Id.toString());
-                this.calculateTime();
             }
         })
     }
@@ -72,7 +71,8 @@ export class CourseDetailsComponent implements OnInit {
         endPoint = endPoint.replace('{id}', id)
         this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
             this.IsLoaded = true
-            this.Course = data
+            this.Course = data;
+            this.getUpcomingSessions();
         })
     }
 
@@ -80,7 +80,21 @@ export class CourseDetailsComponent implements OnInit {
         this.ClassesCounter.end += 3;
     }
 
-    calculateTime() {
-
+    getUpcomingSessions() {
+        if (this.Course.IsActive) {
+            this.Course.Classes.forEach((cls) => {
+                let today = new Date().toDateString();
+                if (cls.IsActive && today >= cls.StartDate && cls.EndDate >= today) {
+                    if (cls.CurrentIndex == 0) {
+                        this.UpcomingSessions.push({ class: cls.Id.toString(), date: cls.StartDate })
+                    } else {
+                        let nextSession = cls.CurrentIndex * 7;
+                        let nextSessionDate = new Date(cls.StartDate);
+                        nextSessionDate.setDate(nextSessionDate.getDate() + nextSession);
+                        this.UpcomingSessions.push({ class: cls.Id.toString(), date: cls.StartDate })
+                    }
+                }
+            })
+        }
     }
 }

@@ -2,7 +2,7 @@
 	<h6 class="title">Edit Profile</h6>
 	<form (ngSubmit)="onSubmit(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="mb-3 image-container">
-			<img src="assets/Images/default-pp.png" />
+			<img [src]="Account.ProfilePicturePath?? 'assets/Images/default-pp.png'" />
 			<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
 			<button class="btn btn-danger">Delete</button>
 			<input
@@ -50,7 +50,7 @@
 				[(ngModel)]="Account.Email"
 				#email="ngModel"
 				required />
-			<div id="emailHelp" class="form-text">email should be...</div>
+			<!-- <div id="emailHelp" class="form-text">email should be...</div> -->
 		</div>
 		<div class="mb-3">
 			<label for="birthdate" class="form-label">Birthdate</label>

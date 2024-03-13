@@ -1,13 +1,13 @@
 <div class="page-inner">
-	<!-- <app-loader *ngIf="!IsLoaded"></app-loader> -->
+	<app-loader *ngIf="!IsLoaded"></app-loader>
 	<div class="" *ngIf="IsLoaded">
 		<div class="right-section">
 			<h6 class="main-title">Dashboard</h6>
 			<p class="sub-title">Courses &nbsp;>&nbsp; {{Course.Name}}</p>
 			<div class="card bg-dark text-white">
 				<img [src]="Course.ImageUrl" class="card-img" alt="..." height="275px" />
-				<div class="btn-header">
-					<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.CourseInfo)"></i>
+				<div class="btn-header" (click)="openEditModal(ModalPropertyEnum.CourseInfo)">
+					<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true"></i>
 				</div>
 				<div class="card-img-overlay">
 					<h5 class="card-title">{{Course.Name}}</h5>
@@ -56,13 +56,17 @@
 							<div class="accordion-item" *ngFor="let class of Course.Classes | slice:0:ClassesCounter.end ; let i = index">
 								<h2 class="accordion-header" id="{{'heading' + i}}">
 									<button
-										class="accordion-button"
+										class="accordion-button collapsed"
 										type="button"
 										data-bs-toggle="collapse"
 										[attr.data-bs-target]="'#collapse' + i"
 										aria-expanded="false"
 										[attr.aria-controls]="'#collapse' + i">
 										{{'Class ' + class.Id}}
+										<span class="status active" *ngIf="class.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
+										<span class="status inactive" *ngIf="!class.IsActive" title="Inactive"
+											><i class="fa fa-times" aria-hidden="true"></i
+										></span>
 									</button>
 									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>
 								</h2>
@@ -85,7 +89,7 @@
 											<small>{{class.Period}}</small>
 										</div>
 										<div class="class">
-											<p>Current Index</p>
+											<p>Current Session</p>
 											<small>{{class.CurrentIndex}}</small>
 										</div>
 									</div>
@@ -103,13 +107,12 @@
 							<h6 class="title">Upcoming Sessions</h6>
 						</div>
 						<div class="list-group">
-							<div class="session">
-								<p class="mb-1">S1</p>
-								<small>03/10/2024</small>
+							<div class="session" *ngFor="let session of UpcomingSessions">
+								<p class="mb-1">Class {{session.class}}</p>
+								<small>{{session.date}}</small>
 							</div>
-							<div class="session">
-								<p class="mb-1">S2</p>
-								<small>03/10/2024</small>
+							<div class="session" *ngIf="UpcomingSessions.length == 0">
+								<p class="no-data">No upcoming sessions.</p>
 							</div>
 						</div>
 					</div>

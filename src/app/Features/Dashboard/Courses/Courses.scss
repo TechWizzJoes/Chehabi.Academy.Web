@@ -27,6 +27,7 @@
 		.card {
 			margin: 1rem;
 			width: 30%;
+			height: 250px;
 			border: none;
 			border-radius: 10px;
 
@@ -39,6 +40,13 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+
+				.card-title {
+					font-size: 1.1rem;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+				}
 
 				.status {
 					border-radius: 15px;
@@ -85,8 +93,26 @@
 				margin-top: 30px;
 
 				i {
-					font-size: 0.9rem;
+					font-size: 1rem;
 					margin-right: 5px;
+				}
+
+				.rating {
+					input {
+						display: none;
+					}
+					label {
+						cursor: pointer;
+
+						i {
+							color: black;
+							transition: 0.1s;
+						}
+
+						i:hover {
+							color: orange !important;
+						}
+					}
 				}
 			}
 		}

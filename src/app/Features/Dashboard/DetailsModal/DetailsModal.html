@@ -25,6 +25,10 @@
 			<label for="currentIndex" class="form-label">Current Index</label>
 			<input type="text" class="form-control" id="currentIndex" name="currentIndex" [(ngModel)]="NewClass.CurrentIndex" #currentIndex="ngModel" />
 		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" id="active" checked [(ngModel)]="NewClass.IsActive" #isActive="ngModel" />
+			<label class="form-check-label" for="active"> Active </label>
+		</div>
 	</div>
 	<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">
 		<div class="row mb-3">
@@ -90,8 +94,8 @@
 			<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
 		</div>
 		<div class="mb-3">
-			<label for="image" class="form-label">Image Url</label>
-			<input type="text" class="form-control" id="image" name="image" [(ngModel)]="NewCourse.ImageUrl" #image="ngModel" />
+			<label for="image" class="form-label">Upload Image</label>
+			<input type="file" class="form-control" id="image" (change)="onFileChange($event)" />
 		</div>
 	</div>
 	<div class="modal-body" *ngSwitchDefault>
