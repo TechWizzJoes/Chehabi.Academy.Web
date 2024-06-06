@@ -6,12 +6,13 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
-import { StorageService } from '@App/Common/Services/Storage.Service';
+import { StorageEnum, StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
+import { AuthModels } from '@App/Common/Models/Auth.Models';
 
 @Component({
 	standalone: true,
@@ -20,9 +21,9 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 	imports: [FormsModule, CommonModule, LoaderComponent]
 })
 export class PasswordComponent implements OnInit {
-	Account: UserModels.User = new UserModels.User();
+	Account: AuthModels.CurrentUserResModel = new AuthModels.CurrentUserResModel();
 	Error!: string;
-	Password: { NewPassword: string, ReNewPassword: string } = { NewPassword: '', ReNewPassword: '' };
+	Password: { OldPassword: string, NewPassword: string, ReNewPassword: string } = { OldPassword: '', NewPassword: '', ReNewPassword: '' };
 
 	constructor(
 		private Router: Router,
@@ -35,6 +36,7 @@ export class PasswordComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.Account = this.AuthService.CurrentUser;
 	}
 
 	onSubmit(form: NgForm) {
@@ -43,23 +45,30 @@ export class PasswordComponent implements OnInit {
 			return;
 		}
 
-		// let requestModel = {
-		// 	Email: this.Credentials.Email.trim(),
-		// 	Password: this.Credentials.Password.trim()
-		// } as AuthModels.LoginReqModel;
+		if (this.Password.NewPassword !== this.Password.ReNewPassword) {
+			this.Error = ErrorCodesEnum.PASSWORD_NOT_MATCH;
+			return;
+		}
 
-		// let httpEndPoint = HttpEndPoints.Account.Login;
-		// this.HttpService.Post<AuthModels.LoginReqModel, AuthModels.LoginResModel>(
-		// 	httpEndPoint,
-		// 	requestModel,
-		// ).subscribe({
-		// 	next: (response) => {
-		// 		console.log(response);
-		// 	},
-		// 	error: (errorResponse) => {
-		// 		// to show the error on login panel
-		// 		this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
-		// 	}
-		// });
+		let requestModel = {
+			Id: this.Account.Id,
+			OldPassword: this.Password.OldPassword,
+			NewPassword: this.Password.NewPassword,
+			ReNewPassword: this.Password.ReNewPassword,
+		} as AuthModels.ResetPasswordReqModel;
+
+		let httpEndPoint = HttpEndPoints.Account.ResetPassword;
+		this.HttpService.Post<AuthModels.ResetPasswordReqModel, AuthModels.LoginResModel>(
+			httpEndPoint,
+			requestModel,
+		).subscribe({
+			next: (response) => {
+				console.log(response);
+			},
+			error: (errorResponse) => {
+				// to show the error on login panel
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+			}
+		});
 	}
 }

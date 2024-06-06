@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 import { StorageService, StorageEnum } from './Storage.Service';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
@@ -11,6 +11,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 	CurrentUserSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	ProfilePicUpdate: Subject<any> = new Subject();
 	private isGoogleLoggedin!: boolean;
 	private socialUser!: SocialUser;
 
@@ -56,6 +57,17 @@ export class AuthService {
 
 	set RefreshToken(value) {
 		this.StorageService.SetLocalStorage(StorageEnum.RefreshToken, value);
+	}
+
+	get ProfilePicture(): string | undefined {
+		return this.CurrentUser.ProfilePicturePath;
+	}
+
+	set ProfilePicture(value) {
+		let user = this.StorageService.GetLocalStorage<AuthModels.CurrentUserResModel>(StorageEnum.CurrentUser)
+		user.ProfilePicturePath = value;
+
+		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, user);
 	}
 
 	get UserDiDs(): string[] {

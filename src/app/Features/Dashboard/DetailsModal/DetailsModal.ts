@@ -1,12 +1,15 @@
+import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { AuthService } from '@App/Common/Services/Auth.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { CommonModule, NgSwitch } from '@angular/common';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { observable } from 'rxjs';
 
 @Component({
     selector: 'ngbd-modal-content',
@@ -20,16 +23,21 @@ export class DetailsModalComponent implements OnInit {
     IsDisabled: boolean = false;
     NewClass: CourseModels.Class = new CourseModels.Class();
     NewCourse: CourseModels.Course = new CourseModels.Course();
+    CourseFile!: File;
+    CourseImage!: File;
     ModalPropertyEnum = ModalPropertyEnum;
     DynamicValue: string = '';
-    Image!: File
+    Error!: string;
+    ImageProgress: any = { start: 0, end: 100 }
+    FileProgress: any = { start: 0, end: 100 }
+
 
     @Input() property!: ModalPropertyEnum;
     @Input() isEdit: string = '';
     @Input() course: CourseModels.Course = new CourseModels.Course();
     @Input() index: string = '';
 
-    constructor(private HttpService: HttpService) { }
+    constructor(private HttpService: HttpService, private AuthService: AuthService) { }
 
     ngOnInit() {
         this.initCourse();
@@ -67,7 +75,11 @@ export class DetailsModalComponent implements OnInit {
         this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
     }
 
-    saveChanges() {
+    onSubmit(form: NgForm) {
+        if (form.invalid) {
+            this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+            return;
+        }
         switch (this.property) {
             case ModalPropertyEnum.Course:
                 if (this.isEdit) {
@@ -91,14 +103,19 @@ export class DetailsModalComponent implements OnInit {
 
     addCourse() {
         let endPoint = HttpEndPoints.Courses.AddCourse;
+        this.NewCourse.InstructorId = this.AuthService.CurrentUser.Id;
         this.IsDisabled = true;
-        this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe(data => {
+        this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe(async data => {
+            this.NewCourse = data;
+            if ((this.CourseFile || this.CourseImage)) {
+                await this.editCourse();
+            }
             this.IsDisabled = false;
             this.activeModal.close('save');
         })
     }
 
-    editCourse() {
+    async editCourse() {
         if (this.index) {
             (this.NewCourse as any)[this.index] = this.DynamicValue;
         }
@@ -107,9 +124,30 @@ export class DetailsModalComponent implements OnInit {
         let endPoint = HttpEndPoints.Courses.EditCourse;
         endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
         this.IsDisabled = true;
+        if ((this.CourseFile || this.CourseImage)) {
+            if (this.CourseFile) {
+                await this.uploadFile(HttpEndPoints.Courses.Uploadfile, this.CourseFile, false)
+            }
+
+            if (this.CourseImage) {
+                await this.uploadFile(HttpEndPoints.Courses.UploadImage, this.CourseImage, true)
+            }
+        }
+        console.log(this.NewCourse.ImageUrl);
+
         this.HttpService.Put<CourseModels.Course>(endPoint, this.NewCourse).subscribe(data => {
             this.IsDisabled = false;
             this.activeModal.close('save');
+        })
+    }
+
+    deleteCourse() {
+        let endPoint = HttpEndPoints.Courses.DeleteCourse;
+        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
+        this.IsDisabled = true;
+        this.HttpService.Delete(endPoint).subscribe(data => {
+            this.IsDisabled = false;
+            this.activeModal.close('delete');
         })
     }
 
@@ -126,26 +164,65 @@ export class DetailsModalComponent implements OnInit {
         let endPoint = HttpEndPoints.Classes.EditClass;
         endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
         this.IsDisabled = true;
+
         this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
             this.IsDisabled = false;
             this.activeModal.close('save');
         })
     }
 
-    onFileChange(event: any) {
-        this.Image = event.target.files[0];
+    deleteClass() {
+        let endPoint = HttpEndPoints.Classes.DeleteClass;
+        endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
+        this.IsDisabled = true;
+        this.HttpService.Delete(endPoint).subscribe(data => {
+            this.IsDisabled = false;
+            this.activeModal.close('save');
+        })
+    }
 
-        let endPoint = HttpEndPoints.Courses.UploadImage;
-        endPoint = endPoint.replace('{id}', this.course.Id.toString())
+    onFileChange(event: any, isImage: boolean = true) {
 
+        if (isImage) {
+            this.CourseImage = event.target.files[0];
+
+        } else {
+            this.CourseFile = event.target.files[0];
+        }
+
+    }
+
+    async uploadFile(endPoint: string, file: File, isImage: boolean) {
         const formData = new FormData();
-        formData.append('file', this.Image);
+        formData.append('file', file);
+
+        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
+
 
         this.IsDisabled = true;
-        this.HttpService.Post(endPoint, formData).subscribe((data: any) => {
-            this.IsDisabled = false;
-            let filePath = this.HttpService.ApiUrl + data.filePath.replaceAll('\\', '/');
-            this.NewCourse.ImageUrl = filePath;
+        this.HttpService.PostWithOptions(endPoint, formData, {
+            reportProgress: true,
+            observe: 'events'
+        }).subscribe((res: any) => {
+
+            if (res.type === HttpEventType.Response) {
+                this.IsDisabled = false;
+                let filePath = this.HttpService.ApiUrl + 'courses/' + res.body.filePath.replaceAll('\\', '/');
+                if (isImage) {
+                    this.NewCourse.ImageUrl = filePath;
+                    console.log(this.NewCourse);
+                } else {
+                    this.NewCourse.FilePath = filePath;
+                }
+            }
+            if (res.type === HttpEventType.UploadProgress) {
+                if (isImage) {
+                    this.ImageProgress.start = Math.round(100 * res.loaded / res.total);
+                } else {
+                    this.FileProgress.start = Math.round(100 * res.loaded / res.total);
+                }
+            }
+
         })
     }
 }

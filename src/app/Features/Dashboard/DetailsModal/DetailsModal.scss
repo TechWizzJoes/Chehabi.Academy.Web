@@ -1,3 +1,35 @@
 textarea {
 	resize: none;
 }
+
+.progress-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+
+	.progress {
+		height: 5px;
+		width: 93%;
+	}
+}
+
+.modal-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	i {
+		margin-right: 5px;
+	}
+
+	.btn-outline-dark {
+		margin-right: 5px;
+	}
+
+	.right-section.block {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+	}
+}

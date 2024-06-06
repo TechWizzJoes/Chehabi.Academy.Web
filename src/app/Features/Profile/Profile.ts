@@ -12,6 +12,7 @@ import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
 	standalone: true,
@@ -22,7 +23,10 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 export class ProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
 	Account: UserModels.User = new UserModels.User();
+	IsDisabled: boolean = false;
+	IsUploadDisabled: boolean = false;
 	Error!: string;
+	Progress: any = { start: 0, end: 100 }
 
 	constructor(
 		private Router: Router,
@@ -43,7 +47,39 @@ export class ProfileComponent implements OnInit {
 		})
 	}
 
-	onProfilePicChange(event: any) { }
+	onFileChange(event: any) {
+		let Image = event.target.files[0];
+
+		let endPoint = HttpEndPoints.Profile.UploadImage;
+		endPoint = endPoint.replace('{id}', this.Account.Id.toString())
+
+		const formData = new FormData();
+		formData.append('file', Image);
+
+		this.IsUploadDisabled = true;
+		this.IsDisabled = true;
+		this.HttpService.PostWithOptions(endPoint, formData, {
+			reportProgress: true,
+			observe: 'events'
+		}).subscribe((res: any) => {
+			if (res.type === HttpEventType.Response) {
+				this.IsUploadDisabled = false;
+				this.IsDisabled = false;
+				let filePath = this.HttpService.ApiUrl + 'user/' + res.body.filePath.replaceAll('\\', '/');
+				this.Account.ProfilePicturePath = filePath;
+				this.editProfile();
+			}
+			if (res.type === HttpEventType.UploadProgress) {
+				this.Progress.start = Math.round(100 * res.loaded / res.total);
+			}
+		})
+	}
+
+	removeProfilePicture() {
+		this.Account.ProfilePicturePath = '';
+		console.log(this.Account.ProfilePicturePath)
+		this.editProfile();
+	}
 
 	onSubmit(form: NgForm) {
 		if (form.invalid) {
@@ -51,6 +87,10 @@ export class ProfileComponent implements OnInit {
 			return;
 		}
 
+		this.editProfile();
+	}
+
+	editProfile() {
 		let newProfile = new UserModels.UserReqModel();
 		newProfile.Id = this.Account.Id;
 		newProfile.FirstName = this.Account.FirstName;
@@ -66,7 +106,8 @@ export class ProfileComponent implements OnInit {
 			newProfile,
 		).subscribe({
 			next: (response) => {
-				console.log(response);
+				this.AuthService.ProfilePicture = this.Account.ProfilePicturePath;
+				this.AuthService.ProfilePicUpdate.next({});
 			},
 			error: (errorResponse) => {
 				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];

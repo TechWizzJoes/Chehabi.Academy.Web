@@ -8,13 +8,16 @@ export class HttpEndPoints {
 		},
 		Register: 'account/register',
 		Refresh: 'account/refresh',
+		ResetPassword: 'account/reset-password',
 	}
 
 	public static Courses = {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
 		EditCourse: 'courses/{id}',
+		DeleteCourse: 'courses/{id}',
 		UploadImage: 'courses/upload/image/{id}',
+		Uploadfile: 'courses/upload/file/{id}',
 		AddCourse: 'courses',
 	}
 
@@ -22,6 +25,7 @@ export class HttpEndPoints {
 		JoinClass: 'class/join/{classId}',
 		AddClass: 'class',
 		EditClass: 'class/{id}',
+		DeleteClass: 'class/{id}',
 	}
 
 	public static Email = {
@@ -31,7 +35,8 @@ export class HttpEndPoints {
 
 	public static Profile = {
 		GetProfile: 'user/{id}',
-		EditProfile: 'user'
+		EditProfile: 'user',
+		UploadImage: 'user/upload/image/{id}',
 	}
 
 	public static Notifications = {

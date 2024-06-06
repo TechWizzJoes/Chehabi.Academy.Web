@@ -3,15 +3,17 @@
 	<div class="page-section" *ngIf="true">
 		<div class="left-section">
 			<div class="list-group">
-				<a [routerLink]="['/','dashboard','courses']" class="list-group-item list-group-item-action active" aria-current="true">
+				<a [routerLink]="['/','dashboard','courses']" routerLinkActive="active" class="list-group-item list-group-item-action" aria-current="true">
 					<i class="fa fa-th-large" aria-hidden="true"></i>
-					Dashboard
+					<p>Dashboard</p>
 				</a>
 				<a [routerLink]="['/','dashboard','profile']" routerLinkActive="active" class="list-group-item list-group-item-action">
-					<i class="fa fa-user" aria-hidden="true"></i> Edit Profile</a
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<p>Edit Profile</p></a
 				>
-				<a [routerLink]="['/','dashboard','password']" class="list-group-item list-group-item-action"
-					><i class="fa fa-unlock-alt" aria-hidden="true"></i> Password</a
+				<a [routerLink]="['/','dashboard','password']" routerLinkActive="active" class="list-group-item list-group-item-action"
+					><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+					<p>Password</p></a
 				>
 			</div>
 		</div>

@@ -12,17 +12,17 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { CourseModels } from '@App/Common/Models/Course.Models';
-import { UserModels } from '@App/Common/Models/User.Models';
-import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
+import { PipesModule } from '@App/Common/Pipes/Pipes.Module';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 @Component({
     standalone: true,
     templateUrl: './CourseDetails.html',
     styleUrls: ['CourseDetails.scss'],
-    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent]
+    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent, PipesModule]
 })
 export class CourseDetailsComponent implements OnInit {
     IsLoaded: boolean = false;
@@ -62,6 +62,9 @@ export class CourseDetailsComponent implements OnInit {
         modalRef.closed.subscribe((data) => {
             if (data == 'save') {
                 this.getCourse(this.Course.Id.toString());
+
+            } else if (data == 'delete') {
+                this.Router.navigate([RoutePaths.Dashboard, RoutePaths.Courses])
             }
         })
     }
@@ -72,6 +75,7 @@ export class CourseDetailsComponent implements OnInit {
         this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
             this.IsLoaded = true
             this.Course = data;
+            this.Course.ImageUrl = data.ImageUrl;
             this.getUpcomingSessions();
         })
     }

@@ -17,6 +17,11 @@
 				height: 65px;
 				border-radius: 50%;
 				border: 3px solid #e2e2e2c4;
+				position: relative;
+
+				&.filter {
+					filter: brightness(0.4);
+				}
 			}
 
 			.fileInput {
@@ -32,12 +37,40 @@
 				width: 150px;
 				padding: 0.25rem 0.75rem;
 				font-size: 0.9rem;
-				margin-left: 2rem;
+				margin-left: 1rem;
 
 				&.btn-danger {
 					width: fit-content;
 					margin-left: 1rem;
 				}
+			}
+
+			.progress {
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				background: conic-gradient(
+					rgb(16, 16, 63) 3.6deg,
+					#c3c3c3 0deg
+				);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				transition: 0.2s;
+
+				.progress-value {
+					position: absolute;
+					z-index: 2;
+					color: white;
+					font-weight: 600;
+					letter-spacing: 1px;
+				}
+			}
+
+			.no-progress {
+				border-radius: 50%;
+				background: none !important;
 			}
 		}
 

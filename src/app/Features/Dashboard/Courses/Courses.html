@@ -8,6 +8,7 @@
 		</button>
 	</div>
 	<div class="courses-container row">
+		<app-loader *ngIf="!IsLoaded"></app-loader>
 		<div class="card" *ngFor="let Course of Courses; let i = index" (click)="gotoCourse(Course.Id)">
 			<div class="card-body">
 				<div class="upper-section">
@@ -15,7 +16,7 @@
 					<span class="status active" *ngIf="Course.IsActive">Active</span>
 					<span class="status inactive" *ngIf="!Course.IsActive">Inactive</span>
 				</div>
-				<p class="card-text">{{Course.Description.substring(0,75) + '...'}}</p>
+				<p class="card-text">{{Course.Description}}</p>
 				<div class="middle-section">
 					<div class="instructor">
 						<span class="initials">{{getInitials(Course.Instructor)}}</span>
@@ -28,13 +29,13 @@
 						<ng-container *ngFor="let i of [1,2,3,4,5]">
 							<input type="radio" name="star" [id]="'star' + i" />
 							<label [for]="'star' + i" (click)="changeRating($event, Course, i)">
-								<i class="fa fa-star-o" aria-hidden="true" [style.color]="Course.Rating >= i ? 'yellow' : 'black'"></i
+								<i class="fa fa-star" aria-hidden="true" [style.color]="Course.Rating >= i ? 'orange' : 'gray'"></i
 							></label>
 						</ng-container>
 					</span>
 					<span>
 						<i class="fa fa-usd" aria-hidden="true"></i>
-						<small class="ps-2">{{Course.Price}}</small>
+						<small class="ps-2">{{Course.Price || '0'}}</small>
 					</span>
 				</div>
 			</div>
