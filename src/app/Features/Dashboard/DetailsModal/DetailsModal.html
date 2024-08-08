@@ -1,0 +1,199 @@
+<div class="modal-header">
+	<h5 class="modal-title title" *ngIf="isEdit">Edit {{property}}</h5>
+	<h5 class="modal-title title" *ngIf="!isEdit">Add {{property}}</h5>
+	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div [ngSwitch]="property">
+	<form (ngSubmit)="onSubmit(frm)" name="form" id="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Class">
+			<div class="mb-3">
+				<label for="capacity" class="form-label">Capacity</label>
+				<input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="NewClass.MaxCapacity" #capacity="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="start" class="form-label">Starts In</label>
+				<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewClass.StartDate" #startDate="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="end" class="form-label">Ends In</label>
+				<input type="date" class="form-control" id="end" name="endDate" [(ngModel)]="NewClass.EndDate" #endDate="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="period" class="form-label">Period</label>
+				<input type="text" class="form-control" id="period" name="period" [(ngModel)]="NewClass.Period" #period="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="currentIndex" class="form-label">Current Index</label>
+				<input type="text" class="form-control" id="currentIndex" name="currentIndex" [(ngModel)]="NewClass.CurrentIndex" #currentIndex="ngModel" />
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="active" checked [(ngModel)]="NewClass.IsActive" #isActive="ngModel" />
+				<label class="form-check-label" for="active"> Active </label>
+			</div>
+		</div>
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">
+			<div class="row mb-3">
+				<div class="col">
+					<label for="class" class="form-label">Name *</label>
+					<input type="text" class="form-control" id="class" name="Name" [(ngModel)]="NewCourse.Name" #Name="ngModel" required />
+				</div>
+				<div class="col">
+					<label for="price" class="form-label">Price</label>
+					<input type="number" class="form-control" id="price" name="Price" [(ngModel)]="NewCourse.Price" #Price="ngModel" />
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col">
+					<label for="start" class="form-label">Starts In</label>
+					<input type="date" class="form-control" id="start" name="StartDate" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
+				</div>
+				<div class="col">
+					<label for="duration" class="form-label">Duration</label>
+					<input type="number" class="form-control" id="duration" name="Duration" [(ngModel)]="NewCourse.Duration" #Duration="ngModel" />
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="videopath" class="form-label">Video Url</label>
+				<input type="text" class="form-control" id="videopath" name="VideoPath" [(ngModel)]="NewCourse.VideoPath" #VideoPath="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="image" class="form-label">Upload Image</label>
+				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
+				<div class="progress-container" *ngIf="ImageProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							[style.width]="ImageProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="ImageProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{ImageProgress.start}}%</span>
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="filepath" class="form-label">Upload File</label>
+				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
+				<div class="progress-container" *ngIf="FileProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							f
+							[style.width]="FileProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="FileProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{FileProgress.start}}%</span>
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="description" class="form-label">Description *</label>
+				<textarea
+					class="form-control"
+					id="description"
+					rows="2"
+					name="Description"
+					[(ngModel)]="NewCourse.Description"
+					#Description="ngModel"
+					required></textarea>
+			</div>
+			<div class="mb-3">
+				<label for="prerequisite" class="form-label">Prerequisite</label>
+				<textarea
+					class="form-control"
+					id="prerequisite"
+					rows="2"
+					Prerequisite="title"
+					[(ngModel)]="NewCourse.Prerequisite"
+					name="Prerequisite"
+					#Prerequisite="ngModel"></textarea>
+			</div>
+			<div class="mb-3">
+				<label for="prerequisite" class="form-label">To Be Learned</label>
+				<textarea
+					class="form-control"
+					id="prerequisite"
+					rows="2"
+					name="ToBeLearned"
+					[(ngModel)]="NewCourse.ToBeLearned"
+					#ToBeLearned="ngModel"></textarea>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="active" name="isActive" checked [(ngModel)]="NewCourse.IsActive" #isActive="ngModel" />
+				<label class="form-check-label" for="active"> Active </label>
+			</div>
+		</div>
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseInfo">
+			<div class="mb-3">
+				<label for="title" class="form-label">Name *</label>
+				<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
+			</div>
+			<div class="mb-3">
+				<label for="price" class="form-label">Price</label>
+				<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
+			</div>
+			<div class="mb-3">
+				<label for="image" class="form-label">Upload Image</label>
+				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
+				<div class="progress-container" *ngIf="ImageProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							[style.width]="ImageProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="ImageProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{ImageProgress.start}}%</span>
+				</div>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="active" checked [(ngModel)]="NewClass.IsActive" #isActive="ngModel" />
+				<label class="form-check-label" for="active"> Active </label>
+			</div>
+		</div>
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseMaterial">
+			<div class="mb-3">
+				<label for="filepath" class="form-label">Upload File</label>
+				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
+				<div class="progress-container" *ngIf="FileProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							[style.width]="FileProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="FileProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{FileProgress.start}}%</span>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body" *ngSwitchDefault>
+			<div class="mb-3">
+				<label for="dynamicProperty" class="form-label">{{property}}</label>
+				<textarea class="form-control" id="property" rows="7" name="dynamicProperty" [(ngModel)]="DynamicValue" #dynamicProperty="ngModel"></textarea>
+			</div>
+		</div>
+		<div class="modal-body" [ngClass]="{ 'invalid-data': Error }" *ngIf="Error">
+			<div class="invalid-message pb-2">{{Error}}</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<div class="left-section" *ngIf="property == ModalPropertyEnum.CourseInfo">
+		<button type="button" class="btn btn-danger" (click)="deleteCourse()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Course</button>
+	</div>
+	<div class="left-section" *ngIf="property == ModalPropertyEnum.Class && isEdit">
+		<button type="button" class="btn btn-danger" (click)="deleteClass()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Class</button>
+	</div>
+	<div class="right-section" [ngClass]="property == ModalPropertyEnum.CourseInfo || property == ModalPropertyEnum.Class? '' : 'block'">
+		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
+		<button type="submit" form="form" class="btn btn-primary" [disabled]="IsDisabled">Save</button>
+	</div>
+</div>

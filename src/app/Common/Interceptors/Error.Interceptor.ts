@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return next.handle(req).pipe(
 			catchError((error, caught) => {
-				console.log('error interceptor');
+				console.log('error interceptor', error);
 				// after all retrys if any
 				// return login error to handle in the component
 				if (req.url.includes('account')) {

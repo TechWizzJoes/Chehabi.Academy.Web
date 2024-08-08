@@ -8,4 +8,5 @@ export enum ErrorCodesEnum {
 	MAX_CLASS_USERS = 'Sorry this class is currently full',
 	USER_EXISTS_CLASS = 'You already joined this class',
 	USER_EXISTS_COURSE = 'You already joined this course in another active class',
+	PASSWORD_NOT_MATCH = 'Passwords do not match',
 }

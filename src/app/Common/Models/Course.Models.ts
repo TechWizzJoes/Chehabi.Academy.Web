@@ -18,7 +18,8 @@ export namespace CourseModels {
 		Prerequisite!: string;
 		ToBeLearned!: string;
 		Price!: number;
-		Classes!: Class[]
+		Classes!: Class[];
+		InstructorId!: number;
 		Instructor!: UserModels.User;
 
 	}

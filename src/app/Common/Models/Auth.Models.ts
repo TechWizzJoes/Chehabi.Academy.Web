@@ -64,4 +64,11 @@ export namespace AuthModels {
 		LastName: string = '';
 		// constructor(public Email: string, public Password: string, public RePassword: string, public BirthDate: Date, public FirstName: string, public LastName: string) { }
 	}
+
+	export class ResetPasswordReqModel {
+		Id!: number;
+		OldPassword!: string;
+		NewPassword!: string;
+		ReNewPassword!: string;
+	}
 }

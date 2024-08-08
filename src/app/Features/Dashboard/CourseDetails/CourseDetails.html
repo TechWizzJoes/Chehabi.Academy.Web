@@ -1,0 +1,158 @@
+<div class="page-inner">
+	<app-loader *ngIf="!IsLoaded"></app-loader>
+	<div class="" *ngIf="IsLoaded">
+		<div class="right-section">
+			<h6 class="main-title">Dashboard</h6>
+			<p class="sub-title">Courses &nbsp;>&nbsp; {{Course.Name}}</p>
+			<div class="card bg-dark text-white">
+				<img *ngIf="Course.ImageUrl" [src]="Course.ImageUrl || '/assets/Images/white-full-logo.png'" class="card-img" alt="no image" height="275px" />
+				<div *ngIf="!Course.ImageUrl" class="card-img"></div>
+				<div class="btn-header" (click)="openEditModal(ModalPropertyEnum.CourseInfo)">
+					<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true"></i>
+				</div>
+				<div class="card-img-overlay">
+					<h5 class="card-title">
+						{{Course.Name}}
+						<span class="status active" *ngIf="Course.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
+						<span class="status inactive" *ngIf="!Course.IsActive" title="Inactive"><i class="fa fa-times" aria-hidden="true"></i></span>
+					</h5>
+					<p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p>
+					<p class="card-text" *ngIf="Course.Price">${{Course.Price}}</p>
+				</div>
+			</div>
+			<div class="group">
+				<div class="left-group">
+					<div class="course-overview section">
+						<div class="row-custom">
+							<h6 class="title">Course Overview</h6>
+							<i
+								class="fa fa-pencil-square-o btn-custom"
+								aria-hidden="true"
+								(click)="openEditModal(ModalPropertyEnum.CourseOverview, 'Description')"></i>
+						</div>
+						<p class="text">{{Course.Description}}</p>
+						<p class="no-data" *ngIf="!Course.Description">No Description for this course.</p>
+					</div>
+					<div class="skills section">
+						<div class="row-custom">
+							<h6 class="title">To Be Learned</h6>
+							<i
+								class="fa fa-pencil-square-o btn-custom"
+								aria-hidden="true"
+								(click)="openEditModal(ModalPropertyEnum.ToBeLearned, 'ToBeLearned')"></i>
+						</div>
+						<p class="text">{{Course.ToBeLearned}}</p>
+						<p class="no-data" *ngIf="!Course.ToBeLearned">No data.</p>
+					</div>
+					<div class="prerequisites section">
+						<div class="row-custom">
+							<h6 class="title">Prerequisites</h6>
+							<i
+								class="fa fa-pencil-square-o btn-custom"
+								aria-hidden="true"
+								(click)="openEditModal(ModalPropertyEnum.Prerequisites, 'Prerequisite')"></i>
+						</div>
+						<p class="text">{{Course.Prerequisite}}</p>
+						<p class="no-data" *ngIf="!Course.Prerequisite">This course has no prerequisites.</p>
+					</div>
+					<div class="sections section">
+						<div class="row-custom">
+							<h6 class="title">Classes</h6>
+							<i class="fa fa-plus btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class,'',false)"></i>
+						</div>
+						<p class="no-data" *ngIf="Course.Classes.length == 0">No classes.</p>
+
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item" *ngFor="let class of Course.Classes | slice:0:ClassesCounter.end ; let i = index">
+								<h2 class="accordion-header" id="{{'heading' + i}}">
+									<button
+										class="accordion-button collapsed"
+										type="button"
+										data-bs-toggle="collapse"
+										[attr.data-bs-target]="'#collapse' + i"
+										aria-expanded="false"
+										[attr.aria-controls]="'#collapse' + i">
+										{{'Class ' + class.Id}}
+										<span class="status active" *ngIf="class.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
+										<span class="status inactive" *ngIf="!class.IsActive" title="Inactive"
+											><i class="fa fa-times" aria-hidden="true"></i
+										></span>
+									</button>
+									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>
+								</h2>
+								<div
+									id="{{'collapse' + i}}"
+									class="accordion-collapse collapse"
+									[attr.aria-labelledby]="'heading' + i"
+									data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<div class="class">
+											<p>Duration</p>
+											<small>{{class.StartDate}} - {{class.EndDate}}</small>
+										</div>
+										<div class="class">
+											<p>Capacity</p>
+											<small>{{class.MaxCapacity}}</small>
+										</div>
+										<div class="class">
+											<p>Period</p>
+											<small>{{class.Period}}</small>
+										</div>
+										<div class="class">
+											<p>Current Session</p>
+											<small>{{class.CurrentIndex}}</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row-custom" *ngIf="Course.Classes.length > ClassesCounter.end">
+							<button class="btn btn-light" (click)="getClasses()">Load More Classes</button>
+						</div>
+					</div>
+				</div>
+				<div class="right-group">
+					<div class="video section">
+						<div class="row-custom">
+							<h6 class="title">Course Video</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Video, 'VideoPath')"></i>
+						</div>
+						<p class="no-data" *ngIf="!Course.VideoPath">No video attached to this course.</p>
+						<div class="video-container">
+							<iframe
+								*ngIf="Course.VideoPath"
+								[src]="'https://www.youtube.com/embed/' + Course.VideoPath | safe"
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="material section">
+						<div class="row-custom">
+							<h6 class="title">Course Material</h6>
+							<i
+								class="fa fa-pencil-square-o btn-custom"
+								aria-hidden="true"
+								(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
+						</div>
+						<p class="text" *ngIf="Course.FilePath">{{Course.FilePath}}</p>
+						<p class="no-data" *ngIf="!Course.FilePath">No material attached to this course.</p>
+					</div>
+					<div class="info section">
+						<div class="row-custom">
+							<h6 class="title">Upcoming Sessions</h6>
+						</div>
+						<div class="list-group">
+							<div class="session" *ngFor="let session of UpcomingSessions">
+								<p class="mb-1">Class {{session.class}}</p>
+								<small>{{session.date}}</small>
+							</div>
+							<p class="no-data" *ngIf="UpcomingSessions.length == 0">No upcoming sessions.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

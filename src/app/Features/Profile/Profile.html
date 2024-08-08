@@ -1,4 +1,70 @@
-<div class="page-inner">
-	<app-loader *ngIf="!IsLoaded"></app-loader>
-	<div class="page-section" *ngIf="IsLoaded">User profile {{data}}</div>
+<div class="right-section">
+	<h6 class="title">Edit Profile</h6>
+	<form (ngSubmit)="onSubmit(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
+		<div class="mb-3 image-container">
+			<div
+				[ngClass]="IsUploadDisabled? 'progress': 'no-progress'"
+				[style.background]="'conic-gradient(rgb(16, 16, 63) ' + (3.6) * Progress.start + 'deg, #c3c3c3 0deg)'">
+				<span *ngIf="IsUploadDisabled" class="progress-value">{{Progress.start}}%</span>
+				<img
+					[ngClass]="IsUploadDisabled? 'filter': ''"
+					[src]="Account.ProfilePicturePath? Account.ProfilePicturePath: 'assets/Images/default-pp.png'" />
+			</div>
+			<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
+			<button class="btn btn-danger" type="button" (click)="removeProfilePicture()">Delete</button>
+			<input
+				type="file"
+				name="profile-pic"
+				accept="image/x-png,image/gif,image/jpeg"
+				id="profile-pic"
+				#fileInput
+				class="fileInput"
+				(change)="onFileChange($event)" />
+		</div>
+		<div class="mb-3">
+			<label for="first-name" class="form-label">First Name *</label>
+			<input
+				type="text"
+				class="form-control"
+				id="first-name"
+				placeholder="First Name"
+				name="firstName"
+				[(ngModel)]="Account.FirstName"
+				#firstName="ngModel"
+				required />
+		</div>
+		<div class="mb-3">
+			<label for="last-name" class="form-label">Last Name *</label>
+			<input
+				type="text"
+				class="form-control"
+				id="last-name"
+				placeholder="Last Name"
+				name="lastName"
+				[(ngModel)]="Account.LastName"
+				#lastName="ngModel"
+				required />
+		</div>
+		<div class="mb-3">
+			<label for="email" class="form-label">E-mail *</label>
+			<input
+				type="email"
+				class="form-control"
+				id="email"
+				aria-describedby="emailHelp"
+				placeholder="E-mail"
+				name="email"
+				[(ngModel)]="Account.Email"
+				#email="ngModel"
+				required />
+		</div>
+		<div class="mb-3">
+			<label for="birthdate" class="form-label">Birthdate</label>
+			<input type="date" class="form-control" id="birthdate" name="birthdate" [(ngModel)]="Account.Birthdate" #birthdate="ngModel" />
+		</div>
+		<div [ngClass]="{ 'invalid-data': Error }">
+			<div class="invalid-message pb-2">{{Error}}</div>
+		</div>
+		<button type="submit" class="btn btn-primary float-end" [disabled]="IsDisabled">Save</button>
+	</form>
 </div>

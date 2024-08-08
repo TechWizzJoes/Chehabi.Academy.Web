@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
-import { CourseModels } from '@App/Common/Models/Course.Models';
+import { UserModels } from '@App/Common/Models/User.Models';
+import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
 	standalone: true,
 	templateUrl: './Profile.html',
 	styleUrls: ['Profile.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent]
+	imports: [FormsModule, CommonModule, LoaderComponent]
 })
 export class ProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
-	data: any
+	Account: UserModels.User = new UserModels.User();
+	IsDisabled: boolean = false;
+	IsUploadDisabled: boolean = false;
+	Error!: string;
+	Progress: any = { start: 0, end: 100 }
+
 	constructor(
 		private Router: Router,
 		private ActivatedRoute: ActivatedRoute,
@@ -33,10 +39,79 @@ export class ProfileComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		let endPoint = HttpEndPoints.Profile.getInfo
-		this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
+		let endPoint = HttpEndPoints.Profile.GetProfile
+		endPoint = endPoint.replace('{id}', this.AuthService.CurrentUser.Id.toString())
+		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
 			this.IsLoaded = true
-			this.data = data
+			this.Account = data;
 		})
+	}
+
+	onFileChange(event: any) {
+		let Image = event.target.files[0];
+
+		let endPoint = HttpEndPoints.Profile.UploadImage;
+		endPoint = endPoint.replace('{id}', this.Account.Id.toString())
+
+		const formData = new FormData();
+		formData.append('file', Image);
+
+		this.IsUploadDisabled = true;
+		this.IsDisabled = true;
+		this.HttpService.PostWithOptions(endPoint, formData, {
+			reportProgress: true,
+			observe: 'events'
+		}).subscribe((res: any) => {
+			if (res.type === HttpEventType.Response) {
+				this.IsUploadDisabled = false;
+				this.IsDisabled = false;
+				let filePath = this.HttpService.ApiUrl + 'user/' + res.body.filePath.replaceAll('\\', '/');
+				this.Account.ProfilePicturePath = filePath;
+				this.editProfile();
+			}
+			if (res.type === HttpEventType.UploadProgress) {
+				this.Progress.start = Math.round(100 * res.loaded / res.total);
+			}
+		})
+	}
+
+	removeProfilePicture() {
+		this.Account.ProfilePicturePath = '';
+		console.log(this.Account.ProfilePicturePath)
+		this.editProfile();
+	}
+
+	onSubmit(form: NgForm) {
+		if (form.invalid) {
+			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+			return;
+		}
+
+		this.editProfile();
+	}
+
+	editProfile() {
+		let newProfile = new UserModels.UserReqModel();
+		newProfile.Id = this.Account.Id;
+		newProfile.FirstName = this.Account.FirstName;
+		newProfile.LastName = this.Account.LastName;
+		newProfile.Birthdate = this.Account.Birthdate;
+		newProfile.Email = this.Account.Email;
+		newProfile.ProfilePicturePath = this.Account.ProfilePicturePath;
+
+
+		let httpEndPoint = HttpEndPoints.Profile.EditProfile;
+		this.HttpService.Put<UserModels.UserReqModel>(
+			httpEndPoint,
+			newProfile,
+		).subscribe({
+			next: (response) => {
+				this.AuthService.ProfilePicture = this.Account.ProfilePicturePath;
+				this.AuthService.ProfilePicUpdate.next({});
+			},
+			error: (errorResponse) => {
+				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+			}
+		});
 	}
 }

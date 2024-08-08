@@ -96,7 +96,7 @@
 			[ngbPopover]="userPopup"
 			container="body"
 			popoverClass="user-popover">
-			<img [src]="CurrentUser.ProfilePicturePath?? 'assets/Images/default-pp.png'" [alt]="'User Profile' | translate" data-toggle="dropdown" />
+			<img [src]="CurrentUser.ProfilePicturePath? CurrentUser.ProfilePicturePath: 'assets/Images/default-pp.png'" data-toggle="dropdown" />
 		</button>
 		<ng-template #userPopup>
 			<div class="text-center">
@@ -106,7 +106,7 @@
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<button class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile]">
+			<button class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Dashboard, RoutePaths.Profile]">
 				{{'Profile' | translate}}
 			</button>
 			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</button>
