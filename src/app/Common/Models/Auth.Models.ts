@@ -16,7 +16,11 @@ export namespace AuthModels {
 		LastName!: string;
 	}
 
-	export class RefreshTokenReqModel { }
+	export class RefreshTokenReqModel {
+		Id!: number;
+		AccessToken!: string;
+		RefreshToken!: string;
+	}
 
 	export class CurrentUserResModel {
 		Id!: number;

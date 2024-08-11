@@ -39,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
 	}
 
 	AddAccessToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
-		if (typeof token === 'string') {
+		if (token && typeof token === 'string') {
 			// const logToken = uuidv4();
 			// headers always recieved in small letters
 			return req.clone({ headers: req.headers.set('authorization', token) });

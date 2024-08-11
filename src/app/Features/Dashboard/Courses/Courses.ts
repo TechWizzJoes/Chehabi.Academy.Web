@@ -17,6 +17,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
+import { AuthModels } from '@App/Common/Models/Auth.Models';
 
 @Component({
     standalone: true,
@@ -27,8 +28,10 @@ import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
     Courses: CourseModels.Course[] = [];
+    CoursesByUser: CourseModels.Class[] = [];
     MaxRating: number = 5;
     ModalPropertyEnum = ModalPropertyEnum;
+    CurrentUser!: AuthModels.CurrentUserResModel;
 
     constructor(
         private Router: Router,
@@ -39,10 +42,13 @@ export class CoursesComponent implements OnInit {
         private AuthService: AuthService,
         private StorageService: StorageService,
         private modalService: NgbModal
-    ) { }
+    ) {
+        this.CurrentUser = this.AuthService.CurrentUser;
+    }
 
     ngOnInit() {
         this.getCourses();
+        this.getUserCourses();
     }
 
     gotoCourse(id: number) {
@@ -71,6 +77,15 @@ export class CoursesComponent implements OnInit {
         this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
             this.Courses = data;
+        })
+    }
+
+    getUserCourses() {
+        let endPoint = HttpEndPoints.Courses.GetAllByUser
+        endPoint = endPoint.replace('{id}', this.CurrentUser.Id.toString())
+        this.HttpService.Get<CourseModels.Class[]>(endPoint).subscribe(data => {
+            this.IsLoaded = true
+            this.CoursesByUser = data;
         })
     }
 

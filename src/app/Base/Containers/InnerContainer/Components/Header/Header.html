@@ -106,7 +106,7 @@
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<button class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Dashboard, RoutePaths.Profile]">
+			<button class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Dashboard, RoutePaths.Courses]">
 				{{'Profile' | translate}}
 			</button>
 			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</button>

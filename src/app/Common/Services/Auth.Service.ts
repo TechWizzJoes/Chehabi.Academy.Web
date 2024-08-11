@@ -70,14 +70,6 @@ export class AuthService {
 		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, user);
 	}
 
-	get UserDiDs(): string[] {
-		return this.StorageService.GetLocalStorage<string[]>(StorageEnum.UserDIDs);
-	}
-
-	set UserDiDs(value) {
-		this.StorageService.SetLocalStorage(StorageEnum.UserDIDs, value);
-	}
-
 	get CurrentUser(): AuthModels.CurrentUserResModel {
 		return this.StorageService.GetLocalStorage<AuthModels.CurrentUserResModel>(StorageEnum.CurrentUser);
 	}
@@ -87,11 +79,13 @@ export class AuthService {
 	}
 
 	RefreshAccessToken(): any {
-		let requestModel = {
+		let requestModel: AuthModels.RefreshTokenReqModel = {
 			Id: this.CurrentUser.Id,
 			AccessToken: this.AccessToken,
 			RefreshToken: this.RefreshToken
-		} as AuthModels.RefreshTokenReqModel;
+		};
+
+		if (!requestModel.AccessToken || !requestModel.RefreshToken) return
 
 		let httpEndPoint = HttpEndPoints.Account.Refresh;
 		return this.HttpService.Post<AuthModels.RefreshTokenReqModel, AuthModels.RefreshTokenResModel>(

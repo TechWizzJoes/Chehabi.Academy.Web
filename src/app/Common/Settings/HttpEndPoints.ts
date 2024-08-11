@@ -14,6 +14,7 @@ export class HttpEndPoints {
 	public static Courses = {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
+		GetAllByUser: 'courses/user/{id}',
 		EditCourse: 'courses/{id}',
 		DeleteCourse: 'courses/{id}',
 		UploadImage: 'courses/upload/image/{id}',

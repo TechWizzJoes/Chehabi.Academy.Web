@@ -1,3 +1,3 @@
 export enum ErrorMessagesEnum {
-	NETWORK_ERROR = 'No internet connection!'
+	NETWORK_ERROR = 'No internet connection! \nOr server is down'
 }
