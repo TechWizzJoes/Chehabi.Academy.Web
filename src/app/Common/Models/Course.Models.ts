@@ -34,12 +34,12 @@ export namespace CourseModels {
 		CurrentIndex!: number;
 		IsActive!: boolean;
 		IsDeleted!: boolean;
-		ClassOccurances!: ClassOccurance[];
+		Sessions!: Session[];
 	}
 
-	export class ClassOccurance {
+	export class Session {
 		Id!: number;
 		ClassId!: number;
-		Occurance!: string;
+		Date!: Date;
 	}
 }

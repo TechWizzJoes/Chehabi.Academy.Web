@@ -40,7 +40,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class CourseComponent implements OnInit {
 	RoutePaths = RoutePaths
 	Course!: CourseModels.Course;
-	Occurances!: CourseModels.ClassOccurance;
+	Sessions!: CourseModels.Session;
 
 	IsLoaded: boolean = false;
 	IsJoinClass!: boolean;
@@ -75,7 +75,6 @@ export class CourseComponent implements OnInit {
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Course = data
-			// this.Occurances = data.Classes
 		})
 	}
 
@@ -96,7 +95,6 @@ export class CourseComponent implements OnInit {
 		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
 			// this.IsLoaded = true
 			// this.Course = data
-			// this.Occurances = data.Classes
 			console.log(data);
 
 			this.NotifyService.Success("Congratulations! You've joined this course.")

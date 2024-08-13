@@ -30,7 +30,7 @@ import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLo
 	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
-		RouterModule.forRoot(routes, { useHash: true }),
+		RouterModule.forRoot(routes, { useHash: false }),
 		HttpClientModule,
 		SocialLoginModule,
 		TranslateModule.forRoot({

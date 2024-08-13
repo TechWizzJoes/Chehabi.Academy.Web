@@ -51,7 +51,7 @@
 			<div class="card" *ngFor="let class of CoursesByUser; let i = index" (click)="gotoCourse(class.Id)">
 				<div class="card-body">
 					<div class="upper-section">
-						<h5 class="card-title">{{class.ClassOccurances}}</h5>
+						<h5 class="card-title">{{class.Sessions}}</h5>
 						<span class="status active" *ngIf="class.IsActive">Active</span>
 						<span class="status inactive" *ngIf="!class.IsActive">Inactive</span>
 					</div>
