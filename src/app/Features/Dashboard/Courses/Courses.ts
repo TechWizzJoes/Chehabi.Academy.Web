@@ -28,7 +28,7 @@ import { AuthModels } from '@App/Common/Models/Auth.Models';
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
     Courses: CourseModels.Course[] = [];
-    CoursesByUser: CourseModels.Class[] = [];
+    ClassesByUser: CourseModels.Class[] = [];
     MaxRating: number = 5;
     ModalPropertyEnum = ModalPropertyEnum;
     CurrentUser!: AuthModels.CurrentUserResModel;
@@ -47,8 +47,8 @@ export class CoursesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getCourses();
-        this.getUserCourses();
+        this.getAdminCourses();
+        this.getUserClasses();
     }
 
     gotoCourse(id: number) {
@@ -67,25 +67,24 @@ export class CoursesComponent implements OnInit {
 
         modalRef.closed.subscribe((data) => {
             if (data == 'save') {
-                this.getCourses();
+                this.getAdminCourses();
             }
         })
     }
 
-    getCourses() {
-        let endPoint = HttpEndPoints.Courses.GetAll
+    getAdminCourses() {
+        let endPoint = HttpEndPoints.Courses.GetAllByAdmin
         this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
             this.Courses = data;
         })
     }
 
-    getUserCourses() {
+    getUserClasses() {
         let endPoint = HttpEndPoints.Courses.GetAllByUser
-        endPoint = endPoint.replace('{id}', this.CurrentUser.Id.toString())
         this.HttpService.Get<CourseModels.Class[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
-            this.CoursesByUser = data;
+            this.ClassesByUser = data;
         })
     }
 

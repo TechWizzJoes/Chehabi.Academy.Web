@@ -41,9 +41,8 @@ export class DetailsModalComponent implements OnInit {
 
     ngOnInit() {
         this.initCourse();
-        if (this.property == ModalPropertyEnum.Class && this.isEdit) {
-            this.initClass();
-        }
+        this.initClass();
+
     }
 
     initCourse() {
@@ -57,6 +56,7 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Prerequisite = this.course.Prerequisite;
         this.NewCourse.ToBeLearned = this.course.ToBeLearned;
         this.NewCourse.Price = this.course.Price;
+        this.NewCourse.IsActive = this.course.IsActive;
 
         // to get dynamic proprty value
         if (this.index) {
@@ -66,13 +66,15 @@ export class DetailsModalComponent implements OnInit {
 
     initClass() {
         this.NewClass.CourseId = this.course.Id;
-        this.NewClass.Id = this.course.Classes[+this.index].Id;
-        this.NewClass.StartDate = this.course.Classes[+this.index].StartDate;
-        this.NewClass.EndDate = this.course.Classes[+this.index].EndDate;
-        this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
-        this.NewClass.Period = this.course.Classes[+this.index].Period;
-        this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
-        this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
+        if (this.property == ModalPropertyEnum.Class && this.isEdit) {
+            this.NewClass.Id = this.course.Classes[+this.index].Id;
+            this.NewClass.StartDate = this.course.Classes[+this.index].StartDate;
+            this.NewClass.EndDate = this.course.Classes[+this.index].EndDate;
+            this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
+            this.NewClass.Period = this.course.Classes[+this.index].Period;
+            this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
+            this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
+        }
     }
 
     onSubmit(form: NgForm) {
@@ -116,10 +118,10 @@ export class DetailsModalComponent implements OnInit {
     }
 
     async editCourse() {
+        console.log(this.NewCourse)
         if (this.index) {
             (this.NewCourse as any)[this.index] = this.DynamicValue;
         }
-
 
         let endPoint = HttpEndPoints.Courses.EditCourse;
         endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
@@ -152,6 +154,7 @@ export class DetailsModalComponent implements OnInit {
     }
 
     addClass() {
+        debugger
         let endPoint = HttpEndPoints.Classes.AddClass;
         this.IsDisabled = true;
         this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {

@@ -27,8 +27,15 @@
 				<input type="text" class="form-control" id="currentIndex" name="currentIndex" [(ngModel)]="NewClass.CurrentIndex" #currentIndex="ngModel" />
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="active" checked [(ngModel)]="NewClass.IsActive" #isActive="ngModel" />
-				<label class="form-check-label" for="active"> Active </label>
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="isActive"
+					name="isActive"
+					[checked]="NewClass.IsActive"
+					[(ngModel)]="NewClass.IsActive"
+					#isActive="ngModel" />
+				<label class="form-check-label" for="isActive"> Active </label>
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">
@@ -122,7 +129,14 @@
 					#ToBeLearned="ngModel"></textarea>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="active" name="isActive" checked [(ngModel)]="NewCourse.IsActive" #isActive="ngModel" />
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="active"
+					name="isActive"
+					[checked]="NewCourse.IsActive"
+					[(ngModel)]="NewCourse.IsActive"
+					#isActive="ngModel" />
 				<label class="form-check-label" for="active"> Active </label>
 			</div>
 		</div>
@@ -152,8 +166,15 @@
 				</div>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="active" checked [(ngModel)]="NewClass.IsActive" #isActive="ngModel" />
-				<label class="form-check-label" for="active"> Active </label>
+				<input
+					class="form-check-input"
+					type="checkbox"
+					id="isActive"
+					name="isActive"
+					[checked]="NewCourse.IsActive"
+					[(ngModel)]="NewCourse.IsActive"
+					#isActive="ngModel" />
+				<label class="form-check-label" for="isActive"> Active </label>
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseMaterial">
