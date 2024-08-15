@@ -22,27 +22,41 @@ export namespace CourseModels {
 		Prerequisite!: string;
 		ToBeLearned!: string;
 		Price!: number;
-		Classes!: Class[];
+		Classes: Class[] = [new Class()];
 		InstructorId!: number;
 		Instructor!: InstructorModels.Instructor;
+		CreatedOn!: Date;
+		UpdatedOn!: Date;
 	}
 
 	export class Class {
 		Id!: number;
+		Name!: string;
 		CourseId!: number;
-		StartDate!: string;
+		StartDate: string = Constants.convertDateToYYYYMMDD(new Date());
 		EndDate!: string;
 		MaxCapacity!: number;
-		Period!: string;
+		Period: PeriodDto[] = [new PeriodDto()];
 		CurrentIndex!: number;
-		IsActive!: boolean;
+		NumberOfSessions!: number;
+		IsActive: boolean = true;
 		IsDeleted!: boolean;
-		Sessions!: Session[];
+		CreatedOn!: Date;
+		UpdatedOn!: Date;
+		LiveSessions!: LiveSession[];
 	}
 
-	export class Session {
+	export class LiveSession {
 		Id!: number;
 		ClassId!: number;
-		Date!: Date;
+		StartDate!: Date | string; // for displaying
+		EndDate!: Date;
+		Link!: string | null;
+		Class!: Class;
+	}
+
+	export class PeriodDto {
+		Day: number = 0;
+		Time: string = '12:00';
 	}
 }

@@ -15,7 +15,7 @@
 						[ngClass]="{'selected-class': SelectedClass && class.Id == SelectedClass.Id}">
 						Starts at {{class.StartDate}}
 						<br />
-						<li *ngFor="let occ of class.Sessions" class="session-instance">{{occ.Date}}</li>
+						<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{occ.StartDate}}</li>
 					</ul>
 				</div>
 

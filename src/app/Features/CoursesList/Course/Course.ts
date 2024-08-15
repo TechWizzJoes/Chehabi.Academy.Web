@@ -40,7 +40,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class CourseComponent implements OnInit {
 	RoutePaths = RoutePaths
 	Course!: CourseModels.Course;
-	Sessions!: CourseModels.Session;
+	Sessions!: CourseModels.LiveSession;
 
 	IsLoaded: boolean = false;
 	IsJoinClass!: boolean;

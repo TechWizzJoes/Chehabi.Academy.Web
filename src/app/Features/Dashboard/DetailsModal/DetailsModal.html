@@ -7,25 +7,98 @@
 	<form (ngSubmit)="onSubmit(frm)" name="form" id="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Class">
 			<div class="mb-3">
-				<label for="capacity" class="form-label">Capacity</label>
-				<input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="NewClass.MaxCapacity" #capacity="ngModel" />
+				<label for="name" class="form-label required">Name</label>
+				<input type="text" class="form-control" id="name" name="name" [(ngModel)]="NewClass.Name" #name="ngModel" required />
+			</div>
+			<div class="row mb-3">
+				<div class="col">
+					<label for="capacity" class="form-label required">Capacity</label>
+					<!-- m-0 for label -->
+					<!-- <div class="form-text m-0">Maximum number of students to enroll.</div> -->
+					<input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="NewClass.MaxCapacity" #capacity="ngModel" required />
+				</div>
+				<div class="col">
+					<label for="noOfSessions" class="form-label required">Number of sessions</label>
+					<input
+						type="number"
+						class="form-control"
+						id="noOfSessions"
+						name="noOfSessions"
+						[(ngModel)]="NewClass.NumberOfSessions"
+						#noOfSessions="ngModel"
+						required
+						[disabled]="isEdit" />
+				</div>
 			</div>
 			<div class="mb-3">
-				<label for="start" class="form-label">Starts In</label>
-				<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewClass.StartDate" #startDate="ngModel" />
+				<label for="start" class="form-label required">Starts on</label>
+				<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewClass.StartDate" #startDate="ngModel" required />
 			</div>
-			<div class="mb-3">
+			<!-- <div class="mb-3">
 				<label for="end" class="form-label">Ends In</label>
 				<input type="date" class="form-control" id="end" name="endDate" [(ngModel)]="NewClass.EndDate" #endDate="ngModel" />
+			</div> -->
+			<div class="row mb-3">
+				<div class="d-flex justify-content-between align-items-end">
+					<div>
+						<label for="period" class="form-label required m-0">Schedule</label>
+						<div class="form-text m-0">The weekday and time to calculate the sessions for this class.</div>
+						<!-- <input type="text" class="form-control" id="period" name="period" [(ngModel)]="NewClass.Period" #period="ngModel" /> -->
+					</div>
+					<div class="">
+						<i class="fa fa-plus btn-custom" aria-hidden="true" (click)="Classes.AddNewClassPeriod()"></i>
+					</div>
+				</div>
+				<!-- start sessions settings -->
+				<ng-container *ngIf="!isEdit">
+					<div class="row" *ngFor="let period of NewClass.Period; index as i">
+						<div class="col">
+							<label for="dayOfWeek" class="form-label">Day of Week</label>
+							<select class="form-select" id="dayOfWeek" name="dayOfWeek" (change)="Classes.onSelectChange($event, i)" required>
+								<option *ngFor="let day of daysOfWeek" [value]="day.Id" [selected]="day.Id==period.Day">{{ day.Name }}</option>
+							</select>
+						</div>
+
+						<div class="col">
+							<label for="timeOfDay" class="form-label">Time of Day</label>
+							<input
+								type="time"
+								class="form-control"
+								id="timeOfDay"
+								name="timeOfDay"
+								[value]="period.Time"
+								(change)="Classes.onTimeChange($event, i)"
+								required />
+						</div>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="isEdit">
+					<div class="row" *ngFor="let period of NewClass.LiveSessions; index as i">
+						<div class="col">
+							<label for="start" class="form-label required">Session {{i+1}}:</label>
+							<input type="date" class="form-control" id="start" name="startDate" [value]="period.StartDate" required />
+						</div>
+
+						<div class="col">
+							<label for="timeOfDay" class="form-label">Time of Day</label>
+							<input
+								type="time"
+								class="form-control"
+								id="timeOfDay"
+								name="timeOfDay"
+								[value]="period.StartDate"
+								(change)="Classes.onTimeChange($event, i)"
+								required />
+						</div>
+					</div>
+				</ng-container>
+
+				<!-- end sessions settings -->
 			</div>
-			<div class="mb-3">
-				<label for="period" class="form-label">Period</label>
-				<input type="text" class="form-control" id="period" name="period" [(ngModel)]="NewClass.Period" #period="ngModel" />
-			</div>
-			<div class="mb-3">
+			<!-- <div class="mb-3">
 				<label for="currentIndex" class="form-label">Current Index</label>
 				<input type="text" class="form-control" id="currentIndex" name="currentIndex" [(ngModel)]="NewClass.CurrentIndex" #currentIndex="ngModel" />
-			</div>
+			</div> -->
 			<div class="form-check">
 				<input
 					class="form-check-input"
@@ -64,7 +137,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="start" class="form-label">Starts from</label>
+					<label for="start" class="form-label">Starts on</label>
 					<input type="date" class="form-control" id="start" name="StartDate" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
 				</div>
 			</div>
@@ -226,10 +299,10 @@
 </div>
 <div class="modal-footer">
 	<div class="left-section" *ngIf="property == ModalPropertyEnum.CourseInfo">
-		<button type="button" class="btn btn-danger" (click)="deleteCourse()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Course</button>
+		<button type="button" class="btn btn-danger" (click)="Courses.deleteCourse()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Course</button>
 	</div>
 	<div class="left-section" *ngIf="property == ModalPropertyEnum.Class && isEdit">
-		<button type="button" class="btn btn-danger" (click)="deleteClass()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Class</button>
+		<button type="button" class="btn btn-danger" (click)="Classes.deleteClass()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Class</button>
 	</div>
 	<div class="right-section" [ngClass]="property == ModalPropertyEnum.CourseInfo || property == ModalPropertyEnum.Class? '' : 'block'">
 		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>

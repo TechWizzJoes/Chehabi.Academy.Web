@@ -4,6 +4,7 @@ import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
+import { Constants, ConstantsType } from '@App/Common/Settings/Constants';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { CommonModule, NgSwitch } from '@angular/common';
 import { HttpEventType, HttpHeaders } from '@angular/common/http';
@@ -20,6 +21,8 @@ import { observable } from 'rxjs';
     imports: [CommonModule, FormsModule]
 })
 export class DetailsModalComponent implements OnInit {
+    daysOfWeek: ConstantsType[] = Constants.Weekdays;
+
     activeModal = inject(NgbActiveModal);
     IsDisabled: boolean = false;
     NewClass: CourseModels.Class = new CourseModels.Class();
@@ -46,7 +49,6 @@ export class DetailsModalComponent implements OnInit {
     ngOnInit() {
         this.initCourse();
         this.initClass();
-
     }
 
     initCourse() {
@@ -73,10 +75,14 @@ export class DetailsModalComponent implements OnInit {
         this.NewClass.CourseId = this.course.Id;
         if (this.property == ModalPropertyEnum.Class && this.isEdit) {
             this.NewClass.Id = this.course.Classes[+this.index].Id;
-            this.NewClass.StartDate = this.course.Classes[+this.index].StartDate;
+            this.NewClass.Name = this.course.Classes[+this.index].Name;
+            this.NewClass.NumberOfSessions = this.course.Classes[+this.index].NumberOfSessions;
+            this.NewClass.StartDate = Constants.convertDateToYYYYMMDD(new Date(this.course.Classes[+this.index].StartDate));
             this.NewClass.EndDate = this.course.Classes[+this.index].EndDate;
             this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
-            this.NewClass.Period = this.course.Classes[+this.index].Period;
+            // this.NewClass.Period = this.course.Classes[+this.index].LiveSessions            ;
+            this.NewClass.LiveSessions = this.course.Classes[+this.index].LiveSessions;
+            this.NewClass.LiveSessions.forEach(sess => sess.StartDate = Constants.convertDateToYYYYMMDD(new Date(sess.StartDate)));
             this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
             this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
         }
@@ -90,111 +96,130 @@ export class DetailsModalComponent implements OnInit {
         switch (this.property) {
             case ModalPropertyEnum.Course:
                 if (this.isEdit) {
-                    this.editCourse();
+                    this.Courses.editCourse();
                 } else {
-                    this.addCourse();
+                    this.Courses.addCourse();
                 }
                 break;
             case ModalPropertyEnum.Class:
                 if (this.isEdit) {
-                    this.editClass();
+                    this.Classes.editClass();
                 } else {
-                    this.addClass();
+                    this.Classes.addClass();
                 }
                 break;
             default:
-                this.editCourse();
+                this.Courses.editCourse();
                 break;
         }
     }
 
-    addCourse() {
-        let endPoint = HttpEndPoints.Courses.AddCourse;
-        this.IsDisabled = true;
-        this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe({
-            next: async data => {
-                this.NewCourse = data;
-                if ((this.CourseFile || this.CourseImage)) {
-                    await this.editCourse();
+    Courses = {
+        addCourse: () => {
+            let endPoint = HttpEndPoints.Courses.AddCourse;
+            this.IsDisabled = true;
+            this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe({
+                next: async data => {
+                    this.NewCourse = data;
+                    if ((this.CourseFile || this.CourseImage)) {
+                        await this.Courses.editCourse();
+                    }
+                    this.IsDisabled = false;
+                    this.activeModal.close('save');
+                }, error: error => {
+                    this.IsDisabled = false;
+
                 }
+            })
+        },
+
+        editCourse: async () => {
+            console.log(this.NewCourse)
+            if (this.index) {
+                (this.NewCourse as any)[this.index] = this.DynamicValue;
+            }
+
+            let endPoint = HttpEndPoints.Courses.EditCourse;
+            endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
+            this.IsDisabled = true;
+            if ((this.CourseFile || this.CourseImage)) {
+                if (this.CourseFile) {
+                    await this.uploadFile(HttpEndPoints.Courses.Uploadfile, this.CourseFile, false)
+                }
+
+                if (this.CourseImage) {
+                    await this.uploadFile(HttpEndPoints.Courses.UploadImage, this.CourseImage, true)
+                }
+            }
+            console.log(this.NewCourse.ImageUrl);
+
+            this.HttpService.Put<CourseModels.Course>(endPoint, this.NewCourse).subscribe(data => {
                 this.IsDisabled = false;
                 this.activeModal.close('save');
-            }, error: error => {
+            })
+        },
+
+        deleteCourse: () => {
+            let endPoint = HttpEndPoints.Courses.DeleteCourse;
+            endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
+            this.IsDisabled = true;
+            this.HttpService.Delete(endPoint).subscribe(data => {
                 this.IsDisabled = false;
-
-            }
-        })
+                this.activeModal.close('delete');
+            })
+        },
     }
 
-    async editCourse() {
-        console.log(this.NewCourse)
-        if (this.index) {
-            (this.NewCourse as any)[this.index] = this.DynamicValue;
-        }
+    Classes = {
+        AddNewClassPeriod: () => {
+            this.NewClass.Period.push(new CourseModels.PeriodDto())
+        },
 
-        let endPoint = HttpEndPoints.Courses.EditCourse;
-        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
-        this.IsDisabled = true;
-        if ((this.CourseFile || this.CourseImage)) {
-            if (this.CourseFile) {
-                await this.uploadFile(HttpEndPoints.Courses.Uploadfile, this.CourseFile, false)
-            }
+        onSelectChange: (event: any, index: number) => {
+            // ngmodel isn't working with dynamic adding in forms
+            this.NewClass.Period[index].Day = event.target.value
+        },
 
-            if (this.CourseImage) {
-                await this.uploadFile(HttpEndPoints.Courses.UploadImage, this.CourseImage, true)
-            }
-        }
-        console.log(this.NewCourse.ImageUrl);
+        onTimeChange: (event: any, index: number) => {
+            // ngmodel isn't working with dynamic adding in forms
+            this.NewClass.Period[index].Time = event.target.value
+        },
 
-        this.HttpService.Put<CourseModels.Course>(endPoint, this.NewCourse).subscribe(data => {
-            this.IsDisabled = false;
-            this.activeModal.close('save');
-        })
-    }
+        addClass: () => {
+            let endPoint = HttpEndPoints.Classes.AddClass;
 
-    deleteCourse() {
-        let endPoint = HttpEndPoints.Courses.DeleteCourse;
-        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
-        this.IsDisabled = true;
-        this.HttpService.Delete(endPoint).subscribe(data => {
-            this.IsDisabled = false;
-            this.activeModal.close('delete');
-        })
-    }
+            this.IsDisabled = true;
+            this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe({
+                next: data => {
+                    this.IsDisabled = false;
+                    this.activeModal.close('save');
+                }, error: error => {
+                    this.IsDisabled = false;
 
-    addClass() {
-        let endPoint = HttpEndPoints.Classes.AddClass;
-        this.IsDisabled = true;
-        this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe({
-            next: data => {
+                }
+            })
+        },
+
+        editClass: () => {
+            let endPoint = HttpEndPoints.Classes.EditClass;
+            endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
+            this.IsDisabled = true;
+
+            this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
                 this.IsDisabled = false;
                 this.activeModal.close('save');
-            }, error: error => {
+            })
+        },
+
+        deleteClass: () => {
+            let endPoint = HttpEndPoints.Classes.DeleteClass;
+            endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
+            this.IsDisabled = true;
+            this.HttpService.Delete(endPoint).subscribe(data => {
                 this.IsDisabled = false;
-
-            }
-        })
-    }
-
-    editClass() {
-        let endPoint = HttpEndPoints.Classes.EditClass;
-        endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
-        this.IsDisabled = true;
-
-        this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
-            this.IsDisabled = false;
-            this.activeModal.close('save');
-        })
-    }
-
-    deleteClass() {
-        let endPoint = HttpEndPoints.Classes.DeleteClass;
-        endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
-        this.IsDisabled = true;
-        this.HttpService.Delete(endPoint).subscribe(data => {
-            this.IsDisabled = false;
-            this.activeModal.close('save');
-        })
+                this.activeModal.close('save');
+            })
+        }
     }
 
     onFileChange(event: any, isImage: boolean = true) {

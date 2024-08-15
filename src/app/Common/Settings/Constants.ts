@@ -13,6 +13,17 @@ export class Constants {
 		{ Id: 'M', Name: 'Male' },
 		{ Id: 'F', Name: 'Female' }
 	];
+
+	public static Weekdays = [
+		{ Id: 0, Name: 'Sunday' },
+		{ Id: 1, Name: 'Monday' },
+		{ Id: 2, Name: 'Tuesday' },
+		{ Id: 3, Name: 'Wednesday' },
+		{ Id: 4, Name: 'Thursday' },
+		{ Id: 5, Name: 'Friday' },
+		{ Id: 6, Name: 'Saturday' },
+	];
+
 	public static Months = [
 		{ Id: 0, Name: 'January' },
 		{ Id: 1, Name: 'February' },
@@ -67,4 +78,8 @@ export class Constants {
 
 		return `${year}-${month}-${day}`;
 	};
+}
+export class ConstantsType {
+	Id!: number;
+	Name!: string;
 }
