@@ -1,3 +1,6 @@
+import { CourseTypeEnum } from "../Enums/CourseType.Enum";
+import { Constants } from "../Settings/Constants";
+import { InstructorModels } from "./Instructor.Models";
 import { UserModels } from "./User.Models";
 
 export namespace CourseModels {
@@ -5,12 +8,13 @@ export namespace CourseModels {
 	export class Course {
 		Id!: number;
 		Name!: string;
+		TypeIdString: CourseTypeEnum = CourseTypeEnum.Live;
 		Description!: string;
 		Duration!: number;
 		VideoPath!: string;
 		FilePath!: string;
-		StartDate!: Date;
-		IsActive!: boolean;
+		StartDate: string = Constants.convertDateToYYYYMMDD(new Date());
+		IsActive: boolean = true;
 		IsDeleted!: boolean;
 		Rating!: number;
 		Raters!: number;
@@ -20,8 +24,7 @@ export namespace CourseModels {
 		Price!: number;
 		Classes!: Class[];
 		InstructorId!: number;
-		Instructor!: UserModels.User;
-
+		Instructor!: InstructorModels.Instructor;
 	}
 
 	export class Class {

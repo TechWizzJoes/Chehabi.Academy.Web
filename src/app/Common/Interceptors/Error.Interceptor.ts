@@ -57,9 +57,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 					const customMsg = this.ErrorCodesService.GetErrorCode(errMsg)
 					if (customMsg)
 						this.NotifyService.Error(customMsg);
-					return EMPTY;
+					// return EMPTY;
+					return throwError(() => error);
 				}
 				return EMPTY
+
 			})
 		) as any;
 	}

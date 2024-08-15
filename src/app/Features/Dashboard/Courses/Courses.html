@@ -24,8 +24,8 @@
 					<p class="card-text">{{Course.Description}}</p>
 					<div class="middle-section">
 						<div class="instructor">
-							<span class="initials">{{getInitials(Course.Instructor)}}</span>
-							<p>{{Course.Instructor.FirstName + ' ' + Course.Instructor.LastName}}</p>
+							<span class="initials">{{getInitials(Course.Instructor.User)}}</span>
+							<p>{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
 						</div>
 						<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
 					</div>

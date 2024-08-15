@@ -37,7 +37,7 @@
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowfullscreen></iframe>
-				<div class="instructor">{{Course.Instructor.FirstName + ' ' + Course.Instructor.LastName}}</div>
+				<div class="instructor">{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</div>
 				<div class="rating">
 					<span class="rate">{{Course.Rating}} </span>
 					<ngb-rating [max]="5" [rate]="Course.Rating " [readonly]="true"></ngb-rating> ({{Course.Raters}})

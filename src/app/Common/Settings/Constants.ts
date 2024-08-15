@@ -45,24 +45,6 @@ export class Constants {
 		return days;
 	};
 
-	public static DispostionButtonColors = [
-		{ label: 'Blue', CssClass: 'btn-disposition-blue' },
-		{ label: 'Red', CssClass: 'btn-disposition-red' },
-		{ label: 'Green', CssClass: 'btn-disposition-green' },
-		{ label: 'Yellow', CssClass: 'btn-disposition-yellow' },
-		{ label: 'Purple', CssClass: 'btn-disposition-purple' },
-		{ label: 'Gray', CssClass: 'btn-disposition-gray' },
-		{ label: 'Brown', CssClass: 'btn-disposition-brown' },
-		{ label: 'Orange', CssClass: 'btn-disposition-orange' },
-		{ label: 'Dark Gray', CssClass: 'btn-disposition-dark-gray' },
-		{ label: 'Pink', CssClass: 'btn-disposition-pink' }
-	];
-	public static DispostionActions = [
-		{ Id: 1, Name: 'Ask Me' },
-		{ Id: 2, Name: 'Next Number' },
-		{ Id: 3, Name: 'Next Contact' }
-	];
-
 	public static GetInitialName(firstName: string, lastName: string) {
 		let initNames = '';
 		if (firstName) {
@@ -78,26 +60,11 @@ export class Constants {
 		return new Date().getFullYear();
 	}
 
-	public static DTMF_MAX = 20;
-	public static ALL_DTMF = [
-		'9901',
-		'9902',
-		'9903',
-		'9904',
-		'9906',
-		'9907',
-		'9908',
-		'9909',
-		'9910',
-		'9911',
-		'9912',
-		'9913',
-		'9914',
-		'9915',
-		'9916',
-		'9917',
-		'9918',
-		'9919',
-		'9920'
-	];
+	public static convertDateToYYYYMMDD(date: Date) {
+		const year = date.getFullYear();
+		const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+		const day = String(date.getDate()).padStart(2, '0');
+
+		return `${year}-${month}-${day}`;
+	};
 }

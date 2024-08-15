@@ -41,7 +41,7 @@
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">
 			<div class="row mb-3">
 				<div class="col">
-					<label for="class" class="form-label">Name *</label>
+					<label for="class" class="form-label required">Name</label>
 					<input type="text" class="form-control" id="class" name="Name" [(ngModel)]="NewCourse.Name" #Name="ngModel" required />
 				</div>
 				<div class="col">
@@ -51,20 +51,37 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="start" class="form-label">Starts In</label>
-					<input type="date" class="form-control" id="start" name="StartDate" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
+					<label for="classType" class="form-label required">Class Type</label>
+					<select
+						class="form-select"
+						id="courseType"
+						name="CourseType"
+						[(ngModel)]="NewCourse.TypeIdString"
+						#CourseType="ngModel"
+						required
+						placeholder="Select the course type">
+						<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+					</select>
 				</div>
 				<div class="col">
-					<label for="duration" class="form-label">Duration</label>
-					<input type="number" class="form-control" id="duration" name="Duration" [(ngModel)]="NewCourse.Duration" #Duration="ngModel" />
+					<label for="start" class="form-label">Starts from</label>
+					<input type="date" class="form-control" id="start" name="StartDate" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
 				</div>
 			</div>
 			<div class="mb-3">
 				<label for="videopath" class="form-label">Video Url</label>
-				<input type="text" class="form-control" id="videopath" name="VideoPath" [(ngModel)]="NewCourse.VideoPath" #VideoPath="ngModel" />
+				<input
+					type="text"
+					class="form-control"
+					id="videopath"
+					name="VideoPath"
+					placeholder="Add a youtube video url for course description"
+					[(ngModel)]="NewCourse.VideoPath"
+					#VideoPath="ngModel" />
 			</div>
 			<div class="mb-3">
-				<label for="image" class="form-label">Upload Image</label>
+				<label for="image" class="form-label m-0">Cover Image</label>
+				<div class="form-text m-0">The course main cover image appearing in search.</div>
 				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
 				<div class="progress-container" *ngIf="ImageProgress.start">
 					<div class="progress">
@@ -80,7 +97,8 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="filepath" class="form-label">Upload File</label>
+				<label for="filepath" class="form-label m-0">Upload File</label>
+				<div class="form-text m-0">PDF file that would be in the course's main page.</div>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
@@ -97,7 +115,7 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="description" class="form-label">Description *</label>
+				<label for="description" class="form-label required">Description</label>
 				<textarea
 					class="form-control"
 					id="description"
@@ -142,7 +160,7 @@
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseInfo">
 			<div class="mb-3">
-				<label for="title" class="form-label">Name *</label>
+				<label for="title" class="form-label required">Name</label>
 				<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
 			</div>
 			<div class="mb-3">

@@ -1,3 +1,4 @@
+import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
@@ -31,6 +32,9 @@ export class DetailsModalComponent implements OnInit {
     ImageProgress: any = { start: 0, end: 100 }
     FileProgress: any = { start: 0, end: 100 }
 
+    CourseTypeEnum = CourseTypeEnum;
+    courseTypes = Object.keys(CourseTypeEnum);
+    courseTypesValues = Object.values(CourseTypeEnum);
 
     @Input() property!: ModalPropertyEnum;
     @Input() isEdit: string = '';
@@ -48,6 +52,7 @@ export class DetailsModalComponent implements OnInit {
     initCourse() {
         this.NewCourse.Id = this.course.Id;
         this.NewCourse.Name = this.course.Name;
+        this.NewCourse.TypeIdString = this.course.TypeIdString;
         this.NewCourse.Description = this.course.Description;
         this.NewCourse.VideoPath = this.course.VideoPath;
         this.NewCourse.FilePath = this.course.FilePath;
@@ -105,15 +110,19 @@ export class DetailsModalComponent implements OnInit {
 
     addCourse() {
         let endPoint = HttpEndPoints.Courses.AddCourse;
-        this.NewCourse.InstructorId = this.AuthService.CurrentUser.Id;
         this.IsDisabled = true;
-        this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe(async data => {
-            this.NewCourse = data;
-            if ((this.CourseFile || this.CourseImage)) {
-                await this.editCourse();
+        this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe({
+            next: async data => {
+                this.NewCourse = data;
+                if ((this.CourseFile || this.CourseImage)) {
+                    await this.editCourse();
+                }
+                this.IsDisabled = false;
+                this.activeModal.close('save');
+            }, error: error => {
+                this.IsDisabled = false;
+
             }
-            this.IsDisabled = false;
-            this.activeModal.close('save');
         })
     }
 
@@ -154,12 +163,16 @@ export class DetailsModalComponent implements OnInit {
     }
 
     addClass() {
-        debugger
         let endPoint = HttpEndPoints.Classes.AddClass;
         this.IsDisabled = true;
-        this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
-            this.IsDisabled = false;
-            this.activeModal.close('save');
+        this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe({
+            next: data => {
+                this.IsDisabled = false;
+                this.activeModal.close('save');
+            }, error: error => {
+                this.IsDisabled = false;
+
+            }
         })
     }
 
