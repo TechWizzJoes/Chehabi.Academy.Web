@@ -72,7 +72,7 @@
 										[attr.data-bs-target]="'#collapse' + i"
 										aria-expanded="false"
 										[attr.aria-controls]="'#collapse' + i">
-										{{'Class ' + class.Id}}
+										{{ class.Name}}
 										<span class="status active" *ngIf="class.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
 										<span class="status inactive" *ngIf="!class.IsActive" title="Inactive"
 											><i class="fa fa-times" aria-hidden="true"></i
@@ -121,7 +121,7 @@
 						<div class="video-container">
 							<iframe
 								*ngIf="Course.VideoPath"
-								[src]="'https://www.youtube.com/embed/' + Course.VideoPath | safe"
+								[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
 								title="YouTube video player"
 								frameborder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

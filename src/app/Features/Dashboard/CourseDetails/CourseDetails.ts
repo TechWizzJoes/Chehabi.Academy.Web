@@ -73,9 +73,9 @@ export class CourseDetailsComponent implements OnInit {
         let endPoint = HttpEndPoints.Courses.GetOne;
         endPoint = endPoint.replace('{id}', id)
         this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
+
             this.IsLoaded = true
             this.Course = data;
-            this.Course.ImageUrl = data.ImageUrl;
             this.getUpcomingSessions();
         })
     }

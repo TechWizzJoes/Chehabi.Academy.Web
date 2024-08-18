@@ -300,6 +300,21 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Video">
+			<div class="mb-3">
+				<label for="dynamicProperty" class="form-label mb-0">{{property}}</label>
+				<div class="form-text m-0 mb-2">Upload a youtube video then paste it's link here.</div>
+				<textarea
+					class="form-control"
+					id="property"
+					rows="7"
+					name="dynamicProperty"
+					placeholder="https://www.youtube.com/watch?v=[videoid]"
+					[(ngModel)]="DynamicValue"
+					#dynamicProperty="ngModel">
+				</textarea>
+			</div>
+		</div>
 		<div class="modal-body" *ngSwitchDefault>
 			<div class="mb-3">
 				<label for="dynamicProperty" class="form-label">{{property}}</label>
