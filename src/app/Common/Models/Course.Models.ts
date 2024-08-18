@@ -49,10 +49,13 @@ export namespace CourseModels {
 	export class LiveSession {
 		Id!: number;
 		ClassId!: number;
-		StartDate!: Date | string; // for displaying
+		StartDate!: Date;
 		EndDate!: Date;
 		Link!: string | null;
 		Class!: Class;
+
+		StartTimeString!: string; // for displaying only not in backend
+		StartDateString!: string; // for displaying only not in backend
 	}
 
 	export class PeriodDto {

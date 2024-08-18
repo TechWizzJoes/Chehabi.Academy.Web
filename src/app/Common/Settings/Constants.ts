@@ -71,12 +71,21 @@ export class Constants {
 		return new Date().getFullYear();
 	}
 
-	public static convertDateToYYYYMMDD(date: Date) {
+	public static convertDateToYYYYMMDD(date: Date): string {
 		const year = date.getFullYear();
 		const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
 		const day = String(date.getDate()).padStart(2, '0');
 
 		return `${year}-${month}-${day}`;
+	};
+
+	public static convertDateToHHMM(date: Date): string {
+		// Extract the hours and minutes in local time
+		const hours = date.getHours().toString().padStart(2, '0'); // Add leading zero if necessary
+		const minutes = date.getMinutes().toString().padStart(2, '0'); // Add leading zero if necessary
+
+		// Format it as hh:mm
+		return `${hours}:${minutes}`;
 	};
 }
 export class ConstantsType {

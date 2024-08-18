@@ -58,7 +58,7 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Description = this.course.Description;
         this.NewCourse.VideoPath = this.course.VideoPath;
         this.NewCourse.FilePath = this.course.FilePath;
-        this.NewCourse.StartDate = this.course.StartDate;
+        this.NewCourse.StartDate = Constants.convertDateToYYYYMMDD(new Date(this.course.StartDate));
         this.NewCourse.ImageUrl = this.course.ImageUrl;
         this.NewCourse.Prerequisite = this.course.Prerequisite;
         this.NewCourse.ToBeLearned = this.course.ToBeLearned;
@@ -80,11 +80,14 @@ export class DetailsModalComponent implements OnInit {
             this.NewClass.StartDate = Constants.convertDateToYYYYMMDD(new Date(this.course.Classes[+this.index].StartDate));
             this.NewClass.EndDate = this.course.Classes[+this.index].EndDate;
             this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
-            // this.NewClass.Period = this.course.Classes[+this.index].LiveSessions            ;
-            this.NewClass.LiveSessions = this.course.Classes[+this.index].LiveSessions;
-            this.NewClass.LiveSessions.forEach(sess => sess.StartDate = Constants.convertDateToYYYYMMDD(new Date(sess.StartDate)));
             this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
             this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
+
+            this.NewClass.LiveSessions = this.course.Classes[+this.index].LiveSessions;
+            this.NewClass.LiveSessions.forEach(sess => {
+                sess.StartTimeString = Constants.convertDateToHHMM(new Date(sess.StartDate)) // must be before start date as it'd be already modified
+                sess.StartDateString = Constants.convertDateToYYYYMMDD(new Date(sess.StartDate))
+            });
         }
     }
 
@@ -175,14 +178,41 @@ export class DetailsModalComponent implements OnInit {
             this.NewClass.Period.push(new CourseModels.PeriodDto())
         },
 
-        onSelectChange: (event: any, index: number) => {
+        onDayChange: (event: any, index: number) => {
             // ngmodel isn't working with dynamic adding in forms
             this.NewClass.Period[index].Day = event.target.value
         },
 
         onTimeChange: (event: any, index: number) => {
             // ngmodel isn't working with dynamic adding in forms
-            this.NewClass.Period[index].Time = event.target.value
+            if (this.isEdit) {
+                let d = new Date(this.NewClass.LiveSessions[index].StartDate);
+                const [hours, minutes] = event.target.value.split(":").map(Number);
+
+                // Set the time for the Date object
+                d.setHours(hours);
+                d.setMinutes(minutes);
+
+                this.NewClass.LiveSessions[index].StartDate = d;
+                this.NewClass.LiveSessions[index].StartDateString = Constants.convertDateToYYYYMMDD(d);
+                this.NewClass.LiveSessions[index].StartTimeString = event.target.value;
+
+            } else {
+
+                this.NewClass.Period[index].Time = event.target.value
+            }
+        },
+
+        onDateChange: (event: any, index: number) => {
+            let selectedDate = event.target.value
+            const [hours, minutes] = this.NewClass.LiveSessions[index].StartTimeString.split(":").map(Number);
+
+            selectedDate.setHours(hours);
+            selectedDate.setMinutes(minutes);
+
+            this.NewClass.LiveSessions[index].StartDate = selectedDate;
+            this.NewClass.LiveSessions[index].StartDateString = Constants.convertDateToYYYYMMDD(selectedDate);
+
         },
 
         addClass: () => {

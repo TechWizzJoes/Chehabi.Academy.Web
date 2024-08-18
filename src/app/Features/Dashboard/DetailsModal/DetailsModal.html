@@ -45,16 +45,16 @@
 						<div class="form-text m-0">The weekday and time to calculate the sessions for this class.</div>
 						<!-- <input type="text" class="form-control" id="period" name="period" [(ngModel)]="NewClass.Period" #period="ngModel" /> -->
 					</div>
-					<div class="">
+					<div class="" *ngIf="!isEdit">
 						<i class="fa fa-plus btn-custom" aria-hidden="true" (click)="Classes.AddNewClassPeriod()"></i>
 					</div>
 				</div>
 				<!-- start sessions settings -->
 				<ng-container *ngIf="!isEdit">
-					<div class="row" *ngFor="let period of NewClass.Period; index as i">
+					<div class="row mb-2" *ngFor="let period of NewClass.Period; index as i">
 						<div class="col">
 							<label for="dayOfWeek" class="form-label">Day of Week</label>
-							<select class="form-select" id="dayOfWeek" name="dayOfWeek" (change)="Classes.onSelectChange($event, i)" required>
+							<select class="form-select" id="dayOfWeek" name="dayOfWeek" (change)="Classes.onDayChange($event, i)" required>
 								<option *ngFor="let day of daysOfWeek" [value]="day.Id" [selected]="day.Id==period.Day">{{ day.Name }}</option>
 							</select>
 						</div>
@@ -73,10 +73,17 @@
 					</div>
 				</ng-container>
 				<ng-container *ngIf="isEdit">
-					<div class="row" *ngFor="let period of NewClass.LiveSessions; index as i">
+					<div class="row mb-2" *ngFor="let period of NewClass.LiveSessions; index as i">
 						<div class="col">
-							<label for="start" class="form-label required">Session {{i+1}}:</label>
-							<input type="date" class="form-control" id="start" name="startDate" [value]="period.StartDate" required />
+							<label for="start" class="form-label">Session {{i+1}}:</label>
+							<input
+								type="date"
+								class="form-control"
+								id="start"
+								name="startDate"
+								[value]="period.StartDateString"
+								(change)="Classes.onDateChange($event, i)"
+								required />
 						</div>
 
 						<div class="col">
@@ -86,7 +93,7 @@
 								class="form-control"
 								id="timeOfDay"
 								name="timeOfDay"
-								[value]="period.StartDate"
+								[value]="period.StartTimeString"
 								(change)="Classes.onTimeChange($event, i)"
 								required />
 						</div>
@@ -236,10 +243,17 @@
 				<label for="title" class="form-label required">Name</label>
 				<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
 			</div>
-			<div class="mb-3">
-				<label for="price" class="form-label">Price</label>
-				<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
+			<div class="row mb-3">
+				<div class="col">
+					<label for="start" class="form-label required">Starts on</label>
+					<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewCourse.StartDate" #startDate="ngModel" required />
+				</div>
+				<div class="col">
+					<label for="price" class="form-label required">Price in USD</label>
+					<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
+				</div>
 			</div>
+
 			<div class="mb-3">
 				<label for="image" class="form-label">Upload Image</label>
 				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
