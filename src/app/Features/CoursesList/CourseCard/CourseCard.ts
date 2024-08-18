@@ -8,15 +8,15 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 
 @Component({
 	standalone: true,
 	templateUrl: './CourseCard.html',
 	styleUrls: ['CourseCard.scss'],
 	selector: 'app-course-card',
-	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule]
+	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent]
 })
 export class CourseCardComponent implements OnInit {
 	@Input('Course') Course!: CourseModels.Course;

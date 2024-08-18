@@ -5,6 +5,30 @@
 	}
 	.page-section {
 		min-height: auto !important;
+		flex-direction: column;
+
+		.filters {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+
+			.left {
+				display: flex;
+				.searchinput {
+					display: flex;
+				}
+				.coursetype {
+				}
+				.rating {
+				}
+				.levels {
+					display: flex;
+				}
+			}
+			.right {
+			}
+		}
+
 		.courses {
 			// background-image: url('/assets/Images/pattern.png');
 			// background-attachment: fixed;

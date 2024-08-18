@@ -18,8 +18,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
 	standalone: true,
-	templateUrl: './Course.html',
-	styleUrls: ['Course.scss'],
+	templateUrl: './CoursePage.html',
+	styleUrls: ['CoursePage.scss'],
 	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule, LoaderComponent, PipesModule],
 	// animations: [
 	// 	trigger('fadeInOut', [
@@ -37,7 +37,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 		]),
 	],
 })
-export class CourseComponent implements OnInit {
+export class CoursePageComponent implements OnInit {
 	RoutePaths = RoutePaths
 	Course!: CourseModels.Course;
 	Sessions!: CourseModels.LiveSession;

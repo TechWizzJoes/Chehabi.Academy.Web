@@ -4,6 +4,56 @@
 		<app-loader></app-loader>
 	</div>
 	<div class="page-section" *ngIf="IsLoaded">
+		<div class="page-container filters">
+			<div class="left">
+				<div class="searchinput">
+					<input
+						type="text"
+						class="form-control"
+						id="searchInput"
+						name="searchInput"
+						[(ngModel)]="Filter.SearchInput"
+						#searchInput="ngModel"
+						placeholder="search" />
+					<button class="btn btn-primary">search</button>
+				</div>
+				<div class="coursetype">
+					<label for="classType" class="form-label required">Class Type</label>
+					<select
+						class="form-select"
+						id="courseType"
+						name="CourseType"
+						[(ngModel)]="Filter.Type"
+						#CourseType="ngModel"
+						required
+						placeholder="Select the course type">
+						<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+					</select>
+				</div>
+				<div class="rating">
+					<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
+				</div>
+				<div class="levels">
+					<label>
+						<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
+						Beginner
+					</label>
+					<br />
+					<label>
+						<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
+						Intermediate
+					</label>
+					<br />
+					<label>
+						<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
+						Advanced
+					</label>
+				</div>
+			</div>
+			<div class="right">
+				<button class="btn btn-primary" (click)="ApplyFilter()">Filter</button>
+			</div>
+		</div>
 		<div class="page-container courses">
 			<div *ngFor="let course of Courses">
 				<app-course-card [Course]="course" (click)="GotoCourse(course.Id)"></app-course-card>
@@ -11,3 +61,5 @@
 		</div>
 	</div>
 </div>
+
+<!-- <input type="text" class="form-control" id="x" name="x" [(ngModel)]="Filter.SearchInput" #x="ngModel" required /> -->

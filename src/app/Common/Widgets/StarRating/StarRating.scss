@@ -1,0 +1,24 @@
+.star-rating {
+	input {
+		display: none;
+	}
+	label {
+		cursor: pointer;
+		position: relative;
+
+		/* Gray star (always visible as the background) */
+		i.gray-star {
+			color: gray;
+			transition: 0.1s;
+		}
+
+		/* Orange star (clipped for fractional stars) */
+		i.orange-star {
+			color: orange;
+			position: absolute;
+			top: 4px;
+			left: 0;
+			transition: 0.1s;
+		}
+	}
+}

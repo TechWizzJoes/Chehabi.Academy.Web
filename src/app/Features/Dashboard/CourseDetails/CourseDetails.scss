@@ -80,11 +80,11 @@
 				color: #000000;
 
 				&.active {
-					background-color: rgb(217, 248, 169);
+					background-color: var(--active-color);
 				}
 
 				&.inactive {
-					background-color: rgb(220, 53, 69);
+					background-color: var(--inactive-color);
 				}
 			}
 		}

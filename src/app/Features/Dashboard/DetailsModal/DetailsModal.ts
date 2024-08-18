@@ -35,7 +35,7 @@ export class DetailsModalComponent implements OnInit {
     ImageProgress: any = { start: 0, end: 100 }
     FileProgress: any = { start: 0, end: 100 }
 
-    CourseTypeEnum = CourseTypeEnum;
+    // CourseTypeEnum = CourseTypeEnum;
     courseTypes = Object.keys(CourseTypeEnum);
     courseTypesValues = Object.values(CourseTypeEnum);
 

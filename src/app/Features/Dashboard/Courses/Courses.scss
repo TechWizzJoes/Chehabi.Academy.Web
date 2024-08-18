@@ -61,8 +61,12 @@
 					border-radius: 15px;
 					font-size: 0.7rem;
 					padding: 0.05rem 0.7rem;
-					background-color: rgb(217, 248, 169);
+					background-color: var(--active-color);
 					margin-bottom: 8px;
+
+					&.inactive {
+						background-color: var(--inactive-color);
+					}
 				}
 			}
 
@@ -118,24 +122,6 @@
 				i {
 					font-size: 1rem;
 					margin-right: 5px;
-				}
-
-				.rating {
-					input {
-						display: none;
-					}
-					label {
-						cursor: pointer;
-
-						i {
-							color: black;
-							transition: 0.1s;
-						}
-
-						i:hover {
-							color: orange !important;
-						}
-					}
 				}
 			}
 		}

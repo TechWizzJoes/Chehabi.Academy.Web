@@ -30,7 +30,7 @@
 						<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
 					</div>
 					<div class="lower-section">
-						<span class="rating">
+						<span class="star-rating">
 							<ng-container *ngFor="let i of [1,2,3,4,5]">
 								<input type="radio" name="star" [id]="'star' + i" />
 								<label [for]="'star' + i" (click)="changeRating($event, Course, i)">

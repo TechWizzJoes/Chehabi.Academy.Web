@@ -13,13 +13,15 @@ import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
+import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursesList.html',
 	styleUrls: ['CoursesList.scss'],
-	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent]
+	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent, StarRatingComponent]
 })
 export class CoursesListComponent implements OnInit {
 
@@ -48,5 +50,26 @@ export class CoursesListComponent implements OnInit {
 	GotoCourse(id: number) {
 		this.router.navigate(['/', RoutePaths.Course, id.toString()])
 	}
+
+	Filter: Filter = new Filter();
+	courseTypes = Object.keys(CourseTypeEnum);
+	courseTypesValues = Object.values(CourseTypeEnum);
+	ApplyFilter() {
+		console.log(this.Filter);
+
+	}
 }
 
+export class Filter {
+	SearchInput!: string;
+	Rating: number = 3.5;
+	Type!: string;
+	Level: Levels = new Levels();
+
+}
+export class Levels {
+	Beginner!: boolean;
+	Intermediate!: boolean;
+	Advanced!: boolean;
+
+}

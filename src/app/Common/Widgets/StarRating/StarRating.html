@@ -1,0 +1,20 @@
+<!-- <span class="star-rating">
+	<ng-container *ngFor="let i of [1, 2, 3, 4, 5]; let idx = index">
+		<input type="radio" name="star" [id]="'star' + i" />
+		<label [for]="'star' + i" (click)="changeRating($event, i)" (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave()">
+			<i class="fa fa-star" aria-hidden="true" [style.color]="getStarColor(i)" [style.clip-path]="getClipPath(i)"></i>
+		</label>
+	</ng-container>
+</span> -->
+
+<span class="star-rating">
+	<ng-container *ngFor="let i of [1, 2, 3, 4, 5]; let idx = index">
+		<input type="radio" name="star" [id]="'star' + i" />
+		<label [for]="'star' + i" (click)="changeRating($event, i)" (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave()">
+			<!-- Gray star as background -->
+			<i class="fa fa-star gray-star" aria-hidden="true"></i>
+			<!-- Orange star to be clipped for fractional stars -->
+			<i class="fa fa-star orange-star" aria-hidden="true" [style.color]="getStarColor(i)" [style.clip-path]="getClipPath(i)"></i>
+		</label>
+	</ng-container>
+</span>
