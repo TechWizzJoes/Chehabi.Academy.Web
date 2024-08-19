@@ -13,6 +13,7 @@ import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { HttpEventType } from '@angular/common/http';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 
 @Component({
 	standalone: true,
@@ -77,7 +78,7 @@ export class ProfileComponent implements OnInit {
 
 	removeProfilePicture() {
 		this.Account.ProfilePicturePath = '';
-		console.log(this.Account.ProfilePicturePath)
+		// console.log(this.Account.ProfilePicturePath)
 		this.editProfile();
 	}
 
@@ -101,13 +102,16 @@ export class ProfileComponent implements OnInit {
 
 
 		let httpEndPoint = HttpEndPoints.Profile.EditProfile;
-		this.HttpService.Put<UserModels.UserReqModel>(
+		this.HttpService.Put2<UserModels.UserReqModel, UserModels.User>(
 			httpEndPoint,
 			newProfile,
 		).subscribe({
 			next: (response) => {
 				this.AuthService.ProfilePicture = this.Account.ProfilePicturePath;
 				this.AuthService.ProfilePicUpdate.next({});
+
+				this.Account = response;
+				this.NotifyService.Success(MessagesEnum.PROFILE_UPDATED_SUCCESS);
 			},
 			error: (errorResponse) => {
 				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];

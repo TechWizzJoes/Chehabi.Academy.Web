@@ -63,13 +63,16 @@
 
 	.form-label {
 		margin-bottom: 0px;
-		&.required {
-			&::after {
-				content: '\002A';
-				color: $error-color;
-				font-size: 16px;
-				padding: 0 3px;
-			}
+	}
+}
+
+.form-label {
+	margin-bottom: 0px;
+	&.required {
+		&::before {
+			content: '*';
+			color: red;
+			margin-inline-end: 0.2rem;
 		}
 	}
 }

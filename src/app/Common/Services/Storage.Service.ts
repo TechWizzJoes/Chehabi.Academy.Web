@@ -5,15 +5,7 @@ export enum StorageEnum {
 	AccessToken = 'AccessToken',
 	RefreshToken = 'RefreshToken',
 	CurrentUser = 'CurrentUser',
-	ContainerDns = 'ContainerDns',
-	UserMenu = 'UserMenu',
-	UsersLookup = 'UsersLookup',
-	UserDIDs = 'UserDIDs',
-	UserSMSDIDs = 'UserSMSDIDs',
-	ContactFilter = 'ContactFilter',
-	ContactColumns = 'ContactColumns',
-	SessionContactIDs = 'SessionContactIDs',
-	TransferUserNames = 'TransferUserNames'
+	CoursesFilter = 'CoursesFilter',
 }
 
 @Injectable({ providedIn: 'root' })

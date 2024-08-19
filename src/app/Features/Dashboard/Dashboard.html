@@ -11,7 +11,11 @@
 					<i class="fa fa-user" aria-hidden="true"></i>
 					<p>Edit Profile</p></a
 				>
-				<a [routerLink]="['/','dashboard','password']" routerLinkActive="active" class="list-group-item list-group-item-action"
+				<a
+					*ngIf="!currentUser.IsSocial"
+					[routerLink]="['/','dashboard','password']"
+					routerLinkActive="active"
+					class="list-group-item list-group-item-action"
 					><i class="fa fa-unlock-alt" aria-hidden="true"></i>
 					<p>Password</p></a
 				>

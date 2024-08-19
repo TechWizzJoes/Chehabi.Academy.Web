@@ -28,6 +28,7 @@ export namespace AuthModels {
 		LastName!: string;
 		Email!: string;
 		IsAdmin!: boolean;
+		IsSocial!: boolean;
 		ProfilePicturePath?: string;
 	}
 
@@ -48,6 +49,7 @@ export namespace AuthModels {
 	export class RefreshTokenResModel {
 		AccessToken!: string;
 		RefreshToken!: string;
+		CurrentUser!: CurrentUserResModel;
 	}
 
 	export class UserMenuResModel {

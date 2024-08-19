@@ -1,9 +1,9 @@
 <div class="page-inner">
 	<h1>Explore Our Courses</h1>
-	<div class="page-section" *ngIf="!IsLoaded">
+	<!-- <div class="page-section" *ngIf="!IsLoaded">
 		<app-loader></app-loader>
-	</div>
-	<div class="page-section" *ngIf="IsLoaded">
+	</div> -->
+	<div class="page-section">
 		<div class="page-container filters">
 			<div class="left">
 				<div class="searchinput">
@@ -18,7 +18,7 @@
 					<button class="btn btn-primary">search</button>
 				</div>
 				<div class="coursetype">
-					<label for="classType" class="form-label required">Class Type</label>
+					<label for="classType" class="form-label">Class Type</label>
 					<select
 						class="form-select"
 						id="courseType"
@@ -51,10 +51,14 @@
 				</div>
 			</div>
 			<div class="right">
-				<button class="btn btn-primary" (click)="ApplyFilter()">Filter</button>
+				<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">Reset</button>
+				<button class="btn btn-primary" (click)="Data.FilterRows()">Filter</button>
 			</div>
 		</div>
-		<div class="page-container courses">
+		<div class="page-section" *ngIf="!IsLoaded">
+			<app-loader></app-loader>
+		</div>
+		<div class="page-container courses" *ngIf="IsLoaded">
 			<div *ngFor="let course of Courses">
 				<app-course-card [Course]="course" (click)="GotoCourse(course.Id)"></app-course-card>
 			</div>

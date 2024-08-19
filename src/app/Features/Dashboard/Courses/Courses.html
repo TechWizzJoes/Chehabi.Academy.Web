@@ -30,14 +30,16 @@
 						<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
 					</div>
 					<div class="lower-section">
-						<span class="star-rating">
+						<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
+
+						<!-- <span class="star-rating">
 							<ng-container *ngFor="let i of [1,2,3,4,5]">
 								<input type="radio" name="star" [id]="'star' + i" />
 								<label [for]="'star' + i" (click)="changeRating($event, Course, i)">
 									<i class="fa fa-star" aria-hidden="true" [style.color]="Course.Rating >= i ? 'orange' : 'gray'"></i
 								></label>
 							</ng-container>
-						</span>
+						</span> -->
 						<span>
 							<i class="fa fa-usd" aria-hidden="true"></i>
 							<small class="ps-2">{{Course.Price || '0'}}</small>

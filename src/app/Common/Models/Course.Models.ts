@@ -62,4 +62,18 @@ export namespace CourseModels {
 		Day: number = 0;
 		Time: string = '12:00';
 	}
+
+	export class Filter {
+		SearchInput!: string;
+		Rating!: number;
+		Type!: string;
+		Level: Levels = new Levels();
+
+	}
+	export class Levels {
+		Beginner!: boolean;
+		Intermediate!: boolean;
+		Advanced!: boolean;
+
+	}
 }

@@ -95,8 +95,7 @@ export class AuthService {
 			tap((data) => {
 				console.log('access token refreshed');
 
-				this.AccessToken = data.AccessToken;
-				this.RefreshToken = data.RefreshToken;
+				this.SignIn(data)
 			})
 		);
 	}

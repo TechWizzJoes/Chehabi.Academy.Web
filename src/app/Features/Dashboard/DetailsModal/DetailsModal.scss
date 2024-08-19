@@ -2,14 +2,6 @@ textarea {
 	resize: vertical;
 }
 
-label.required {
-	&::before {
-		content: '*';
-		color: red;
-		margin-inline-end: 0.2rem;
-	}
-}
-
 .progress-container {
 	display: flex;
 	justify-content: space-between;

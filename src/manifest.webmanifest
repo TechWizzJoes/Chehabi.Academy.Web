@@ -1,7 +1,7 @@
 {
 	"name": "Chehabi Academy",
 	"short_name": "CH Academy",
-	"theme_color": "#36455",
+	"theme_color": "#364555",
 	"background_color": "#fafafa",
 	"display": "standalone",
 	"scope": "./",

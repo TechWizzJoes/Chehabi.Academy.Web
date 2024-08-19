@@ -9,6 +9,7 @@ export namespace UserModels {
 		Birthdate!: string;
 		IsActive!: boolean;
 		IsDeleted!: boolean;
+		IsSocial!: boolean;
 		Email!: string;
 		Password!: string;
 		IsAdmin!: boolean;

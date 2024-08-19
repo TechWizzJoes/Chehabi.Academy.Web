@@ -13,6 +13,8 @@ import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
+import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
 
 @Component({
 	standalone: true,
@@ -24,6 +26,9 @@ export class PasswordComponent implements OnInit {
 	Account: AuthModels.CurrentUserResModel = new AuthModels.CurrentUserResModel();
 	Error!: string;
 	Password: { OldPassword: string, NewPassword: string, ReNewPassword: string } = { OldPassword: '', NewPassword: '', ReNewPassword: '' };
+
+	showPW: boolean = false;
+	PWInputType: string = 'password';
 
 	constructor(
 		private Router: Router,
@@ -37,6 +42,11 @@ export class PasswordComponent implements OnInit {
 
 	ngOnInit() {
 		this.Account = this.AuthService.CurrentUser;
+	}
+
+	toggleShowPW() {
+		this.showPW = this.showPW ? false : true;
+		this.PWInputType = this.PWInputType == 'password' ? 'text' : 'password';
 	}
 
 	onSubmit(form: NgForm) {
@@ -63,11 +73,14 @@ export class PasswordComponent implements OnInit {
 			requestModel,
 		).subscribe({
 			next: (response) => {
-				console.log(response);
+				// console.log(response);
+				this.Error = '';
+				this.Password = { OldPassword: '', NewPassword: '', ReNewPassword: '' };
+				this.NotifyService.Success(MessagesEnum.PASSWORD_UPDATED_SUCCESS);
 			},
 			error: (errorResponse) => {
 				// to show the error on login panel
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+				this.Error = ErrorMessagesEnum.WRONG_PASSWORD_RESET;
 			}
 		});
 	}

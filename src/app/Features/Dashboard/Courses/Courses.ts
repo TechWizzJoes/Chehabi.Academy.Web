@@ -18,18 +18,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
+import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 
 @Component({
     standalone: true,
     templateUrl: './Courses.html',
     styleUrls: ['Courses.scss'],
-    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent]
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent]
 })
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
     Courses: CourseModels.Course[] = [];
     ClassesByUser: CourseModels.Class[] = [];
-    MaxRating: number = 5;
     ModalPropertyEnum = ModalPropertyEnum;
     CurrentUser!: AuthModels.CurrentUserResModel;
 
