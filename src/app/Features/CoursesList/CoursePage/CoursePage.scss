@@ -12,18 +12,17 @@
 		.content {
 			padding: var(--page-inner-content-padding);
 			font-size: 14px;
+			width: 100%;
+
 			.classes {
-				// display: none;
-				transition: all 0.3s ease-in-out;
-				// &.show {
-				// 	display: block;
-				// }
 				.class-instance {
+					border-radius: 10px;
+					padding: 0 20px;
 					&:hover {
 						// background-color: lightgray;
 						cursor: default;
-						cursor: pointer;
-						background-color: rgb(194, 194, 194);
+						// cursor: pointer;
+						background-color: rgb(226 223 223);
 					}
 					&.selected-class {
 						background-color: rgb(194, 194, 194);
@@ -31,6 +30,30 @@
 					.session-instance {
 						&:hover {
 						}
+					}
+
+					.title {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+					}
+
+					.status {
+						border-radius: 15px;
+						font-size: 0.7rem;
+						padding: 0.05rem 0.7rem;
+						background-color: var(--active-color);
+						margin-bottom: 8px;
+
+						&.inactive {
+							background-color: var(--inactive-color);
+						}
+					}
+
+					.show-sessions {
+						color: gray;
+						font-size: 14px;
+						cursor: pointer;
 					}
 				}
 			}

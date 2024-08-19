@@ -8,19 +8,20 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { PipesModule } from '@App/Common/Pipes/Pipes.Module';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
+import { Constants } from '@App/Common/Settings/Constants';
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursePage.html',
 	styleUrls: ['CoursePage.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgbRatingModule, LoaderComponent, PipesModule],
+	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent, LoaderComponent, PipesModule],
 	// animations: [
 	// 	trigger('fadeInOut', [
 	// 		state('void', style({ opacity: 0 })),
@@ -30,21 +31,28 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 	animations: [
 		trigger('fadeInOut', [
 			state('void', style({ opacity: 0, height: '0' })),
-			transition('void <=> *', [
+			transition('* => void', [
+				// Animate opacity first, then height for the fade out effect
+				animate(100, style({ opacity: 0 })),
+				animate(100, style({ height: '0' }))
+			]),
+			transition('void => *', [
+				// Animate height first, then opacity for the fade in effect
 				animate(100, style({ height: '*' })),
 				animate(300, style({ opacity: 1 })),
-			]),
+			])
 		]),
 	],
 })
 export class CoursePageComponent implements OnInit {
-	RoutePaths = RoutePaths
+	RoutePaths = RoutePaths;
+	Constants = Constants;
 	Course!: CourseModels.Course;
-	Sessions!: CourseModels.LiveSession;
+	// Sessions!: CourseModels.LiveSession;
 
 	IsLoaded: boolean = false;
 	IsJoinClass!: boolean;
-	SelectedClass!: CourseModels.Class;
+	SelectedClass?: CourseModels.Class;
 
 	constructor(
 		private Router: Router,
@@ -59,22 +67,62 @@ export class CoursePageComponent implements OnInit {
 	ngOnInit() {
 		this.ActivatedRoute.params.subscribe((params) => {
 			const id = (params['id']);
-			this.getCourse(id)
+			this.getCourse(id);
 		});
-
-
 	}
 
 	SelectClass(selectedClass: CourseModels.Class) {
-		this.SelectedClass = selectedClass
+		if (!this.SelectedClass) {
+			this.SelectedClass = selectedClass;
+		} else {
+			if (this.SelectedClass.Id == selectedClass.Id) {
+				this.SelectedClass = undefined;
+			} else {
+				this.SelectedClass = selectedClass;
+
+			}
+		}
 	}
+
+	showSessions(event: Event, index: number) {
+		event.stopPropagation()
+		this.Course.Classes[index].ShowSessions = !this.Course.Classes[index].ShowSessions;
+	}
+
+	formatDate(dateString: Date, gmtOffset?: number): string {
+		// Parse the date string
+		const date = new Date(dateString);
+
+		// Adjust the time to your local timezone based on the GMT offset (in hours)
+		// const localDate = new Date(date.getTime() + gmtOffset * 60 * 60 * 1000);
+		const localDate = new Date(date.getTime());
+
+		// Format the date to "Tuesday 20/08/2024 02:00 pm"
+		const options: Intl.DateTimeFormatOptions = {
+			weekday: 'long',    // Full weekday name
+			year: 'numeric',    // Full year
+			month: '2-digit',   // Month as two digits
+			day: '2-digit',     // Day as two digits
+			hour: '2-digit',    // Hour in 12-hour format
+			minute: '2-digit',  // Minutes as two digits
+			hour12: true        // 12-hour format with AM/PM
+		};
+
+		return new Intl.DateTimeFormat('en-GB', options).format(localDate);
+	}
+
+
 
 	getCourse(id: string) {
 		let endPoint = HttpEndPoints.Courses.GetOne;
-		endPoint = endPoint.replace('{id}', id)
+		endPoint = endPoint.replace('{id}', id);
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
-			this.IsLoaded = true
-			this.Course = data
+			this.IsLoaded = true;
+			this.Course = data;
+			this.Course.Classes.forEach(c => {
+				c.StartDate = Constants.convertDateToYYYYMMDD(new Date(c.StartDate));
+				c.AvailableSlots = c.MaxCapacity - c.Users.length;
+			})
 		})
 	}
 
@@ -90,6 +138,7 @@ export class CoursePageComponent implements OnInit {
 	}
 
 	JoinNow() {
+		if (!this.SelectedClass) return;
 		let endPoint = HttpEndPoints.Classes.JoinClass;
 		endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString())
 		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {

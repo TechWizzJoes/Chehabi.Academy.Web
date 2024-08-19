@@ -8,15 +8,36 @@
 			<div class="partition content">
 				<div *ngIf="IsJoinClass" class="classes" [@fadeInOut]>
 					<h3>Classes</h3>
-					<ul
-						*ngFor="let class of Course.Classes"
+					<div *ngIf="Course.Classes.length == 0">No classes added to this course yet.</div>
+					<div
+						*ngFor="let class of Course.Classes; index as i"
 						class="class-instance"
 						(click)="SelectClass(class)"
 						[ngClass]="{'selected-class': SelectedClass && class.Id == SelectedClass.Id}">
-						Starts at {{class.StartDate}}
+						<div class="title">
+							<h3>
+								{{class.Name}}
+
+								<span class="status active" *ngIf="class.IsActive">Active</span>
+								<span class="status inactive" *ngIf="!class.IsActive">Inactive</span>
+							</h3>
+
+							<span *ngIf="class.AvailableSlots <= 10" class="float-end text-1">
+								Only {{class.AvailableSlots}} {{class.AvailableSlots == 1? 'slot': 'slots'}} available
+							</span>
+						</div>
+						<div>Starts on {{class.StartDate}}</div>
+						<div>
+							Sessions: {{class.NumberOfSessions}}
+							<a class="show-sessions" (click)="showSessions($event, i)">{{class.ShowSessions?'Hide':'Show'}} Sessions</a>
+						</div>
+
 						<br />
-						<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{occ.StartDate}}</li>
-					</ul>
+						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
+							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{formatDate(occ.StartDate)}}</li>
+						</ul>
+					</div>
+					<hr />
 				</div>
 
 				<p [innerText]="Course.Description"></p>
@@ -40,7 +61,7 @@
 				<div class="instructor">{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</div>
 				<div class="rating">
 					<span class="rate">{{Course.Rating}} </span>
-					<ngb-rating [max]="5" [rate]="Course.Rating " [readonly]="true"></ngb-rating> ({{Course.Raters}})
+					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
 				<button href="#" class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>

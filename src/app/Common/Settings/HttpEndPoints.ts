@@ -15,7 +15,6 @@ export class HttpEndPoints {
 		GetOne: 'courses/{id}',
 		GetAll: 'courses/list/all',
 		GetAllByAdmin: 'courses/admin/courses',
-		GetAllByUser: 'courses/user/classes',
 		EditCourse: 'courses/{id}',
 		DeleteCourse: 'courses/{id}',
 		UploadImage: 'courses/upload/image/{id}',
@@ -25,6 +24,7 @@ export class HttpEndPoints {
 
 	public static Classes = {
 		JoinClass: 'class/join/{classId}',
+		GetAllByUser: 'class/user/classes',
 		AddClass: 'class',
 		EditClass: 'class/{id}',
 		DeleteClass: 'class/{id}',

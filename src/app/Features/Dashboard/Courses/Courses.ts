@@ -19,12 +19,28 @@ import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     standalone: true,
     templateUrl: './Courses.html',
     styleUrls: ['Courses.scss'],
-    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent]
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent],
+    animations: [
+        trigger('fadeInOut', [
+            state('void', style({ opacity: 0, height: '0' })),
+            transition('* => void', [
+                // Animate opacity first, then height for the fade out effect
+                animate(100, style({ opacity: 0 })),
+                animate(100, style({ height: '0' }))
+            ]),
+            transition('void => *', [
+                // Animate height first, then opacity for the fade in effect
+                animate(100, style({ height: '*' })),
+                animate(300, style({ opacity: 1 })),
+            ])
+        ]),
+    ],
 })
 export class CoursesComponent implements OnInit {
     IsLoaded: boolean = false;
@@ -47,8 +63,11 @@ export class CoursesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAdminCourses();
-        this.getUserClasses();
+        if (this.CurrentUser.IsAdmin) {
+            this.getAdminCourses();
+        } else {
+            this.getUserClasses();
+        }
     }
 
     gotoCourse(id: number) {
@@ -81,7 +100,7 @@ export class CoursesComponent implements OnInit {
     }
 
     getUserClasses() {
-        let endPoint = HttpEndPoints.Courses.GetAllByUser
+        let endPoint = HttpEndPoints.Classes.GetAllByUser
         this.HttpService.Get<CourseModels.Class[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
             this.ClassesByUser = data;
@@ -103,4 +122,31 @@ export class CoursesComponent implements OnInit {
     }
 
 
+
+    showSessions(event: Event, index: number) {
+        event.stopPropagation()
+        this.ClassesByUser[index].ShowSessions = !this.ClassesByUser[index].ShowSessions;
+    }
+
+    formatDate(dateString: Date, gmtOffset?: number): string {
+        // Parse the date string
+        const date = new Date(dateString);
+
+        // Adjust the time to your local timezone based on the GMT offset (in hours)
+        // const localDate = new Date(date.getTime() + gmtOffset * 60 * 60 * 1000);
+        const localDate = new Date(date.getTime());
+
+        // Format the date to "Tuesday 20/08/2024 02:00 pm"
+        const options: Intl.DateTimeFormatOptions = {
+            weekday: 'long',    // Full weekday name
+            year: 'numeric',    // Full year
+            month: '2-digit',   // Month as two digits
+            day: '2-digit',     // Day as two digits
+            hour: '2-digit',    // Hour in 12-hour format
+            minute: '2-digit',  // Minutes as two digits
+            hour12: true        // 12-hour format with AM/PM
+        };
+
+        return new Intl.DateTimeFormat('en-GB', options).format(localDate);
+    }
 }

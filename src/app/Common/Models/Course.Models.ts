@@ -44,6 +44,11 @@ export namespace CourseModels {
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
 		LiveSessions!: LiveSession[];
+		Users!: UserModels.User[];
+		Course!: Course;
+
+		AvailableSlots!: number; // for display
+		ShowSessions: boolean = false; // for display
 	}
 
 	export class LiveSession {

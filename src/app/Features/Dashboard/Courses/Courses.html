@@ -31,15 +31,6 @@
 					</div>
 					<div class="lower-section">
 						<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
-
-						<!-- <span class="star-rating">
-							<ng-container *ngFor="let i of [1,2,3,4,5]">
-								<input type="radio" name="star" [id]="'star' + i" />
-								<label [for]="'star' + i" (click)="changeRating($event, Course, i)">
-									<i class="fa fa-star" aria-hidden="true" [style.color]="Course.Rating >= i ? 'orange' : 'gray'"></i
-								></label>
-							</ng-container>
-						</span> -->
 						<span>
 							<i class="fa fa-usd" aria-hidden="true"></i>
 							<small class="ps-2">{{Course.Price || '0'}}</small>
@@ -50,16 +41,37 @@
 		</ng-container>
 		<ng-container *ngIf="!CurrentUser.IsAdmin">
 			<app-loader *ngIf="!IsLoaded"></app-loader>
-			<div class="card" *ngFor="let class of ClassesByUser; let i = index" (click)="gotoCourse(class.Id)">
+			<div class="card" *ngFor="let class of ClassesByUser; let i = index">
 				<div class="card-body">
 					<div class="upper-section">
-						<h5 class="card-title">{{class.LiveSessions}}</h5>
+						<h5 class="card-title">{{class.Name}}</h5>
 						<span class="status active" *ngIf="class.IsActive">Active</span>
 						<span class="status inactive" *ngIf="!class.IsActive">Inactive</span>
 					</div>
-					<p class="card-text">{{class.Period}}</p>
+					<div>
+						Next Session: "get next session using class's current index "
+						<div>
+							Sessions: {{class.NumberOfSessions}}
+							<a class="show-sessions" (click)="showSessions($event, i)">{{class.ShowSessions?'Hide':'Show'}} Sessions</a>
+						</div>
+
+						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
+							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{formatDate(occ.StartDate)}}</li>
+						</ul>
+					</div>
 					<div class="middle-section">
+						<div class="instructor">
+							<span class="initials">{{getInitials(class.Course.Instructor.User)}}</span>
+							<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
+						</div>
 						<small>{{class.StartDate | date: 'dd/MM/YYYY'}}</small>
+					</div>
+					<div class="lower-section">
+						<app-StarRating [Rate]="class.Course.Rating" [ReadOnly]="true"></app-StarRating>
+						<span>
+							<i class="fa fa-usd" aria-hidden="true"></i>
+							<small class="ps-2">{{class.Course.Price || '0'}}</small>
+						</span>
 					</div>
 				</div>
 			</div>

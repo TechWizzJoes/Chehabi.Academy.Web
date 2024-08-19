@@ -21,4 +21,9 @@
 			transition: 0.1s;
 		}
 	}
+	&.readonly {
+		label {
+			cursor: text;
+		}
+	}
 }
