@@ -12,4 +12,5 @@ export class RoutePaths {
 	public static Profile = 'profile';
 	public static Dashboard = 'dashboard';
 	public static Account = 'account';
+	public static Class = 'class';
 }

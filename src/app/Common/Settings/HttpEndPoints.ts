@@ -23,6 +23,7 @@ export class HttpEndPoints {
 	}
 
 	public static Classes = {
+		GetOne: 'class/{id}',
 		JoinClass: 'class/join/{classId}',
 		GetAllByUser: 'class/user/classes',
 		AddClass: 'class',

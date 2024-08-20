@@ -49,11 +49,13 @@ export const routes: Routes = [
 				children: [
 					{
 						path: 'courses',
-						loadComponent: () => import('@App/Features/Dashboard/Courses/Courses').then((c) => c.CoursesComponent)
+						loadComponent: () => import('@App/Features/Dashboard/Courses/Courses').then((c) => c.CoursesComponent),
+						pathMatch: 'full'
 					},
 					{
 						path: 'courses/:id',
-						loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent)
+						loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent),
+						pathMatch: 'full'
 					},
 					{
 						path: 'profile',
@@ -62,6 +64,10 @@ export const routes: Routes = [
 					{
 						path: 'password',
 						loadComponent: () => import('@App/Features/Password/Password').then((c) => c.PasswordComponent)
+					},
+					{
+						path: 'courses/:cid/class/:id',
+						loadComponent: () => import('@App/Features/Dashboard/ClassDetails/ClassDetails').then((c) => c.ClassDetailsComponent)
 					}
 				]
 			},

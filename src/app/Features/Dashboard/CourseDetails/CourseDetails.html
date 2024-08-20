@@ -3,7 +3,11 @@
 	<div class="" *ngIf="IsLoaded">
 		<div class="right-section">
 			<h6 class="main-title">Dashboard</h6>
-			<p class="sub-title">Courses &nbsp;>&nbsp; {{Course.Name}}</p>
+			<p class="sub-title">
+				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses]"> Courses </a> &nbsp;>&nbsp;
+				<a class="current">{{Course.Name}}</a>
+			</p>
+
 			<div class="card bg-dark text-white">
 				<img *ngIf="Course.ImageUrl" [src]="Course.ImageUrl || '/assets/Images/white-full-logo.png'" class="card-img" alt="no image" height="275px" />
 				<div *ngIf="!Course.ImageUrl" class="card-img"></div>
@@ -77,6 +81,7 @@
 										<span class="status inactive" *ngIf="!class.IsActive" title="Inactive"
 											><i class="fa fa-times" aria-hidden="true"></i
 										></span>
+										<a [routerLink]="[RoutePaths.Class, class.Id]">go to class</a>
 									</button>
 									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>
 								</h2>

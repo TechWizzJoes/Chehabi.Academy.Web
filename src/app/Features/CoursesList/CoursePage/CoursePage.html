@@ -34,7 +34,7 @@
 
 						<br />
 						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
-							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{formatDate(occ.StartDate)}}</li>
+							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{Constants.formatDate(occ.StartDate)}}</li>
 						</ul>
 					</div>
 					<hr />
@@ -64,9 +64,9 @@
 					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
-				<button href="#" class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
-				<button href="#" class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
-				<button href="#" class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</button>
+				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
+				<button class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
+				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</a>
 				<hr />
 			</div>
 		</div>

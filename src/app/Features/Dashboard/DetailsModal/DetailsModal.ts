@@ -204,7 +204,7 @@ export class DetailsModalComponent implements OnInit {
         },
 
         onDateChange: (event: any, index: number) => {
-            let selectedDate = event.target.value
+            let selectedDate = new Date(event.target.value)
             const [hours, minutes] = this.NewClass.LiveSessions[index].StartTimeString.split(":").map(Number);
 
             selectedDate.setHours(hours);
@@ -247,7 +247,7 @@ export class DetailsModalComponent implements OnInit {
             this.IsDisabled = true;
             this.HttpService.Delete(endPoint).subscribe(data => {
                 this.IsDisabled = false;
-                this.activeModal.close('save');
+                this.activeModal.close('delete');
             })
         }
     }

@@ -89,29 +89,6 @@ export class CoursePageComponent implements OnInit {
 		this.Course.Classes[index].ShowSessions = !this.Course.Classes[index].ShowSessions;
 	}
 
-	formatDate(dateString: Date, gmtOffset?: number): string {
-		// Parse the date string
-		const date = new Date(dateString);
-
-		// Adjust the time to your local timezone based on the GMT offset (in hours)
-		// const localDate = new Date(date.getTime() + gmtOffset * 60 * 60 * 1000);
-		const localDate = new Date(date.getTime());
-
-		// Format the date to "Tuesday 20/08/2024 02:00 pm"
-		const options: Intl.DateTimeFormatOptions = {
-			weekday: 'long',    // Full weekday name
-			year: 'numeric',    // Full year
-			month: '2-digit',   // Month as two digits
-			day: '2-digit',     // Day as two digits
-			hour: '2-digit',    // Hour in 12-hour format
-			minute: '2-digit',  // Minutes as two digits
-			hour12: true        // 12-hour format with AM/PM
-		};
-
-		return new Intl.DateTimeFormat('en-GB', options).format(localDate);
-	}
-
-
 
 	getCourse(id: string) {
 		let endPoint = HttpEndPoints.Courses.GetOne;

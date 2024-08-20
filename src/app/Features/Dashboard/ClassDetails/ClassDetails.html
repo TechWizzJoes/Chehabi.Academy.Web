@@ -1,0 +1,116 @@
+<div class="page-inner">
+	<app-loader *ngIf="!IsLoaded"></app-loader>
+	<div class="" *ngIf="IsLoaded">
+		<div class="right-section">
+			<h6 class="main-title">Dashboard</h6>
+			<p class="sub-title">
+				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses]"> Courses </a> &nbsp;>&nbsp;
+				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,Class.Course.Id]"> {{Class.Course.Name}} </a> &nbsp;>&nbsp;
+				<a class="current">{{Class.Name}}</a>
+			</p>
+			<div class="card bg-dark text-white">
+				<img
+					*ngIf="Class.Course.ImageUrl"
+					[src]="Class.Course.ImageUrl || '/assets/Images/white-full-logo.png'"
+					class="card-img"
+					alt="no image"
+					height="275px" />
+				<div *ngIf="!Class.Course.ImageUrl" class="card-img"></div>
+				<div class="btn-header" (click)="openEditModal(ModalPropertyEnum.Class, '0')">
+					<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true"></i>
+				</div>
+				<div class="card-img-overlay">
+					<h5 class="card-title">
+						{{Class.Name}}
+						<span class="status active" *ngIf="Class.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
+						<span class="status inactive" *ngIf="!Class.IsActive" title="Inactive"><i class="fa fa-times" aria-hidden="true"></i></span>
+					</h5>
+					<!-- <p class="card-text" *ngIf="Class.Course.Description">{{Class.Course.Description.substring(0, 200) + '...'}}</p> -->
+					<p class="card-text" *ngIf="Class.Course.Price">${{Class.Course.Price}}</p>
+					<p class="card-text">Created On: {{Constants.formatDate(Class.CreatedOn)}}</p>
+					<p class="card-text">Last Updated On: {{Constants.formatDate(Class.UpdatedOn)}}</p>
+					<p class="card-text">Starts: {{Constants.formatDate(Class.StartDate)}}</p>
+					<p class="card-text">Ends: {{Constants.formatDate(Class.EndDate)}}</p>
+				</div>
+			</div>
+			<div class="group">
+				<div class="sessions section">
+					<div class="row-custom">
+						<h6 class="title">Sessions</h6>
+					</div>
+					<p class="no-data" *ngIf="Class.LiveSessions.length == 0">No Live Sessions added.</p>
+					<div class="table-responsive">
+						<table class="table table-striped table-hover" *ngIf="Class.LiveSessions.length != 0">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Start Date</th>
+									<th scope="col">End Date</th>
+									<th scope="col">Link</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let session of Class.LiveSessions ; let i = index">
+									<th scope="row">{{i+1}}</th>
+									<td>{{Constants.formatDate(session.StartDate)}}</td>
+									<td>{{Constants.formatDate(session.EndDate)}}</td>
+									<td>{{session.Link?? 'N/A'}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="users section">
+					<div class="row-custom">
+						<h6 class="title">Users</h6>
+						<!-- <i class="fa fa-plus btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class,'',false)"></i> -->
+					</div>
+					<p class="no-data" *ngIf="Class.Users?.length == 0">No users yet.</p>
+					<div class="table-responsive">
+						<table class="table table-striped table-hover" *ngIf="Class.Users?.length != 0">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Dp</th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Birth Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let user of Class.Users | slice:0:3 ; let i = index">
+									<th scope="row">{{i+1}}</th>
+									<td>
+										<div class="profile-pic">
+											<img [src]="user.ProfilePicturePath? user.ProfilePicturePath: 'assets/Images/default-pp.png'" />
+										</div>
+									</td>
+									<td>{{user.FirstName}}</td>
+									<td>{{user.LastName}}</td>
+									<td>{{user.Email}}</td>
+									<td>{{user.Birthdate}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row-custom" *ngIf="Class.Users.length > UsersCounter.end">
+						<button class="btn btn-light" (click)="UsersCounter.end = UsersCounter.end + 3;">Load More Users</button>
+					</div>
+				</div>
+				<div class="material section">
+					<div class="row-custom">
+						<h6 class="title">Class Material</h6>
+						<small>Not available yet.</small>
+						<!-- <i
+							class="fa fa-pencil-square-o btn-custom"
+							aria-hidden="true"
+							(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i> -->
+					</div>
+					<!-- <p class="text" *ngIf="Class.FilePath">{{Class.FilePath}}</p>
+						<p class="no-data" *ngIf="!Class.FilePath">No material attached to this class.</p> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

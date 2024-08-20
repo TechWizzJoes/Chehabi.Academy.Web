@@ -17,21 +17,23 @@ import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { PipesModule } from '@App/Common/Pipes/Pipes.Module';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { Constants } from '@App/Common/Settings/Constants';
 
 @Component({
     standalone: true,
-    templateUrl: './CourseDetails.html',
-    styleUrls: ['CourseDetails.scss'],
+    templateUrl: './ClassDetails.html',
+    styleUrls: ['ClassDetails.scss'],
     imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent, PipesModule, RouterModule]
 })
-export class CourseDetailsComponent implements OnInit {
+export class ClassDetailsComponent implements OnInit {
     RoutePaths = RoutePaths;
-    IsLoaded: boolean = false;
-    Course: CourseModels.Course = new CourseModels.Course();
-    LastUpdated: string = '';
+    Constants = Constants;
     ModalPropertyEnum = ModalPropertyEnum;
-    ClassesCounter: any = { start: 0, end: 3 };
-    UpcomingSessions: any[] = [];
+
+    IsLoaded: boolean = false;
+    Class: CourseModels.Class = new CourseModels.Class();
+    UsersCounter: any = { start: 0, end: 3 };
+
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,
@@ -46,14 +48,26 @@ export class CourseDetailsComponent implements OnInit {
     ngOnInit() {
         this.ActivatedRoute.params.subscribe((params) => {
             const id = (params['id']);
-            this.getCourse(id);
+            this.GetClass(id);
         });
+    }
+
+    GetClass(id: string) {
+        let endPoint = HttpEndPoints.Classes.GetOne;
+        endPoint = endPoint.replace('{id}', id)
+        this.HttpService.Get<CourseModels.Class>(endPoint).subscribe(data => {
+
+            this.IsLoaded = true
+            this.Class = data;
+        })
     }
 
     openEditModal(property: ModalPropertyEnum, index?: string, isEdit: boolean = true) {
         const modalRef = this.modalService.open(DetailsModalComponent, { centered: true, modalDialogClass: 'course-modal' });
+
+        this.Class.Course.Classes = [this.Class];
         modalRef.componentInstance.property = property;
-        modalRef.componentInstance.course = this.Course;
+        modalRef.componentInstance.course = this.Class.Course;
         modalRef.componentInstance.isEdit = isEdit;
 
         if (index) {
@@ -62,44 +76,11 @@ export class CourseDetailsComponent implements OnInit {
 
         modalRef.closed.subscribe((data) => {
             if (data == 'save') {
-                this.getCourse(this.Course.Id.toString());
+                this.GetClass(this.Class.Id.toString());
 
             } else if (data == 'delete') {
-                this.Router.navigate([RoutePaths.Dashboard, RoutePaths.Courses])
+                this.Router.navigate([RoutePaths.Dashboard, RoutePaths.Courses, this.Class.Course.Id])
             }
         })
-    }
-
-    getCourse(id: string) {
-        let endPoint = HttpEndPoints.Courses.GetOne;
-        endPoint = endPoint.replace('{id}', id)
-        this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
-
-            this.IsLoaded = true
-            this.Course = data;
-            this.getUpcomingSessions();
-        })
-    }
-
-    getClasses() {
-        this.ClassesCounter.end += 3;
-    }
-
-    getUpcomingSessions() {
-        if (this.Course.IsActive) {
-            this.Course.Classes.forEach((cls) => {
-                let today = new Date().toDateString();
-                if (cls.IsActive && today >= cls.StartDate && cls.EndDate >= today) {
-                    if (cls.CurrentIndex == 0) {
-                        this.UpcomingSessions.push({ class: cls.Id.toString(), date: cls.StartDate })
-                    } else {
-                        let nextSession = cls.CurrentIndex * 7;
-                        let nextSessionDate = new Date(cls.StartDate);
-                        nextSessionDate.setDate(nextSessionDate.getDate() + nextSession);
-                        this.UpcomingSessions.push({ class: cls.Id.toString(), date: cls.StartDate })
-                    }
-                }
-            })
-        }
     }
 }

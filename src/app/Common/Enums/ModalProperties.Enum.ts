@@ -6,5 +6,6 @@ export enum ModalPropertyEnum {
     Prerequisites = 'Prerequisites',
     Video = 'Video URL',
     CourseMaterial = 'Course Material',
-    Class = 'Class'
+    Class = 'Class',
+    ClassMaterial = 'Class Material',
 }
