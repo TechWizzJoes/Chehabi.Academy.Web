@@ -24,6 +24,7 @@ import { observable } from 'rxjs';
 })
 export class DetailsModalComponent implements OnInit {
     daysOfWeek: ConstantsType[] = Constants.Weekdays;
+    Today: string = Constants.GetTodayDate();
 
     activeModal = inject(NgbActiveModal);
     IsDisabled: boolean = false;
@@ -72,6 +73,8 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.ToBeLearned = this.course.ToBeLearned;
         this.NewCourse.Price = this.course.Price;
         this.NewCourse.IsActive = this.course.IsActive;
+        this.NewCourse.Classes = this.course.Classes;
+        this.NewCourse.MaxStartDate = this.Courses.GetEarliestClassDate(this.course);
 
         // to get dynamic proprty value
         if (this.index) {
@@ -81,6 +84,8 @@ export class DetailsModalComponent implements OnInit {
 
     initClass() {
         this.NewClass.CourseId = this.course.Id;
+        this.NewClass.StartDate = this.NewCourse.StartDate;// min start date for a class is course's start date
+
         if (this.property == ModalPropertyEnum.Class && this.isEdit) {
             this.NewClass.Id = this.course.Classes[+this.index].Id;
             this.NewClass.Name = this.course.Classes[+this.index].Name;
@@ -126,6 +131,18 @@ export class DetailsModalComponent implements OnInit {
     }
 
     Courses = {
+        GetEarliestClassDate: (course: CourseModels.Course): string => {
+            const earliestClassStartDate = course.Classes
+                .filter(classItem => classItem.IsActive == true && classItem.IsDeleted == false)
+                .reduce((earliest, currentClass) => {
+                    if (!earliest || new Date(currentClass.StartDate) < new Date(earliest)) {
+                        return currentClass.StartDate;
+                    }
+                    return earliest;
+                }, undefined as string | undefined);
+            return Constants.convertDateToYYYYMMDD(new Date(earliestClassStartDate ?? ''));
+        },
+
         addCourse: () => {
             let endPoint = HttpEndPoints.Courses.AddCourse;
             this.IsDisabled = true;
@@ -252,9 +269,13 @@ export class DetailsModalComponent implements OnInit {
             endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
             this.IsDisabled = true;
 
-            this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe(data => {
-                this.IsDisabled = false;
-                this.activeModal.close('save');
+            this.HttpService.Put<CourseModels.Class>(endPoint, this.NewClass).subscribe({
+                next: data => {
+                    this.IsDisabled = false;
+                    this.activeModal.close('save');
+                }, error: error => {
+                    this.IsDisabled = false;
+                }
             })
         },
 

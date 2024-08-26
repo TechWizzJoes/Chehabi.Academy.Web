@@ -32,7 +32,15 @@
 			</div>
 			<div class="mb-3">
 				<label for="start" class="form-label required">Starts on</label>
-				<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewClass.StartDate" #startDate="ngModel" required />
+				<input
+					type="date"
+					class="form-control"
+					id="start"
+					name="startDate"
+					[min]="NewCourse.StartDate"
+					[(ngModel)]="NewClass.StartDate"
+					#startDate="ngModel"
+					required />
 			</div>
 			<!-- <div class="mb-3">
 				<label for="end" class="form-label">Ends In</label>
@@ -145,7 +153,7 @@
 				</div>
 				<div class="col">
 					<label for="start" class="form-label">Starts on</label>
-					<input type="date" class="form-control" id="start" name="StartDate" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
+					<input type="date" class="form-control" id="start" name="StartDate" [min]="Today" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
 				</div>
 			</div>
 			<div class="mb-3">
@@ -246,7 +254,16 @@
 			<div class="row mb-3">
 				<div class="col">
 					<label for="start" class="form-label required">Starts on</label>
-					<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewCourse.StartDate" #startDate="ngModel" required />
+					<input
+						type="date"
+						class="form-control"
+						id="start"
+						name="startDate"
+						[min]="Today"
+						[max]="NewCourse.MaxStartDate"
+						[(ngModel)]="NewCourse.StartDate"
+						#startDate="ngModel"
+						required />
 					<div [ngClass]="{ 'invalid-data': DateError }" *ngIf="DateError">
 						<div class="invalid-message pb-2">{{DateError}}</div>
 					</div>

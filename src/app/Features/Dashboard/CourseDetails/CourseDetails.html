@@ -102,16 +102,16 @@
 									<div class="accordion-body">
 										<div class="class">
 											<p>Duration</p>
-											<small>{{class.StartDate}} - {{class.EndDate}}</small>
+											<small>{{Constants.formatDate(class.StartDate)}} - {{Constants.formatDate(class.EndDate)}}</small>
 										</div>
 										<div class="class">
 											<p>Capacity</p>
 											<small>{{class.MaxCapacity}}</small>
 										</div>
-										<div class="class">
+										<!-- <div class="class">
 											<p>Period</p>
 											<small>{{class.Period}}</small>
-										</div>
+										</div> -->
 										<div class="class">
 											<p>Current Session</p>
 											<small>{{class.CurrentIndex}}</small>

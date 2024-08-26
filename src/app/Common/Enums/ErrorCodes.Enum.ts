@@ -9,5 +9,11 @@ export enum ErrorCodesEnum {
 	USER_EXISTS_CLASS = 'You already joined this class',
 	USER_EXISTS_COURSE = 'You already joined this course in another active class',
 	PASSWORD_NOT_MATCH = 'Passwords do not match',
-	COURSE_STARTDATE_EXCEEDED = 'Course date cann\'t exceed its classes start dates! \n you can change the classes dates first.'
+	COURSE_STARTDATE_EXCEEDED = 'Course start date can\'t exceed its classes start dates! \n you can change the classes dates first.',
+	COURSE_STARTDATE_BEFORE_TODAY = 'Course start date can\'t be before Today\'s date.',
+	Class_STARTDATE_BEFORE_TODAY = 'Class start date can\'t be before Today\'s date.',
+	CLASS_BEFORE_COURSE = 'Class starts before the course starting date.',
+	SESSION_BEFORE_CLASS = 'Sessions start before the class starting date.',
+
+
 }
