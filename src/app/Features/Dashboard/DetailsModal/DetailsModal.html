@@ -247,6 +247,9 @@
 				<div class="col">
 					<label for="start" class="form-label required">Starts on</label>
 					<input type="date" class="form-control" id="start" name="startDate" [(ngModel)]="NewCourse.StartDate" #startDate="ngModel" required />
+					<div [ngClass]="{ 'invalid-data': DateError }" *ngIf="DateError">
+						<div class="invalid-message pb-2">{{DateError}}</div>
+					</div>
 				</div>
 				<div class="col">
 					<label for="price" class="form-label required">Price in USD</label>
@@ -333,7 +336,7 @@
 	<div class="left-section" *ngIf="property == ModalPropertyEnum.Class && isEdit">
 		<button type="button" class="btn btn-danger" (click)="Classes.deleteClass()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Class</button>
 	</div>
-	<div class="right-section" [ngClass]="property == ModalPropertyEnum.CourseInfo || property == ModalPropertyEnum.Class? '' : 'block'">
+	<div class="right-section" [ngClass]="(property == ModalPropertyEnum.CourseInfo || (property == ModalPropertyEnum.Class && isEdit))? '' : 'block'">
 		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
 		<button type="submit" form="form" class="btn btn-primary" [disabled]="IsDisabled">Save</button>
 	</div>

@@ -20,8 +20,17 @@
 						<span class="status active" *ngIf="Course.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
 						<span class="status inactive" *ngIf="!Course.IsActive" title="Inactive"><i class="fa fa-times" aria-hidden="true"></i></span>
 					</h5>
-					<p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p>
+					<!-- <p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p> -->
 					<p class="card-text" *ngIf="Course.Price">${{Course.Price}}</p>
+
+					<div class="meta">
+						<p class="card-text"><span class="title">Starts:</span> {{Constants.formatDate(Course.StartDate)}}</p>
+
+						<div class="create-update">
+							<p class="card-text"><span class="title">Created On:</span> {{Constants.formatDate(Course.CreatedOn)}}</p>
+							<p class="card-text"><span class="title">Last Updated On:</span> {{Constants.formatDate(Course.UpdatedOn)}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="group">

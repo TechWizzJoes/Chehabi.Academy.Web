@@ -18,6 +18,8 @@ body {
 		.page-inner {
 			animation: initial-transition 0.3s ease-in-out;
 			color: var(--primary-color1);
+			max-width: 1200px;
+			margin: auto;
 			.page-section {
 				min-height: calc(100vh - var(--header-height));
 				&.no-min {

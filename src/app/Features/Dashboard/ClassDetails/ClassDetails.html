@@ -27,10 +27,18 @@
 					</h5>
 					<!-- <p class="card-text" *ngIf="Class.Course.Description">{{Class.Course.Description.substring(0, 200) + '...'}}</p> -->
 					<p class="card-text" *ngIf="Class.Course.Price">${{Class.Course.Price}}</p>
-					<p class="card-text">Created On: {{Constants.formatDate(Class.CreatedOn)}}</p>
-					<p class="card-text">Last Updated On: {{Constants.formatDate(Class.UpdatedOn)}}</p>
-					<p class="card-text">Starts: {{Constants.formatDate(Class.StartDate)}}</p>
-					<p class="card-text">Ends: {{Constants.formatDate(Class.EndDate)}}</p>
+
+					<div class="meta">
+						<div class="starts">
+							<p class="card-text"><span class="title">Starts:</span> {{Constants.formatDate(Class.StartDate)}}</p>
+							<p class="card-text"><span class="title">Ends:</span> {{Constants.formatDate(Class.EndDate)}}</p>
+						</div>
+
+						<div class="create-update">
+							<p class="card-text"><span class="title">Created On:</span> {{Constants.formatDate(Class.CreatedOn)}}</p>
+							<p class="card-text"><span class="title">Last Updated On:</span> {{Constants.formatDate(Class.UpdatedOn)}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="group">

@@ -9,4 +9,5 @@ export enum ErrorCodesEnum {
 	USER_EXISTS_CLASS = 'You already joined this class',
 	USER_EXISTS_COURSE = 'You already joined this course in another active class',
 	PASSWORD_NOT_MATCH = 'Passwords do not match',
+	COURSE_STARTDATE_EXCEEDED = 'Course date cann\'t exceed its classes start dates! \n you can change the classes dates first.'
 }

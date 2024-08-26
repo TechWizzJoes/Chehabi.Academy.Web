@@ -3,7 +3,9 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { AuthService } from '@App/Common/Services/Auth.Service';
+import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
+import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { Constants, ConstantsType } from '@App/Common/Settings/Constants';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { CommonModule, NgSwitch } from '@angular/common';
@@ -32,6 +34,7 @@ export class DetailsModalComponent implements OnInit {
     ModalPropertyEnum = ModalPropertyEnum;
     DynamicValue: string = '';
     Error!: string;
+    DateError!: string;
     ImageProgress: any = { start: 0, end: 100 }
     FileProgress: any = { start: 0, end: 100 }
 
@@ -44,7 +47,12 @@ export class DetailsModalComponent implements OnInit {
     @Input() course: CourseModels.Course = new CourseModels.Course();
     @Input() index: string = '';
 
-    constructor(private HttpService: HttpService, private AuthService: AuthService) { }
+    constructor(
+        private HttpService: HttpService,
+        private AuthService: AuthService,
+        private ErrorCodesService: ErrorCodesService,
+        private NotifyService: NotifyService
+    ) { }
 
     ngOnInit() {
         this.initCourse();
@@ -137,7 +145,7 @@ export class DetailsModalComponent implements OnInit {
         },
 
         editCourse: async () => {
-            console.log(this.NewCourse)
+            // console.log(this.NewCourse)
             if (this.index) {
                 (this.NewCourse as any)[this.index] = this.DynamicValue;
             }
@@ -154,15 +162,24 @@ export class DetailsModalComponent implements OnInit {
                     await this.uploadFile(HttpEndPoints.Courses.UploadImage, this.CourseImage, true)
                 }
             }
-            console.log(this.NewCourse.ImageUrl);
+            // console.log(this.NewCourse.ImageUrl);
 
-            this.HttpService.Put<CourseModels.Course>(endPoint, this.NewCourse).subscribe(data => {
-                this.IsDisabled = false;
-                this.activeModal.close('save');
+            this.HttpService.Put<CourseModels.Course>(endPoint, this.NewCourse).subscribe({
+                next: data => {
+                    this.IsDisabled = false;
+                    this.activeModal.close('save');
+                },
+                error: err => {
+                    this.IsDisabled = false;
+                    this.DateError = this.ErrorCodesService.GetErrorCode(err.error.Message);
+                }
             })
         },
 
-        deleteCourse: () => {
+        deleteCourse: async () => {
+            const confirmed = await this.NotifyService.ConfirmDelete(`"${this.NewCourse.Name}" course`);
+            if (!confirmed) return;
+
             let endPoint = HttpEndPoints.Courses.DeleteCourse;
             endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
             this.IsDisabled = true;
@@ -241,7 +258,10 @@ export class DetailsModalComponent implements OnInit {
             })
         },
 
-        deleteClass: () => {
+        deleteClass: async () => {
+            const confirmed = await this.NotifyService.ConfirmDelete(`"${this.NewClass.Name}" class`);
+            if (!confirmed) return;
+
             let endPoint = HttpEndPoints.Classes.DeleteClass;
             endPoint = endPoint.replace('{id}', this.NewClass.Id.toString())
             this.IsDisabled = true;

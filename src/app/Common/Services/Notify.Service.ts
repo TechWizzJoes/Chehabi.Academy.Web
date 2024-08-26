@@ -123,9 +123,19 @@ export class NotifyService {
 		}).then((result) => result.value);
 	}
 
-	// ConfirmDelete(): Promise<boolean> {
-	// 	return this.Confirm('Confirm Delete', 'Are you sure that you want delete this row?', 'Yes', 'No');
-	// }
+	ConfirmDelete(deletedName: string): Promise<boolean> {
+		return Swal.fire({
+			title: 'Confirm Delete',
+			text: `You're about to delete ${deletedName}?`,
+			icon: 'question',
+			iconHtml: '?',
+			showCancelButton: true,
+			confirmButtonText: 'Delete',
+			cancelButtonText: 'Cancel',
+			confirmButtonColor: 'var(--deletion-color)',
+			cancelButtonColor: 'var(--primary-color2)'
+		}).then((result) => result.value);
+	}
 
 	// Warning2(message: string, confirmButtonText: string, title: string = '') {
 	// 	return Swal.fire({
