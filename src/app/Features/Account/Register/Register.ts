@@ -12,10 +12,12 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
 	standalone: true,
-	imports: [FormsModule, CommonModule, RouterModule],
+	imports: [FormsModule, CommonModule, RouterModule, TranslateModule],
 	templateUrl: './Register.html',
 	styleUrls: ['./Register.scss']
 })
@@ -35,7 +37,8 @@ export class RegisterComponent {
 		private ActivatedRoute: ActivatedRoute,
 		private HttpService: HttpService,
 		private NotifyService: NotifyService,
-		private AuthService: AuthService
+		private AuthService: AuthService,
+		private TranslateService: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -86,5 +89,8 @@ export class RegisterComponent {
 		const route = !!this.ReturnUrl ? this.ReturnUrl : RoutePaths.Default;
 		// const route = (!!returnUrl) ? returnUrl : this.AuthService.GetRoleDefaultRoute(role);
 		this.Router.navigateByUrl(route);
+	}
+	useLanguage(language: string): void {
+		this.TranslateService.use(language);
 	}
 }

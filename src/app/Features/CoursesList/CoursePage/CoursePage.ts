@@ -16,12 +16,13 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { Constants } from '@App/Common/Settings/Constants';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursePage.html',
 	styleUrls: ['CoursePage.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent, LoaderComponent, PipesModule],
+	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent, LoaderComponent, PipesModule, TranslateModule],
 	// animations: [
 	// 	trigger('fadeInOut', [
 	// 		state('void', style({ opacity: 0 })),

@@ -1,37 +1,43 @@
 <div class="page-inner">
 	<div class="page-section">
 		<div class="partition content">
-			<h1>Contact Us</h1>
-			<p>
-				Whether you have questions, feedback, or just want to chat about the beauty of the Arabic language, we're here for you. Reach out to us through
-				any of the methods below, and our dedicated team will get back to you as soon as possible.
-			</p>
+			<h1>{{ 'ContactPage.title' | translate }}</h1>
+			<p>{{ 'ContactPage.intro' | translate }}</p>
 			<div>
 				<div class="form-container">
 					<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 						<div class="form">
 							<div class="form-group">
-								<label for="firstName">First Name</label>
-								<input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name" />
+								<label for="firstName">{{ 'FirstName' | translate }}</label>
+								<input
+									type="text"
+									class="form-control"
+									id="firstName"
+									formControlName="firstName"
+									placeholder="{{ 'FirstName' | translate }}" />
 							</div>
 
 							<div class="form-group">
-								<label for="lastName">Last Name</label>
-								<input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name" />
+								<label for="lastName">{{ 'LastName' | translate }}</label>
+								<input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="{{ 'LastName' | translate }}" />
 							</div>
 							<div class="form-group email">
-								<label for="Email">Email</label>
-								<input type="email" class="form-control" id="Email" formControlName="Email" placeholder="Email" />
+								<label for="Email">{{ 'Email' | translate }}</label>
+								<input type="email" class="form-control" id="Email" formControlName="Email" placeholder="{{ 'Email' | translate }}" />
 							</div>
 
 							<div class="form-group">
-								<label for="description">Tell us</label>
-								<textarea class="form-control" id="description" formControlName="description" placeholder="Content"></textarea>
+								<label for="description">{{ 'ContactPage.description' | translate }}</label>
+								<textarea
+									class="form-control"
+									id="description"
+									formControlName="description"
+									placeholder="{{ 'ContactPage.description' | translate }}"></textarea>
 							</div>
 						</div>
 
 						<div class="submit-button">
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary">{{ 'ContactPage.submit' | translate }}</button>
 						</div>
 					</form>
 				</div>

@@ -15,13 +15,14 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursesList.html',
 	styleUrls: ['CoursesList.scss'],
-	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent, StarRatingComponent]
+	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent, StarRatingComponent, TranslateModule]
 })
 export class CoursesListComponent implements OnInit {
 	RoutePaths = RoutePaths

@@ -14,10 +14,12 @@ import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
 import { GoogleSigninButtonModule, SocialAuthService } from '@abacritt/angularx-social-login';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
 	standalone: true,
-	imports: [FormsModule, CommonModule, RouterModule, GoogleSigninButtonModule],
+	imports: [FormsModule, CommonModule, RouterModule, GoogleSigninButtonModule, TranslateModule],
 	templateUrl: './Login.html',
 	styleUrls: ['./Login.scss']
 })
@@ -40,6 +42,8 @@ export class LoginComponent {
 		private AuthService: AuthService,
 		private socialAuthService: SocialAuthService,
 		private ErrorCodesService: ErrorCodesService,
+		private TranslateService: TranslateService
+
 	) { }
 
 	async ngOnInit() {
