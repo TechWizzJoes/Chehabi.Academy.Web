@@ -9,12 +9,13 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './Founder.html',
 	styleUrls: ['Founder.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule]
+	imports: [FormsModule, CommonModule, NgxChartsModule, TranslateModule]
 })
 export class FounderComponent implements OnInit {
 	constructor(

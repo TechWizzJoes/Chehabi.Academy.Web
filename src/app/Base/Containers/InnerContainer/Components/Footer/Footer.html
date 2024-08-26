@@ -1,9 +1,9 @@
 <footer>
 	<div class="main">
-		<img src="/assets/Images/white-full-logo.png" alt="logo-img" class="white-logo-img" />
+		<img src="/assets/Images/white-full-logo.png" alt="{{'logo-alt' | translate}}" class="white-logo-img" />
 		<ul class="list-inline">
-			<li class="list-inline-item"><a [routerLink]="['/',RoutePaths.Home]">Home</a></li>
-			<li class="list-inline-item"><a [routerLink]="['/',RoutePaths.Contactus]">Contact Us</a></li>
+			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Home]">{{ 'home' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Contactus]">{{ 'contact-us' | translate }}</a></li>
 		</ul>
 
 		<div class="social">
@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="copyright">
-		<div>© {{Year}}, <a href="mailto:techwizzjoes@gmail.com">{{'techwizzjoes@gmail.com'}}</a>.</div>
-		<div class="ps-3">All Rights Reserved. <small>version {{ApplicationService.Version | async}}</small></div>
+		<div>© {{ Year }}, <a href="mailto:techwizzjoes@gmail.com">{{ 'CompanyEmail' | translate }}</a>.</div>
+		<div class="ps-3">{{ 'all-rights-reserved' | translate }} <small>{{ 'version' | translate }} {{ ApplicationService.Version | async }}</small></div>
 	</div>
 </footer>

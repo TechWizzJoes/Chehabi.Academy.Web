@@ -4,14 +4,11 @@
 			<img src="assets/Images/feedback-rating.png" alt="" class="image" />
 		</div>
 		<div class="partition content">
-			<h1>We'd Appreciate Your Feedback</h1>
-			<p>
-				We're committed to enhance your learning experience. <br />
-				Share your insights with us.
-			</p>
+			<h1>{{ 'FeedbackPage.title' | translate }}</h1>
+			<p>{{ 'FeedbackPage.description' | translate }}<br /></p>
 			<div>
-				<a class="btn btn-primary me-2">Share your thoughts</a>
-				<a (click)="scrollToTarget()" class="btn btn-outline-primary">Browse feedbacks</a>
+				<a class="btn btn-primary me-2">{{ 'FeedbackPage.shareYourThoughts' | translate }}</a>
+				<a (click)="scrollToTarget()" class="btn btn-outline-primary">{{ 'FeedbackPage.browseFeedbacks' | translate }}</a>
 			</div>
 		</div>
 	</div>

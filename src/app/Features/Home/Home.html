@@ -1,57 +1,51 @@
 <div class="page-inner" id="home-page">
 	<div class="page-section landing">
 		<div class="partition content">
-			<h1>Welcome To Chehabi Academy !</h1>
-			<p>
-				Dive into the enchanting world of Arabic with us.Combining expert guidance, interactive modules, and cultural immersion, we make mastering
-				Arabic an engaging and rewarding journey. Begin your linguistic adventure today.
-			</p>
+			<h1>{{ 'HomePage.welcomeTitle' | translate }}</h1>
+			<p>{{ 'HomePage.welcomeParagraph' | translate }}</p>
 			<div>
-				<button class="btn btn-outline-primary me-2">Learn More</button>
-				<button class="btn btn-primary">Join Now</button>
+				<button class="btn btn-outline-primary me-2">{{ 'HomePage.learnMoreButton' | translate }}</button>
+				<button class="btn btn-primary">{{ 'HomePage.joinNowButton' | translate }}</button>
 			</div>
 		</div>
 		<div class="partition graphics">
 			<!-- <img src="assets/Images/laptop.svg" alt="" class="image" /> -->
 			<app-landing-laptop></app-landing-laptop>
 		</div>
-		<span class="scroll"> <i class="fa fa-arrow-down"></i> Scroll down </span>
+		<span class="scroll"> <i class="fa fa-arrow-down"></i> {{ 'Scroll down' | translate }} </span>
 	</div>
-	<h1 class="text-center">We Offer</h1>
+
+	<h1 class="text-center">{{ 'HomePage.weOfferTitle' | translate }}</h1>
+
 	<div class="page-section no-min column offer">
 		<div class="sub-section">
 			<div class="offer-card">
 				<img src="assets/Images/offers/icon 1.png" alt="" />
 				<div class="body">
-					<h5 class="title">Customized Courses</h5>
-					<p class="text">
-						You can choose between four types of courses: Arabic for daily life, Arabic for Academics (grammar and literature), Arabic for Islamic
-						purposes and Arabic in the Syrian Damascene dialect.
-					</p>
+					<h5 class="title">{{ 'HomePage.customizedCoursesTitle' | translate }}</h5>
+					<p class="text">{{ 'HomePage.customizedCoursesText' | translate }}</p>
 				</div>
 			</div>
 			<div class="offer-card">
 				<img src="assets/Images/offers/icon 2.png" alt="" />
 				<div class="body">
-					<h5 class="title">Private Lessons</h5>
-					<p class="text">
-						Do you learn better alone, and would like to progress on your own base? Then you can easily book private lessons with us.
-					</p>
+					<h5 class="title">{{ 'HomePage.privateLessonsTitle' | translate }}</h5>
+					<p class="text">{{ 'HomePage.privateLessonsText' | translate }}</p>
 				</div>
 			</div>
 			<div class="offer-card">
 				<img src="assets/Images/offers/icon 3.png" alt="" />
 				<div class="body">
-					<h5 class="title">Active Learning</h5>
-					<p class="text">
-						Unlike the traditional method “sit down and listen”, you will have the opportunity to participate actively in the course.
-					</p>
+					<h5 class="title">{{ 'HomePage.activeLearningTitle' | translate }}</h5>
+					<p class="text">{{ 'HomePage.activeLearningText' | translate }}</p>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<hr class="bg-3" />
-	<h1 class="text-center bg-3">What's New?</h1>
+	<h1 class="text-center bg-3">{{ 'HomePage.whatsNewTitle' | translate }}</h1>
+
 	<div class="page-section no-min new">
 		<div class="graphics">
 			<ngb-carousel *ngIf="WhatsNew && WhatsNew.length > 0">
@@ -60,35 +54,28 @@
 						<img [src]="news.PicturePath" alt="Random first slide" />
 					</div>
 					<div class="carousel-caption">
-						<h3>{{news.Title}}</h3>
-						<p>{{news.Text}}</p>
+						<h3>{{ news.Title }}</h3>
+						<p>{{ news.Text }}</p>
 					</div>
 				</ng-template>
 			</ngb-carousel>
 		</div>
 		<div class="content">
-			<h1>We'd like to share our latest</h1>
-
-			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error officiis recusandae, est aspernatur facere maiores porro veniam cumque? Illo
-				debitis magnam necessitatibus odio quibusdam. Eius quisquam cum voluptas qui accusamus.
-			</p>
+			<h1>{{ 'HomePage.latestNewsTitle' | translate }}</h1>
+			<p>{{ 'HomePage.latestNewsText' | translate }}</p>
 		</div>
 	</div>
+
 	<hr />
 	<div class="page-section no-min about">
 		<div class="partition graphics">
 			<img src="assets/Images/landing-people.png" alt="" class="image" />
 		</div>
 		<div class="partition content">
-			<h1>About The Academy</h1>
-			<p>
-				Established in 2023, Chehabi Academy was born out a profound love for the Arabic language and a desireto bridge culture divides. Recognizeing
-				the significance of Arabic in global communication, heritage, andarts, we embarked on a mission to offer a comprehensive learning experience
-				that goes beyond mere vocabulary and grammar.
-			</p>
+			<h1>{{ 'HomePage.aboutAcademyTitle' | translate }}</h1>
+			<p>{{ 'HomePage.aboutAcademyParagraph' | translate }}</p>
 			<div>
-				<a class="btn btn-outline-primary me-2" [routerLink]="['/',RoutePaths.About]">Learn More</a>
+				<a class="btn btn-outline-primary me-2" [routerLink]="['/',RoutePaths.About]">{{ 'HomePage.learnMoreLink' | translate }}</a>
 			</div>
 		</div>
 	</div>
