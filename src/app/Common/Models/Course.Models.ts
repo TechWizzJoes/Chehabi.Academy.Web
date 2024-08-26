@@ -27,6 +27,8 @@ export namespace CourseModels {
 		Instructor!: InstructorModels.Instructor;
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
+
+		MaxStartDate?: string; // for display
 	}
 
 	export class Class {

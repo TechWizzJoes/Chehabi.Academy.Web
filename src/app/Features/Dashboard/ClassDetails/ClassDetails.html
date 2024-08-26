@@ -30,10 +30,18 @@
 						></span>
 					</h5>
 					<p class="card-text" *ngIf="Class.Course.Price">${{Class.Course.Price}}</p>
-					<p class="card-text">{{ 'ClassDetailsPage.createdOn' | translate }}: {{Constants.formatDate(Class.CreatedOn)}}</p>
-					<p class="card-text">{{ 'ClassDetailsPage.lastUpdatedOn' | translate }}: {{Constants.formatDate(Class.UpdatedOn)}}</p>
-					<p class="card-text">{{ 'ClassDetailsPage.starts' | translate }}: {{Constants.formatDate(Class.StartDate)}}</p>
-					<p class="card-text">{{ 'ClassDetailsPage.ends' | translate }}: {{Constants.formatDate(Class.EndDate)}}</p>
+
+					<div class="meta">
+						<div class="starts">
+							<p class="card-text">{{ 'ClassDetailsPage.starts' | translate }}: {{Constants.formatDate(Class.StartDate)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.ends' | translate }}: {{Constants.formatDate(Class.EndDate)}}</p>
+						</div>
+
+						<div class="create-update">
+							<p class="card-text">{{ 'ClassDetailsPage.createdOn' | translate }}: {{Constants.formatDate(Class.CreatedOn)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.lastUpdatedOn' | translate }}: {{Constants.formatDate(Class.UpdatedOn)}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="group">

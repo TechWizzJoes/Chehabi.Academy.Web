@@ -82,6 +82,11 @@
 			-webkit-line-clamp: 3;
 			line-clamp: 3;
 			-webkit-box-orient: vertical;
+			margin: 0;
+
+			.title {
+				font-weight: bold;
+			}
 		}
 
 		.card-title {
@@ -117,6 +122,19 @@
 				rgba(0, 0, 0, 0),
 				rgba(0, 0, 0, 1)
 			);
+
+			.meta {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				.create-update {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					// align-items: flex-end;
+					font-size: smaller;
+				}
+			}
 		}
 	}
 

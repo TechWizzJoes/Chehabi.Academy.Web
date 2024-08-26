@@ -71,6 +71,10 @@ export class Constants {
 		return new Date().getFullYear();
 	}
 
+	public static GetTodayDate(): string {
+		return this.convertDateToYYYYMMDD(new Date());
+	}
+
 	public static convertDateToYYYYMMDD(date: Date): string {
 		const year = date.getFullYear();
 		const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based

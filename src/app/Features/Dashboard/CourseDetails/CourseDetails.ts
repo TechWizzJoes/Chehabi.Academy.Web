@@ -18,6 +18,7 @@ import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { PipesModule } from '@App/Common/Pipes/Pipes.Module';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { TranslateModule } from '@ngx-translate/core';
+import { Constants } from '@App/Common/Settings/Constants';
 
 @Component({
     standalone: true,
@@ -27,6 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CourseDetailsComponent implements OnInit {
     RoutePaths = RoutePaths;
+    Constants = Constants;
     IsLoaded: boolean = false;
     Course: CourseModels.Course = new CourseModels.Course();
     LastUpdated: string = '';

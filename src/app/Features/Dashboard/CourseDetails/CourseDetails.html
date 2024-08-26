@@ -24,8 +24,17 @@
 							><i class="fa fa-times" aria-hidden="true"></i
 						></span>
 					</h5>
-					<p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p>
+					<!-- <p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p> -->
 					<p class="card-text" *ngIf="Course.Price">${{Course.Price}}</p>
+
+					<div class="meta">
+						<p class="card-text"><span class="title">Starts:</span> {{Constants.formatDate(Course.StartDate)}}</p>
+
+						<div class="create-update">
+							<p class="card-text"><span class="title">Created On:</span> {{Constants.formatDate(Course.CreatedOn)}}</p>
+							<p class="card-text"><span class="title">Last Updated On:</span> {{Constants.formatDate(Course.UpdatedOn)}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -103,71 +112,81 @@
 									<div class="accordion-body">
 										<div class="class">
 											<p>{{ 'CourseDetailsPage.duration' | translate }}</p>
-											<small>{{class.StartDate}} - {{class.EndDate}}</small>
+
+											<small>{{Constants.formatDate(class.StartDate)}} - {{Constants.formatDate(class.EndDate)}}</small>
 										</div>
 										<div class="class">
 											<p>{{ 'CourseDetailsPage.capacity' | translate }}</p>
 											<small>{{class.MaxCapacity}}</small>
 										</div>
+
 										<div class="class">
-											<p>{{ 'CourseDetailsPage.period' | translate }}</p>
+											<!-- <p>{{ 'CourseDetailsPage.period' | translate }}</p> -->
+
+											<!-- <div class="class">
+											<p>Period</p>
+
 											<small>{{class.Period}}</small>
-										</div>
-										<div class="class">
-											<p>{{ 'CourseDetailsPage.currentSession' | translate }}</p>
-											<small>{{class.CurrentIndex}}</small>
+										</div> -->
+											<div class="class">
+												<p>{{ 'CourseDetailsPage.currentSession' | translate }}</p>
+												<small>{{class.CurrentIndex}}</small>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="row-custom" *ngIf="Course.Classes.length > ClassesCounter.end">
-							<button class="btn btn-light" (click)="getClasses()">{{ 'CourseDetailsPage.loadMoreClasses' | translate }}</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="right-group">
-					<div class="video section">
-						<div class="row-custom">
-							<h6 class="title">{{ 'CourseDetailsPage.courseVideo' | translate }}</h6>
-							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Video, 'VideoPath')"></i>
-						</div>
-						<p class="no-data" *ngIf="!Course.VideoPath">{{ 'CourseDetailsPage.noVideo' | translate }}</p>
-						<div class="video-container">
-							<iframe
-								*ngIf="Course.VideoPath"
-								[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
-								title="YouTube video player"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowfullscreen></iframe>
-						</div>
-					</div>
-
-					<div class="material section">
-						<div class="row-custom">
-							<h6 class="title">{{ 'CourseDetailsPage.courseMaterial' | translate }}</h6>
-							<i
-								class="fa fa-pencil-square-o btn-custom"
-								aria-hidden="true"
-								(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
-						</div>
-						<p class="text" *ngIf="Course.FilePath">{{Course.FilePath}}</p>
-						<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>
-					</div>
-
-					<div class="info section">
-						<div class="row-custom">
-							<h6 class="title">{{ 'CourseDetailsPage.upcomingSessions' | translate }}</h6>
-						</div>
-						<div class="list-group">
-							<div class="session" *ngFor="let session of UpcomingSessions">
-								<p class="mb-1">{{ 'CourseDetailsPage.class' | translate }} {{session.class}}</p>
-								<small>{{session.date}}</small>
+							<div class="row-custom" *ngIf="Course.Classes.length > ClassesCounter.end">
+								<button class="btn btn-light" (click)="getClasses()">{{ 'CourseDetailsPage.loadMoreClasses' | translate }}</button>
 							</div>
-							<p class="no-data" *ngIf="UpcomingSessions.length == 0">{{ 'CourseDetailsPage.noUpcomingSessions' | translate }}</p>
+						</div>
+					</div>
+
+					<div class="right-group">
+						<div class="video section">
+							<div class="row-custom">
+								<h6 class="title">{{ 'CourseDetailsPage.courseVideo' | translate }}</h6>
+								<i
+									class="fa fa-pencil-square-o btn-custom"
+									aria-hidden="true"
+									(click)="openEditModal(ModalPropertyEnum.Video, 'VideoPath')"></i>
+							</div>
+							<p class="no-data" *ngIf="!Course.VideoPath">{{ 'CourseDetailsPage.noVideo' | translate }}</p>
+							<div class="video-container">
+								<iframe
+									*ngIf="Course.VideoPath"
+									[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
+									title="YouTube video player"
+									frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									allowfullscreen></iframe>
+							</div>
+						</div>
+
+						<div class="material section">
+							<div class="row-custom">
+								<h6 class="title">{{ 'CourseDetailsPage.courseMaterial' | translate }}</h6>
+								<i
+									class="fa fa-pencil-square-o btn-custom"
+									aria-hidden="true"
+									(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
+							</div>
+							<p class="text" *ngIf="Course.FilePath">{{Course.FilePath}}</p>
+							<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>
+						</div>
+
+						<div class="info section">
+							<div class="row-custom">
+								<h6 class="title">{{ 'CourseDetailsPage.upcomingSessions' | translate }}</h6>
+							</div>
+							<div class="list-group">
+								<div class="session" *ngFor="let session of UpcomingSessions">
+									<p class="mb-1">{{ 'CourseDetailsPage.class' | translate }} {{session.class}}</p>
+									<small>{{session.date}}</small>
+								</div>
+								<p class="no-data" *ngIf="UpcomingSessions.length == 0">{{ 'CourseDetailsPage.noUpcomingSessions' | translate }}</p>
+							</div>
 						</div>
 					</div>
 				</div>
