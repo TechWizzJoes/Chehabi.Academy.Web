@@ -1,5 +1,5 @@
 <div class="right-section">
-	<h6 class="title">Edit Profile</h6>
+	<h6 class="title">{{ 'ProfilePage.editProfileTitle' | translate }}</h6>
 	<form (ngSubmit)="onSubmit(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="mb-3 image-container">
 			<div
@@ -8,10 +8,10 @@
 				<span *ngIf="IsUploadDisabled" class="progress-value">{{Progress.start}}%</span>
 				<img
 					[ngClass]="IsUploadDisabled? 'filter': ''"
-					[src]="Account.ProfilePicturePath? Account.ProfilePicturePath: 'assets/Images/default-pp.png'" />
+					[src]="Account.ProfilePicturePath ? Account.ProfilePicturePath : 'assets/Images/default-pp.png'" />
 			</div>
-			<label for="profile-pic" class="file-label btn btn-primary"> Uplaod Image </label>
-			<button class="btn btn-danger" type="button" (click)="removeProfilePicture()">Delete</button>
+			<label for="profile-pic" class="file-label btn btn-primary">{{ 'ProfilePage.uploadImageButton' | translate }}</label>
+			<button class="btn btn-danger" type="button" (click)="removeProfilePicture()">{{ 'ProfilePage.deleteButton' | translate }}</button>
 			<input
 				type="file"
 				name="profile-pic"
@@ -21,51 +21,57 @@
 				class="fileInput"
 				(change)="onFileChange($event)" />
 		</div>
+
 		<div class="mb-3">
-			<label for="first-name" class="form-label required">First Name</label>
+			<label for="first-name" class="form-label required">{{ 'ProfilePage.firstNameLabel' | translate }}</label>
 			<input
 				type="text"
 				class="form-control"
 				id="first-name"
-				placeholder="First Name"
+				placeholder="{{ 'ProfilePage.firstNamePlaceholder' | translate }}"
 				name="firstName"
 				[(ngModel)]="Account.FirstName"
 				#firstName="ngModel"
 				required />
 		</div>
+
 		<div class="mb-3">
-			<label for="last-name" class="form-label required">Last Name</label>
+			<label for="last-name" class="form-label required">{{ 'ProfilePage.lastNameLabel' | translate }}</label>
 			<input
 				type="text"
 				class="form-control"
 				id="last-name"
-				placeholder="Last Name"
+				placeholder="{{ 'ProfilePage.lastNamePlaceholder' | translate }}"
 				name="lastName"
 				[(ngModel)]="Account.LastName"
 				#lastName="ngModel"
 				required />
 		</div>
+
 		<div class="mb-3">
-			<label for="email" class="form-label required">E-mail</label>
+			<label for="email" class="form-label required">{{ 'ProfilePage.emailLabel' | translate }}</label>
 			<input
 				type="email"
 				class="form-control"
 				id="email"
 				aria-describedby="emailHelp"
-				placeholder="E-mail"
+				placeholder="{{ 'ProfilePage.emailPlaceholder' | translate }}"
 				name="email"
 				[(ngModel)]="Account.Email"
 				#email="ngModel"
 				disabled
 				required />
 		</div>
+
 		<div class="mb-3">
-			<label for="birthdate" class="form-label">Birthdate</label>
+			<label for="birthdate" class="form-label">{{ 'ProfilePage.birthdateLabel' | translate }}</label>
 			<input type="date" class="form-control" id="birthdate" name="birthdate" [(ngModel)]="Account.Birthdate" #birthdate="ngModel" />
 		</div>
+
 		<div [ngClass]="{ 'invalid-data': Error }">
-			<div class="invalid-message pb-2">{{Error}}</div>
+			<div class="invalid-message pb-2">{{ 'ProfilePage.invalidMessage' | translate }}</div>
 		</div>
-		<button type="submit" class="btn btn-primary float-end" [disabled]="IsDisabled">Save</button>
+
+		<button type="submit" class="btn btn-primary float-end" [disabled]="IsDisabled">{{ 'ProfilePage.saveButton' | translate }}</button>
 	</form>
 </div>

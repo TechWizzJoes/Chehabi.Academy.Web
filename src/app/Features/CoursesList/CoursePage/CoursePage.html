@@ -7,8 +7,8 @@
 		<div class="page-section no-min">
 			<div class="partition content">
 				<div *ngIf="IsJoinClass" class="classes" [@fadeInOut]>
-					<h3>Classes</h3>
-					<div *ngIf="Course.Classes.length == 0">No classes added to this course yet.</div>
+					<h3>{{ 'CoursePage.classes' | translate }}</h3>
+					<div *ngIf="Course.Classes.length == 0">{{ 'CoursePage.noClassesAdded' | translate }}</div>
 					<div
 						*ngFor="let class of Course.Classes; index as i"
 						class="class-instance"
@@ -17,56 +17,58 @@
 						<div class="title">
 							<h3>
 								{{class.Name}}
-
-								<span class="status active" *ngIf="class.IsActive">Active</span>
-								<span class="status inactive" *ngIf="!class.IsActive">Inactive</span>
+								<span class="status active" *ngIf="class.IsActive">{{ 'CoursePage.active' | translate }}</span>
+								<span class="status inactive" *ngIf="!class.IsActive">{{ 'CoursePage.inactive' | translate }}</span>
 							</h3>
-
 							<span *ngIf="class.AvailableSlots <= 10" class="float-end text-1">
-								Only {{class.AvailableSlots}} {{class.AvailableSlots == 1? 'slot': 'slots'}} available
+								{{ 'CoursePage.onlySlotsAvailable' | translate: { slots: class.AvailableSlots } }}
 							</span>
 						</div>
-						<div>Starts on {{class.StartDate}}</div>
+						<div>{{ 'CoursePage.startsOn' | translate: { date: class.StartDate } }}</div>
 						<div>
-							Sessions: {{class.NumberOfSessions}}
-							<a class="show-sessions" (click)="showSessions($event, i)">{{class.ShowSessions?'Hide':'Show'}} Sessions</a>
+							{{ 'CoursePage.sessions' | translate }}: {{class.NumberOfSessions}}
+							<a class="show-sessions" (click)="showSessions($event, i)">
+								{{ class.ShowSessions ? ( 'CoursePage.hideSessions' | translate ) : ( 'CoursePage.showSessions' | translate ) }}
+							</a>
 						</div>
 
 						<br />
 						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
-							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{Constants.formatDate(occ.StartDate)}}</li>
+							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{ Constants.formatDate(occ.StartDate) }}</li>
 						</ul>
 					</div>
 					<hr />
 				</div>
 
 				<p [innerText]="Course.Description"></p>
-				<h3>What you'll learn?</h3>
+				<h3>{{ 'CoursePage.whatYoullLearn' | translate }}</h3>
 				<p [innerText]="Course.ToBeLearned"></p>
-				<h3>Prerequisites</h3>
+				<h3>{{ 'CoursePage.prerequisites' | translate }}</h3>
 				<p [innerText]="Course.Prerequisite"></p>
 			</div>
 			<div class="partition image">
 				<img *ngIf="!Course.VideoPath" [src]="Course.ImageUrl" alt="" />
-				<!-- [src]="Course.VideoPath | safe" -->
-				<!-- "VideoPath": "https://www.youtube.com/embed/qYsHLUAlH_8si=gE0Pdo0We7cmyWmk", -->
-
 				<iframe
 					*ngIf="Course.VideoPath"
 					[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
 					title="YouTube video player"
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					allowfullscreen></iframe>
+					allowfullscreen>
+				</iframe>
 				<div class="instructor">{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</div>
 				<div class="rating">
 					<span class="rate">{{Course.Rating}} </span>
 					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
-				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'Join a class'}}</button>
-				<button class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">{{ 'Join now'}}</button>
-				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Download Material</a>
+				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'CoursePage.joinAClass' | translate }}</button>
+				<button class="btn btn-primary me-2" (click)="JoinNow()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">
+					{{ 'CoursePage.joinNow' | translate }}
+				</button>
+				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
+					{{ 'CoursePage.downloadMaterial' | translate }}
+				</a>
 				<hr />
 			</div>
 		</div>

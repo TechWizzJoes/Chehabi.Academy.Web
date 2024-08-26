@@ -1,5 +1,5 @@
 <div class="page-inner">
-	<h1>Explore Our Courses</h1>
+	<h1>{{ 'CourseListPage.title' | translate }}</h1>
 	<!-- <div class="page-section" *ngIf="!IsLoaded">
 		<app-loader></app-loader>
 	</div> -->
@@ -14,11 +14,11 @@
 						name="searchInput"
 						[(ngModel)]="Filter.SearchInput"
 						#searchInput="ngModel"
-						placeholder="search" />
-					<button class="btn btn-primary">search</button>
+						placeholder="{{ 'CourseListPage.searchButton' | translate }}" />
+					<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
 				</div>
 				<div class="coursetype">
-					<label for="classType" class="form-label">Class Type</label>
+					<label for="classType" class="form-label">{{ 'CourseListPage.classType' | translate }}</label>
 					<select
 						class="form-select"
 						id="courseType"
@@ -36,23 +36,23 @@
 				<div class="levels">
 					<label>
 						<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
-						Beginner
+						{{ 'CourseListPage.beginner' | translate }}
 					</label>
 					<br />
 					<label>
 						<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
-						Intermediate
+						{{ 'CourseListPage.intermediate' | translate }}
 					</label>
 					<br />
 					<label>
 						<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
-						Advanced
+						{{ 'CourseListPage.advanced' | translate }}
 					</label>
 				</div>
 			</div>
 			<div class="right">
-				<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">Reset</button>
-				<button class="btn btn-primary" (click)="Data.FilterRows()">Filter</button>
+				<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>
+				<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.filterButton' | translate }}</button>
 			</div>
 		</div>
 		<div class="page-section" *ngIf="!IsLoaded">

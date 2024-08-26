@@ -12,6 +12,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FeedbackCardComponent } from './FeedbackCard/FeedbackCard';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
+import { TranslateModule } from '@ngx-translate/core';
 
 // export class Feedback {
 // 	Id!: number;
@@ -24,7 +25,7 @@ import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
 	standalone: true,
 	templateUrl: './Feedback.html',
 	styleUrls: ['Feedback.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, FeedbackCardComponent]
+	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, FeedbackCardComponent, TranslateModule]
 })
 export class FeedbackComponent implements OnInit {
 

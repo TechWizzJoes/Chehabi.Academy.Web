@@ -13,12 +13,13 @@ import { HttpService } from '@App/Common/Services/Http.Service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { ContactUsModel } from './ContactUsModel';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './ContactUs.html',
 	styleUrls: ['ContactUs.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule]
+	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule, TranslateModule]
 })
 export class ContactUsComponent implements OnInit {
 	contactForm: FormGroup;

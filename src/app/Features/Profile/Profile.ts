@@ -14,12 +14,13 @@ import { UserModels } from '@App/Common/Models/User.Models';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { HttpEventType } from '@angular/common/http';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './Profile.html',
 	styleUrls: ['Profile.scss'],
-	imports: [FormsModule, CommonModule, LoaderComponent]
+	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
 })
 export class ProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
