@@ -56,7 +56,29 @@
 	},
 	"ClassDetailsPage": {
 		"title": "Class Material",
-		"notAvailable": "Not available yet."
+		"notAvailable": "Not available yet.",
+		"dashboard": "Dashboard",
+		"courses": "Courses",
+		"active": "Active",
+		"inactive": "Inactive",
+		"createdOn": "Created On",
+		"lastUpdatedOn": "Last Updated On",
+		"starts": "Starts",
+		"ends": "Ends",
+		"sessions": "Sessions",
+		"noLiveSessions": "No Live Sessions added.",
+		"startDate": "Start Date",
+		"endDate": "End Date",
+		"link": "Link",
+		"users": "Users",
+		"noUsers": "No users yet.",
+		"dp": "Dp",
+		"firstName": "First Name",
+		"lastName": "Last Name",
+		"email": "Email",
+		"birthDate": "Birthdate",
+		"loadMoreUsers": "Load More Users",
+		"material": "Material"
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
@@ -83,6 +105,19 @@
 		"joinAClass": "Join a class",
 		"joinNow": "Join now",
 		"downloadMaterial": "Download Material"
+	},
+	"Courses": {
+		"dashboard": "Dashboard",
+		"courses": "Courses",
+		"addNewCourse": "Add new course",
+		"classes": "Classes",
+		"browseCourses": "Browse Courses",
+		"active": "Active",
+		"inactive": "Inactive",
+		"nextSession": "Next Session",
+		"sessions": "Sessions",
+		"showSessions": "Show Sessions",
+		"hideSessions": "Hide Sessions"
 	},
 	"FeedbackPage": {
 		"title": "We'd Appreciate Your Feedback",
@@ -122,5 +157,49 @@
 		"birthdateLabel": "Birthdate",
 		"saveButton": "Save",
 		"invalidMessage": "Please correct the errors and try again."
+	},
+	"CourseDetailsPage": {
+		"dashboard": "Dashboard",
+		"courses": "Courses",
+		"active": "Active",
+		"inactive": "Inactive",
+		"courseOverview": "Course Overview",
+		"noDescription": "No Description for this course.",
+		"toBeLearned": "To Be Learned",
+		"noData": "No data.",
+		"prerequisites": "Prerequisites",
+		"noPrerequisites": "This course has no prerequisites.",
+		"classes": "Classes",
+		"noClasses": "No classes.",
+		"goToClass": "go to class",
+		"duration": "Duration",
+		"capacity": "Capacity",
+		"period": "Period",
+		"currentSession": "Current Session",
+		"loadMoreClasses": "Load More Classes",
+		"courseVideo": "Course Video",
+		"noVideo": "No video attached to this course.",
+		"courseMaterial": "Course Material",
+		"noMaterial": "No material attached to this course.",
+		"upcomingSessions": "Upcoming Sessions",
+		"class": "Class",
+		"noUpcomingSessions": "No upcoming sessions."
+	},
+	"DashboardPage": {
+		"dashboard": "Dashboard",
+		"editProfile": "Edit Profile",
+		"password": "Password"
+	},
+	"PasswordPage": {
+		"title": "Reset Password",
+		"oldPasswordLabel": "Enter old password",
+		"oldPasswordPlaceholder": "Old Password",
+		"newPasswordLabel": "Enter new password",
+		"newPasswordPlaceholder": "New Password",
+		"reNewPasswordLabel": "Re-enter new password",
+		"reNewPasswordPlaceholder": "New Password",
+		"showPasswords": "Show Passwords",
+		"hidePasswords": "Hide Passwords",
+		"save": "Save"
 	}
 }

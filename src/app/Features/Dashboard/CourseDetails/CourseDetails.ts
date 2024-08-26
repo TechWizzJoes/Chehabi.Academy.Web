@@ -17,12 +17,13 @@ import { DetailsModalComponent } from '../DetailsModal/DetailsModal';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { PipesModule } from '@App/Common/Pipes/Pipes.Module';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     standalone: true,
     templateUrl: './CourseDetails.html',
     styleUrls: ['CourseDetails.scss'],
-    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent, PipesModule, RouterModule]
+    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent, PipesModule, RouterModule, TranslateModule]
 })
 export class CourseDetailsComponent implements OnInit {
     RoutePaths = RoutePaths;
