@@ -6,12 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     standalone: true,
     templateUrl: './Dashboard.html',
     styleUrls: ['Dashboard.scss'],
-    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent]
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule]
 })
 export class DashboardComponent implements OnInit {
     IsLoaded: boolean = false;

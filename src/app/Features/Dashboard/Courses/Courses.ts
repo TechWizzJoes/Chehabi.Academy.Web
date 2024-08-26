@@ -20,12 +20,13 @@ import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     standalone: true,
     templateUrl: './Courses.html',
     styleUrls: ['Courses.scss'],
-    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent],
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent, TranslateModule],
     animations: [
         trigger('fadeInOut', [
             state('void', style({ opacity: 0, height: '0' })),

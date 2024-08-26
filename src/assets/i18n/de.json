@@ -55,7 +55,29 @@
 	},
 	"ClassDetailsPage": {
 		"title": "Kursmaterial",
-		"notAvailable": "Noch nicht verfügbar."
+		"notAvailable": "Noch nicht verfügbar.",
+		"dashboard": "Armaturenbrett",
+		"courses": "Kurse",
+		"active": "Aktiv",
+		"inactive": "Inaktiv",
+		"createdOn": "Erstellt am",
+		"lastUpdatedOn": "Zuletzt aktualisiert am",
+		"starts": "Startet",
+		"ends": "Endet",
+		"sessions": "Sitzungen",
+		"noLiveSessions": "Keine Live-Sitzungen hinzugefügt.",
+		"startDate": "Anfangsdatum",
+		"endDate": "Enddatum",
+		"link": "Link",
+		"users": "Benutzer",
+		"noUsers": "Noch keine Benutzer.",
+		"dp": "Bild",
+		"firstName": "Vorname",
+		"lastName": "Nachname",
+		"email": "E-Mail",
+		"birthDate": "Geburtsdatum",
+		"loadMoreUsers": "Weitere Benutzer laden",
+		"material": "Material"
 	},
 	"CourseListPage": {
 		"title": "Entdecken Sie Unsere Kurse",
@@ -82,6 +104,19 @@
 		"joinAClass": "Einem Kurs beitreten",
 		"joinNow": "Jetzt beitreten",
 		"downloadMaterial": "Material herunterladen"
+	},
+	"Courses": {
+		"dashboard": "Instrumententafel",
+		"courses": "Kurse",
+		"addNewCourse": "Neuen Kurs hinzufügen",
+		"classes": "Klassen",
+		"browseCourses": "Kurse durchsuchen",
+		"active": "Aktiv",
+		"inactive": "Inaktiv",
+		"nextSession": "Nächste Sitzung",
+		"sessions": "Sitzungen",
+		"showSessions": "Sitzungen anzeigen",
+		"hideSessions": "Sitzungen verbergen"
 	},
 	"FeedbackPage": {
 		"title": "Wir würden uns über Ihr Feedback freuen",
@@ -121,5 +156,50 @@
 		"birthdateLabel": "Geburtsdatum",
 		"saveButton": "Speichern",
 		"invalidMessage": "Bitte korrigieren Sie die Fehler und versuchen Sie es erneut."
+	},
+
+	"CourseDetailsPage": {
+		"dashboard": "Armaturenbrett",
+		"courses": "Kurse",
+		"active": "Aktiv",
+		"inactive": "Inaktiv",
+		"courseOverview": "Kursübersicht",
+		"noDescription": "Keine Beschreibung für diesen Kurs.",
+		"toBeLearned": "Zu lernen",
+		"noData": "Keine Daten.",
+		"prerequisites": "Voraussetzungen",
+		"noPrerequisites": "Dieser Kurs hat keine Voraussetzungen.",
+		"classes": "Klassen",
+		"noClasses": "Keine Klassen.",
+		"goToClass": "gehe zur Klasse",
+		"duration": "Dauer",
+		"capacity": "Kapazität",
+		"period": "Zeitraum",
+		"currentSession": "Aktuelle Sitzung",
+		"loadMoreClasses": "Mehr Klassen laden",
+		"courseVideo": "Kursvideo",
+		"noVideo": "Kein Video für diesen Kurs angehängt.",
+		"courseMaterial": "Kursmaterial",
+		"noMaterial": "Kein Material für diesen Kurs angehängt.",
+		"upcomingSessions": "Kommende Sitzungen",
+		"class": "Klasse",
+		"noUpcomingSessions": "Keine bevorstehenden Sitzungen."
+	},
+	"DashboardPage": {
+		"dashboard": "Instrumententafel",
+		"editProfile": "Profil bearbeiten",
+		"password": "Passwort"
+	},
+	"PasswordPage": {
+		"title": "Passwort zurücksetzen",
+		"oldPasswordLabel": "Altes Passwort eingeben",
+		"oldPasswordPlaceholder": "Altes Passwort",
+		"newPasswordLabel": "Neues Passwort eingeben",
+		"newPasswordPlaceholder": "Neues Passwort",
+		"reNewPasswordLabel": "Neues Passwort erneut eingeben",
+		"reNewPasswordPlaceholder": "Neues Passwort",
+		"showPasswords": "Passwörter anzeigen",
+		"hidePasswords": "Passwörter verbergen",
+		"save": "Speichern"
 	}
 }

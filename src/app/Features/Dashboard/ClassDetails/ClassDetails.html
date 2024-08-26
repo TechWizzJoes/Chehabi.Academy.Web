@@ -1,11 +1,11 @@
 <div class="page-inner">
 	<app-loader *ngIf="!IsLoaded"></app-loader>
-	<div class="" *ngIf="IsLoaded">
+	<div *ngIf="IsLoaded">
 		<div class="right-section">
-			<h6 class="main-title">Dashboard</h6>
+			<h6 class="main-title">{{ 'ClassDetailsPage.dashboard' | translate }}</h6>
 			<p class="sub-title">
-				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses]"> Courses </a> &nbsp;>&nbsp;
-				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,Class.Course.Id]"> {{Class.Course.Name}} </a> &nbsp;>&nbsp;
+				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses]">{{ 'ClassDetailsPage.courses' | translate }}</a> &nbsp;>&nbsp;
+				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,Class.Course.Id]">{{Class.Course.Name}}</a> &nbsp;>&nbsp;
 				<a class="current">{{Class.Name}}</a>
 			</p>
 			<div class="card bg-dark text-white">
@@ -22,21 +22,24 @@
 				<div class="card-img-overlay">
 					<h5 class="card-title">
 						{{Class.Name}}
-						<span class="status active" *ngIf="Class.IsActive" title="Active"><i class="fa fa-check" aria-hidden="true"></i></span>
-						<span class="status inactive" *ngIf="!Class.IsActive" title="Inactive"><i class="fa fa-times" aria-hidden="true"></i></span>
+						<span class="status active" *ngIf="Class.IsActive" title="{{ 'ClassDetailsPage.active' | translate }}"
+							><i class="fa fa-check" aria-hidden="true"></i
+						></span>
+						<span class="status inactive" *ngIf="!Class.IsActive" title="{{ 'ClassDetailsPage.inactive' | translate }}"
+							><i class="fa fa-times" aria-hidden="true"></i
+						></span>
 					</h5>
-					<!-- <p class="card-text" *ngIf="Class.Course.Description">{{Class.Course.Description.substring(0, 200) + '...'}}</p> -->
 					<p class="card-text" *ngIf="Class.Course.Price">${{Class.Course.Price}}</p>
 
 					<div class="meta">
 						<div class="starts">
-							<p class="card-text"><span class="title">Starts:</span> {{Constants.formatDate(Class.StartDate)}}</p>
-							<p class="card-text"><span class="title">Ends:</span> {{Constants.formatDate(Class.EndDate)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.starts' | translate }}: {{Constants.formatDate(Class.StartDate)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.ends' | translate }}: {{Constants.formatDate(Class.EndDate)}}</p>
 						</div>
 
 						<div class="create-update">
-							<p class="card-text"><span class="title">Created On:</span> {{Constants.formatDate(Class.CreatedOn)}}</p>
-							<p class="card-text"><span class="title">Last Updated On:</span> {{Constants.formatDate(Class.UpdatedOn)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.createdOn' | translate }}: {{Constants.formatDate(Class.CreatedOn)}}</p>
+							<p class="card-text">{{ 'ClassDetailsPage.lastUpdatedOn' | translate }}: {{Constants.formatDate(Class.UpdatedOn)}}</p>
 						</div>
 					</div>
 				</div>
@@ -44,25 +47,25 @@
 			<div class="group">
 				<div class="sessions section">
 					<div class="row-custom">
-						<h6 class="title">Sessions</h6>
+						<h6 class="title">{{ 'ClassDetailsPage.sessions' | translate }}</h6>
 					</div>
-					<p class="no-data" *ngIf="Class.LiveSessions.length == 0">No Live Sessions added.</p>
+					<p class="no-data" *ngIf="Class.LiveSessions.length == 0">{{ 'ClassDetailsPage.noLiveSessions' | translate }}</p>
 					<div class="table-responsive">
 						<table class="table table-striped table-hover" *ngIf="Class.LiveSessions.length != 0">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
-									<th scope="col">Start Date</th>
-									<th scope="col">End Date</th>
-									<th scope="col">Link</th>
+									<th scope="col">{{ 'ClassDetailsPage.startDate' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.endDate' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.link' | translate }}</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr *ngFor="let session of Class.LiveSessions ; let i = index">
+								<tr *ngFor="let session of Class.LiveSessions; let i = index">
 									<th scope="row">{{i+1}}</th>
 									<td>{{Constants.formatDate(session.StartDate)}}</td>
 									<td>{{Constants.formatDate(session.EndDate)}}</td>
-									<td>{{session.Link?? 'N/A'}}</td>
+									<td>{{session.Link ?? 'N/A'}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -70,28 +73,27 @@
 				</div>
 				<div class="users section">
 					<div class="row-custom">
-						<h6 class="title">Users</h6>
-						<!-- <i class="fa fa-plus btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class,'',false)"></i> -->
+						<h6 class="title">{{ 'ClassDetailsPage.users' | translate }}</h6>
 					</div>
-					<p class="no-data" *ngIf="Class.Users?.length == 0">No users yet.</p>
+					<p class="no-data" *ngIf="Class.Users?.length == 0">{{ 'ClassDetailsPage.noUsers' | translate }}</p>
 					<div class="table-responsive">
 						<table class="table table-striped table-hover" *ngIf="Class.Users?.length != 0">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
-									<th scope="col">Dp</th>
-									<th scope="col">{{ 'FirstName' | translate }}</th>
-									<th scope="col">{{ 'LastName' | translate }}</th>
-									<th scope="col">{{ 'Email' | translate }}</th>
-									<th scope="col">{{ 'BirthDate' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.dp' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.firstName' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.lastName' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.email' | translate }}</th>
+									<th scope="col">{{ 'ClassDetailsPage.birthDate' | translate }}</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr *ngFor="let user of Class.Users | slice:0:3 ; let i = index">
+								<tr *ngFor="let user of Class.Users | slice:0:3; let i = index">
 									<th scope="row">{{i+1}}</th>
 									<td>
 										<div class="profile-pic">
-											<img [src]="user.ProfilePicturePath? user.ProfilePicturePath: 'assets/Images/default-pp.png'" />
+											<img [src]="user.ProfilePicturePath ? user.ProfilePicturePath : 'assets/Images/default-pp.png'" />
 										</div>
 									</td>
 									<td>{{user.FirstName}}</td>
@@ -103,20 +105,16 @@
 						</table>
 					</div>
 					<div class="row-custom" *ngIf="Class.Users.length > UsersCounter.end">
-						<button class="btn btn-light" (click)="UsersCounter.end = UsersCounter.end + 3;">Load More Users</button>
+						<button class="btn btn-light" (click)="UsersCounter.end = UsersCounter.end + 3;">
+							{{ 'ClassDetailsPage.loadMoreUsers' | translate }}
+						</button>
 					</div>
 				</div>
 				<div class="material section">
 					<div class="row-custom">
-						<h6 class="title">{{ 'ClassDetailsPage.title' | translate }}</h6>
+						<h6 class="title">{{ 'ClassDetailsPage.material' | translate }}</h6>
 						<small>{{ 'ClassDetailsPage.notAvailable' | translate }}</small>
-						<!-- <i
-							class="fa fa-pencil-square-o btn-custom"
-							aria-hidden="true"
-							(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i> -->
 					</div>
-					<!-- <p class="text" *ngIf="Class.FilePath">{{Class.FilePath}}</p>
-						<p class="no-data" *ngIf="!Class.FilePath">No material attached to this class.</p> -->
 				</div>
 			</div>
 		</div>

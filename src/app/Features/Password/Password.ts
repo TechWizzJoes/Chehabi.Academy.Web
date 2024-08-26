@@ -15,12 +15,13 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './Password.html',
 	styleUrls: ['Password.scss'],
-	imports: [FormsModule, CommonModule, LoaderComponent]
+	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
 })
 export class PasswordComponent implements OnInit {
 	Account: AuthModels.CurrentUserResModel = new AuthModels.CurrentUserResModel();
