@@ -1,10 +1,10 @@
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AuthService } from '@App/Common/Services/Auth.Service';
+import { LanguageService } from '@App/Common/Services/Language.Service';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 export class Language {
 	Name!: string;
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
 		private Router: Router,
 		protected AuthService: AuthService,
 		private socialAuthService: SocialAuthService,
-		private TranslateService: TranslateService
+		private LanguageService: LanguageService
 	) {
 
 	}
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	useLanguage(language: string): void {
-		this.TranslateService.use(language);
+		this.LanguageService.useLanguage(language);
 	}
 
 	signOut() {

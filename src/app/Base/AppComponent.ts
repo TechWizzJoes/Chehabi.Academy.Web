@@ -9,6 +9,7 @@ import { SwPush, SwUpdate, VersionEvent } from '@angular/service-worker';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
+import { LanguageService } from '@App/Common/Services/Language.Service';
 
 @Component({
 	selector: 'app-root',
@@ -28,15 +29,13 @@ export class AppComponent {
 		private swUpdate: SwUpdate,
 		private swPush: SwPush,
 		private appRef: ApplicationRef,
-		private HttpService: HttpService
-	) {
-		console.log(`browser's language: ${translate.getBrowserLang()}`);
-		let browserLang = translate.getBrowserLang()
-		translate.setDefaultLang('en');
-		translate.use(browserLang ?? 'en');
-	}
+		private HttpService: HttpService,
+		private LanguageService: LanguageService,
+
+	) { }
 
 	ngOnInit() {
+		this.LanguageService.SetLanguageOnAppInit();
 		this.PreLoaderListener();
 		this.ScrollUpSub();
 		this.CheckIOS();
