@@ -3,12 +3,12 @@
 		<div class="account-box">
 			<div class="account-box-bg"></div>
 			<div class="login-title">
-				<div class="sub-title">{{'LogInToYourAccount'| translate}}</div>
+				<div class="sub-title">{{'Login.LogInToYourAccount'| translate}}</div>
 			</div>
 
 			<form class="login-form" (ngSubmit)="Login(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
 				<div class="form-group" [ngClass]="{ 'invalid-data': Email.invalid }">
-					<label for="Email">{{'Email'| translate}}</label>
+					<label for="Email">{{'Login.Email'| translate}}</label>
 					<div class="input-icon">
 						<i class="fa fa-user left"></i>
 						<input
@@ -18,13 +18,13 @@
 							name="Email"
 							[(ngModel)]="Credentials.Email"
 							#Email="ngModel"
-							placeholder="{{'Email'| translate}}"
+							placeholder="{{'Login.Email'| translate}}"
 							required />
 					</div>
 				</div>
 
 				<div class="form-group" [ngClass]="{ 'invalid-data': Password.invalid }">
-					<label for="Password">{{'Password'| translate}}</label>
+					<label for="Password">{{'Login.Password'| translate}}</label>
 					<div class="input-icon">
 						<i class="fa fa-lock left"></i>
 						<i class="fa fa-eye right" *ngIf="!showPW" (click)="toggleShowPW()"></i>
@@ -36,7 +36,7 @@
 							name="Password"
 							[(ngModel)]="Credentials.Password"
 							#Password="ngModel"
-							placeholder="{{'Password'| translate}}"
+							placeholder="{{'Login.Password'| translate}}"
 							required />
 					</div>
 				</div>
@@ -45,17 +45,17 @@
 				</div>
 
 				<div class="d-grid">
-					<button type="submit" class="btn btn-primary">{{'Login'| translate}}</button>
+					<button type="submit" class="btn btn-primary">{{'Login.Login'| translate}}</button>
 				</div>
 				<div class="text-center">
-					{{ 'DontHaveAccount' | translate }}
-					<a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">{{' '| translate}}</a>
+					{{ 'Login.DontHaveAccount' | translate }}
+					<a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">{{'Login.Register'| translate}}</a>
 				</div>
-				<div class="text-center mb-2">Or</div>
+				<div class="text-center mb-2">{{ 'Login.Or' | translate }}</div>
 				<asl-google-signin-button type="standard" logo_alignment="center" [locale]="locale"> </asl-google-signin-button>
 				<!-- type="standard" size="large" shape="rectangular" text="continue_with" width="400" logo_alignment="center" -->
 			</form>
 		</div>
-		<div class="copyright">Copyright © {{Year}}. All rights reserved.</div>
+		<div class="copyright">{{'Login.Copyright' | translate}} © {{Year}}. {{'Login.AllRightsReserved'|translate}}</div>
 	</div>
 </div>

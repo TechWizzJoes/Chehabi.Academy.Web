@@ -25,7 +25,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						{{'home' | translate}}
+						{{'Header.home' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -35,7 +35,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						{{'about' | translate}}
+						{{'Header.about' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -45,7 +45,7 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						{{'courses' | translate}}
+						{{'Header.courses' | translate}}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -55,24 +55,26 @@
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
-						{{'feedback' | translate}}
+						{{'Header.feedback' | translate}}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						*ngIf="AuthService.IsAuthenticated"
+						[routerLink]="[RoutePaths.Dashboard, RoutePaths.Courses]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
+						{{'Header.dashboard' | translate}}
 					</a>
 				</li>
 				<!-- <li class="nav-item">
                     <a class="nav-link" [routerLink]="[RoutePaths.Contactus]" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
-						{{'contact' | translate}}
+						{{'Header.contact' | translate}}
 					</a>
                 </li> -->
-				<!-- <li class="nav-item">
-					<a
-						class="nav-link"
-						[routerLink]="[RoutePaths.Founder]"
-						routerLinkActive="active"
-						data-bs-toggle="collapse"
-						data-bs-target=".navbar-collapse.show">
-						{{'founder' | translate}}
-					</a>
-				</li> -->
+
 				<li>
 					<!-- language popup -->
 					<button type="button" class="language-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
@@ -80,7 +82,7 @@
 					</button>
 					<ng-template #languagePopup>
 						<div *ngFor="let language of AvailableLanguages">
-							<button class="btn" (click)="useLanguage(language.Key)">{{language.Name | translate}}</button>
+							<button class="btn" (click)="useLanguage(language.Key)">{{'Header.'+language.Name | translate}}</button>
 						</div>
 					</ng-template>
 				</li>
@@ -100,21 +102,21 @@
 		</button>
 		<ng-template #userPopup>
 			<div class="text-center">
-				<strong> {{'Hello' | translate}}, </strong>
+				<strong> {{'Header.Hello' | translate}}, </strong>
 				<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
 				<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
 			<a class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]">
-				{{'Profile' | translate}}
+				{{'Header.Profile' | translate}}
 			</a>
-			<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</a>
+			<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Header.Sign Out' | translate}}</a>
 			<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
-				{{'Want to join the academy' | translate}}?<br />
-				{{"It'll only take a few minutes" | translate}}
+				{{'Header.Want to join the academy' | translate}}?<br />
+				{{"Header.It'll only take a few minutes" | translate}}
 			</div>
-			<a class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Sign In' | translate}}</a>
+			<a class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Header.Sign In' | translate}}</a>
 		</ng-template>
 	</div>
 </nav>
