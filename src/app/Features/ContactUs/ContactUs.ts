@@ -66,13 +66,9 @@ export class ContactUsComponent implements OnInit {
 					next: (response) => {
 						this.NotifyService.Success("Email Sent", "check your email");
 						this.contactForm.reset();
-
-
-
-
 					},
 					error: (errorResponse) => {
-						this.NotifyService.Error('Erro', errorResponse)
+						this.NotifyService.Error(errorResponse, 'Error')
 						// 	console.log("Error");
 						// 	console.log(errorResponse);
 						// 	// to show the error on login panel
@@ -85,7 +81,7 @@ export class ContactUsComponent implements OnInit {
 
 		}
 		else {
-			this.NotifyService.Error('Erro', 'Enter All fields')
+			this.NotifyService.Error('Enter All fields', 'Error')
 			// console.log(this.contactForm.);
 		}
 	}

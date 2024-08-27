@@ -10,6 +10,7 @@ import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
+import { Constants } from '@App/Common/Settings/Constants';
 
 @Component({
 	standalone: true,
@@ -19,6 +20,7 @@ import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent]
 })
 export class CourseCardComponent implements OnInit {
+	Constants = Constants;
 	@Input('Course') Course!: CourseModels.Course;
 
 	constructor(

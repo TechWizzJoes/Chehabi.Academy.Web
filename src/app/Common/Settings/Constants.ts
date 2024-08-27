@@ -9,6 +9,21 @@ export class Constants {
 	public static WeekDateFormat = 'EEEE, MMM d, y';
 	public static TimeFormat = 'h:mm a';
 
+	public static MinutesDropDown = [
+		{ Id: 0, Name: '15' },
+		{ Id: 1, Name: '30' },
+		{ Id: 2, Name: '45' },
+		{ Id: 3, Name: '60' },
+		{ Id: 4, Name: '75' },
+		{ Id: 5, Name: '90' },
+		{ Id: 6, Name: '105' },
+		{ Id: 7, Name: '120' },
+		{ Id: 8, Name: '135' },
+		{ Id: 9, Name: '150' },
+		{ Id: 10, Name: '165' },
+		{ Id: 11, Name: '180' },
+	];
+
 	public static Genders = [
 		{ Id: 'M', Name: 'Male' },
 		{ Id: 'F', Name: 'Female' }

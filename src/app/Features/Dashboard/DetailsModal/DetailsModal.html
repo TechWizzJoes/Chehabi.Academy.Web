@@ -78,10 +78,17 @@
 								(change)="Classes.onTimeChange($event, i)"
 								required />
 						</div>
+
+						<div class="col">
+							<label for="duration" class="form-label">Duration: minutes</label>
+							<select class="form-select" id="duration" name="duration" (change)="Classes.onDurationChange($event, i)" required>
+								<option *ngFor="let duration of SessionMinutes" [value]="duration.Name">{{ duration.Name }}</option>
+							</select>
+						</div>
 					</div>
 				</ng-container>
 				<ng-container *ngIf="isEdit">
-					<div class="row mb-2" *ngFor="let period of NewClass.LiveSessions; index as i">
+					<div class="row mb-4" *ngFor="let period of NewClass.LiveSessions; index as i">
 						<div class="col">
 							<label for="start" class="form-label">Session {{i+1}}:</label>
 							<input
@@ -105,9 +112,20 @@
 								(change)="Classes.onTimeChange($event, i)"
 								required />
 						</div>
+
+						<div class="col">
+							<label for="link" class="form-label">Link</label>
+							<input
+								type="text"
+								class="form-control"
+								id="link"
+								name="link"
+								[value]="period.Link"
+								(change)="Classes.onLinkChange($event, i)"
+								required />
+						</div>
 					</div>
 				</ng-container>
-
 				<!-- end sessions settings -->
 			</div>
 			<!-- <div class="mb-3">

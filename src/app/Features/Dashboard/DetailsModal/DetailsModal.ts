@@ -24,6 +24,7 @@ import { observable } from 'rxjs';
 })
 export class DetailsModalComponent implements OnInit {
     daysOfWeek: ConstantsType[] = Constants.Weekdays;
+    SessionMinutes: ConstantsType[] = Constants.MinutesDropDown;
     Today: string = Constants.GetTodayDate();
 
     activeModal = inject(NgbActiveModal);
@@ -209,12 +210,12 @@ export class DetailsModalComponent implements OnInit {
 
     Classes = {
         AddNewClassPeriod: () => {
-            this.NewClass.Period.push(new CourseModels.PeriodDto())
+            this.NewClass.Period.push(new CourseModels.PeriodDto());
         },
 
         onDayChange: (event: any, index: number) => {
             // ngmodel isn't working with dynamic adding in forms
-            this.NewClass.Period[index].Day = event.target.value
+            this.NewClass.Period[index].Day = event.target.value;
         },
 
         onTimeChange: (event: any, index: number) => {
@@ -232,9 +233,16 @@ export class DetailsModalComponent implements OnInit {
                 this.NewClass.LiveSessions[index].StartTimeString = event.target.value;
 
             } else {
-
-                this.NewClass.Period[index].Time = event.target.value
+                this.NewClass.Period[index].Time = event.target.value;
             }
+        },
+
+        onDurationChange: (event: any, index: number) => {
+            this.NewClass.Period[index].DurationInMins = event.target.value;
+        },
+
+        onLinkChange: (event: any, index: number) => {
+            this.NewClass.LiveSessions[index].Link = event.target.value;
         },
 
         onDateChange: (event: any, index: number) => {
