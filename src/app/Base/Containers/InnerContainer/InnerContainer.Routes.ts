@@ -39,8 +39,8 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/ContactUs/ContactUs').then((c) => c.ContactUsComponent)
 			},
 			{
-				path: 'founder',
-				loadComponent: () => import('@App/Features/Founder/Founder').then((c) => c.FounderComponent)
+				path: 'cart',
+				loadComponent: () => import('@App/Common/Widgets/Cart/cart.component').then((c) => c.CartComponent)
 			},
 			{
 				canActivate: [AuthGuard],

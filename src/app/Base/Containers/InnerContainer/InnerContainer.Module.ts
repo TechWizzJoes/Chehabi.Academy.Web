@@ -14,9 +14,10 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationService } from '@App/Common/Services/Application.Service';
+import { CartButtonComponent } from '@App/Common/Widgets/Cart/cart-button/cart-button.component';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule],
+	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule, CartButtonComponent],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
 	providers: [ApplicationService]
 })

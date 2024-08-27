@@ -17,6 +17,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { Constants } from '@App/Common/Settings/Constants';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '@App/Common/Services/cart.service';
 
 @Component({
 	standalone: true,
@@ -62,7 +63,8 @@ export class CoursePageComponent implements OnInit {
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
-		private StorageService: StorageService
+		private StorageService: StorageService,
+		private CartService: CartService,
 	) { }
 
 	ngOnInit() {
@@ -115,17 +117,19 @@ export class CoursePageComponent implements OnInit {
 		this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
 	}
 
-	JoinNow() {
+	AddToCart() {
 		if (!this.SelectedClass) return;
-		let endPoint = HttpEndPoints.Classes.JoinClass;
-		endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString())
-		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
-			// this.IsLoaded = true
-			// this.Course = data
-			console.log(data);
+		// let endPoint = HttpEndPoints.Classes.JoinClass;
+		// endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString())
+		// this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
+		// 	// this.IsLoaded = true
+		// 	// this.Course = data
+		// 	console.log(data);
 
-			this.NotifyService.Success("Congratulations! You've joined this course.")
-		})
+		// 	this.NotifyService.Success("Congratulations! You've joined this course.")
+		// })
+		this.CartService.addToCart(this.SelectedClass);
+		this.NotifyService.Success(`${this.SelectedClass.Name} class is added to your cart!`)
 	}
 
 	DownloadMaterial() {

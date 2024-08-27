@@ -1,0 +1,20 @@
+<div class="page-inner">
+	<div class="page-section">
+		<div class="cart">
+			<h2>Your Cart</h2>
+			<ul *ngIf="cartItems.length > 0">
+				<li *ngFor="let item of cartItems">
+					{{ item.Name }} ({{ item.Quantity }})
+					<button (click)="removeFromCart(item.Id)">Remove</button>
+				</li>
+			</ul>
+			<p *ngIf="cartItems.length === 0">Your cart is empty.</p>
+			<button (click)="clearCart()">Clear Cart</button>
+
+			<div>
+				<!-- <a [routerLink]="'/checkout'">CHECKOUT</a> -->
+				<button class="c" (click)="getLink()">CHECKOUT</button>
+			</div>
+		</div>
+	</div>
+</div>

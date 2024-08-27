@@ -114,7 +114,10 @@
 		"noClassesAdded": "Noch keine Kurse zu diesem Kurs hinzugefügt.",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
-		"onlySlotsAvailable": "Nur noch {{slots}} {{slots == 1 ? 'Platz' : 'Plätze'}} verfügbar",
+		"only": "Nur noch",
+		"slots": "Plätze",
+		"slot": "Platz",
+		"available": "verfügbar",
 		"startsOn": "Beginnt am {{date}}",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
@@ -122,7 +125,7 @@
 		"whatYoullLearn": "Was Sie lernen werden?",
 		"prerequisites": "Voraussetzungen",
 		"joinAClass": "Einem Kurs beitreten",
-		"joinNow": "Jetzt beitreten",
+		"addToCart": "In den Warenkorb legen",
 		"downloadMaterial": "Material herunterladen"
 	},
 	"Courses": {

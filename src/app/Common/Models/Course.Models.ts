@@ -51,6 +51,7 @@ export namespace CourseModels {
 
 		AvailableSlots!: number; // for display
 		ShowSessions: boolean = false; // for display
+		Quantity!: number; // for cart
 	}
 
 	export class LiveSession {

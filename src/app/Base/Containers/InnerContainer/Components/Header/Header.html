@@ -76,8 +76,11 @@
                 </li> -->
 
 				<li>
+					<app-cart-button></app-cart-button>
+				</li>
+				<li>
 					<!-- language popup -->
-					<button type="button" class="language-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
+					<button type="button" class="icon-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
 						<i class="fa fa-globe"></i>
 					</button>
 					<ng-template #languagePopup>

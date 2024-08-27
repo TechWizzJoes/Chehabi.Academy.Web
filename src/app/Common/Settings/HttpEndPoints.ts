@@ -54,4 +54,8 @@ export class HttpEndPoints {
 	public static Feeback = {
 		GetAll: 'feedback/list/all',
 	}
+
+	public static Payment = {
+		Checkout: 'payment/checkout',
+	}
 }

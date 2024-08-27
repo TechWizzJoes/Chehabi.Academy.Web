@@ -114,7 +114,10 @@
 		"noClassesAdded": "No classes added to this course yet.",
 		"active": "Active",
 		"inactive": "Inactive",
-		"onlySlotsAvailable": "Only {{slots}} {{slots == 1 ? 'slot' : 'slots'}} available",
+		"only": "Only",
+		"slots": "slots",
+		"slot": "slot",
+		"available": "available",
 		"startsOn": "Starts on {{date}}",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
@@ -122,7 +125,7 @@
 		"whatYoullLearn": "What you'll learn?",
 		"prerequisites": "Prerequisites",
 		"joinAClass": "Join a class",
-		"joinNow": "Join now",
+		"addToCart": "Add To Cart",
 		"downloadMaterial": "Download Material"
 	},
 	"Courses": {
