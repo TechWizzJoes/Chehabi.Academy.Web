@@ -3,7 +3,7 @@
 		<div class="account-box">
 			<div class="account-box-bg"></div>
 			<div class="login-title">
-				<div class="sub-title">Log in to your account</div>
+				<div class="sub-title">{{'LogInToYourAccount'| translate}}</div>
 			</div>
 
 			<form class="login-form" (ngSubmit)="Login(frm)" name="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" novalidate>
@@ -52,7 +52,7 @@
 					<a [routerLink]="['/',RoutePaths.Register]" routerLinkActive="router-link-active">{{' '| translate}}</a>
 				</div>
 				<div class="text-center mb-2">Or</div>
-				<asl-google-signin-button type="standard" logo_alignment="center"> </asl-google-signin-button>
+				<asl-google-signin-button type="standard" logo_alignment="center" [locale]="locale"> </asl-google-signin-button>
 				<!-- type="standard" size="large" shape="rectangular" text="continue_with" width="400" logo_alignment="center" -->
 			</form>
 		</div>

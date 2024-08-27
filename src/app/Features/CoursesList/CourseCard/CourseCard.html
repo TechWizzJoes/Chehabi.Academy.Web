@@ -2,7 +2,10 @@
 	<img class="card-img-top" [src]="Course.ImageUrl" alt="Card image cap" />
 	<div class="card-body">
 		<h5 class="card-title">{{Course.Name}}</h5>
-		<span class="instructor">{{Course.Instructor}}</span>
+		<span class="instructor">
+			<!-- <span class="initials">{{Constants.GetInitialName(Course.Instructor.User.FirstName, Course.Instructor.User.LastName)}}</span> -->
+			<p>By: {{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
+		</span>
 		<!-- <p class="card-text">{{Course.Description}}</p> -->
 		<div class="rating">
 			<span class="rate" *ngIf="Course.Rating">{{Course.Rating}} / 5 </span>

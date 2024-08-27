@@ -68,6 +68,7 @@ export namespace CourseModels {
 	export class PeriodDto {
 		Day: number = 0;
 		Time: string = '12:00';
+		DurationInMins: number = 60;
 	}
 
 	export class Filter {

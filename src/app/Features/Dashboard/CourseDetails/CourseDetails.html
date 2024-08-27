@@ -104,11 +104,8 @@
 									</button>
 									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>
 								</h2>
-								<div
-									id="{{'collapse' + i}}"
-									class="accordion-collapse collapse"
-									[attr.aria-labelledby]="'heading' + i"
-									data-bs-parent="#accordionExample">
+								<div id="{{'collapse' + i}}" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+									<!-- data-bs-parent="#accordionExample" -->
 									<div class="accordion-body">
 										<div class="class">
 											<p>{{ 'CourseDetailsPage.duration' | translate }}</p>

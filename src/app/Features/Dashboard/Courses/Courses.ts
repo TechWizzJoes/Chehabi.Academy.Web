@@ -21,6 +21,7 @@ import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { Constants } from '@App/Common/Settings/Constants';
 
 @Component({
     standalone: true,
@@ -44,6 +45,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ],
 })
 export class CoursesComponent implements OnInit {
+    Constants = Constants;
     IsLoaded: boolean = false;
     Courses: CourseModels.Course[] = [];
     ClassesByUser: CourseModels.Class[] = [];
@@ -73,11 +75,6 @@ export class CoursesComponent implements OnInit {
 
     gotoCourse(id: number) {
         this.Router.navigate(['/', RoutePaths.Dashboard, RoutePaths.Courses, id.toString()])
-    }
-
-    getInitials(instructor: UserModels.User): string {
-        let initials = instructor.FirstName[0].toUpperCase() + instructor.LastName[0].toUpperCase();
-        return initials;
     }
 
     openModal(property: ModalPropertyEnum, isEdit: boolean = false) {

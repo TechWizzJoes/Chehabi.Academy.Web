@@ -27,7 +27,7 @@
 					<p class="card-text">{{Course.Description}}</p>
 					<div class="middle-section">
 						<div class="instructor">
-							<span class="initials">{{getInitials(Course.Instructor.User)}}</span>
+							<span class="initials">{{Constants.GetInitialName(Course.Instructor.User.FirstName, Course.Instructor.User.LastName)}}</span>
 							<p>{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
 						</div>
 						<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
@@ -67,7 +67,10 @@
 					</div>
 					<div class="middle-section">
 						<div class="instructor">
-							<span class="initials">{{getInitials(class.Course.Instructor.User)}}</span>
+							<span class="initials"
+								>{{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}}</span
+							>
+
 							<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
 						</div>
 						<small>{{class.StartDate | date: 'dd/MM/YYYY'}}</small>
