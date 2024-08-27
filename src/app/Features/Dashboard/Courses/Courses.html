@@ -1,17 +1,17 @@
 <div class="right-section">
-	<h6 class="title">{{ 'Cousrses.dashboard' | translate }}</h6>
+	<h6 class="title">{{ 'Courses.dashboard' | translate }}</h6>
 
 	<div class="row-custom" *ngIf="CurrentUser.IsAdmin">
-		<p class="sub-title">{{ 'Cousrses.courses' | translate }}</p>
+		<p class="sub-title">{{ 'Courses.courses' | translate }}</p>
 		<button class="btn btn-primary" (click)="openModal(ModalPropertyEnum.Course)">
 			<i class="fa fa-plus" aria-hidden="true"></i>
-			{{ 'Cousrses.addNewCourse' | translate }}
+			{{ 'Courses.addNewCourse' | translate }}
 		</button>
 	</div>
 
 	<div class="row-custom" *ngIf="!CurrentUser.IsAdmin">
-		<p class="sub-title">{{ 'Cousrses.classes' | translate }}</p>
-		<a class="btn btn-primary" [routerLink]="['/','courses']">{{ 'Cousrses.browseCourses' | translate }}</a>
+		<p class="sub-title">{{ 'Courses.classes' | translate }}</p>
+		<a class="btn btn-primary" [routerLink]="['/','courses']">{{ 'Courses.browseCourses' | translate }}</a>
 	</div>
 
 	<div class="courses-container row">
@@ -21,8 +21,8 @@
 				<div class="card-body">
 					<div class="upper-section">
 						<h5 class="card-title">{{Course.Name}}</h5>
-						<span class="status active" *ngIf="Course.IsActive">{{ 'Cousrses.active' | translate }}</span>
-						<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Cousrses.inactive' | translate }}</span>
+						<span class="status active" *ngIf="Course.IsActive">{{ 'Courses.active' | translate }}</span>
+						<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Courses.inactive' | translate }}</span>
 					</div>
 					<p class="card-text">{{Course.Description}}</p>
 					<div class="middle-section">
@@ -49,15 +49,15 @@
 				<div class="card-body">
 					<div class="upper-section">
 						<h5 class="card-title">{{class.Name}}</h5>
-						<span class="status active" *ngIf="class.IsActive">{{ 'Cousrses.active' | translate }}</span>
-						<span class="status inactive" *ngIf="!class.IsActive">{{ 'Cousrses.inactive' | translate }}</span>
+						<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
+						<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
 					</div>
 					<div>
-						{{ 'Cousrses.nextSession' | translate }}: "get next session using class's current index "
+						{{ 'Courses.nextSession' | translate }}: "get next session using class's current index "
 						<div>
-							{{ 'Cousrses.sessions' | translate }}: {{class.NumberOfSessions}}
+							{{ 'Courses.sessions' | translate }}: {{class.NumberOfSessions}}
 							<a class="show-sessions" (click)="showSessions($event, i)"
-								>{{class.ShowSessions ? ('Cousrses.hideSessions' | translate) : ('Cousrses.showSessions' | translate)}}</a
+								>{{class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
 							>
 						</div>
 
