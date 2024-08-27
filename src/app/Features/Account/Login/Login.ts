@@ -33,6 +33,7 @@ export class LoginComponent {
 
 	Credentials = new AuthModels.LoginModel('', '');
 	ReturnUrl: any;
+	locale!: string;
 
 	constructor(
 		private Router: Router,
@@ -48,7 +49,8 @@ export class LoginComponent {
 
 	async ngOnInit() {
 		this.AuthService.SignOut();
-		this.SocialLogin.Google.AuthStateSubscribe()
+		this.SocialLogin.Google.AuthStateSubscribe();
+		this.locale = this.TranslateService.currentLang;
 	}
 
 	toggleShowPW() {
