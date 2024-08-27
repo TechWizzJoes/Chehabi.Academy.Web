@@ -58,16 +58,23 @@ export const routes: Routes = [
 						pathMatch: 'full'
 					},
 					{
-						path: 'profile',
-						loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent)
+						path: 'courses/:cid/class/:id',
+						loadComponent: () => import('@App/Features/Dashboard/ClassDetails/ClassDetails').then((c) => c.ClassDetailsComponent)
+					}
+				]
+			},
+			{
+				canActivate: [AuthGuard],
+				path: 'profile',
+				loadComponent: () => import('@App/Features/Profile/Profile').then((c) => c.ProfileComponent),
+				children: [
+					{
+						path: 'edit',
+						loadComponent: () => import('@App/Features/Profile/EditProfile/EditProfile').then((c) => c.EditProfileComponent)
 					},
 					{
 						path: 'password',
 						loadComponent: () => import('@App/Features/Password/Password').then((c) => c.PasswordComponent)
-					},
-					{
-						path: 'courses/:cid/class/:id',
-						loadComponent: () => import('@App/Features/Dashboard/ClassDetails/ClassDetails').then((c) => c.ClassDetailsComponent)
 					}
 				]
 			},

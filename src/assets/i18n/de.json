@@ -145,7 +145,7 @@
 		"aboutAcademyParagraph": "Die Chehabi Academy wurde 2023 aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch gegründet, kulturelle Kluften zu überbrücken. In Anerkennung der Bedeutung des Arabischen in der globalen Kommunikation, im Erbe und in den Künsten haben wir es uns zur Aufgabe gemacht, ein umfassendes Lernerlebnis zu bieten, das über bloße Vokabeln und Grammatik hinausgeht.",
 		"learnMoreLink": "Mehr erfahren"
 	},
-	"ProfilePage": {
+	"EditProfilePage": {
 		"editProfileTitle": "Profil bearbeiten",
 		"uploadImageButton": "Bild hochladen",
 		"deleteButton": "Löschen",
@@ -159,7 +159,6 @@
 		"saveButton": "Speichern",
 		"invalidMessage": "Bitte korrigieren Sie die Fehler und versuchen Sie es erneut."
 	},
-
 	"CourseDetailsPage": {
 		"dashboard": "Armaturenbrett",
 		"courses": "Kurse",
@@ -188,6 +187,11 @@
 		"noUpcomingSessions": "Keine bevorstehenden Sitzungen."
 	},
 	"DashboardPage": {
+		"dashboard": "Instrumententafel",
+		"editProfile": "Profil bearbeiten",
+		"password": "Passwort"
+	},
+	"ProfilePage": {
 		"dashboard": "Instrumententafel",
 		"editProfile": "Profil bearbeiten",
 		"password": "Passwort"

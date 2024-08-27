@@ -1,0 +1,83 @@
+.right-section {
+	.title {
+		font-weight: 700;
+		font-size: 1.1rem;
+		margin-bottom: 1.25rem;
+		letter-spacing: 0.35px;
+	}
+
+	form {
+		.image-container {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+			img {
+				width: 65px;
+				height: 65px;
+				border-radius: 50%;
+				border: 3px solid #e2e2e2c4;
+				position: relative;
+
+				&.filter {
+					filter: brightness(0.4);
+				}
+			}
+
+			.fileInput {
+				display: none;
+			}
+
+			label.file-label {
+				width: fit-content;
+			}
+
+			.btn {
+				margin-top: 0;
+				width: 150px;
+				padding: 0.25rem 0.75rem;
+				font-size: 0.9rem;
+				margin-left: 1rem;
+
+				&.btn-danger {
+					width: fit-content;
+					margin-left: 1rem;
+				}
+			}
+
+			.progress {
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				background: conic-gradient(
+					rgb(16, 16, 63) 3.6deg,
+					#c3c3c3 0deg
+				);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				transition: 0.2s;
+
+				.progress-value {
+					position: absolute;
+					z-index: 2;
+					color: white;
+					font-weight: 600;
+					letter-spacing: 1px;
+				}
+			}
+
+			.no-progress {
+				border-radius: 50%;
+				background: none !important;
+			}
+		}
+
+		button {
+			padding: 0.25rem 2rem;
+			width: 200px;
+			margin-top: 1rem;
+		}
+	}
+}

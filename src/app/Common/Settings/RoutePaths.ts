@@ -10,6 +10,8 @@ export class RoutePaths {
 	public static Contactus = 'contactus';
 	public static Founder = 'founder';
 	public static Profile = 'profile';
+	public static EditProfile = 'edit';
+	public static EditPassword = 'password';
 	public static Dashboard = 'dashboard';
 	public static Account = 'account';
 	public static Class = 'class';

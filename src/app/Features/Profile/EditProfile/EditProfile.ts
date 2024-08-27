@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '@App/Common/Services/Auth.Service';
@@ -15,24 +15,20 @@ import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { HttpEventType } from '@angular/common/http';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { TranslateModule } from '@ngx-translate/core';
-import { RoutePaths } from '@App/Common/Settings/RoutePaths';
-import { AuthModels } from '@App/Common/Models/Auth.Models';
 
 @Component({
 	standalone: true,
-	templateUrl: './Profile.html',
-	styleUrls: ['Profile.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule]
+	templateUrl: './EditProfile.html',
+	styleUrls: ['EditProfile.scss'],
+	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
 })
-export class ProfileComponent implements OnInit {
-	RoutePaths = RoutePaths;
+export class EditProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
 	Account: UserModels.User = new UserModels.User();
 	IsDisabled: boolean = false;
 	IsUploadDisabled: boolean = false;
 	Error!: string;
 	Progress: any = { start: 0, end: 100 }
-	currentUser!: AuthModels.CurrentUserResModel;
 
 	constructor(
 		private Router: Router,
@@ -42,10 +38,7 @@ export class ProfileComponent implements OnInit {
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
 		private StorageService: StorageService
-	) {
-		this.currentUser = this.AuthService.CurrentUser;
-
-	}
+	) { }
 
 	ngOnInit() {
 		let endPoint = HttpEndPoints.Profile.GetProfile

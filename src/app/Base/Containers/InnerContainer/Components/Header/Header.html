@@ -106,15 +106,15 @@
 			</div>
 			<hr />
 			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<button class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Dashboard, RoutePaths.Courses]">
+			<a class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]">
 				{{'Profile' | translate}}
-			</button>
-			<button class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</button>
+			</a>
+			<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Sign Out' | translate}}</a>
 			<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
 				{{'Want to join the academy' | translate}}?<br />
 				{{"It'll only take a few minutes" | translate}}
 			</div>
-			<button class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Sign In' | translate}}</button>
+			<a class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Sign In' | translate}}</a>
 		</ng-template>
 	</div>
 </nav>
