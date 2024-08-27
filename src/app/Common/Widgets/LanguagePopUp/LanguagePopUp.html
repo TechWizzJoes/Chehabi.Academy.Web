@@ -1,0 +1,8 @@
+<button type="button" class="icon-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
+	<i class="fa fa-globe"></i>
+</button>
+<ng-template #languagePopup>
+	<div *ngFor="let language of AvailableLanguages">
+		<button class="btn" (click)="useLanguage(language.Key)">{{'Language.'+language.Name | translate}}</button>
+	</div>
+</ng-template>

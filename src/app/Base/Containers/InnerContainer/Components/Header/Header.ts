@@ -1,15 +1,10 @@
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { AuthService } from '@App/Common/Services/Auth.Service';
-import { LanguageService } from '@App/Common/Services/Language.Service';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-export class Language {
-	Name!: string;
-	Key!: string;
-}
 @Component({
 	selector: 'app-header',
 	templateUrl: './Header.html',
@@ -20,13 +15,10 @@ export class HeaderComponent implements OnInit {
 	@ViewChild('NavbarCollapse') NavbarCollapse!: ElementRef;
 	RoutePaths = RoutePaths
 
-	AvailableLanguages: Language[] = [{ Name: 'English', Key: 'en' }, { Name: 'German', Key: 'de' }]
-
 	constructor(
 		private Router: Router,
 		protected AuthService: AuthService,
-		private socialAuthService: SocialAuthService,
-		private LanguageService: LanguageService
+		private socialAuthService: SocialAuthService
 	) {
 
 	}
@@ -39,7 +31,7 @@ export class HeaderComponent implements OnInit {
 			}
 		});
 		this.AuthService.ProfilePicUpdate.subscribe((data) => {
-			console.log(this.AuthService.CurrentUser)
+			// console.log(this.AuthService.CurrentUser)
 			this.CurrentUser = this.AuthService.CurrentUser;
 		})
 	}
@@ -48,10 +40,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	goToSettings() {
-	}
-
-	useLanguage(language: string): void {
-		this.LanguageService.useLanguage(language);
 	}
 
 	signOut() {

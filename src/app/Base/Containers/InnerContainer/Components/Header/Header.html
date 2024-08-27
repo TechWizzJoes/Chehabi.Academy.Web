@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" [routerLink]="['home']" class="logo" (click)="useLanguage('en')">
+		<a class="navbar-brand" [routerLink]="['home']" class="logo">
 			<img src="/assets/Images/full-logo.png" alt="logo-img" class="logo-img" />
 			<img src="/assets/Images/white-full-logo.png" alt="logo-img" class="white-logo-img" />
 		</a>
@@ -79,15 +79,7 @@
 					<app-cart-button></app-cart-button>
 				</li>
 				<li>
-					<!-- language popup -->
-					<button type="button" class="icon-button" [ngbPopover]="languagePopup" container="body" popoverClass="language-popup">
-						<i class="fa fa-globe"></i>
-					</button>
-					<ng-template #languagePopup>
-						<div *ngFor="let language of AvailableLanguages">
-							<button class="btn" (click)="useLanguage(language.Key)">{{'Header.'+language.Name | translate}}</button>
-						</div>
-					</ng-template>
+					<app-language-popup></app-language-popup>
 				</li>
 			</ul>
 		</div>

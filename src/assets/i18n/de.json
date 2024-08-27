@@ -2,6 +2,10 @@
 	"coming-soon": "demnächst",
 	"sub-soon": "Die Chehabi-Akademie befindet sich im Aufbau.",
 
+	"Language": {
+		"English": "Englisch",
+		"German": "Deutsch"
+	},
 	"Header": {
 		"home": "Heim",
 		"about": "Über uns",
@@ -9,8 +13,6 @@
 		"feedback": "Rückmeldung",
 		"contact": "Kontakt",
 		"dashboard": "Armaturenbrett",
-		"English": "Englisch",
-		"German": "Deutsch",
 		"Hello": "Hallo",
 		"Profile": "Profil",
 		"Want to join the academy": "Möchte der Akademie beitreten",

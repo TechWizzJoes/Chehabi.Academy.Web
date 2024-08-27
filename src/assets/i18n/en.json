@@ -2,6 +2,10 @@
 	"coming-soon": "Coming soon",
 	"sub-soon": " Chehabi academy is under construction.",
 
+	"Language": {
+		"English": "English",
+		"German": "German"
+	},
 	"Header": {
 		"home": "Home",
 		"about": "About",
@@ -9,8 +13,6 @@
 		"feedback": "Feedback",
 		"contact": "Contact",
 		"dashboard": "Dashboard",
-		"English": "English",
-		"German": "German",
 		"Hello": "Hello",
 		"Profile": "Profile",
 		"Want to join the academy": "Want to join the academy",

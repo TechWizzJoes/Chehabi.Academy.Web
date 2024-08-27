@@ -15,9 +15,10 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationService } from '@App/Common/Services/Application.Service';
 import { CartButtonComponent } from '@App/Common/Widgets/Cart/cart-button/cart-button.component';
+import { LanguagePopUpComponent } from '@App/Common/Widgets/LanguagePopUp/LanguagePopUp';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule, CartButtonComponent],
+	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule, CartButtonComponent, LanguagePopUpComponent],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
 	providers: [ApplicationService]
 })
