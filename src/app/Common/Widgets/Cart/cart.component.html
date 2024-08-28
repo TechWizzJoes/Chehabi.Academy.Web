@@ -2,14 +2,35 @@
 	<div class="page-section">
 		<div class="cart">
 			<h2>Your Cart</h2>
-			<ul *ngIf="cartItems.length > 0">
-				<li *ngFor="let item of cartItems">
-					{{ item.Name }} ({{ item.Quantity }})
+			<ul *ngIf="Cart.CartItems.length > 0">
+				<li *ngFor="let item of Cart.CartItems">
+					<div *ngIf="item.ClassId">
+						{{ item.Class.Name }} ({{ item.Quantity }})
+						<div>Price: {{ item.Price }}</div>
+						<div>SubTotal: {{ item.SubTotal }}</div>
+					</div>
+					<div *ngIf="item.CourseId">
+						{{ item.Course.Name }} ({{ item.Quantity }})
+						<div>Price: {{ item.Price }}</div>
+						<div>SubTotal: {{ item.SubTotal }}</div>
+					</div>
 					<button (click)="removeFromCart(item.Id)">Remove</button>
 				</li>
+
+				Total:
+				{{
+					Cart.Total
+				}},
+				{{
+					Cart.Currency
+				}}
+				{{
+					Cart.UpdatedAt
+				}}
 			</ul>
-			<p *ngIf="cartItems.length === 0">Your cart is empty.</p>
-			<button (click)="clearCart()">Clear Cart</button>
+
+			<p *ngIf="Cart.CartItems.length === 0">Your cart is empty.</p>
+			<!-- <button (click)="clearCart()">Clear Cart</button> -->
 
 			<div>
 				<!-- <a [routerLink]="'/checkout'">CHECKOUT</a> -->

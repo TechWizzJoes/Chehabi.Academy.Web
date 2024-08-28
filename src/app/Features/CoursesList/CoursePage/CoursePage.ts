@@ -18,6 +18,7 @@ import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { Constants } from '@App/Common/Settings/Constants';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '@App/Common/Services/cart.service';
+import { CartModels } from '@App/Common/Models/Cart.Models';
 
 @Component({
 	standalone: true,
@@ -119,17 +120,11 @@ export class CoursePageComponent implements OnInit {
 
 	AddToCart() {
 		if (!this.SelectedClass) return;
-		// let endPoint = HttpEndPoints.Classes.JoinClass;
-		// endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString())
-		// this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
-		// 	// this.IsLoaded = true
-		// 	// this.Course = data
-		// 	console.log(data);
-
-		// 	this.NotifyService.Success("Congratulations! You've joined this course.")
-		// })
-		this.CartService.addToCart(this.SelectedClass);
-		this.NotifyService.Success(`${this.SelectedClass.Name} class is added to your cart!`)
+		let newCartItem = new CartModels.CartItem();
+		newCartItem.ClassId = this.SelectedClass.Id;
+		this.CartService.addToCart(newCartItem).add(() => {
+			this.NotifyService.Success(`${this.SelectedClass!.Name} class is added to your cart!`);
+		});
 	}
 
 	DownloadMaterial() {

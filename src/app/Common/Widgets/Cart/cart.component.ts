@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CartService } from '@App/Common/Services/cart.service';
 import { StripeService } from '@App/Common/Services/stripe.service';
+import { CartModels } from '@App/Common/Models/Cart.Models';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ import { StripeService } from '@App/Common/Services/stripe.service';
   styleUrl: './cart.component.scss',
 })
 export class CartComponent {
-  cartItems: CourseModels.Class[] = [];
+  Cart: CartModels.Cart = new CartModels.Cart();
 
   constructor(
     private cartService: CartService,
@@ -21,18 +22,18 @@ export class CartComponent {
   ) { }
 
   ngOnInit(): void {
-    this.cartService.cartItems$.subscribe((cartItems) => {
-      this.cartItems = cartItems;
+    this.cartService.cart$.subscribe((cart) => {
+      this.Cart = cart;
     });
   }
 
-  removeFromCart(productId: number): void {
-    this.cartService.removeFromCart(productId);
+  removeFromCart(itemId: number): void {
+    this.cartService.removeFromCart(itemId);
   }
 
-  clearCart(): void {
-    this.cartService.clearCart();
-  }
+  // clearCart(): void {
+  //   this.cartService.clearCart();
+  // }
 
   // check out customizations
   // https://docs.stripe.com/payments/checkout/customization
