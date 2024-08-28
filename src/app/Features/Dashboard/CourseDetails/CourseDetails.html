@@ -28,11 +28,17 @@
 					<p class="card-text" *ngIf="Course.Price">${{Course.Price}}</p>
 
 					<div class="meta">
-						<p class="card-text"><span class="title">Starts:</span> {{Constants.formatDate(Course.StartDate)}}</p>
+						<p class="card-text">
+							<span class="title">{{ 'CourseDetailsPage.starts' | translate }}:</span> {{Constants.formatDate(Course.StartDate)}}
+						</p>
 
 						<div class="create-update">
-							<p class="card-text"><span class="title">Created On:</span> {{Constants.formatDate(Course.CreatedOn)}}</p>
-							<p class="card-text"><span class="title">Last Updated On:</span> {{Constants.formatDate(Course.UpdatedOn)}}</p>
+							<p class="card-text">
+								<span class="title">{{ 'CourseDetailsPage.createdOn' | translate }}:</span> {{Constants.formatDate(Course.CreatedOn)}}
+							</p>
+							<p class="card-text">
+								<span class="title">{{ 'CourseDetailsPage.lastUpdatedOn' | translate }}:</span> {{Constants.formatDate(Course.UpdatedOn)}}
+							</p>
 						</div>
 					</div>
 				</div>

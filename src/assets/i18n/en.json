@@ -207,7 +207,10 @@
 		"noMaterial": "No material attached to this course.",
 		"upcomingSessions": "Upcoming Sessions",
 		"class": "Class",
-		"noUpcomingSessions": "No upcoming sessions."
+		"noUpcomingSessions": "No upcoming sessions.",
+		"createdOn": "Created On",
+		"lastUpdatedOn": "Last Updated On",
+		"starts": "Starts"
 	},
 	"DashboardPage": {
 		"dashboard": "Dashboard",

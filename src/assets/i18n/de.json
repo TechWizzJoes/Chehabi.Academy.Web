@@ -207,7 +207,10 @@
 		"noMaterial": "Kein Material für diesen Kurs angehängt.",
 		"upcomingSessions": "Kommende Sitzungen",
 		"class": "Klasse",
-		"noUpcomingSessions": "Keine bevorstehenden Sitzungen."
+		"noUpcomingSessions": "Keine bevorstehenden Sitzungen.",
+		"createdOn": "Erstellt am",
+		"lastUpdatedOn": "Zuletzt aktualisiert am",
+		"starts": "Startet"
 	},
 	"DashboardPage": {
 		"dashboard": "Instrumententafel",

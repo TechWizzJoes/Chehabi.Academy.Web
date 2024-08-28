@@ -27,6 +27,7 @@ export namespace CourseModels {
 		Instructor!: InstructorModels.Instructor;
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
+		UserCourses!: UserModels.UserCourse[];
 
 		MaxStartDate?: string; // for display
 	}
@@ -46,12 +47,14 @@ export namespace CourseModels {
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
 		LiveSessions!: LiveSession[];
-		Users!: UserModels.User[];
 		Course!: Course;
+		// CartItems!: CartModels.CartItem[];
+		UserClasses!: UserModels.UserClass[];
 
 		AvailableSlots!: number; // for display
 		ShowSessions: boolean = false; // for display
 		Quantity!: number; // for cart
+
 	}
 
 	export class LiveSession {
