@@ -22,6 +22,7 @@ import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { Constants } from '@App/Common/Settings/Constants';
+import { RatingModels } from '@App/Common/Models/Rating.Models';
 
 @Component({
     standalone: true,
@@ -51,7 +52,9 @@ export class CoursesComponent implements OnInit {
     ClassesByUser: CourseModels.Class[] = [];
     ModalPropertyEnum = ModalPropertyEnum;
     CurrentUser!: AuthModels.CurrentUserResModel;
-
+    CurrentRating: number = 0;
+    RatingReadOnly: boolean = false;
+    UserRatings: RatingModels.Rating[] = [];
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,
@@ -70,6 +73,7 @@ export class CoursesComponent implements OnInit {
             this.getAdminCourses();
         } else {
             this.getUserClasses();
+            this.getUserRatings();
         }
     }
 
@@ -105,13 +109,56 @@ export class CoursesComponent implements OnInit {
         })
     }
 
-    changeRating(event: Event, course: CourseModels.Course, index: number) {
-        event.stopPropagation();
-        event.preventDefault();
-        course.Rating = index;
-        this.editCourse(course);
+    getUserRatings() {
+        let endPoint = HttpEndPoints.Rating.GetAllByUser;
+        endPoint = endPoint.replace('{id}', this.CurrentUser.Id.toString());
+        this.HttpService.Get<RatingModels.Rating[]>(endPoint)
+            .subscribe(data => {
+                this.UserRatings = data;
+            });
     }
 
+    getRatingForCourse(courseId: number): number {
+        if (this.UserRatings.length === 0) {
+            return 0;
+        }
+        const rating = this.UserRatings.find(r => r.CourseId === courseId);
+        return rating ? rating.Rating : 0;
+    }
+    // changeRating(event: Event, course: CourseModels.Course, index: number) {
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     course.Rating = index;
+    //     this.editCourse(course);
+    // }
+
+    onRateChange(newRating: number, courseId: number) {
+        this.CurrentRating = newRating;
+        // console.log(newRating);
+        // console.log(courseId);
+
+        this.updateRating(newRating, courseId);
+    }
+
+    updateRating(newRating: number, courseId: number) {
+        const endpoint = HttpEndPoints.Rating.addRating;
+
+        const rating: RatingModels.Rating = {
+            CourseId: courseId, // Assuming that CourseId and UserId are objects with Id properties
+            UserId: this.CurrentUser.Id,
+            Rating: newRating
+
+        } as RatingModels.Rating;
+        this.HttpService.Post<RatingModels.Rating, RatingModels.Rating>(endpoint, rating)
+            .subscribe({
+                next: data => {
+                    this.NotifyService.Success("Success", "Thank For Your Rating");
+                },
+                error: error => {
+                    this.NotifyService.Error('Error', 'Try Rating Again Later')
+                }
+            });
+    }
     editCourse(course: CourseModels.Course) {
         let endPoint = HttpEndPoints.Courses.EditCourse;
         endPoint = endPoint.replace('{id}', course.Id.toString())
