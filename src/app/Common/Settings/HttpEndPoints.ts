@@ -24,7 +24,7 @@ export class HttpEndPoints {
 
 	public static Classes = {
 		GetOne: 'class/{id}',
-		// JoinClass: 'class/join/{classId}',
+		JoinClass: 'class/join/{classId}',
 		GetAllByUser: 'class/user/classes',
 		AddClass: 'class',
 		EditClass: 'class/{id}',
@@ -64,5 +64,12 @@ export class HttpEndPoints {
 		AddItem: 'cart/add',
 		RemoveItem: 'cart/remove/{id}',
 		Checkout: 'cart/checkout',
+	}
+
+	public static Rating = {
+		addRating: 'ratings',
+		GetCourseRating: 'ratings/course/:courseId/user',
+		GetAllByUser: 'ratings/user/{id}'
+
 	}
 }

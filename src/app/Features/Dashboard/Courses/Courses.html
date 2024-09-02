@@ -76,7 +76,10 @@
 						<small>{{class.StartDate | date: 'dd/MM/YYYY'}}</small>
 					</div>
 					<div class="lower-section">
-						<app-StarRating [Rate]="class.Course.Rating" [ReadOnly]="true"></app-StarRating>
+						<app-StarRating
+							[Rate]="getRatingForCourse(class.CourseId)"
+							[ReadOnly]="RatingReadOnly"
+							(RateChange)="onRateChange($event,class.CourseId)"></app-StarRating>
 						<span>
 							<i class="fa fa-usd" aria-hidden="true"></i>
 							<small class="ps-2">{{class.Course.Price || '0'}}</small>
