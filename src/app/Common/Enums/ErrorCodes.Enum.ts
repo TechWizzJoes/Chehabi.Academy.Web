@@ -14,6 +14,7 @@ export enum ErrorCodesEnum {
 	Class_STARTDATE_BEFORE_TODAY = 'Class start date can\'t be before Today\'s date.',
 	CLASS_BEFORE_COURSE = 'Class starts before the course starting date.',
 	SESSION_BEFORE_CLASS = 'Sessions start before the class starting date.',
-
+	CLASS_INACTIVE = 'Class is currently inactive.',
+	CLASS_DELETED = 'Class is deleted!',
 
 }

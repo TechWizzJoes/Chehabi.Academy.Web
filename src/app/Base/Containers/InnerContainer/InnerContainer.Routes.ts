@@ -6,7 +6,7 @@ import { InnerContainer } from './InnerContainer';
 import { RolesGuard } from '@App/Common/Guards/Roles.Guard';
 import { AuthGuard } from '@App/Common/Guards/Auth.Guard';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
-import { path } from 'd3';
+import { CheckoutsuccessComponent } from '@App/Common/Widgets/Cart/checkoutsuccess/checkoutsuccess.component';
 
 export const routes: Routes = [
 	{
@@ -41,6 +41,10 @@ export const routes: Routes = [
 			{
 				path: 'cart',
 				loadComponent: () => import('@App/Common/Widgets/Cart/cart.component').then((c) => c.CartComponent)
+			},
+			{
+				path: 'success',
+				component: CheckoutsuccessComponent,
 			},
 			{
 				canActivate: [AuthGuard],

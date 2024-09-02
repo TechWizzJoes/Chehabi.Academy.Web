@@ -122,7 +122,7 @@ export class CoursePageComponent implements OnInit {
 		if (!this.SelectedClass) return;
 		let newCartItem = new CartModels.CartItem();
 		newCartItem.ClassId = this.SelectedClass.Id;
-		this.CartService.addToCart(newCartItem).add(() => {
+		this.CartService.addToCart(newCartItem).then(() => {
 			this.NotifyService.Success(`${this.SelectedClass!.Name} class is added to your cart!`);
 		});
 	}

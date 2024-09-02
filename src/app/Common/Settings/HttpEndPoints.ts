@@ -63,5 +63,6 @@ export class HttpEndPoints {
 		Get: 'cart',
 		AddItem: 'cart/add',
 		RemoveItem: 'cart/remove/{id}',
+		Checkout: 'cart/checkout',
 	}
 }

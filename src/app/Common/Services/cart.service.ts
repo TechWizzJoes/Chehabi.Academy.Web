@@ -21,11 +21,17 @@ export class CartService {
 
   constructor(private HttpService: HttpService) { }
 
-  addToCart(cartItem: CartModels.CartItem) {
-    return this.HttpService.Put2<CartModels.CartItem, CartModels.Cart>(HttpEndPoints.Cart.AddItem, cartItem).subscribe({
-      next: newCart => {
-        this.Cart = newCart
+  GetCart() {
+    this.HttpService.Get<any>(HttpEndPoints.Cart.Get).subscribe({
+      next: cart => {
+        this.Cart = cart
       }
+    })
+  }
+
+  addToCart(cartItem: CartModels.CartItem) {
+    return firstValueFrom(this.HttpService.Put2<CartModels.CartItem, CartModels.Cart>(HttpEndPoints.Cart.AddItem, cartItem)).then(newCart => {
+      this.Cart = newCart
     })
   }
 
@@ -43,4 +49,16 @@ export class CartService {
   //   this.cart.CartItems = [];
   //   this.cart$.next(this.cart);
   // }
+
+  async getCheckoutLink() {
+    // test cards
+    // https://docs.stripe.com/testing#cards
+    // https://www.memberstack.com/blog/stripe-test-cards
+
+    // 4242 4242 4242 4242  success
+    // 4000 0000 0000 9995  failure
+    const data: any = await firstValueFrom(this.HttpService.Get(HttpEndPoints.Cart.Checkout));
+    // return data.url
+    window.location.assign(data.url);
+  }
 }

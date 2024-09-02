@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CartService } from '@App/Common/Services/cart.service';
-import { HttpService } from '@App/Common/Services/Http.Service';
-import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 
 @Component({
   selector: 'app-cart-button',
@@ -14,7 +12,7 @@ import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 })
 export class CartButtonComponent implements OnInit {
   counter: number = 0;
-  constructor(private CartService: CartService, private HttpService: HttpService) { }
+  constructor(private CartService: CartService) { }
 
   ngOnInit(): void {
     this.CartService.cart$.subscribe({
@@ -23,10 +21,6 @@ export class CartButtonComponent implements OnInit {
       },
     });
 
-    this.HttpService.Get<any>(HttpEndPoints.Cart.Get).subscribe({
-      next: cart => {
-        this.CartService.Cart = cart
-      }
-    })
+    this.CartService.GetCart();
   }
 }

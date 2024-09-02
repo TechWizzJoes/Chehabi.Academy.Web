@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CartService } from '@App/Common/Services/cart.service';
-import { StripeService } from '@App/Common/Services/stripe.service';
 import { CartModels } from '@App/Common/Models/Cart.Models';
 
 @Component({
@@ -17,14 +16,15 @@ export class CartComponent {
   Cart: CartModels.Cart = new CartModels.Cart();
 
   constructor(
-    private cartService: CartService,
-    private stripeService: StripeService
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.cartService.cart$.subscribe((cart) => {
       this.Cart = cart;
     });
+
+    this.cartService.GetCart();
   }
 
   removeFromCart(itemId: number): void {
@@ -38,6 +38,6 @@ export class CartComponent {
   // check out customizations
   // https://docs.stripe.com/payments/checkout/customization
   getLink() {
-    this.stripeService.getLink();
+    this.cartService.getCheckoutLink();
   }
 }
