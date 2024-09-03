@@ -1,0 +1,89 @@
+<!-- <div class="calendar-container">
+	<header>
+		<h2 id="calendar-title">{{ monthYear }}</h2>
+		<div id="session-dates">
+			<span *ngIf="currentDate">{{ currentDate | date: 'fullDate' }}</span>
+		</div>
+	</header>
+	<div class="calendar-controls">
+		<button (click)="prevMonth()">&lt;</button>
+		<input type="date" (change)="onDateChange($event)" />
+		<button (click)="nextMonth()">&gt;</button>
+	</div>
+	<div class="calendar-grid">
+		<div
+			*ngFor="let day of calendarDays"
+			class="calendar-day"
+			[ngClass]="{
+				today: day.day === currentDate.getDate() &&
+				       currentMonth === currentDate.getMonth() &&
+				       currentYear === currentDate.getFullYear(),
+				selected: selectedDate && day.day === selectedDate.getDate() &&
+				          currentMonth === selectedDate.getMonth() &&
+				          currentYear === selectedDate.getFullYear()
+			}"
+			(click)="day.event ? onEventClick(day.event) : (day.day !== 0 ? selectDay(day) : null)">
+			<div *ngIf="day.day !== 0" class="day-details">
+				<span class="day-number">{{ day.day }} {{ day.dayName }}</span>
+			</div>
+			<div *ngIf="day.event" class="event {{ day.event.type }}" (click)="onEventClick(day.event)">{{ day.event.title }}</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="calendar-container">
+	<header>
+		<h2 id="calendar-title">{{ monthYear }}</h2>
+		<div id="session-dates">
+			<span *ngIf="currentDate">{{ currentDate | date: 'fullDate' }}</span>
+		</div>
+	</header>
+	<div class="calendar-controls">
+		<button (click)="prevMonth()">&lt;</button>
+		<input type="date" (change)="onDateChange($event)" />
+		<button (click)="nextMonth()">&gt;</button>
+	</div>
+	<div class="calendar-grid" [class.blurred]="expandedView">
+		<div
+			*ngFor="let day of calendarDays"
+			class="calendar-day"
+			[ngClass]="{
+				today: day.day === currentDate.getDate() &&
+				currentMonth === currentDate.getMonth() &&
+				currentYear === currentDate.getFullYear(),
+				selected: (selectedDay === day) || 
+				(selectedDate && day.day === selectedDate.getDate() &&
+				          currentMonth === selectedDate.getMonth() &&
+				          currentYear === selectedDate.getFullYear())
+			}"
+			(click)="day.event ? onDayClick(day) : null">
+			<div *ngIf="day.day !== 0" class="day-details">
+				<span class="day-number">{{ day.day }}</span>
+				<span class="day-name">{{ day.dayName }}</span>
+			</div>
+			<div *ngIf="day.event" class="event {{ day.event.type }}" (click)="onEventClick(day.event)">{{ day.event.title }}</div>
+		</div>
+	</div>
+	<div class="expanded-day-view-overlay" *ngIf="expandedView">
+		<div class="expanded-day-view">
+			<div class="day-header">
+				<span>{{ selectedDayEvents[0]?.startDate | date: 'fullDate' }}</span>
+				<button (click)="closeExpandedView()">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+			<div class="day-timeline">
+				<!-- Render each hour of the day -->
+				<div class="hour" *ngFor="let hour of hours">
+					<div class="time">{{ hour }}:00</div>
+					<div class="event-slot">
+						<div *ngIf="getEventForHour(hour)" class="event-day">
+							<span class="event-title">{{ getEventForHour(hour)?.title }}</span>
+							<span class="event-description">{{ getEventForHour(hour)?.description }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
