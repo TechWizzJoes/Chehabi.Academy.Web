@@ -10,6 +10,7 @@ import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { LanguageService } from '@App/Common/Services/Language.Service';
+import { WebSocketService } from '@App/Common/Services/Websocket.Service';
 
 @Component({
 	selector: 'app-root',
@@ -31,7 +32,7 @@ export class AppComponent {
 		private appRef: ApplicationRef,
 		private HttpService: HttpService,
 		private LanguageService: LanguageService,
-
+		private WebSocketService: WebSocketService,
 	) { }
 
 	ngOnInit() {

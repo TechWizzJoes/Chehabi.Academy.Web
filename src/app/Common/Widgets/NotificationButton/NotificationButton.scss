@@ -1,0 +1,21 @@
+button {
+	position: relative;
+	margin-inline-end: 12px;
+
+	.counter {
+		position: absolute;
+		top: 0px;
+		right: -5px;
+		border: 2px solid var(--primary-bg-color);
+		padding: 0;
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		color: var(--primary-color1);
+		background-color: var(--primary-bg-color);
+		background-color: red;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
+	}
+}

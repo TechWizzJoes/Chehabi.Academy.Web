@@ -16,9 +16,20 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationService } from '@App/Common/Services/Application.Service';
 import { CartButtonComponent } from '@App/Common/Widgets/Cart/cart-button/cart-button.component';
 import { LanguagePopUpComponent } from '@App/Common/Widgets/LanguagePopUp/LanguagePopUp';
+import { NotificationButtonComponent } from '@App/Common/Widgets/NotificationButton/NotificationButton';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, InnerContainerRoutes, NgbPopoverModule, RouterModule, TranslateModule, CartButtonComponent, LanguagePopUpComponent],
+	imports: [
+		CommonModule,
+		FormsModule,
+		InnerContainerRoutes,
+		NgbPopoverModule,
+		RouterModule,
+		TranslateModule,
+		CartButtonComponent,
+		LanguagePopUpComponent,
+		NotificationButtonComponent
+	],
 	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
 	providers: [ApplicationService]
 })
