@@ -1,0 +1,24 @@
+.unauthorized-container {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.unauthorized-container h1 {
+	font-size: 3em;
+	color: #e74c3c;
+}
+
+.unauthorized-container p {
+	font-size: 1.5em;
+	margin: 20px 0;
+}
+
+.unauthorized-container a {
+	font-size: 1.2em;
+	color: #3498db;
+	text-decoration: none;
+}
+
+.unauthorized-container a:hover {
+	text-decoration: underline;
+}

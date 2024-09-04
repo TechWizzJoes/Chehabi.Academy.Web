@@ -7,6 +7,7 @@ import { RolesGuard } from '@App/Common/Guards/Roles.Guard';
 import { AuthGuard } from '@App/Common/Guards/Auth.Guard';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { CheckoutsuccessComponent } from '@App/Common/Widgets/Cart/checkoutsuccess/checkoutsuccess.component';
+import { RolesEnum } from '@App/Common/Enums/Roles.Enum';
 
 export const routes: Routes = [
 	{
@@ -52,8 +53,19 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),
 				children: [
 					{
+						canActivate: [RolesGuard],
+						data: {
+							Roles: [
+								RolesEnum.Admin
+							]
+						},
 						path: 'courses',
 						loadComponent: () => import('@App/Features/Dashboard/Courses/Courses').then((c) => c.CoursesComponent),
+						pathMatch: 'full'
+					},
+					{
+						path: 'classes',
+						loadComponent: () => import('@App/Features/Dashboard/Classes/Classes').then((c) => c.ClassesComponent),
 						pathMatch: 'full'
 					},
 					{

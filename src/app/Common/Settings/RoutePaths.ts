@@ -1,10 +1,12 @@
 export class RoutePaths {
 	public static Default = 'dashboard/courses';
+	public static Unauthorized = 'unauthorized';
 	public static Home = 'home';
 	public static Login = 'login';
 	public static Register = 'register';
 	public static About = 'about';
 	public static Courses = 'courses';
+	public static Classes = 'classes';
 	public static Course = 'course';
 	public static Feedback = 'feedback';
 	public static Contactus = 'contactus';

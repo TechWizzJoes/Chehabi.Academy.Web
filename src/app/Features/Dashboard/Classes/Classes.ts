@@ -26,8 +26,8 @@ import { RatingModels } from '@App/Common/Models/Rating.Models';
 
 @Component({
     standalone: true,
-    templateUrl: './Courses.html',
-    styleUrls: ['Courses.scss'],
+    templateUrl: './Classes.html',
+    styleUrls: ['Classes.scss'],
     imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, StarRatingComponent, TranslateModule],
     animations: [
         trigger('fadeInOut', [
@@ -45,16 +45,17 @@ import { RatingModels } from '@App/Common/Models/Rating.Models';
         ]),
     ],
 })
-export class CoursesComponent implements OnInit {
+export class ClassesComponent implements OnInit {
     Constants = Constants;
     IsLoaded: boolean = false;
-    Courses: CourseModels.Course[] = [];
     ClassesByUser: CourseModels.Class[] = [];
     ModalPropertyEnum = ModalPropertyEnum;
     CurrentUser!: AuthModels.CurrentUserResModel;
     CurrentRating: number = 0;
     RatingReadOnly: boolean = false;
     UserRatings: RatingModels.Rating[] = [];
+
+    Today: Date = new Date()
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,
@@ -69,39 +70,71 @@ export class CoursesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAdminCourses();
-
+        this.getUserClasses();
+        this.getUserRatings();
     }
 
-    gotoCourse(id: number) {
-        this.Router.navigate(['/', RoutePaths.Dashboard, RoutePaths.Courses, id.toString()])
-    }
-
-    openModal(property: ModalPropertyEnum, isEdit: boolean = false) {
-        const modalRef = this.modalService.open(DetailsModalComponent, { centered: true, modalDialogClass: 'course-modal' });
-        modalRef.componentInstance.property = property;
-        modalRef.componentInstance.isEdit = isEdit;
-
-        modalRef.closed.subscribe((data) => {
-            if (data == 'save') {
-                this.getAdminCourses();
-            }
-        })
-    }
-
-    getAdminCourses() {
-        let endPoint = HttpEndPoints.Courses.GetAllByAdmin
-        this.HttpService.Get<CourseModels.Course[]>(endPoint).subscribe(data => {
+    getUserClasses() {
+        let endPoint = HttpEndPoints.Classes.GetAllByUser
+        this.HttpService.Get<CourseModels.Class[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
-            this.Courses = data;
+            this.ClassesByUser = data;
         })
     }
 
-    editCourse(course: CourseModels.Course) {
-        let endPoint = HttpEndPoints.Courses.EditCourse;
-        endPoint = endPoint.replace('{id}', course.Id.toString())
-        this.HttpService.Put<CourseModels.Course>(endPoint, course).subscribe(data => {
-        })
+    getUserRatings() {
+        let endPoint = HttpEndPoints.Rating.GetAllByUser;
+        endPoint = endPoint.replace('{id}', this.CurrentUser.Id.toString());
+        this.HttpService.Get<RatingModels.Rating[]>(endPoint)
+            .subscribe(data => {
+                this.UserRatings = data;
+            });
     }
 
+    getRatingForCourse(courseId: number): number {
+        if (this.UserRatings.length === 0) {
+            return 0;
+        }
+        const rating = this.UserRatings.find(r => r.CourseId === courseId);
+        return rating ? rating.Rating : 0;
+    }
+    // changeRating(event: Event, course: CourseModels.Course, index: number) {
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     course.Rating = index;
+    //     this.editCourse(course);
+    // }
+
+    onRateChange(newRating: number, courseId: number) {
+        this.CurrentRating = newRating;
+        // console.log(newRating);
+        // console.log(courseId);
+
+        this.updateRating(newRating, courseId);
+    }
+
+    updateRating(newRating: number, courseId: number) {
+        const endpoint = HttpEndPoints.Rating.addRating;
+
+        const rating: RatingModels.Rating = {
+            CourseId: courseId, // Assuming that CourseId and UserId are objects with Id properties
+            UserId: this.CurrentUser.Id,
+            Rating: newRating
+
+        } as RatingModels.Rating;
+        this.HttpService.Post<RatingModels.Rating, RatingModels.Rating>(endpoint, rating)
+            .subscribe({
+                next: data => {
+                    this.NotifyService.Success("Success", "Thank For Your Rating");
+                },
+                error: error => {
+                    this.NotifyService.Error('Error', 'Try Rating Again Later')
+                }
+            });
+    }
+
+    showSessions(event: Event, index: number) {
+        event.stopPropagation()
+        this.ClassesByUser[index].ShowSessions = !this.ClassesByUser[index].ShowSessions;
+    }
 }

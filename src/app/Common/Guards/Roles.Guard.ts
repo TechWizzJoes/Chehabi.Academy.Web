@@ -26,7 +26,7 @@ export class RolesGuard {
 		// this.NotifyService.Error(ErrorCodesEnum.ACCESS_IS_DENIED);
 
 		// If the user's role is not allowed, redirect to a different page (e.g., login)
-		this.router.navigate([RoutePaths.Default]);
+		this.router.navigate([RoutePaths.Unauthorized]);
 		return false;
 	}
 }

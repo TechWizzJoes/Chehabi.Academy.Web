@@ -61,8 +61,17 @@
 				<li class="nav-item">
 					<a
 						class="nav-link"
-						*ngIf="AuthService.IsAuthenticated"
+						*ngIf="AuthService.IsAuthenticated && AuthService.CurrentUser.IsAdmin"
 						[routerLink]="[RoutePaths.Dashboard, RoutePaths.Courses]"
+						routerLinkActive="active"
+						data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show">
+						{{'Header.dashboard' | translate}}
+					</a>
+					<a
+						class="nav-link"
+						*ngIf="AuthService.IsAuthenticated && !AuthService.CurrentUser.IsAdmin"
+						[routerLink]="[RoutePaths.Dashboard, RoutePaths.Classes]"
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">

@@ -9,84 +9,31 @@
 		</button>
 	</div>
 
-	<div class="row-custom" *ngIf="!CurrentUser.IsAdmin">
-		<p class="sub-title">{{ 'Courses.classes' | translate }}</p>
-		<a class="btn btn-primary" [routerLink]="['/','courses']">{{ 'Courses.browseCourses' | translate }}</a>
-	</div>
-
 	<div class="courses-container row">
-		<ng-container *ngIf="CurrentUser.IsAdmin">
-			<app-loader *ngIf="!IsLoaded"></app-loader>
-			<div class="card" *ngFor="let Course of Courses; let i = index" (click)="gotoCourse(Course.Id)">
-				<div class="card-body">
-					<div class="upper-section">
-						<h5 class="card-title">{{Course.Name}}</h5>
-						<span class="status active" *ngIf="Course.IsActive">{{ 'Courses.active' | translate }}</span>
-						<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Courses.inactive' | translate }}</span>
+		<app-loader *ngIf="!IsLoaded"></app-loader>
+		<div class="card" *ngFor="let Course of Courses; let i = index" (click)="gotoCourse(Course.Id)">
+			<div class="card-body">
+				<div class="upper-section">
+					<h5 class="card-title">{{Course.Name}}</h5>
+					<span class="status active" *ngIf="Course.IsActive">{{ 'Courses.active' | translate }}</span>
+					<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Courses.inactive' | translate }}</span>
+				</div>
+				<p class="card-text">{{Course.Description}}</p>
+				<div class="middle-section">
+					<div class="instructor">
+						<span class="initials">{{Constants.GetInitialName(Course.Instructor.User.FirstName, Course.Instructor.User.LastName)}}</span>
+						<p>{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
 					</div>
-					<p class="card-text">{{Course.Description}}</p>
-					<div class="middle-section">
-						<div class="instructor">
-							<span class="initials">{{Constants.GetInitialName(Course.Instructor.User.FirstName, Course.Instructor.User.LastName)}}</span>
-							<p>{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
-						</div>
-						<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
-					</div>
-					<div class="lower-section">
-						<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
-						<span>
-							<i class="fa fa-usd" aria-hidden="true"></i>
-							<small class="ps-2">{{Course.Price || '0'}}</small>
-						</span>
-					</div>
+					<small>{{Course.StartDate | date: 'dd/MM/YYYY'}}</small>
+				</div>
+				<div class="lower-section">
+					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
+					<span>
+						<i class="fa fa-usd" aria-hidden="true"></i>
+						<small class="ps-2">{{Course.Price || '0'}}</small>
+					</span>
 				</div>
 			</div>
-		</ng-container>
-
-		<ng-container *ngIf="!CurrentUser.IsAdmin">
-			<app-loader *ngIf="!IsLoaded"></app-loader>
-			<div class="card" *ngFor="let class of ClassesByUser; let i = index">
-				<div class="card-body">
-					<div class="upper-section">
-						<h5 class="card-title">{{class.Name}}</h5>
-						<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
-						<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
-					</div>
-					<div>
-						{{ 'Courses.nextSession' | translate }}: "get next session using class's current index "
-						<div>
-							{{ 'Courses.sessions' | translate }}: {{class.NumberOfSessions}}
-							<a class="show-sessions" (click)="showSessions($event, i)"
-								>{{class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
-							>
-						</div>
-
-						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
-							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{formatDate(occ.StartDate)}}</li>
-						</ul>
-					</div>
-					<div class="middle-section">
-						<div class="instructor">
-							<span class="initials"
-								>{{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}}</span
-							>
-
-							<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
-						</div>
-						<small>{{class.StartDate | date: 'dd/MM/YYYY'}}</small>
-					</div>
-					<div class="lower-section">
-						<app-StarRating
-							[Rate]="getRatingForCourse(class.CourseId)"
-							[ReadOnly]="RatingReadOnly"
-							(RateChange)="onRateChange($event,class.CourseId)"></app-StarRating>
-						<span>
-							<i class="fa fa-usd" aria-hidden="true"></i>
-							<small class="ps-2">{{class.Course.Price || '0'}}</small>
-						</span>
-					</div>
-				</div>
-			</div>
-		</ng-container>
+		</div>
 	</div>
 </div>

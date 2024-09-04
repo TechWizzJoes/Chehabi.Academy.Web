@@ -1,0 +1,135 @@
+.right-section {
+	.title {
+		font-weight: 700;
+		font-size: 1.1rem;
+		margin-bottom: 1.25rem;
+		letter-spacing: 0.35px;
+	}
+
+	.sub-title {
+		font-weight: 600;
+		font-size: 1.1rem;
+		letter-spacing: 0.35px;
+		color: rgba(54, 69, 85, 0.7);
+		margin: 0;
+	}
+
+	.row-custom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.courses-container {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		// justify-content: space-between;
+		width: 100%;
+
+		app-loader {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 1rem;
+		}
+
+		.card {
+			margin: 0.75rem;
+			// width: 30%;
+			min-height: 210px;
+			border: none;
+			border-radius: 10px;
+
+			&:hover {
+				cursor: pointer;
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+
+			.upper-section {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.card-title {
+					font-size: 1.1rem;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+				}
+
+				.status {
+					border-radius: 15px;
+					font-size: 0.7rem;
+					padding: 0.05rem 0.7rem;
+					background-color: var(--active-color);
+					margin-bottom: 8px;
+
+					&.inactive {
+						background-color: var(--inactive-color);
+					}
+				}
+			}
+
+			.card-text {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+
+			.middle-section {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 1rem 0;
+
+				.instructor {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					p {
+						margin: 0;
+					}
+
+					.initials {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 40px;
+						height: 40px;
+						color: white;
+						background-color: var(--primary-color1);
+						border-radius: 25%;
+						font-weight: 700;
+						margin-right: 10px;
+					}
+				}
+			}
+
+			.lower-section {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				i {
+					font-size: 1rem;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	.fa-plus {
+		font-size: 0.9rem !important;
+		margin-right: 0.5rem;
+	}
+}
+
+@media (max-width: 1024px) {
+	.card {
+		width: 100% !important;
+	}
+}
