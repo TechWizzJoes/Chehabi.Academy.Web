@@ -101,7 +101,6 @@ export class CoursePageComponent implements OnInit {
 			this.IsLoaded = true;
 			this.Course = data;
 			this.Course.Classes.forEach(c => {
-				c.StartDate = Constants.convertDateToYYYYMMDD(new Date(c.StartDate));
 				c.AvailableSlots = c.MaxCapacity - c.UserClasses.length;
 			})
 		})

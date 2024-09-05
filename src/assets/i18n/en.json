@@ -145,7 +145,8 @@
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
 		"hideSessions": "Hide Sessions",
-		"": "current Index"
+		"startsOn": "Starts on:",
+		"startedOn": "Started on:"
 	},
 	"FeedbackPage": {
 		"title": "We'd Appreciate Your Feedback",

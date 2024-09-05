@@ -25,8 +25,8 @@
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
 							</span>
 						</div>
-						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate } }}</div>
-						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate } }}</div>
+						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
+						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
 						<div>
 							{{ 'CoursePage.sessions' | translate }}: #{{class.NumberOfSessions}}
 							<a class="show-sessions" (click)="showSessions($event, i)">

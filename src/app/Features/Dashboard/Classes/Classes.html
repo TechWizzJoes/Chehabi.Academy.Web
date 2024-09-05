@@ -35,13 +35,16 @@
 				</div>
 				<div class="middle-section">
 					<div class="instructor">
-						<span class="initials"
-							>{{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}}</span
-						>
-
-						<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
+						<!-- <span class="initials"> {{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}} 	</span>
+						<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p> -->
+						<p>By: {{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
 					</div>
-					<small>{{class.StartDate | date: 'dd/MM/YYYY'}}</small>
+
+					<small>
+						<ng-container *ngIf="!class.CurrentIndex">{{ 'Courses.startsOn' | translate }}</ng-container>
+						<ng-container *ngIf="class.CurrentIndex">{{ 'Courses.startedOn' | translate }}</ng-container>
+						{{class.StartDate | date: 'dd/MM/YYYY'}}
+					</small>
 				</div>
 				<div class="lower-section">
 					<app-StarRating

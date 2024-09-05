@@ -144,7 +144,9 @@
 		"nextSession": "session up next on: ",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
-		"hideSessions": "Sitzungen verbergen"
+		"hideSessions": "Sitzungen verbergen",
+		"startsOn": "Starts on:",
+		"startedOn": "Started on:"
 	},
 	"FeedbackPage": {
 		"title": "Wir würden uns über Ihr Feedback freuen",
