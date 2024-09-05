@@ -17,26 +17,27 @@
 						<div class="title">
 							<h3>
 								{{class.Name}}
-								<span class="status active" *ngIf="class.IsActive">{{ 'CoursePage.active' | translate }}</span>
-								<span class="status inactive" *ngIf="!class.IsActive">{{ 'CoursePage.inactive' | translate }}</span>
+								<span class="status inactive" *ngIf="class.CurrentIndex">{{ 'CoursePage.started' | translate }}</span>
+								<!-- <span class="status inactive" *ngIf="!class.IsActive">{{ 'CoursePage.inactive' | translate }}</span> -->
 							</h3>
-							<span *ngIf="class.AvailableSlots <= 10" class="float-end text-1">
-								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{class.AvailableSlots == 1 ? 'CoursePage.slot' : 'CoursePage.slots'
-								| translate}} {{'CoursePage.available' | translate}}
+							<span *ngIf="class.AvailableSlots <= 10 && !class.CurrentIndex" class="float-end text-1">
+								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{(class.AvailableSlots == 1 ? 'CoursePage.slot' :
+								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
 							</span>
 						</div>
-						<div>{{ 'CoursePage.startsOn' | translate: { date: class.StartDate } }}</div>
+						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate } }}</div>
+						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate } }}</div>
 						<div>
-							{{ 'CoursePage.sessions' | translate }}: {{class.NumberOfSessions}}
+							{{ 'CoursePage.sessions' | translate }}: #{{class.NumberOfSessions}}
 							<a class="show-sessions" (click)="showSessions($event, i)">
 								{{ class.ShowSessions ? ( 'CoursePage.hideSessions' | translate ) : ( 'CoursePage.showSessions' | translate ) }}
 							</a>
 						</div>
 
 						<br />
-						<ul *ngIf="class.ShowSessions" [@fadeInOut]>
+						<ol *ngIf="class.ShowSessions" [@fadeInOut]>
 							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{ Constants.formatDate(occ.StartDate) }}</li>
-						</ul>
+						</ol>
 					</div>
 					<hr />
 				</div>
@@ -64,7 +65,7 @@
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
 				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'CoursePage.joinAClass' | translate }}</button>
-				<button class="btn btn-primary me-2" (click)="AddToCart()" *ngIf="IsJoinClass" [disabled]="!SelectedClass">
+				<button class="btn btn-primary me-2" (click)="AddToCart()" *ngIf="IsJoinClass" [disabled]="!SelectedClass || SelectedClass.CurrentIndex ">
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
 				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">

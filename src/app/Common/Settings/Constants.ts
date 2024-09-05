@@ -129,6 +129,16 @@ export class Constants {
 		return new Intl.DateTimeFormat('en-GB', options).format(localDate);
 	}
 
+	public static getOrdinalNumber(index: number) {
+		const number = index + 1; // Convert index to human-readable number
+		const suffixes = ['th', 'st', 'nd', 'rd'];
+		const remainder = number % 100; // Handle special cases for 11th, 12th, 13th
+
+		// Determine the correct suffix
+		const suffix = suffixes[(remainder - 20) % 10] || suffixes[remainder] || suffixes[0];
+
+		return number + suffix;
+	}
 }
 export class ConstantsType {
 	Id!: number;

@@ -71,13 +71,18 @@
 				}
 			}
 
-			.card-text {
-				overflow: hidden;
-				display: -webkit-box;
-				-webkit-line-clamp: 3;
-				line-clamp: 3;
-				-webkit-box-orient: vertical;
+			.session-instance {
+				&.done {
+					text-decoration: line-through;
+				}
 			}
+			// .card-text {
+			// 	overflow: hidden;
+			// 	display: -webkit-box;
+			// 	-webkit-line-clamp: 3;
+			// 	line-clamp: 3;
+			// 	-webkit-box-orient: vertical;
+			// }
 
 			.middle-section {
 				display: flex;

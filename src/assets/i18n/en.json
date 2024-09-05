@@ -97,9 +97,10 @@
 		"firstName": "First Name",
 		"lastName": "Last Name",
 		"email": "Email",
-		"birthDate": "Birthdate",
+		"birthDate": "Birth date",
 		"loadMoreUsers": "Load More Users",
-		"material": "Material"
+		"material": "Material",
+		"joinDate": "Join Date"
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
@@ -116,11 +117,13 @@
 		"noClassesAdded": "No classes added to this course yet.",
 		"active": "Active",
 		"inactive": "Inactive",
+		"started": "Class already started.",
 		"only": "Only",
 		"slots": "slots",
 		"slot": "slot",
 		"available": "available",
 		"startsOn": "Starts on {{date}}",
+		"startedOn": "Started on {{date}}",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
 		"hideSessions": "Hide Sessions",
@@ -138,10 +141,11 @@
 		"browseCourses": "Browse Courses",
 		"active": "Active",
 		"inactive": "Inactive",
-		"nextSession": "Next Session",
+		"nextSession": "session up next on: ",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
-		"hideSessions": "Hide Sessions"
+		"hideSessions": "Hide Sessions",
+		"": "current Index"
 	},
 	"FeedbackPage": {
 		"title": "We'd Appreciate Your Feedback",

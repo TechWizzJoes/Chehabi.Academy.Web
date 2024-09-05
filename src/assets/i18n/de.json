@@ -99,7 +99,8 @@
 		"email": "E-Mail",
 		"birthDate": "Geburtsdatum",
 		"loadMoreUsers": "Weitere Benutzer laden",
-		"material": "Material"
+		"material": "Material",
+		"joinDate": "Join Date"
 	},
 	"CourseListPage": {
 		"title": "Entdecken Sie Unsere Kurse",
@@ -116,11 +117,13 @@
 		"noClassesAdded": "Noch keine Kurse zu diesem Kurs hinzugefügt.",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
+		"started": "Class already started.",
 		"only": "Nur noch",
 		"slots": "Plätze",
 		"slot": "Platz",
 		"available": "verfügbar",
 		"startsOn": "Beginnt am {{date}}",
+		"startedOn": "Started on {{date}}",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
 		"hideSessions": "Sitzungen verbergen",
@@ -138,7 +141,7 @@
 		"browseCourses": "Kurse durchsuchen",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
-		"nextSession": "Nächste Sitzung",
+		"nextSession": "session up next on: ",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
 		"hideSessions": "Sitzungen verbergen"

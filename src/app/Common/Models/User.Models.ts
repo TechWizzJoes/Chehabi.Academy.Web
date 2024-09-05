@@ -33,7 +33,7 @@ export namespace UserModels {
 	export class UserClass {
 		UserId!: number;
 		ClassId!: number;
-		CreatedAt!: Date | null;
+		CreatedAt!: Date;
 		User!: UserModels.User;
 		Class!: CourseModels.Class;
 	}

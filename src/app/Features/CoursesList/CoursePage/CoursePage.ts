@@ -95,7 +95,7 @@ export class CoursePageComponent implements OnInit {
 
 
 	getCourse(id: string) {
-		let endPoint = HttpEndPoints.Courses.GetOne;
+		let endPoint = HttpEndPoints.Courses.GetOneForPublic;
 		endPoint = endPoint.replace('{id}', id);
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
 			this.IsLoaded = true;

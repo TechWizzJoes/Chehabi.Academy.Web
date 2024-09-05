@@ -16,5 +16,6 @@ export enum ErrorCodesEnum {
 	SESSION_BEFORE_CLASS = 'Sessions start before the class starting date.',
 	CLASS_INACTIVE = 'Class is currently inactive.',
 	CLASS_DELETED = 'Class is deleted!',
+	CLASS_Started = 'Class has already started.',
 
 }

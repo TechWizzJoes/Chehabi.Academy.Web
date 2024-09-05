@@ -1,7 +1,7 @@
 <div class="right-section">
 	<h6 class="title">{{ 'Courses.dashboard' | translate }}</h6>
 
-	<div class="row-custom" *ngIf="!CurrentUser.IsAdmin">
+	<div class="row-custom">
 		<p class="sub-title">{{ 'Courses.classes' | translate }}</p>
 		<a class="btn btn-primary" [routerLink]="['/','courses']">{{ 'Courses.browseCourses' | translate }}</a>
 	</div>
@@ -10,22 +10,27 @@
 		<app-loader *ngIf="!IsLoaded"></app-loader>
 		<div class="card" *ngFor="let class of ClassesByUser; let i = index">
 			<div class="card-body">
+				<h3>{{class.Course.Name}}</h3>
 				<div class="upper-section">
 					<h5 class="card-title">{{class.Name}}</h5>
 					<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
 					<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
 				</div>
 				<div>
-					{{ 'Courses.nextSession' | translate }}: "get next session using class's current index "
+					<strong>{{Constants.getOrdinalNumber(class.CurrentIndex)}}</strong>
+					{{ 'Courses.nextSession' | translate}}
+					<strong>{{Constants.formatDate(class.LiveSessions[class.CurrentIndex].StartDate)}}</strong>
 					<div>
-						{{ 'Courses.sessions' | translate }}: {{class.NumberOfSessions}}
+						{{ 'Courses.sessions' | translate }}: #{{class.NumberOfSessions}}
 						<a class="show-sessions" (click)="showSessions($event, i)"
 							>{{class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
 						>
 					</div>
 
 					<ol *ngIf="class.ShowSessions" [@fadeInOut]>
-						<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{Constants.formatDate(occ.StartDate)}}</li>
+						<li *ngFor="let occ of class.LiveSessions; index as i" class="session-instance" [ngClass]="{'done': i < class.CurrentIndex}">
+							{{Constants.formatDate(occ.StartDate)}}
+						</li>
 					</ol>
 				</div>
 				<div class="middle-section">
