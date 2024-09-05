@@ -85,7 +85,8 @@ export class DetailsModalComponent implements OnInit {
 
     initClass() {
         this.NewClass.CourseId = this.course.Id;
-        this.NewClass.StartDate = this.NewCourse.StartDate;// min start date for a class is course's start date
+        const classStartDate = this.NewCourse.StartDate > this.Today ? this.NewCourse.StartDate : this.Today;
+        this.NewClass.StartDate = classStartDate;// min start date for a class is course's start date or today's
 
         if (this.property == ModalPropertyEnum.Class && this.isEdit) {
             this.NewClass.Id = this.course.Classes[+this.index].Id;

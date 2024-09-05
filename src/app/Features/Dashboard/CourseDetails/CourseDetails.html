@@ -145,51 +145,47 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="right-group">
-						<div class="video section">
-							<div class="row-custom">
-								<h6 class="title">{{ 'CourseDetailsPage.courseVideo' | translate }}</h6>
-								<i
-									class="fa fa-pencil-square-o btn-custom"
-									aria-hidden="true"
-									(click)="openEditModal(ModalPropertyEnum.Video, 'VideoPath')"></i>
-							</div>
-							<p class="no-data" *ngIf="!Course.VideoPath">{{ 'CourseDetailsPage.noVideo' | translate }}</p>
-							<div class="video-container">
-								<iframe
-									*ngIf="Course.VideoPath"
-									[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
-									title="YouTube video player"
-									frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-									allowfullscreen></iframe>
-							</div>
+				</div>
+				<div class="right-group">
+					<div class="video section">
+						<div class="row-custom">
+							<h6 class="title">{{ 'CourseDetailsPage.courseVideo' | translate }}</h6>
+							<i class="fa fa-pencil-square-o btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Video, 'VideoPath')"></i>
 						</div>
-
-						<div class="material section">
-							<div class="row-custom">
-								<h6 class="title">{{ 'CourseDetailsPage.courseMaterial' | translate }}</h6>
-								<i
-									class="fa fa-pencil-square-o btn-custom"
-									aria-hidden="true"
-									(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
-							</div>
-							<p class="text" *ngIf="Course.FilePath">{{Course.FilePath}}</p>
-							<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>
+						<p class="no-data" *ngIf="!Course.VideoPath">{{ 'CourseDetailsPage.noVideo' | translate }}</p>
+						<div class="video-container">
+							<iframe
+								*ngIf="Course.VideoPath"
+								[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
 						</div>
+					</div>
 
-						<div class="info section">
-							<div class="row-custom">
-								<h6 class="title">{{ 'CourseDetailsPage.upcomingSessions' | translate }}</h6>
+					<div class="material section">
+						<div class="row-custom">
+							<h6 class="title">{{ 'CourseDetailsPage.courseMaterial' | translate }}</h6>
+							<i
+								class="fa fa-pencil-square-o btn-custom"
+								aria-hidden="true"
+								(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
+						</div>
+						<p class="text" *ngIf="Course.FilePath">{{Course.FilePath}}</p>
+						<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>
+					</div>
+
+					<div class="info section">
+						<div class="row-custom">
+							<h6 class="title">{{ 'CourseDetailsPage.upcomingSessions' | translate }}</h6>
+						</div>
+						<div class="list-group">
+							<div class="session" *ngFor="let session of UpcomingSessions">
+								<p class="mb-1">{{ 'CourseDetailsPage.class' | translate }} {{session.class}}</p>
+								<small>{{session.date}}</small>
 							</div>
-							<div class="list-group">
-								<div class="session" *ngFor="let session of UpcomingSessions">
-									<p class="mb-1">{{ 'CourseDetailsPage.class' | translate }} {{session.class}}</p>
-									<small>{{session.date}}</small>
-								</div>
-								<p class="no-data" *ngIf="UpcomingSessions.length == 0">{{ 'CourseDetailsPage.noUpcomingSessions' | translate }}</p>
-							</div>
+							<p class="no-data" *ngIf="UpcomingSessions.length == 0">{{ 'CourseDetailsPage.noUpcomingSessions' | translate }}</p>
 						</div>
 					</div>
 				</div>
