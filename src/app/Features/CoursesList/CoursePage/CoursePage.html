@@ -36,7 +36,9 @@
 
 						<br />
 						<ol *ngIf="class.ShowSessions" [@fadeInOut]>
-							<li *ngFor="let occ of class.LiveSessions" class="session-instance">{{ Constants.formatDate(occ.StartDate) }}</li>
+							<li *ngFor="let occ of class.LiveSessions; index as i" class="session-instance" [ngClass]="{'done': i < class.CurrentIndex}">
+								{{ Constants.formatDate(occ.StartDate) }}
+							</li>
 						</ol>
 					</div>
 					<hr />
