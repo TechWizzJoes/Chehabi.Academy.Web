@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-enum EventType {
+export enum EventType {
 	None = '',
 	Practice = 'practice',
 	Session = 'session',
 	Review = 'review'
 }
-interface EventBase {
+export interface EventBase {
 	startDate: string | number | Date;
 	date: Date;
 	title: string;
