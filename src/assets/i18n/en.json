@@ -225,7 +225,15 @@
 	"ProfilePage": {
 		"dashboard": "Dashboard",
 		"editProfile": "Edit Profile",
-		"password": "Password"
+		"password": "Password",
+		"editNotifications": "Notifications"
+	},
+	"NotificationSettings": {
+		"title": "I want to recieve:",
+		"promotions": "Promotions of new courses and classes.",
+		"announcements": "Announcements from instructors of classes enrolled in.",
+		"sessionNotifications": "Sessions reminders.",
+		"save": "Save"
 	},
 	"PasswordPage": {
 		"title": "Reset Password",

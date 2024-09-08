@@ -1,0 +1,37 @@
+<div class="right-section">
+	<h6 class="title">{{ 'NotificationSettings.title' | translate }}</h6>
+	<form (ngSubmit)="onSubmit(frm)" name="notificationForm" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
+		<div class="form-check mb-3">
+			<input type="checkbox" class="form-check-input" id="promotions" name="promotions" [(ngModel)]="notifications.promotions" #promotions="ngModel" />
+			<label for="promotions" class="form-check-label">{{ 'NotificationSettings.promotions' | translate }}</label>
+		</div>
+
+		<div class="form-check mb-3">
+			<input
+				type="checkbox"
+				class="form-check-input"
+				id="announcements"
+				name="announcements"
+				[(ngModel)]="notifications.announcements"
+				#announcements="ngModel" />
+			<label for="announcements" class="form-check-label">{{ 'NotificationSettings.announcements' | translate }}</label>
+		</div>
+
+		<div class="form-check mb-3">
+			<input
+				type="checkbox"
+				class="form-check-input"
+				id="sessionNotifications"
+				name="sessionNotifications"
+				[(ngModel)]="notifications.sessionNotifications"
+				#sessionNotifications="ngModel" />
+			<label for="sessionNotifications" class="form-check-label">{{ 'NotificationSettings.sessionNotifications' | translate }}</label>
+		</div>
+
+		<div>you'll still get notified for important notifications such as payments</div>
+
+		<div class="footer">
+			<button type="submit" class="btn btn-primary">{{ 'NotificationSettings.save' | translate }}</button>
+		</div>
+	</form>
+</div>

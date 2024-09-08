@@ -13,6 +13,7 @@ export class RoutePaths {
 	public static Founder = 'founder';
 	public static Profile = 'profile';
 	public static EditProfile = 'edit';
+	public static EditNotifications = 'notifications';
 	public static EditPassword = 'password';
 	public static Dashboard = 'dashboard';
 	public static Account = 'account';

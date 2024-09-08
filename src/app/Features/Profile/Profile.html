@@ -8,6 +8,13 @@
 					<p>{{ 'ProfilePage.editProfile' | translate }}</p>
 				</a>
 				<a
+					[routerLink]="['/',RoutePaths.Profile, RoutePaths.EditNotifications]"
+					routerLinkActive="active"
+					class="list-group-item list-group-item-action">
+					<i class="fa fa-bell" aria-hidden="true"></i>
+					<p>{{ 'ProfilePage.editNotifications' | translate }}</p>
+				</a>
+				<a
 					*ngIf="!currentUser.IsSocial"
 					[routerLink]="['/',RoutePaths.Profile, RoutePaths.EditPassword]"
 					routerLinkActive="active"

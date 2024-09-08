@@ -89,8 +89,12 @@ export const routes: Routes = [
 						loadComponent: () => import('@App/Features/Profile/EditProfile/EditProfile').then((c) => c.EditProfileComponent)
 					},
 					{
+						path: 'notifications',
+						loadComponent: () => import('@App/Features/Profile/EditNotifications/EditNotifications').then((c) => c.EditNotificationsComponent)
+					},
+					{
 						path: 'password',
-						loadComponent: () => import('@App/Features/Password/Password').then((c) => c.PasswordComponent)
+						loadComponent: () => import('@App/Features/Profile/EditPassword/Password').then((c) => c.PasswordComponent)
 					}
 				]
 			},
