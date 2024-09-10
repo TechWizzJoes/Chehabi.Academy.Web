@@ -34,19 +34,21 @@
 					<div class="meta">
 						<div class="starts">
 							<p class="card-text">
-								<span class="title">{{ 'ClassDetailsPage.starts' | translate }}:</span> {{Constants.formatDate(Class.StartDate)}}
+								<span class="title">{{ 'ClassDetailsPage.starts' | translate }}:</span> {{Class.StartDate | date: 'EEEE, dd/MM/yyyy'}}
 							</p>
 							<p class="card-text">
-								<span class="title">{{ 'ClassDetailsPage.ends' | translate }}:</span> {{Constants.formatDate(Class.EndDate)}}
+								<span class="title">{{ 'ClassDetailsPage.ends' | translate }}:</span> {{Class.EndDate | date: 'EEEE, dd/MM/yyyy'}}
 							</p>
 						</div>
 
 						<div class="create-update">
 							<p class="card-text">
-								<span class="title">{{ 'ClassDetailsPage.createdOn' | translate }}:</span> {{Constants.formatDate(Class.CreatedOn)}}
+								<span class="title"> {{ 'ClassDetailsPage.createdOn' | translate }}:</span>
+								{{Class.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 							</p>
-							<p class="card-text">
-								<span class="title">{{ 'ClassDetailsPage.lastUpdatedOn' | translate }}:</span> {{Constants.formatDate(Class.UpdatedOn)}}
+							<p class="card-text" *ngIf="Class.CreatedOn != Class.UpdatedOn">
+								<span class="title"> {{ 'ClassDetailsPage.lastUpdatedOn' | translate }}:</span>
+								{{Class.UpdatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 							</p>
 						</div>
 					</div>
@@ -72,8 +74,8 @@
 							<tbody>
 								<tr *ngFor="let session of Class.LiveSessions; let i = index" [ngClass]="{'completed': session.IsCompleted}">
 									<th scope="row">{{i+1}}</th>
-									<td>{{Constants.formatDate(session.StartDate)}}</td>
-									<td>{{Constants.formatDate(session.EndDate)}}</td>
+									<td>{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
+									<td>{{session.EndDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
 									<td>{{session.Link ?? 'N/A'}}</td>
 									<td class="text-center">
 										<i *ngIf="session.IsCompleted" class="fa fa-check"></i>
@@ -114,7 +116,7 @@
 									<td>{{userClass.User.LastName}}</td>
 									<td>{{userClass.User.Email}}</td>
 									<td>{{userClass.User.Birthdate}}</td>
-									<td>{{Constants.formatDate(userClass.CreatedAt)}}</td>
+									<td>{{userClass.CreatedAt | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
 								</tr>
 							</tbody>
 						</table>

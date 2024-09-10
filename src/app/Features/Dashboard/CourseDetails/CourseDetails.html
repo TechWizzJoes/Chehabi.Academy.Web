@@ -29,15 +29,17 @@
 
 					<div class="meta">
 						<p class="card-text">
-							<span class="title">{{ 'CourseDetailsPage.starts' | translate }}:</span> {{Constants.formatDate(Course.StartDate)}}
+							<span class="title">{{ 'CourseDetailsPage.starts' | translate }}:</span> {{Course.StartDate | date: 'EEEE, dd/MM/yyyy'}}
 						</p>
 
 						<div class="create-update">
 							<p class="card-text">
-								<span class="title">{{ 'CourseDetailsPage.createdOn' | translate }}:</span> {{Constants.formatDate(Course.CreatedOn)}}
+								<span class="title"> {{ 'CourseDetailsPage.createdOn' | translate }}: </span>
+								{{Course.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 							</p>
-							<p class="card-text">
-								<span class="title">{{ 'CourseDetailsPage.lastUpdatedOn' | translate }}:</span> {{Constants.formatDate(Course.UpdatedOn)}}
+							<p class="card-text" *ngIf="Course.CreatedOn != Course.UpdatedOn">
+								<span class="title"> {{ 'CourseDetailsPage.lastUpdatedOn' | translate }}: </span>
+								{{Course.UpdatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 							</p>
 						</div>
 					</div>
@@ -116,7 +118,9 @@
 										<div class="class">
 											<p>{{ 'CourseDetailsPage.duration' | translate }}</p>
 
-											<small>{{Constants.formatDate(class.StartDate)}} - {{Constants.formatDate(class.EndDate)}}</small>
+											<small>
+												{{class.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} - {{class.EndDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+											</small>
 										</div>
 										<div class="class">
 											<p>{{ 'CourseDetailsPage.capacity' | translate }}</p>

@@ -23,7 +23,7 @@
 					<div class="next-session" *ngIf="class.CurrentIndex < class.NumberOfSessions">
 						<strong>{{Constants.getOrdinalNumber(class.CurrentIndex)}}</strong>
 						{{ 'Courses.nextSession' | translate}}
-						<strong>{{Constants.formatDate(class.LiveSessions[class.CurrentIndex].StartDate)}}</strong>
+						<strong>{{class.LiveSessions[class.CurrentIndex].StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</strong>
 					</div>
 
 					<div>
@@ -35,7 +35,7 @@
 
 					<ol *ngIf="class.ShowSessions" [@fadeInOut]>
 						<li *ngFor="let occ of class.LiveSessions; index as i" class="session-instance" [ngClass]="{'done': i < class.CurrentIndex}">
-							{{Constants.formatDate(occ.StartDate)}}
+							{{occ.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 						</li>
 					</ol>
 				</div>
