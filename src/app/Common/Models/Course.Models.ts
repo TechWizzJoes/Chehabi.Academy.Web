@@ -63,6 +63,7 @@ export namespace CourseModels {
 		StartDate!: Date;
 		EndDate!: Date;
 		Link!: string | null;
+		IsCompleted!: boolean;
 		Class!: Class;
 
 		StartTimeString!: string; // for displaying only not in backend

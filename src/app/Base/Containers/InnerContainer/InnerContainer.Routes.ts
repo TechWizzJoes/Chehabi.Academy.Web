@@ -76,6 +76,10 @@ export const routes: Routes = [
 					{
 						path: 'courses/:cid/class/:id',
 						loadComponent: () => import('@App/Features/Dashboard/ClassDetails/ClassDetails').then((c) => c.ClassDetailsComponent)
+					},
+					{
+						path: 'upcoming-sessions',
+						loadComponent: () => import('@App/Features/Dashboard/UpcomingSessions/UpcomingSessions').then((c) => c.UpcomingSessionsComponent)
 					}
 				]
 			},

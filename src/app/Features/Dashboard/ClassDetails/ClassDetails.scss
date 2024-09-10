@@ -152,6 +152,13 @@
 			border-radius: 10px;
 			background: rgb(230 230 230 / 50%);
 			width: 100%;
+
+			table {
+				tr.completed {
+					opacity: 0.8;
+				}
+			}
+
 			&.users {
 				.profile-pic {
 					border: none;

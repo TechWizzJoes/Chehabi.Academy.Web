@@ -78,7 +78,7 @@ export class LoginComponent {
 			next: (response) => {
 				console.log(response);
 				this.AuthService.SignIn(response);
-				this.NavigateTo(response.CurrentUser);
+				this.NavigateTo();
 			},
 			error: (errorResponse) => {
 				// to show the error on login panel
@@ -89,10 +89,10 @@ export class LoginComponent {
 		});
 	}
 
-	NavigateTo(currentUser: AuthModels.CurrentUserResModel) {
+	NavigateTo() {
 		// const isAdmin = currentUser.IsAdmin;
-		const route = !!this.ReturnUrl ? this.ReturnUrl : RoutePaths.Default;
-		// const route = (!!returnUrl) ? returnUrl : this.AuthService.GetRoleDefaultRoute(role);
+		// const route = !!this.ReturnUrl ? this.ReturnUrl : RoutePaths.Default;
+		const route = (!!this.ReturnUrl) ? this.ReturnUrl : this.AuthService.GetRoleDefaultRoute();
 		this.Router.navigateByUrl(route);
 	}
 
@@ -117,7 +117,7 @@ export class LoginComponent {
 					next: (response) => {
 						console.log(response);
 						this.AuthService.SignIn(response);
-						this.NavigateTo(response.CurrentUser);
+						this.NavigateTo();
 					},
 					error: (errorResponse) => {
 						// to show the error on login panel

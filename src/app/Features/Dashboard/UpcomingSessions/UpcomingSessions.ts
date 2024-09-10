@@ -11,15 +11,14 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 @Component({
     standalone: true,
-    templateUrl: './Dashboard.html',
-    styleUrls: ['Dashboard.scss'],
-    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule]
+    templateUrl: './UpcomingSessions.html',
+    styleUrls: ['UpcomingSessions.scss'],
+    imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule],
 })
-export class DashboardComponent implements OnInit {
+export class UpcomingSessionsComponent implements OnInit {
     RoutePaths = RoutePaths;
     IsLoaded: boolean = false;
     data: any
-    courses: any[] = [1, 2, 3]
     currentUser!: AuthModels.CurrentUserResModel;
     constructor(
         private AuthService: AuthService

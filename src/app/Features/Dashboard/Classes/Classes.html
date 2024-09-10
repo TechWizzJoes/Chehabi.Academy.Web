@@ -13,13 +13,19 @@
 				<h3>{{class.Course.Name}}</h3>
 				<div class="upper-section">
 					<h5 class="card-title">{{class.Name}}</h5>
-					<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
-					<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
+					<div class="status-wrap">
+						<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
+						<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
+						<span class="status inactive" *ngIf="class.CurrentIndex == class.NumberOfSessions">{{ 'Courses.completed' | translate }}</span>
+					</div>
 				</div>
 				<div>
-					<strong>{{Constants.getOrdinalNumber(class.CurrentIndex)}}</strong>
-					{{ 'Courses.nextSession' | translate}}
-					<strong>{{Constants.formatDate(class.LiveSessions[class.CurrentIndex].StartDate)}}</strong>
+					<div class="next-session" *ngIf="class.CurrentIndex < class.NumberOfSessions">
+						<strong>{{Constants.getOrdinalNumber(class.CurrentIndex)}}</strong>
+						{{ 'Courses.nextSession' | translate}}
+						<strong>{{Constants.formatDate(class.LiveSessions[class.CurrentIndex].StartDate)}}</strong>
+					</div>
+
 					<div>
 						{{ 'Courses.sessions' | translate }}: #{{class.NumberOfSessions}}
 						<a class="show-sessions" (click)="showSessions($event, i)"

@@ -100,7 +100,8 @@
 		"birthDate": "Geburtsdatum",
 		"loadMoreUsers": "Weitere Benutzer laden",
 		"material": "Material",
-		"joinDate": "Join Date"
+		"joinDate": "Join Date",
+		"Completed": "Completed"
 	},
 	"CourseListPage": {
 		"title": "Entdecken Sie Unsere Kurse",
@@ -141,6 +142,7 @@
 		"browseCourses": "Kurse durchsuchen",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
+		"completed": "Completed",
 		"nextSession": "session up next on: ",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
@@ -220,7 +222,8 @@
 	"DashboardPage": {
 		"dashboard": "Instrumententafel",
 		"editProfile": "Profil bearbeiten",
-		"password": "Passwort"
+		"password": "Passwort",
+		"upcomingSessions": "Upcoming Sessionionss"
 	},
 	"ProfilePage": {
 		"dashboard": "Instrumententafel",
@@ -246,5 +249,9 @@
 		"showPasswords": "Passwörter anzeigen",
 		"hidePasswords": "Passwörter verbergen",
 		"save": "Speichern"
+	},
+	"UpcomingSessions": {
+		"dashboard": "Armaturenbrett",
+		"title": "Upcoming Sessions"
 	}
 }

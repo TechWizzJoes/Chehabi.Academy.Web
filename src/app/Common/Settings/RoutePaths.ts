@@ -1,5 +1,6 @@
 export class RoutePaths {
-	public static Default = 'dashboard/courses';
+	public static DefaultAdmin = 'dashboard/courses';
+	public static Default = 'dashboard/classes';
 	public static Unauthorized = 'unauthorized';
 	public static Home = 'home';
 	public static Login = 'login';
@@ -18,4 +19,5 @@ export class RoutePaths {
 	public static Dashboard = 'dashboard';
 	public static Account = 'account';
 	public static Class = 'class';
+	public static UpcomingSessions = 'upcoming-sessions';
 }

@@ -66,14 +66,18 @@
 									<th scope="col">{{ 'ClassDetailsPage.startDate' | translate }}</th>
 									<th scope="col">{{ 'ClassDetailsPage.endDate' | translate }}</th>
 									<th scope="col">{{ 'ClassDetailsPage.link' | translate }}</th>
+									<th scope="col" class="text-center">{{ 'ClassDetailsPage.Completed' | translate }}</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr *ngFor="let session of Class.LiveSessions; let i = index">
+								<tr *ngFor="let session of Class.LiveSessions; let i = index" [ngClass]="{'completed': session.IsCompleted}">
 									<th scope="row">{{i+1}}</th>
 									<td>{{Constants.formatDate(session.StartDate)}}</td>
 									<td>{{Constants.formatDate(session.EndDate)}}</td>
 									<td>{{session.Link ?? 'N/A'}}</td>
+									<td class="text-center">
+										<i *ngIf="session.IsCompleted" class="fa fa-check"></i>
+									</td>
 								</tr>
 							</tbody>
 						</table>

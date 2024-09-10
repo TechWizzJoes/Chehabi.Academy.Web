@@ -1,0 +1,32 @@
+<div class="right-section">
+	<h6 class="title">{{ 'UpcomingSessions.dashboard' | translate }}</h6>
+
+	<div class="row-custom">
+		<p class="sub-title">{{ 'UpcomingSessions.title' | translate }}</p>
+	</div>
+
+	<div class="courses-container row">
+		<app-loader *ngIf="!IsLoaded"></app-loader>
+		<div class="card" *ngFor="let class of []; let i = index">
+			<div class="card-body">
+				<div class="upper-section">
+					<h5 class="card-title">sllsls</h5>
+				</div>
+				<div></div>
+				<div class="middle-section">
+					<div class="instructor">
+						<!-- <span class="initials"> {{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}} 	</span>
+						<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p> -->
+					</div>
+
+					<small> </small>
+				</div>
+				<div class="lower-section">
+					<span>
+						<i class="fa fa-usd" aria-hidden="true"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

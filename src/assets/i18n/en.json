@@ -100,7 +100,8 @@
 		"birthDate": "Birth date",
 		"loadMoreUsers": "Load More Users",
 		"material": "Material",
-		"joinDate": "Join Date"
+		"joinDate": "Join Date",
+		"Completed": "Completed"
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
@@ -141,6 +142,7 @@
 		"browseCourses": "Browse Courses",
 		"active": "Active",
 		"inactive": "Inactive",
+		"completed": "Completed",
 		"nextSession": "session up next on: ",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
@@ -220,7 +222,8 @@
 	"DashboardPage": {
 		"dashboard": "Dashboard",
 		"editProfile": "Edit Profile",
-		"password": "Password"
+		"password": "Password",
+		"upcomingSessions": "Upcoming Sessions"
 	},
 	"ProfilePage": {
 		"dashboard": "Dashboard",
@@ -246,5 +249,9 @@
 		"showPasswords": "Show Passwords",
 		"hidePasswords": "Hide Passwords",
 		"save": "Save"
+	},
+	"UpcomingSessions": {
+		"dashboard": "Dashboard",
+		"title": "Upcoming Sessions"
 	}
 }

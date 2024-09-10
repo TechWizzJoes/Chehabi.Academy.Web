@@ -7,6 +7,7 @@ import { AppConfig } from '@App/Base/AppConfig';
 import { HttpService } from './Http.Service';
 import { HttpEndPoints } from '../Settings/HttpEndPoints';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { RoutePaths } from '../Settings/RoutePaths';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -108,6 +109,11 @@ export class AuthService {
 			if (user)
 				this.SocialLogin.Google.Login(this.socialUser.idToken)
 		});
+	}
+
+	GetRoleDefaultRoute(): String {
+		const isAdmin = this.CurrentUser.IsAdmin;
+		return isAdmin ? RoutePaths.DefaultAdmin : RoutePaths.Default;
 	}
 
 	SocialLogin = {
