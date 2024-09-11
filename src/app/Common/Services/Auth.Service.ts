@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 import { StorageService, StorageEnum } from './Storage.Service';
@@ -8,6 +8,7 @@ import { HttpService } from './Http.Service';
 import { HttpEndPoints } from '../Settings/HttpEndPoints';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { RoutePaths } from '../Settings/RoutePaths';
+import { WebSocketService } from './Websocket.Service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,19 +17,28 @@ export class AuthService {
 	private isGoogleLoggedin!: boolean;
 	private socialUser!: SocialUser;
 
+	private WebSocketService!: WebSocketService;
+
 	constructor(
 		private StorageService: StorageService,
 		private AppConfig: AppConfig,
 		private HttpService: HttpService,
 		private socialAuthService: SocialAuthService,
+		private injector: Injector,
 	) {
-		this.AuthStateSubscribe()
+		this.AuthStateSubscribe();
+
 	}
 
 	SignIn(loginResModel: AuthModels.LoginResModel) {
 		this.StorageService.SetLocalStorage(StorageEnum.AccessToken, loginResModel.AccessToken);
 		this.StorageService.SetLocalStorage(StorageEnum.RefreshToken, loginResModel.RefreshToken);
 		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, loginResModel.CurrentUser);
+
+		if (!this.WebSocketService) {
+			this.WebSocketService = this.injector.get(WebSocketService);
+		}
+		this.WebSocketService.connect();
 	}
 
 	SignOut() {
@@ -38,6 +48,12 @@ export class AuthService {
 
 		if (this.isGoogleLoggedin)
 			this.socialAuthService.signOut();
+
+		if (!this.WebSocketService) {
+			this.WebSocketService = this.injector.get(WebSocketService);
+		}
+		this.WebSocketService.disconnect();
+
 	}
 
 	get AccessToken(): string {

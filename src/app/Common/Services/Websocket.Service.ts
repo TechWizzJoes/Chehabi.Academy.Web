@@ -7,7 +7,7 @@ import { io, Socket } from "socket.io-client";
     providedIn: 'root',
 })
 export class WebSocketService {
-    private socket!: Socket;
+    private socket!: Socket | null;
 
     constructor(private AuthService: AuthService) {
         this.connect();
@@ -15,6 +15,7 @@ export class WebSocketService {
 
     connect(): void {
         if (!this.AuthService.IsAuthenticated) return;
+        if (this.socket) return;
 
         this.socket = io("http://localhost:3001", {
             // path: '/socket.io',
@@ -27,7 +28,10 @@ export class WebSocketService {
             randomizationFactor: 0.5, // Randomization factor for the reconnection delay calculation
             query: {
                 userId: this.AuthService.CurrentUser.Id,
-            }
+            },
+            auth: {
+                token: this.AuthService.AccessToken,
+            },
         });
 
         this.socket.on('connect', () => {
@@ -44,13 +48,13 @@ export class WebSocketService {
 
     // Send a message to the server
     sendMessage(event: string, data: any): void {
-        this.socket.emit(event, data);
+        this.socket?.emit(event, data);
     }
 
     // Listen for messages from the server
     onMessage(event: string): Observable<any> {
         return new Observable((observer) => {
-            this.socket.on(event, (data: any) => {
+            this.socket?.on(event, (data: any) => {
                 observer.next(data);
                 console.log(data);
 
@@ -61,6 +65,7 @@ export class WebSocketService {
     disconnect(): void {
         if (this.socket) {
             this.socket.disconnect();
+            this.socket = null;
         }
     }
 }

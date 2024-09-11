@@ -84,10 +84,10 @@
 					</a>
                 </li> -->
 
-				<li>
+				<li *ngIf="AuthService.IsAuthenticated">
 					<app-notification-button></app-notification-button>
 				</li>
-				<li>
+				<li *ngIf="AuthService.IsAuthenticated">
 					<app-cart-button></app-cart-button>
 				</li>
 				<li>
