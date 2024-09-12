@@ -44,6 +44,7 @@ export namespace CourseModels {
 		NumberOfSessions!: number;
 		IsActive: boolean = true;
 		IsDeleted!: boolean;
+		HasFreeTrial!: boolean;
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
 		LiveSessions!: LiveSession[];

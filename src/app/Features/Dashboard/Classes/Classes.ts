@@ -47,8 +47,9 @@ import { RatingModels } from '@App/Common/Models/Rating.Models';
 })
 export class ClassesComponent implements OnInit {
     Constants = Constants;
+    RoutePaths = RoutePaths;
     IsLoaded: boolean = false;
-    ClassesByUser: CourseModels.Class[] = [];
+    UserClasses: UserModels.UserClass[] = [];
     ModalPropertyEnum = ModalPropertyEnum;
     CurrentUser!: AuthModels.CurrentUserResModel;
     CurrentRating: number = 0;
@@ -76,9 +77,9 @@ export class ClassesComponent implements OnInit {
 
     getUserClasses() {
         let endPoint = HttpEndPoints.Classes.GetAllByUser
-        this.HttpService.Get<CourseModels.Class[]>(endPoint).subscribe(data => {
+        this.HttpService.Get<UserModels.UserClass[]>(endPoint).subscribe(data => {
             this.IsLoaded = true
-            this.ClassesByUser = data;
+            this.UserClasses = data;
         })
     }
 
@@ -135,6 +136,6 @@ export class ClassesComponent implements OnInit {
 
     showSessions(event: Event, index: number) {
         event.stopPropagation()
-        this.ClassesByUser[index].ShowSessions = !this.ClassesByUser[index].ShowSessions;
+        this.UserClasses[index].Class.ShowSessions = !this.UserClasses[index].Class.ShowSessions;
     }
 }

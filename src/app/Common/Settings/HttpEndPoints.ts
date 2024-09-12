@@ -25,7 +25,7 @@ export class HttpEndPoints {
 
 	public static Classes = {
 		GetOne: 'class/{id}',
-		JoinClass: 'class/join/{classId}',
+		JoinFreeTrial: 'class/join-free-trial/{classId}',
 		GetAllByUser: 'class/user/classes',
 		AddClass: 'class',
 		EditClass: 'class/{id}',

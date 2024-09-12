@@ -17,5 +17,5 @@ export enum ErrorCodesEnum {
 	CLASS_INACTIVE = 'Class is currently inactive.',
 	CLASS_DELETED = 'Class is deleted!',
 	CLASS_Started = 'Class has already started.',
-
+	CLASS_HAS_NO_FREETRIAL = 'This class doesn\'t have a free trial!'
 }

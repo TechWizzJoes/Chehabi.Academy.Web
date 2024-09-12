@@ -20,6 +20,9 @@
 								<span class="status inactive" *ngIf="class.CurrentIndex">{{ 'CoursePage.started' | translate }}</span>
 								<!-- <span class="status inactive" *ngIf="!class.IsActive">{{ 'CoursePage.inactive' | translate }}</span> -->
 							</h3>
+							<button class="btn btn-primary me-2" (click)="JoinFreeTrial()" *ngIf="class.HasFreeTrial">
+								{{ 'CoursePage.freeTrialSession' | translate }}
+							</button>
 							<span *ngIf="class.AvailableSlots <= 10 && !class.CurrentIndex" class="float-end text-1">
 								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{(class.AvailableSlots == 1 ? 'CoursePage.slot' :
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}

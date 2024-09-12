@@ -132,7 +132,8 @@
 		"prerequisites": "Voraussetzungen",
 		"joinAClass": "Einem Kurs beitreten",
 		"addToCart": "In den Warenkorb legen",
-		"downloadMaterial": "Material herunterladen"
+		"downloadMaterial": "Material herunterladen",
+		"freeTrialSession": "Try a free trial session"
 	},
 	"Courses": {
 		"dashboard": "Instrumententafel",
@@ -143,6 +144,7 @@
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
 		"completed": "Completed",
+		"freeTrial": "Free trial",
 		"nextSession": "session up next on: ",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",

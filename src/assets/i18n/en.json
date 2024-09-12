@@ -132,7 +132,8 @@
 		"prerequisites": "Prerequisites",
 		"joinAClass": "Join a class",
 		"addToCart": "Add To Cart",
-		"downloadMaterial": "Download Material"
+		"downloadMaterial": "Download Material",
+		"freeTrialSession": "Try a free trial session"
 	},
 	"Courses": {
 		"dashboard": "Dashboard",
@@ -143,6 +144,7 @@
 		"active": "Active",
 		"inactive": "Inactive",
 		"completed": "Completed",
+		"freeTrial": "Free trial",
 		"nextSession": "session up next on: ",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",

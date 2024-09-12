@@ -8,58 +8,69 @@
 
 	<div class="courses-container row">
 		<app-loader *ngIf="!IsLoaded"></app-loader>
-		<div class="card" *ngFor="let class of ClassesByUser; let i = index">
+		<div class="card" *ngFor="let userClass of UserClasses; let i = index">
 			<div class="card-body">
-				<h3>{{class.Course.Name}}</h3>
+				<h3>
+					<a [routerLink]="['/',RoutePaths.Course, userClass.Class.Course.Id]">{{userClass.Class.Course.Name}}</a>
+				</h3>
 				<div class="upper-section">
-					<h5 class="card-title">{{class.Name}}</h5>
+					<h5 class="card-title">{{userClass.Class.Name}}</h5>
 					<div class="status-wrap">
-						<span class="status active" *ngIf="class.IsActive">{{ 'Courses.active' | translate }}</span>
-						<span class="status inactive" *ngIf="!class.IsActive">{{ 'Courses.inactive' | translate }}</span>
-						<span class="status inactive" *ngIf="class.CurrentIndex == class.NumberOfSessions">{{ 'Courses.completed' | translate }}</span>
+						<!-- <span class="status active" *ngIf="userClass.Class.IsActive">{{ 'Courses.active' | translate }}</span> -->
+						<!-- <span class="status inactive" *ngIf="!userClass.Class.IsActive">{{ 'Courses.inactive' | translate }}</span> -->
+						<span class="status active" *ngIf="userClass.Class.CurrentIndex != userClass.Class.NumberOfSessions">
+							{{ 'Courses.active' | translate }}
+						</span>
+						<span class="status inactive" *ngIf="userClass.Class.CurrentIndex == userClass.Class.NumberOfSessions">
+							{{ 'Courses.completed' | translate }}
+						</span>
+						<span class="status free-trial" *ngIf="!userClass.IsPaid"> {{ 'Courses.freeTrial' | translate }} </span>
 					</div>
 				</div>
 				<div>
-					<div class="next-session" *ngIf="class.CurrentIndex < class.NumberOfSessions">
-						<strong>{{Constants.getOrdinalNumber(class.CurrentIndex)}}</strong>
+					<div class="next-session" *ngIf="userClass.Class.CurrentIndex < userClass.Class.NumberOfSessions">
+						<strong>{{Constants.getOrdinalNumber(userClass.Class.CurrentIndex)}}</strong>
 						{{ 'Courses.nextSession' | translate}}
-						<strong>{{class.LiveSessions[class.CurrentIndex].StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</strong>
+						<strong>{{userClass.Class.LiveSessions[userClass.Class.CurrentIndex].StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</strong>
 					</div>
 
 					<div>
-						{{ 'Courses.sessions' | translate }}: #{{class.NumberOfSessions}}
+						{{ 'Courses.sessions' | translate }}: #{{userClass.Class.NumberOfSessions}}
 						<a class="show-sessions" (click)="showSessions($event, i)"
-							>{{class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
+							>{{userClass.Class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
 						>
 					</div>
 
-					<ol *ngIf="class.ShowSessions" [@fadeInOut]>
-						<li *ngFor="let occ of class.LiveSessions; index as i" class="session-instance" [ngClass]="{'done': i < class.CurrentIndex}">
+					<ol *ngIf="userClass.Class.ShowSessions" [@fadeInOut]>
+						<li
+							*ngFor="let occ of userClass.Class.LiveSessions; index as i"
+							class="session-instance"
+							[ngClass]="{'done': i < userClass.Class.CurrentIndex}">
 							{{occ.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
 						</li>
 					</ol>
 				</div>
 				<div class="middle-section">
 					<div class="instructor">
-						<!-- <span class="initials"> {{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}} 	</span>
-						<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p> -->
-						<p>By: {{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p>
+						<!-- <span class="initials"> {{Constants.GetInitialName(userClass.Class.Course.Instructor.User.FirstName, userClass.Class.Course.Instructor.User.LastName)}} 	</span>
+						<p>{{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}</p> -->
+						<p>By: {{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}</p>
 					</div>
 
 					<small>
-						<ng-container *ngIf="!class.CurrentIndex">{{ 'Courses.startsOn' | translate }}</ng-container>
-						<ng-container *ngIf="class.CurrentIndex">{{ 'Courses.startedOn' | translate }}</ng-container>
-						{{class.StartDate | date: 'dd/MM/YYYY'}}
+						<ng-container *ngIf="!userClass.Class.CurrentIndex">{{ 'Courses.startsOn' | translate }}</ng-container>
+						<ng-container *ngIf="userClass.Class.CurrentIndex">{{ 'Courses.startedOn' | translate }}</ng-container>
+						{{userClass.Class.StartDate | date: 'dd/MM/YYYY'}}
 					</small>
 				</div>
 				<div class="lower-section">
 					<app-StarRating
-						[Rate]="getRatingForCourse(class.CourseId)"
+						[Rate]="getRatingForCourse(userClass.Class.CourseId)"
 						[ReadOnly]="RatingReadOnly"
-						(RateChange)="onRateChange($event,class.CourseId)"></app-StarRating>
+						(RateChange)="onRateChange($event,userClass.Class.CourseId)"></app-StarRating>
 					<span>
 						<i class="fa fa-usd" aria-hidden="true"></i>
-						<small class="ps-2">{{class.Course.Price || '0'}}</small>
+						<small class="ps-2">{{userClass.Class.Course.Price || '0'}}</small>
 					</span>
 				</div>
 			</div>

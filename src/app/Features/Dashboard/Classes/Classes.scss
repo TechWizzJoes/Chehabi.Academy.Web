@@ -68,6 +68,9 @@
 					&.inactive {
 						background-color: var(--inactive-color);
 					}
+					&.free-trial {
+						background-color: var(--free-trial-color);
+					}
 				}
 			}
 

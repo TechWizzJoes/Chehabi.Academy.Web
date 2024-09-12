@@ -80,6 +80,7 @@ export class CourseDetailsComponent implements OnInit {
 
             this.IsLoaded = true
             this.Course = data;
+            this.Course.ImageUrl = data.ImageUrl;
             this.getUpcomingSessions();
         })
     }

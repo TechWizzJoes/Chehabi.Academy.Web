@@ -97,6 +97,7 @@ export class DetailsModalComponent implements OnInit {
             this.NewClass.MaxCapacity = this.course.Classes[+this.index].MaxCapacity;
             this.NewClass.CurrentIndex = this.course.Classes[+this.index].CurrentIndex;
             this.NewClass.IsActive = this.course.Classes[+this.index].IsActive;
+            this.NewClass.HasFreeTrial = this.course.Classes[+this.index].HasFreeTrial;
 
             this.NewClass.LiveSessions = this.course.Classes[+this.index].LiveSessions;
             this.NewClass.LiveSessions.forEach(sess => {
@@ -313,37 +314,47 @@ export class DetailsModalComponent implements OnInit {
 
     }
 
-    async uploadFile(endPoint: string, file: File, isImage: boolean) {
+    async uploadFile(endPoint: string, file: File, isImage: boolean): Promise<void> {
         const formData = new FormData();
         formData.append('file', file);
 
-        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
-
+        endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString());
 
         this.IsDisabled = true;
-        this.HttpService.PostWithOptions(endPoint, formData, {
-            reportProgress: true,
-            observe: 'events'
-        }).subscribe((res: any) => {
 
-            if (res.type === HttpEventType.Response) {
-                this.IsDisabled = false;
-                let filePath = this.HttpService.ApiUrl + 'courses/' + res.body.filePath.replaceAll('\\', '/');
-                if (isImage) {
-                    this.NewCourse.ImageUrl = filePath;
-                    console.log(this.NewCourse);
-                } else {
-                    this.NewCourse.FilePath = filePath;
-                }
-            }
-            if (res.type === HttpEventType.UploadProgress) {
-                if (isImage) {
-                    this.ImageProgress.start = Math.round(100 * res.loaded / res.total);
-                } else {
-                    this.FileProgress.start = Math.round(100 * res.loaded / res.total);
-                }
-            }
+        return new Promise((resolve, reject) => {
+            this.HttpService.PostWithOptions(endPoint, formData, {
+                reportProgress: true,
+                observe: 'events'
+            }).subscribe({
+                next: (res: any) => {
+                    if (res.type === HttpEventType.Response) {
+                        this.IsDisabled = false;
+                        let filePath = this.HttpService.ApiUrl + 'courses/' + res.body.filePath.replaceAll('\\', '/');
 
-        })
+                        if (isImage) {
+                            this.NewCourse.ImageUrl = filePath;
+                            console.log(this.NewCourse);
+                        } else {
+                            this.NewCourse.FilePath = filePath;
+                        }
+                        resolve(); // Resolve the promise once the upload is complete
+                    }
+
+                    if (res.type === HttpEventType.UploadProgress) {
+                        const progress = Math.round(100 * res.loaded / res.total);
+                        if (isImage) {
+                            this.ImageProgress.start = progress;
+                        } else {
+                            this.FileProgress.start = progress;
+                        }
+                    }
+                },
+                error: (err) => {
+                    this.IsDisabled = false;
+                    reject(err); // Reject the promise if an error occurs
+                }
+            });
+        });
     }
 }

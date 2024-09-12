@@ -132,16 +132,33 @@
 				<label for="currentIndex" class="form-label">Current Index</label>
 				<input type="text" class="form-control" id="currentIndex" name="currentIndex" [(ngModel)]="NewClass.CurrentIndex" #currentIndex="ngModel" />
 			</div> -->
-			<div class="form-check">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					id="isActive"
-					name="isActive"
-					[checked]="NewClass.IsActive"
-					[(ngModel)]="NewClass.IsActive"
-					#isActive="ngModel" />
-				<label class="form-check-label" for="isActive"> Active </label>
+			<div class="row mb-3">
+				<div class="col">
+					<div class="form-check">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							id="isActive"
+							name="isActive"
+							[checked]="NewClass.IsActive"
+							[(ngModel)]="NewClass.IsActive"
+							#isActive="ngModel" />
+						<label class="form-check-label" for="isActive"> Active </label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-check">
+						<input
+							class="form-check-input"
+							type="checkbox"
+							id="hasFreeTrial"
+							name="hasFreeTrial"
+							[checked]="NewClass.HasFreeTrial"
+							[(ngModel)]="NewClass.HasFreeTrial"
+							#hasFreeTrial="ngModel" />
+						<label class="form-check-label" for="hasFreeTrial"> Has free trial session </label>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">

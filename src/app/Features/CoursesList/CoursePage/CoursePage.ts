@@ -112,9 +112,21 @@ export class CoursePageComponent implements OnInit {
 			this.IsJoinClass! = true
 			return
 		}
-		console.log(this.Router.url);
 
 		this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
+
+	}
+
+	JoinFreeTrial() {
+		if (!this.SelectedClass) return;
+		let endPoint = HttpEndPoints.Classes.JoinFreeTrial;
+		endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString());
+		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
+			// this.IsLoaded = true
+			// this.Course = data
+			console.log(data);
+			this.NotifyService.Success("Congratulations! You've joined this course's free trial and will be eligible to the first session.")
+		})
 	}
 
 	AddToCart() {
