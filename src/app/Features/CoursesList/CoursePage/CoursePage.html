@@ -19,10 +19,9 @@
 								{{class.Name}}
 								<span class="status inactive" *ngIf="class.CurrentIndex">{{ 'CoursePage.started' | translate }}</span>
 								<!-- <span class="status inactive" *ngIf="!class.IsActive">{{ 'CoursePage.inactive' | translate }}</span> -->
+								<span class="status active" *ngIf="class.IsJoined">{{ 'joined' | translate }}</span>
+								<span class="status free-trial" *ngIf="class.IsJoinedFreeTrial">{{ 'joined free trial' | translate }}</span>
 							</h3>
-							<button class="btn btn-primary me-2" (click)="JoinFreeTrial()" *ngIf="class.HasFreeTrial">
-								{{ 'CoursePage.freeTrialSession' | translate }}
-							</button>
 							<span *ngIf="class.AvailableSlots <= 10 && !class.CurrentIndex" class="float-end text-1">
 								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{(class.AvailableSlots == 1 ? 'CoursePage.slot' :
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
@@ -30,6 +29,9 @@
 						</div>
 						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
 						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
+						<button class="btn btn-primary me-2" (click)="JoinFreeTrial($event,class.Id)" *ngIf="class.HasFreeTrial && !class.IsJoinedFreeTrial">
+							{{ 'CoursePage.freeTrialSession' | translate }}
+						</button>
 						<div>
 							{{ 'CoursePage.sessions' | translate }}: #{{class.NumberOfSessions}}
 							<a class="show-sessions" (click)="showSessions($event, i)">
@@ -70,7 +72,11 @@
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
 				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'CoursePage.joinAClass' | translate }}</button>
-				<button class="btn btn-primary me-2" (click)="AddToCart()" *ngIf="IsJoinClass" [disabled]="!SelectedClass || SelectedClass.CurrentIndex ">
+				<button
+					class="btn btn-primary me-2"
+					(click)="AddToCart()"
+					*ngIf="IsJoinClass"
+					[disabled]="!SelectedClass || SelectedClass.CurrentIndex || SelectedClass.IsJoined">
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
 				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">

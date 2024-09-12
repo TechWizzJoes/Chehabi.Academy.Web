@@ -83,7 +83,6 @@ export class CoursePageComponent implements OnInit {
 				this.SelectedClass = undefined;
 			} else {
 				this.SelectedClass = selectedClass;
-
 			}
 		}
 	}
@@ -100,31 +99,41 @@ export class CoursePageComponent implements OnInit {
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
 			this.IsLoaded = true;
 			this.Course = data;
+			let currentUser = this.AuthService.CurrentUser;
 			this.Course.Classes.forEach(c => {
 				c.AvailableSlots = c.MaxCapacity - c.UserClasses.length;
+				const joinedClass = c.UserClasses.find(uc => uc.UserId == currentUser.Id);
+				if (joinedClass)
+					if (joinedClass.IsPaid)
+						c.IsJoined = true;
+					else
+						c.IsJoinedFreeTrial = true;
 			})
 		})
 	}
 
-	JoinClass() {
+	async JoinClass() {
 		if (this.AuthService.IsAuthenticated) {
 
 			this.IsJoinClass! = true
 			return
 		}
 
-		this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
-
+		const signin = await this.NotifyService.Confirm('Joining classes', 'Please sign in so you can access and join classes', 'Sign in', 'Later')
+		if (signin) {
+			this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
+		}
 	}
 
-	JoinFreeTrial() {
-		if (!this.SelectedClass) return;
+	JoinFreeTrial(event: Event, classId: number) {
+		event.stopPropagation();
 		let endPoint = HttpEndPoints.Classes.JoinFreeTrial;
-		endPoint = endPoint.replace('{classId}', this.SelectedClass.Id.toString());
+		endPoint = endPoint.replace('{classId}', classId.toString());
 		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
 			// this.IsLoaded = true
 			// this.Course = data
 			console.log(data);
+			this.getCourse(this.Course.Id.toString());
 			this.NotifyService.Success("Congratulations! You've joined this course's free trial and will be eligible to the first session.")
 		})
 	}

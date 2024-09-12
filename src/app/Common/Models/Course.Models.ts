@@ -29,7 +29,7 @@ export namespace CourseModels {
 		UpdatedOn!: Date;
 		UserCourses!: UserModels.UserCourse[];
 
-		MaxStartDate?: string; // for display
+		MaxStartDate?: string; // for form display
 	}
 
 	export class Class {
@@ -55,7 +55,8 @@ export namespace CourseModels {
 		AvailableSlots!: number; // for display
 		ShowSessions: boolean = false; // for display
 		Quantity!: number; // for cart
-
+		IsJoined!: boolean; // for joined badge display
+		IsJoinedFreeTrial!: boolean; // for joined badge display
 	}
 
 	export class LiveSession {
