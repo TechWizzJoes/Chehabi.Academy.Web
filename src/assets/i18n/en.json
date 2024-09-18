@@ -254,6 +254,6 @@
 	},
 	"UpcomingSessions": {
 		"dashboard": "Dashboard",
-		"title": "Upcoming Sessions"
+		"title": "Upcoming Sessions for next 7 days"
 	}
 }

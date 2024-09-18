@@ -7,10 +7,15 @@
 
 	<div class="courses-container row">
 		<app-loader *ngIf="!IsLoaded"></app-loader>
-		<div class="card" *ngFor="let class of []; let i = index">
+
+		<div class="card" *ngFor="let session of UpcomingSessions; let i = index">
 			<div class="card-body">
 				<div class="upper-section">
-					<h5 class="card-title">sllsls</h5>
+					<h5 class="card-title">{{session.Class.Course.Name}}</h5>
+					<h5 class="card-title">{{session.Class.Name}}</h5>
+					<h6 class="">{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} till {{session.EndDate | date: ' hh:mm a'}}</h6>
+					<h6 [ngStyle]="{'color': session.Link == 'blocked'? 'red' : ''}">link: {{session.Link?? 'N/A'}}</h6>
+					<!-- <h6 class="">completed?: {{session.IsCompleted? 'done':'not yet'}}</h6> -->
 				</div>
 				<div></div>
 				<div class="middle-section">
@@ -22,9 +27,9 @@
 					<small> </small>
 				</div>
 				<div class="lower-section">
-					<span>
+					<!-- <span>
 						<i class="fa fa-usd" aria-hidden="true"></i>
-					</span>
+					</span> -->
 				</div>
 			</div>
 		</div>

@@ -32,6 +32,10 @@ export class HttpEndPoints {
 		DeleteClass: 'class/{id}',
 	}
 
+	public static Sessions = {
+		GetUpcoming: 'session/list/upcoming',
+	}
+
 	public static Email = {
 		EmailSender: 'emailSender/send-welcome',
 

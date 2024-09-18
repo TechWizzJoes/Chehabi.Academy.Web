@@ -29,7 +29,10 @@
 						</div>
 						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
 						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
-						<button class="btn btn-primary me-2" (click)="JoinFreeTrial($event,class.Id)" *ngIf="class.HasFreeTrial && !class.IsJoinedFreeTrial">
+						<button
+							class="btn btn-primary me-2"
+							(click)="JoinFreeTrial($event,class.Id)"
+							*ngIf="class.HasFreeTrial && !class.IsJoinedFreeTrial && !class.IsJoined">
 							{{ 'CoursePage.freeTrialSession' | translate }}
 						</button>
 						<div>
@@ -76,7 +79,7 @@
 					class="btn btn-primary me-2"
 					(click)="AddToCart()"
 					*ngIf="IsJoinClass"
-					[disabled]="!SelectedClass || SelectedClass.CurrentIndex || SelectedClass.IsJoined">
+					[disabled]="!SelectedClass || (SelectedClass.CurrentIndex && !SelectedClass.IsJoinedFreeTrial) || SelectedClass.IsJoined">
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
 				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
