@@ -101,7 +101,10 @@
 		"loadMoreUsers": "Weitere Benutzer laden",
 		"material": "Material",
 		"joinDate": "Join Date",
-		"Completed": "Completed"
+		"Completed": "Completed",
+		"paid": "Paid",
+		"blocked": "Blocked",
+		"freetrial": "Free-trial"
 	},
 	"CourseListPage": {
 		"title": "Entdecken Sie Unsere Kurse",
@@ -254,6 +257,9 @@
 	},
 	"UpcomingSessions": {
 		"dashboard": "Armaturenbrett",
-		"title": "Upcoming Sessions"
+		"title": "Upcoming Sessions",
+		"link": "Link",
+		"copylink": "Copy link",
+		"paynow": "subscribe now to get full access"
 	}
 }

@@ -170,6 +170,21 @@
 						border-radius: 50%;
 					}
 				}
+
+				.status {
+					border-radius: 15px;
+					font-size: 0.7rem;
+					padding: 0.05rem 0.7rem;
+					background-color: var(--active-color);
+					margin-bottom: 8px;
+					width: max-content;
+					&.inactive {
+						background-color: var(--inactive-color);
+					}
+					&.free-trial {
+						background-color: var(--free-trial-color);
+					}
+				}
 			}
 		}
 

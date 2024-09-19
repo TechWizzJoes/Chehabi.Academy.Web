@@ -101,6 +101,7 @@
 									<th scope="col">{{ 'ClassDetailsPage.email' | translate }}</th>
 									<th scope="col">{{ 'ClassDetailsPage.birthDate' | translate }}</th>
 									<th scope="col">{{ 'ClassDetailsPage.joinDate' | translate }}</th>
+									<th scope="col" class="text-center">{{ 'ClassDetailsPage.paid' | translate }}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -117,6 +118,15 @@
 									<td>{{userClass.User.Email}}</td>
 									<td>{{userClass.User.Birthdate}}</td>
 									<td>{{userClass.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
+									<td class="text-center">
+										<div class="status active" *ngIf="userClass.IsPaid">{{ 'ClassDetailsPage.active' | translate }}</div>
+										<div class="status inactive" *ngIf="!userClass.IsPaid && Class.CurrentIndex">
+											{{ 'ClassDetailsPage.blocked' | translate }}
+										</div>
+										<div class="status free-trial" *ngIf="!userClass.IsPaid && !Class.CurrentIndex">
+											{{ 'ClassDetailsPage.freetrial' | translate }}
+										</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>

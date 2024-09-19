@@ -15,13 +15,19 @@
 					<h5 class="card-title">{{session.Class.Name}}</h5>
 					<h6 class="">{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} till {{session.EndDate | date: ' hh:mm a'}}</h6>
 					<h6 [ngStyle]="{'color': session.Link == Blocked? 'red' : ''}">
-						link: {{session.Link?? 'N/A'}}
-						<button class="btn" title="Copy link" *ngIf="session.Link && session.Link != Blocked" (click)="copyLink(session.Link)">
+						{{ 'UpcomingSessions.link' | translate }}: {{session.Link?? 'N/A'}}
+						<button
+							class="btn"
+							[title]="'UpcomingSessions.copylink' | translate"
+							*ngIf="session.Link && session.Link != Blocked"
+							(click)="copyLink(session.Link)">
 							<i class="fa fa-copy"></i>
 						</button>
 					</h6>
 					<!-- <h6 class="">completed?: {{session.IsCompleted? 'done':'not yet'}}</h6> -->
-					<button class="btn btn-primary" *ngIf="session.Link == Blocked" (click)="PayNow(session.Class)">subscribe now to get full access</button>
+					<button class="btn btn-primary" *ngIf="session.Link == Blocked" (click)="PayNow(session.Class)">
+						{{ 'UpcomingSessions.paynow' | translate }}
+					</button>
 				</div>
 				<div></div>
 				<div class="middle-section">

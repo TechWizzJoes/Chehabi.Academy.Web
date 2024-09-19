@@ -101,7 +101,10 @@
 		"loadMoreUsers": "Load More Users",
 		"material": "Material",
 		"joinDate": "Join Date",
-		"Completed": "Completed"
+		"Completed": "Completed",
+		"paid": "Paid",
+		"blocked": "Blocked",
+		"freetrial": "Free-trial"
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
@@ -254,6 +257,9 @@
 	},
 	"UpcomingSessions": {
 		"dashboard": "Dashboard",
-		"title": "Upcoming Sessions for next 7 days"
+		"title": "Upcoming Sessions for next 7 days",
+		"link": "Link",
+		"copylink": "Copy link",
+		"paynow": "subscribe now to get full access"
 	}
 }
