@@ -11,6 +11,11 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { NotifyService } from '@App/Common/Services/Notify.Service';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
+import { Constants } from '@App/Common/Settings/Constants';
+import { CartModels } from '@App/Common/Models/Cart.Models';
+import { CartService } from '@App/Common/Services/cart.service';
 
 @Component({
     standalone: true,
@@ -19,15 +24,19 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
     imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule],
 })
 export class UpcomingSessionsComponent implements OnInit {
+
     RoutePaths = RoutePaths;
     IsLoaded: boolean = false;
 
     currentUser!: AuthModels.CurrentUserResModel;
     UpcomingSessions: CourseModels.LiveSession[] = [];
 
+    readonly Blocked: string = 'blocked';
     constructor(
         private AuthService: AuthService,
-        private HttpService: HttpService
+        private HttpService: HttpService,
+        private NotifyService: NotifyService,
+        private CartService: CartService,
     ) {
         this.currentUser = this.AuthService.CurrentUser;
     }
@@ -44,4 +53,20 @@ export class UpcomingSessionsComponent implements OnInit {
         })
     }
 
+    async copyLink(sessionLink: string) {
+        const copied = await Constants.copyToClipboard(sessionLink);
+        if (copied)
+            this.NotifyService.Success(MessagesEnum.LINK_COPIED_SUCCESS)
+        else
+            this.NotifyService.Error(MessagesEnum.LINK_COPIED_FAIL)
+    }
+
+    PayNow(selectedClass: CourseModels.Class) {
+        let newCartItem = new CartModels.CartItem();
+        newCartItem.ClassId = selectedClass.Id;
+
+        this.CartService.addToCart(newCartItem).then(() => {
+            this.NotifyService.Success(`${selectedClass!.Name} class is added to your cart!`);
+        });
+    }
 }

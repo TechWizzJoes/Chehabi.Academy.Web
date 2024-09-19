@@ -140,6 +140,37 @@ export class Constants {
 
 		return number + suffix;
 	}
+
+	public static copyToClipboard(text: string) {
+		return new Promise((resolve, reject) => {
+			// Check if the clipboard API is supported by the browser
+			if (navigator.clipboard) {
+				navigator.clipboard.writeText(text).then(() => {
+					console.log('Text copied to clipboard!');
+					resolve(true);  // Resolve the promise with true
+				}).catch(err => {
+					console.error('Failed to copy text to clipboard', err);
+					resolve(false);  // Resolve the promise with false in case of an error
+				});
+			} else {
+				// Fallback method for older browsers that don't support clipboard API
+				const textArea = document.createElement('textarea');
+				textArea.value = text;
+				document.body.appendChild(textArea);
+				textArea.select();
+				try {
+					document.execCommand('copy');
+					console.log('Text copied to clipboard!');
+					resolve(true);  // Resolve the promise with true
+				} catch (err) {
+					console.error('Failed to copy text to clipboard', err);
+					resolve(false);  // Resolve the promise with false in case of an error
+				}
+				document.body.removeChild(textArea);
+			}
+		});
+	}
+
 }
 export class ConstantsType {
 	Id!: number;
