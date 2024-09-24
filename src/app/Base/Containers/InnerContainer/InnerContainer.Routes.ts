@@ -69,12 +69,22 @@ export const routes: Routes = [
 						pathMatch: 'full'
 					},
 					{
-						path: 'courses/:id',
+						canActivate: [RolesGuard],
+						data: {
+							Roles: [
+								RolesEnum.Admin
+							]
+						}, path: 'courses/:id',
 						loadComponent: () => import('@App/Features/Dashboard/CourseDetails/CourseDetails').then((c) => c.CourseDetailsComponent),
 						pathMatch: 'full'
 					},
 					{
-						path: 'courses/:cid/class/:id',
+						canActivate: [RolesGuard],
+						data: {
+							Roles: [
+								RolesEnum.Admin
+							]
+						}, path: 'courses/:cid/class/:id',
 						loadComponent: () => import('@App/Features/Dashboard/ClassDetails/ClassDetails').then((c) => c.ClassDetailsComponent)
 					},
 					{

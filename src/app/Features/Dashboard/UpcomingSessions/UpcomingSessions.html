@@ -11,8 +11,20 @@
 		<div class="card" *ngFor="let session of UpcomingSessions; let i = index">
 			<div class="card-body">
 				<div class="upper-section">
-					<h5 class="card-title">{{session.Class.Course.Name}}</h5>
-					<h5 class="card-title">{{session.Class.Name}}</h5>
+					<div *ngIf="currentUser.IsAdmin">
+						<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,session.Class.Course.Id]" class="card-title">
+							{{session.Class.Course.Name}}
+						</a>
+						<a
+							[routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,session.Class.Course.Id, RoutePaths.Class, session.Class.Id]"
+							class="card-title">
+							{{session.Class.Name}}
+						</a>
+					</div>
+					<div *ngIf="!currentUser.IsAdmin">
+						<a [routerLink]="['/',RoutePaths.Course,session.Class.Course.Id]" class="card-title"> {{session.Class.Course.Name}} </a>
+						<h6 class="card-title">{{session.Class.Name}}</h6>
+					</div>
 					<h6 class="">{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} till {{session.EndDate | date: ' hh:mm a'}}</h6>
 					<h6 [ngStyle]="{'color': session.Link == Blocked? 'red' : ''}">
 						{{ 'UpcomingSessions.link' | translate }}: {{session.Link?? 'N/A'}}
