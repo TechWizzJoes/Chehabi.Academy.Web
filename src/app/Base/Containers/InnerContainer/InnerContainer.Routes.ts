@@ -48,6 +48,10 @@ export const routes: Routes = [
 				component: CheckoutsuccessComponent,
 			},
 			{
+				path: 'notifications',
+				loadComponent: () => import('@App/Features/Notifications/Notifications').then((c) => c.NotificationsComponent)
+			},
+			{
 				canActivate: [AuthGuard],
 				path: 'dashboard',
 				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),

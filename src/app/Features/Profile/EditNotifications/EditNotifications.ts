@@ -24,12 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
 	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
 })
 export class EditNotificationsComponent implements OnInit {
-	Account: AuthModels.CurrentUserResModel = new AuthModels.CurrentUserResModel();
-	Error!: string;
-	Password: { OldPassword: string, NewPassword: string, ReNewPassword: string } = { OldPassword: '', NewPassword: '', ReNewPassword: '' };
-
-	showPW: boolean = false;
-	PWInputType: string = 'password';
+	IsLoaded: boolean = false;
+	User!: UserModels.User;
 
 	constructor(
 		private Router: Router,
@@ -42,59 +38,27 @@ export class EditNotificationsComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.Account = this.AuthService.CurrentUser;
+		let endPoint = HttpEndPoints.Profile.GetProfile
+		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
+			this.IsLoaded = true
+			this.User = data;
+		})
 	}
 
-	notifications = {
-		promotions: false,
-		announcements: false,
-		sessionNotifications: false
-	};
 
-
-	onSubmit(frm: any) {
-		if (frm.valid) {
-			// Handle submission logic (e.g., saving user preferences)
-			console.log('User notification preferences:', this.notifications);
-			this.Error = '';
-		} else {
-			this.Error = 'Please review your preferences.';
-		}
+	onSubmit(form: NgForm) {
+		let httpEndPoint = HttpEndPoints.Profile.EditPreference;
+		this.HttpService.Put2<UserModels.UserPrefrence, UserModels.User>(
+			httpEndPoint,
+			this.User.UserPrefrence
+		).subscribe({
+			next: (response) => {
+				this.NotifyService.Success(MessagesEnum.PEREFRENCES_UPDATED_SUCCESS);
+			},
+			error: (errorResponse) => {
+				// to show the error on login panel
+				// this.Error = ErrorMessagesEnum.WRONG_PASSWORD_RESET;
+			}
+		});
 	}
-
-	// onSubmit(form: NgForm) {
-	// 	if (form.invalid) {
-	// 		this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
-	// 		return;
-	// 	}
-
-	// 	if (this.Password.NewPassword !== this.Password.ReNewPassword) {
-	// 		this.Error = ErrorCodesEnum.PASSWORD_NOT_MATCH;
-	// 		return;
-	// 	}
-
-	// 	let requestModel = {
-	// 		Id: this.Account.Id,
-	// 		OldPassword: this.Password.OldPassword,
-	// 		NewPassword: this.Password.NewPassword,
-	// 		ReNewPassword: this.Password.ReNewPassword,
-	// 	} as AuthModels.ResetPasswordReqModel;
-
-	// 	let httpEndPoint = HttpEndPoints.Account.ResetPassword;
-	// 	this.HttpService.Post<AuthModels.ResetPasswordReqModel, AuthModels.LoginResModel>(
-	// 		httpEndPoint,
-	// 		requestModel,
-	// 	).subscribe({
-	// 		next: (response) => {
-	// 			// console.log(response);
-	// 			this.Error = '';
-	// 			this.Password = { OldPassword: '', NewPassword: '', ReNewPassword: '' };
-	// 			this.NotifyService.Success(MessagesEnum.PASSWORD_UPDATED_SUCCESS);
-	// 		},
-	// 		error: (errorResponse) => {
-	// 			// to show the error on login panel
-	// 			this.Error = ErrorMessagesEnum.WRONG_PASSWORD_RESET;
-	// 		}
-	// 	});
-	// }
 }

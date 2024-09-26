@@ -2,17 +2,12 @@
 	<h6 class="title">{{ 'NotificationSettings.title' | translate }}</h6>
 	<form (ngSubmit)="onSubmit(frm)" name="notificationForm" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="form-check mb-3">
-			<input type="checkbox" class="form-check-input" id="promotions" name="promotions" [(ngModel)]="notifications.promotions" #promotions="ngModel" />
-			<label for="promotions" class="form-check-label">{{ 'NotificationSettings.promotions' | translate }}</label>
-		</div>
-
-		<div class="form-check mb-3">
 			<input
 				type="checkbox"
 				class="form-check-input"
 				id="announcements"
 				name="announcements"
-				[(ngModel)]="notifications.announcements"
+				[(ngModel)]="User.UserPrefrence.InstructorsAnnouncementNotify"
 				#announcements="ngModel" />
 			<label for="announcements" class="form-check-label">{{ 'NotificationSettings.announcements' | translate }}</label>
 		</div>
@@ -21,11 +16,33 @@
 			<input
 				type="checkbox"
 				class="form-check-input"
-				id="sessionNotifications"
-				name="sessionNotifications"
-				[(ngModel)]="notifications.sessionNotifications"
-				#sessionNotifications="ngModel" />
-			<label for="sessionNotifications" class="form-check-label">{{ 'NotificationSettings.sessionNotifications' | translate }}</label>
+				id="sessionUpdates"
+				name="sessionUpdates"
+				[(ngModel)]="User.UserPrefrence.SessionsUpdateNotify"
+				#sessionUpdates="ngModel" />
+			<label for="sessionUpdates" class="form-check-label">{{ 'NotificationSettings.sessionUpdates' | translate }}</label>
+		</div>
+
+		<div class="form-check mb-3">
+			<input
+				type="checkbox"
+				class="form-check-input"
+				id="sessionReminders"
+				name="sessionReminders"
+				[(ngModel)]="User.UserPrefrence.SessionsReminderNotify"
+				#sessionReminders="ngModel" />
+			<label for="sessionReminders" class="form-check-label">{{ 'NotificationSettings.sessionReminders' | translate }}</label>
+		</div>
+
+		<div class="form-check mb-3">
+			<input
+				type="checkbox"
+				class="form-check-input"
+				id="promotions"
+				name="promotions"
+				[(ngModel)]="User.UserPrefrence.PromotionsNotify"
+				#promotions="ngModel" />
+			<label for="promotions" class="form-check-label">{{ 'NotificationSettings.promotions' | translate }}</label>
 		</div>
 
 		<div>you'll still get notified for important notifications such as payments</div>

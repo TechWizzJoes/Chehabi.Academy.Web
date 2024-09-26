@@ -240,7 +240,8 @@
 		"title": "Ich möchte erhalten:",
 		"promotions": "Werbeaktionen für neue Kurse und Klassen.",
 		"announcements": "Ankündigungen von Dozenten von Kursen.",
-		"sessionNotifications": "Sitzungserinnerungen.",
+		"sessionUpdates": "Sessions updates.",
+		"sessionReminders": "Sessions reminders.",
 		"save": "Speichern"
 	},
 	"PasswordPage": {

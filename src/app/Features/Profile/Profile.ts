@@ -49,7 +49,6 @@ export class ProfileComponent implements OnInit {
 
 	ngOnInit() {
 		let endPoint = HttpEndPoints.Profile.GetProfile
-		endPoint = endPoint.replace('{id}', this.AuthService.CurrentUser.Id.toString())
 		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Account = data;

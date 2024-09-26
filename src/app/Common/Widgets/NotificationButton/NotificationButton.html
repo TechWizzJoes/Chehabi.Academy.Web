@@ -7,4 +7,5 @@
 	<div *ngFor="let notification of Notifications">
 		<div>{{notification.message}}</div>
 	</div>
+	<a [routerLink]="['/',RoutePaths.Notifications]">notification page</a>
 </ng-template>

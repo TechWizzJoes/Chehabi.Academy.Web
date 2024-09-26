@@ -42,8 +42,9 @@ export class HttpEndPoints {
 	}
 
 	public static Profile = {
-		GetProfile: 'user/{id}',
+		GetProfile: 'user',
 		EditProfile: 'user',
+		EditPreference: 'user/preference',
 		UploadImage: 'user/upload/image/{id}',
 	}
 

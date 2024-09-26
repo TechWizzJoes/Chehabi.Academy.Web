@@ -18,7 +18,7 @@ export namespace UserModels {
 
 		UserClasses!: UserClass[];
 		UserCourses!: UserCourse[];
-
+		UserPrefrence!: UserPrefrence;
 	}
 
 	export class UserReqModel {
@@ -35,7 +35,7 @@ export namespace UserModels {
 		ClassId!: number;
 		IsPaid!: boolean;
 		CreatedOn!: Date;
-		User!: UserModels.User;
+		User!: User;
 		Class!: CourseModels.Class;
 	}
 
@@ -44,7 +44,16 @@ export namespace UserModels {
 		CourseId!: number;
 		CreatedOn!: Date | null;
 		Course!: CourseModels.Course;
-		User!: UserModels.User;
+		User!: User;
 	}
 
+	export class UserPrefrence {
+		Id!: number;
+		UserId!: number;
+		PromotionsNotify!: boolean;
+		SessionsReminderNotify!: boolean;
+		SessionsUpdateNotify!: boolean;
+		InstructorsAnnouncementNotify!: boolean;
+		User!: User;
+	}
 }

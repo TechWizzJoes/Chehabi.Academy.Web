@@ -5,6 +5,7 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageService } from '@App/Common/Services/Language.Service';
 import { TranslateModule } from '@ngx-translate/core';
 import { WebSocketService } from '@App/Common/Services/Websocket.Service';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 export class Language {
   Name!: string;
@@ -19,6 +20,7 @@ export class Language {
   styleUrl: './NotificationButton.scss',
 })
 export class NotificationButtonComponent {
+  RoutePaths = RoutePaths;
   Notifications: any[] = []
 
   constructor(private c: WebSocketService) {

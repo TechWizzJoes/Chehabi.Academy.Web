@@ -238,9 +238,10 @@
 	},
 	"NotificationSettings": {
 		"title": "I want to recieve:",
-		"promotions": "Promotions of new courses and classes.",
-		"announcements": "Announcements from instructors of classes enrolled in.",
-		"sessionNotifications": "Sessions reminders.",
+		"promotions": "Email Promotions of new courses and classes.",
+		"announcements": "Email Announcements from instructors of classes enrolled in.",
+		"sessionUpdates": "Email Sessions updates.",
+		"sessionReminders": "Email Sessions reminders.",
 		"save": "Save"
 	},
 	"PasswordPage": {
