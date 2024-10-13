@@ -17,7 +17,7 @@ export class CartButtonComponent implements OnInit {
   ngOnInit(): void {
     this.CartService.cart$.subscribe({
       next: (cart) => {
-        this.counter = cart.CartItems.length;
+        this.counter = cart.CartItems?.length ?? 0;
       },
     });
 

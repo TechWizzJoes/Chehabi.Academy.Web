@@ -118,7 +118,7 @@
 	},
 	"CoursePage": {
 		"classes": "Classes",
-		"noClassesAdded": "No classes added to this course yet.",
+		"noClassesAdded": "No classes currently for this course.",
 		"active": "Active",
 		"inactive": "Inactive",
 		"started": "Class already started.",
@@ -135,7 +135,8 @@
 		"prerequisites": "Prerequisites",
 		"joinAClass": "Join a class",
 		"addToCart": "Add To Cart",
-		"downloadMaterial": "Download Material",
+		"downloadFullMaterial": "Download full Material",
+		"downloadFreeMaterial": "Download free Material",
 		"freeTrialSession": "Try a free trial session"
 	},
 	"Courses": {

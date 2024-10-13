@@ -27,8 +27,12 @@
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
 							</span>
 						</div>
-						<div *ngIf="!class.CurrentIndex">{{ 'CoursePage.startsOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
-						<div *ngIf="class.CurrentIndex">{{ 'CoursePage.startedOn' | translate: { date: class.StartDate | date: 'dd/MM/YYYY' } }}</div>
+						<div *ngIf="!class.CurrentIndex">
+							{{ 'CoursePage.startsOn' | translate: { date: class.LiveSessions[0].StartDate | date: 'dd/MM/YYYY' } }}
+						</div>
+						<div *ngIf="class.CurrentIndex">
+							{{ 'CoursePage.startedOn' | translate: { date: class.LiveSessions[0].StartDate | date: 'dd/MM/YYYY' } }}
+						</div>
 						<button
 							class="btn btn-primary me-2"
 							(click)="JoinFreeTrial($event,class.Id)"
@@ -83,7 +87,10 @@
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
 				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
-					{{ 'CoursePage.downloadMaterial' | translate }}
+					{{ 'CoursePage.downloadFreeMaterial' | translate }}
+				</a>
+				<a class="btn btn-outline-primary" *ngIf="IsJoinClass" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
+					{{ 'CoursePage.downloadFullMaterial' | translate }}
 				</a>
 				<hr />
 			</div>

@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CartService } from '@App/Common/Services/cart.service';
 import { CartModels } from '@App/Common/Models/Cart.Models';
+import { TosComponent } from './Tos/Tos';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TosComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
