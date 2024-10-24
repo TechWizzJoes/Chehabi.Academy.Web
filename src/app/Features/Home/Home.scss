@@ -24,14 +24,66 @@
 			text-align: center;
 			opacity: 1;
 			transition: opacity 0.3s ease-in-out;
+			color: var(--primary-color1);
 			i {
 				animation: bounce 1.5s infinite;
 			}
 		}
 		&.landing {
+			position: relative;
+			color: var(--primary-font-color);
+			.img-container {
+				width: 100%;
+				height: 70%;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 40px;
+				overflow: hidden;
+				transform: translateY(-50%);
+
+				.bg-img {
+					object-fit: cover;
+					height: 100%;
+					width: 100%;
+				}
+
+				.overlay {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					background-color: black;
+					opacity: 0.4;
+				}
+			}
+			.titles {
+				width: 60%;
+				z-index: 100;
+				justify-content: space-between;
+				// background-image: url('/assets/Images/pattern.png');
+				// background-attachment: fixed;
+
+				.search-bar {
+					width: 60%;
+					display: flex;
+					input {
+						padding: 0.5rem;
+						border-radius: 5px;
+						border: 1px solid gray;
+						outline: none;
+						width: 100%;
+					}
+				}
+			}
+		}
+		&.courses-overview {
 			justify-content: space-between;
-			// background-image: url('/assets/Images/pattern.png');
-			// background-attachment: fixed;
+			img {
+				max-width: 100px;
+			}
 		}
 		&.offer {
 			padding: 20px;
@@ -101,6 +153,7 @@
 			}
 		}
 		&.about {
+			padding: 40px;
 			.graphics {
 				align-self: flex-end;
 				max-width: 500px;
@@ -108,6 +161,294 @@
 			}
 		}
 	}
+
+	.what-we-offer {
+		padding: 40px;
+
+		/* Styles for Course Types */
+		.course-types {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			gap: 30px;
+		}
+
+		.course-card {
+			background-color: var(--primary-color3);
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			padding: 30px;
+			text-align: left;
+			flex-basis: 45%;
+			transition: transform 0.3s;
+
+			&:hover {
+				transform: translateY(-5px);
+			}
+
+			& .icon img {
+				width: 50px;
+				height: 50px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	.why-us {
+		// background-color: var(--primary-color3);
+		// color: var(--primary-font-color);
+		// border-radius: 10px;
+		padding: 40px;
+		text-align: left;
+
+		h3 {
+			font-size: 28px;
+			margin-bottom: 20px;
+		}
+
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		li {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		li strong {
+			color: var(--primary-color1);
+		}
+
+		/* CTA Styles */
+		.cta {
+			margin-top: 40px;
+		}
+
+		.cta p {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+
+		.browse-link {
+			color: var(--primary-color1);
+			font-weight: bold;
+			text-decoration: none;
+			border-bottom: 2px solid var(--primary-color1);
+			transition: color 0.3s;
+		}
+
+		.browse-link:hover {
+			color: #e63950;
+		}
+
+		/* Responsive Styles */
+		@media (max-width: 768px) {
+			.course-types {
+				flex-direction: column;
+			}
+
+			.course-card {
+				flex-basis: 100%;
+			}
+		}
+	}
+
+	.testimonials {
+		padding: 40px;
+		// background-color: var(--primary-color3);
+		border-radius: 10px;
+
+		.testimonial-cards {
+			display: flex;
+			gap: 1em;
+
+			.testimonial-card {
+				background-color: var(--primary-bg-color);
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				margin-bottom: 20px;
+				font-style: italic;
+				transition: transform 0.3s;
+
+				p {
+					font-size: 16px;
+					line-height: 1.6;
+					margin-bottom: 15px;
+				}
+			}
+
+			/* Responsive Styles for Testimonials */
+			@media (max-width: 768px) {
+				.testimonial-card {
+					padding: 15px;
+				}
+			}
+		}
+	}
+
+	.how-it-works {
+		margin: 50px auto;
+
+		.steps {
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+
+			.step {
+				flex: 1 1 18%;
+				max-width: 200px;
+				margin: 20px;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+
+				h3 {
+					font-size: 1.2rem;
+					margin-top: 15px;
+				}
+
+				p {
+					font-size: 1rem;
+					margin-top: 10px;
+					color: #555;
+				}
+			}
+		}
+	}
+
+	.enrollment-process {
+		padding: 50px 20px;
+		text-align: center;
+		background-color: #f0f0f0;
+		color: #333;
+
+		.enrollment-process h2 {
+			font-size: 36px;
+			margin-bottom: 20px;
+		}
+
+		.enrollment-process p {
+			font-size: 18px;
+			margin-bottom: 40px;
+		}
+
+		.steps {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		.step {
+			background-color: #fff;
+			border-radius: 8px;
+			padding: 20px;
+			margin: 10px;
+			flex-basis: 30%;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s;
+		}
+
+		.step:hover {
+			transform: translateY(-5px);
+		}
+
+		.step h3 {
+			font-size: 22px;
+			color: var(--primary-color1);
+		}
+
+		.step p {
+			font-size: 16px;
+			color: #555;
+		}
+
+		.cta {
+			margin-top: 40px;
+		}
+
+		.cta p {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: 15px 30px;
+			background-color: var(--primary-color1);
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			font-size: 18px;
+			transition: background-color 0.3s;
+		}
+
+		.cta-button:hover {
+			background-color: #e63950;
+		}
+	}
+
+	.cta-section {
+		padding: 40px;
+		text-align: center;
+		border-radius: 10px;
+		margin-top: 40px;
+
+		.cta-section h2 {
+			font-size: 32px;
+			margin-bottom: 20px;
+			color: #333;
+		}
+
+		.cta-section p {
+			font-size: 18px;
+			color: #555;
+			margin-bottom: 20px;
+		}
+
+		.cta-buttons {
+			margin: 30px 0;
+		}
+
+		.cta-button {
+			background-color: var(--primary-color1);
+			color: var(--primary-font-color);
+			text-decoration: none;
+			padding: 12px 30px;
+			border-radius: 5px;
+			font-size: 18px;
+			margin: 0 10px;
+			transition: background-color 0.3s;
+		}
+
+		.cta-button:hover {
+			background-color: var(--primary-color1);
+		}
+
+		.supporting-text {
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+		.faq-link,
+		.contact-link {
+			text-decoration: underline;
+			font-weight: bold;
+			transition: color 0.3s;
+		}
+		/* Responsive Styles for CTA Section */
+		@media (max-width: 768px) {
+			.cta-button {
+				display: block;
+				margin: 10px auto;
+				width: 80%;
+			}
+		}
+	}
+
 	&.page-scrolled {
 		.page-section {
 			.scroll {

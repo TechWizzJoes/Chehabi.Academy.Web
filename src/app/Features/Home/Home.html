@@ -1,35 +1,49 @@
 <div class="page-inner" id="home-page">
-	<div class="page-section landing">
-		<div class="partition content">
-			<h1>{{ 'HomePage.welcomeTitle' | translate }}</h1>
-			<p>{{ 'HomePage.welcomeParagraph' | translate }}</p>
+	<section class="page-section landing">
+		<div class="img-container">
+			<img
+				src="https://learningpolicyinstitute.org/sites/default/files/styles/facebook/public/teaser-images/Ed_Learning_for_SoLD_Site-Teaser-920x513.jpg?h=d012c590&itok=kyNvb_Xj"
+				alt=""
+				class="bg-img" />
+			<div class="overlay"></div>
+		</div>
+		<div class="titles m-5">
+			<!-- <h1>{{ 'HomePage.welcomeTitle' | translate }}</h1>
+			<p>{{ 'HomePage.welcomeParagraph' | translate }}</p> -->
+			<h1 class="main-title mb-2">Unlock Your Potential with Expert Language Coaching</h1>
+			<p class="subtitle">
+				Master Arabic and German through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.
+			</p>
+			<div class="search-bar mb-2">
+				<input type="text" placeholder="Search for courses" />
+				<button class="btn btn-primary"><i class="fa fa-search"></i></button>
+			</div>
 			<div>
 				<button class="btn btn-outline-primary me-2">{{ 'HomePage.learnMoreButton' | translate }}</button>
-				<button class="btn btn-primary">{{ 'HomePage.joinNowButton' | translate }}</button>
+				<button class="btn btn-primary">{{ 'Explore Courses' | translate }}</button>
 			</div>
 		</div>
-		<div class="partition graphics">
-			<!-- <img src="assets/Images/laptop.svg" alt="" class="image" /> -->
+		<!-- <img src="assets/Images/laptop.svg" alt="" class="image" /> -->
+		<!-- <div class="partition graphics">
 			<app-landing-laptop></app-landing-laptop>
-		</div>
+		</div> -->
 		<span class="scroll"> <i class="fa fa-arrow-down"></i> {{ 'Scroll down' | translate }} </span>
-	</div>
+	</section>
 
-	<h1 class="text-center">{{ 'HomePage.weOfferTitle' | translate }}</h1>
-
-	<div class="page-section no-min column offer">
+	<!-- <div class="page-section no-min column offer">
+		<h1 class="text-center">{{ 'HomePage.weOfferTitle' | translate }}</h1>
 		<div class="sub-section">
 			<div class="offer-card">
 				<img src="assets/Images/offers/icon 1.png" alt="" />
 				<div class="body">
-					<h5 class="title">{{ 'HomePage.customizedCoursesTitle' | translate }}</h5>
+					<h5 class="title">{{ 'HomePage.live sessions' | translate }}</h5>
 					<p class="text">{{ 'HomePage.customizedCoursesText' | translate }}</p>
 				</div>
 			</div>
 			<div class="offer-card">
 				<img src="assets/Images/offers/icon 2.png" alt="" />
 				<div class="body">
-					<h5 class="title">{{ 'HomePage.privateLessonsTitle' | translate }}</h5>
+					<h5 class="title">{{ 'HomePage.recorded customized courses ' | translate }}</h5>
 					<p class="text">{{ 'HomePage.privateLessonsText' | translate }}</p>
 				</div>
 			</div>
@@ -42,32 +56,115 @@
 			</div>
 		</div>
 	</div>
+	<hr class="bg-3" /> -->
 
-	<hr class="bg-3" />
-	<h1 class="text-center bg-3">{{ 'HomePage.whatsNewTitle' | translate }}</h1>
+	<section class="what-we-offer">
+		<h2>What We Offer: Tailored Language Programs for Every Learner</h2>
+		<p>
+			Explore our wide range of courses, from beginner to advanced, including 1-on-1 private lessons, <br />
+			group classes, and self-paced recorded sessions designed to meet your language goals.
+		</p>
 
-	<div class="page-section no-min new">
-		<div class="graphics">
-			<ngb-carousel *ngIf="WhatsNew && WhatsNew.length > 0">
-				<ng-template ngbSlide *ngFor="let news of WhatsNew">
-					<div class="picsum-img-wrapper">
-						<img [src]="news.PicturePath" alt="Random first slide" />
-					</div>
-					<div class="carousel-caption">
-						<h3>{{ news.Title }}</h3>
-						<p>{{ news.Text }}</p>
-					</div>
-				</ng-template>
-			</ngb-carousel>
+		<div class="course-types">
+			<div class="course-card">
+				<div class="icon">
+					<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+				</div>
+				<h3>Recorded Courses</h3>
+				<p>
+					Unlock the freedom to learn at your own pace! Our expertly crafted recorded courses cover all levels of Arabic and German language learning,
+					from beginner to advanced. Enjoy lifetime access to high-quality video lessons, downloadable resources, and practical exercises that make
+					mastering a new language engaging and convenient. Start your language journey today, anytime, anywhere.
+				</p>
+			</div>
+			<div class="course-card">
+				<div class="icon">
+					<i class="fa fa-book" aria-hidden="true"></i>
+				</div>
+				<h3>Live Course Sessions</h3>
+				<p>
+					Get the classroom experience without leaving your home—or join us on-site for a truly immersive environment! Our live course sessions bring
+					the classroom to you, featuring interactive lessons led by expert instructors. Participate in real-time discussions, ask questions, and get
+					personalized feedback to accelerate your progress. Choose between online classes for flexibility or on-site classes for a traditional
+					experience. Don’t just learn—experience language mastery.
+				</p>
+			</div>
 		</div>
-		<div class="content">
-			<h1>{{ 'HomePage.latestNewsTitle' | translate }}</h1>
-			<p>{{ 'HomePage.latestNewsText' | translate }}</p>
+	</section>
+	<section class="why-us">
+		<div>
+			<h3>Why Chehabi Academy?</h3>
+			<ul>
+				<li><strong>Expert Instructors:</strong> Learn from language professionals who bring real-world teaching experience.</li>
+				<li>
+					<strong>Flexible Learning Options:</strong> Whether you prefer self-paced learning or live sessions, we have options that fit your
+					lifestyle.
+				</li>
+				<li><strong>Community Support:</strong> Join a community of learners where you can connect, share experiences, and grow together.</li>
+				<li><strong>Certification:</strong> Earn a certificate upon course completion to showcase your language skills.</li>
+				<li><strong>Affordable Pricing:</strong> High-quality language courses that won’t break the bank.</li>
+			</ul>
 		</div>
-	</div>
+		<div class="cta">
+			<p>
+				Ready to start your language-learning journey? <a href="courses.html" class="browse-link">Browse our courses</a> today and find the perfect fit
+				for you!
+			</p>
+		</div>
+	</section>
+	<section class="testimonials">
+		<h2>What Our Students Say</h2>
+		<div class="testimonial-cards">
+			<div class="testimonial-card">
+				<p>
+					"Chehabi Academy has been a game-changer for me. The recorded courses allowed me to learn at my own pace, and the live sessions gave me the
+					confidence to speak German fluently. I highly recommend it!"
+				</p>
+				<h4>- Sarah M., German Course Student</h4>
+			</div>
+			<div class="testimonial-card">
+				<p>
+					"The interactive nature of the live classes made learning Arabic so much fun. The instructors are not only knowledgeable but also make the
+					learning process enjoyable. Plus, the free trial session was a great way to get started!"
+				</p>
+				<h4>- Ahmed K., Arabic Course Student</h4>
+			</div>
+			<div class="testimonial-card">
+				<p>
+					"I loved the flexibility Chehabi Academy offers. I could switch between recorded lessons when I was busy and live sessions when I had time
+					for more hands-on practice. It's the perfect balance."
+				</p>
+				<h4>- Lina S., Dual Language Learner</h4>
+			</div>
+		</div>
+	</section>
 
-	<hr />
-	<div class="page-section no-min about">
+	<!-- <div class="page-section no-min new">
+		<h1 class="text-center bg-3">{{ 'HomePage.whatsNewTitle' | translate }}</h1>
+		<div class="sub-section">
+			<div class="graphics">
+				<ngb-carousel *ngIf="WhatsNew && WhatsNew.length > 0">
+					<ng-template ngbSlide *ngFor="let news of WhatsNew">
+						<div class="picsum-img-wrapper">
+							<img [src]="news.PicturePath" alt="Random first slide" />
+						</div>
+						<div class="carousel-caption">
+							<h3>{{ news.Title }}</h3>
+							<p>{{ news.Text }}</p>
+						</div>
+					</ng-template>
+				</ngb-carousel>
+			</div>
+			<div class="content">
+				<h1>{{ 'HomePage.latestNewsTitle' | translate }}</h1>
+				<p>{{ 'HomePage.latestNewsText' | translate }}</p>
+			</div>
+		</div>
+	</div> 
+
+	<hr />-->
+
+	<section class="page-section no-min about">
 		<div class="partition graphics">
 			<img src="assets/Images/landing-people.png" alt="" class="image" />
 		</div>
@@ -78,6 +175,70 @@
 				<a class="btn btn-outline-primary me-2" [routerLink]="['/',RoutePaths.About]">{{ 'HomePage.learnMoreLink' | translate }}</a>
 			</div>
 		</div>
-	</div>
+	</section>
+
+	<section class="how-it-works">
+		<h2>How it works?</h2>
+		<p>Getting started is easy! Follow these simple steps to access our language courses and begin your learning journey today.</p>
+
+		<div class="steps">
+			<div class="step">
+				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
+				<h3>Step 1: Choose a Course</h3>
+				<p>
+					Browse our selection of language courses to find the one that fits your goals and learning style. Whether you're interested in Arabic or
+					German, we have the right course for you.
+				</p>
+			</div>
+			<div class="step">
+				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
+				<h3>Step 2: Sign Up or Log In</h3>
+				<p>Create a free account or log in if you’re already a member. Signing up allows you to access a free trial session and manage your courses.</p>
+			</div>
+			<div class="step">
+				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
+				<h3>Step 3: Book Your Free Trial</h3>
+				<p>
+					Experience our teaching methods firsthand by booking a free trial session for any live course. It's a risk-free way to see if the course
+					meets your needs before making a commitment.
+				</p>
+			</div>
+			<div class="step">
+				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
+				<h3>Step 4: Make Your Payment</h3>
+				<p>
+					Once you're ready to proceed, complete the payment securely through our online platform. We accept a variety of payment methods to make the
+					process as convenient as possible.
+				</p>
+			</div>
+			<div class="step">
+				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
+				<h3>Step 5: Start Learning!</h3>
+				<p>
+					Gain full access to the live course sessions and recorded materials. Engage with expert instructors, participate in interactive classes, and
+					track your progress toward language mastery.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-section">
+		<h2>Ready to Start Your Language Learning Journey?</h2>
+		<p>
+			Whether you prefer learning at your own pace or in a dynamic, interactive setting, Chehabi Academy has the perfect course for you. Don't wait to
+			unlock your potential—start learning today!
+		</p>
+		<div class="cta-buttons">
+			<a href="/courses" class="btn cta-button">Browse Courses</a>
+			<a href="/contact" class="btn cta-button">Contact Us</a>
+		</div>
+		<p class="supporting-text">
+			Got any questions? <a href="/faq" class="faq-link">Visit our FAQ page</a> for answers to commonly asked questions, or reach out to us directly.
+			We're here to help!
+		</p>
+		<p class="supporting-text">
+			Join our community of passionate language learners and skilled instructors who are dedicated to helping you succeed. Your language mastery starts
+			here.
+		</p>
+	</section>
 </div>
-<!-- <h1>{{'coming-soon' | translate}}</h1> -->
