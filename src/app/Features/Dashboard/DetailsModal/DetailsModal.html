@@ -208,7 +208,7 @@
 			<div class="mb-3">
 				<label for="image" class="form-label m-0">Cover Image</label>
 				<div class="form-text m-0">The course main cover image appearing in search.</div>
-				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
+				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onImageChange($event)" />
 				<div class="progress-container" *ngIf="ImageProgress.start">
 					<div class="progress">
 						<div
@@ -223,9 +223,27 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="filepath" class="form-label m-0">Upload File</label>
+				<label for="filepath" class="form-label m-0">Upload Sample File</label>
 				<div class="form-text m-0">PDF file that would be in the course's main page.</div>
-				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
+				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, true)" />
+				<div class="progress-container" *ngIf="FileProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							f
+							[style.width]="FileProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="FileProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{FileProgress.start}}%</span>
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="filepath" class="form-label m-0">Upload Main File</label>
+				<div class="form-text m-0">PDF file that would be in the course's main page.</div>
+				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
 						<div
@@ -344,6 +362,24 @@
 			<div class="mb-3">
 				<label for="filepath" class="form-label">Upload File</label>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
+				<div class="progress-container" *ngIf="FileProgress.start">
+					<div class="progress">
+						<div
+							class="progress-bar"
+							[style.width]="FileProgress.start + '%'"
+							role="progressbar"
+							[attr.aria-valuenow]="FileProgress.start"
+							aria-valuemin="0"
+							aria-valuemax="100"></div>
+					</div>
+					<span>{{FileProgress.start}}%</span>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseSampleMaterial">
+			<div class="mb-3">
+				<label for="filepath" class="form-label">Upload Sample File</label>
+				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, true)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
 						<div

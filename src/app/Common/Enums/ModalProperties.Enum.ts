@@ -8,4 +8,5 @@ export enum ModalPropertyEnum {
     CourseMaterial = 'Course Material',
     Class = 'Class',
     ClassMaterial = 'Class Material',
+    CourseSampleMaterial = 'CourseSampleMaterial'
 }

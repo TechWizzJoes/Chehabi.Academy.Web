@@ -133,4 +133,17 @@ export class HttpService {
 			})
 		);
 	}
+
+	DownloadFile(fileUrl: string) {
+		this.HttpClient.get(fileUrl, { responseType: 'blob' }).subscribe((blob) => {
+			const url = window.URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = fileUrl.split('/').pop() || '';
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+			window.URL.revokeObjectURL(url);
+		});
+	}
 }
