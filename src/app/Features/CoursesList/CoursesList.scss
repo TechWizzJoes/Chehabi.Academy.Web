@@ -8,27 +8,122 @@
 		flex-direction: column;
 
 		.filters {
+			width: 100%;
+			max-width: 600px; // Limits the width for a compact view on larger screens
 			display: flex;
-			justify-content: space-between;
-			align-items: flex-end;
+			flex-wrap: wrap;
+			gap: 1rem;
+			padding: 1rem;
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adds a subtle shadow for focus
 
-			.left {
+			// Left and right sections as columns, aligned in a responsive manner
+			.left,
+			.right {
+				flex: 1 1 100%;
 				display: flex;
-				.searchinput {
-					display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				align-items: stretch;
+			}
+
+			.searchinput {
+				display: flex;
+				gap: 0.5rem;
+
+				input[type='text'] {
+					flex: 1;
+					padding: 0.5rem;
+					font-size: 0.9rem;
+					border: 1px solid #ced4da;
+					border-radius: 0.25rem;
 				}
-				.coursetype {
-				}
-				.rating {
-				}
-				.levels {
-					display: flex;
+
+				.btn {
+					padding: 0.5rem 1rem;
+					font-size: 0.9rem;
 				}
 			}
+
+			.coursetype,
+			.rating,
+			.levels {
+				label {
+					font-size: 0.85rem;
+					color: #495057;
+				}
+
+				select {
+					width: 100%;
+					padding: 0.5rem;
+					font-size: 0.9rem;
+					border: 1px solid #ced4da;
+					border-radius: 0.25rem;
+				}
+
+				input[type='checkbox'] {
+					transform: scale(
+						0.9
+					); // Scales down the checkbox for compact size
+					accent-color: var(--page-inner-content-padding);
+				}
+			}
+
+			.levels {
+				display: flex;
+				flex-wrap: wrap;
+				// flex-direction: column;
+				gap: 0.25rem;
+
+				label {
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+				}
+			}
+
 			.right {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				// gap: 0.5rem;
+
+				.btn {
+					padding: 0.5rem 1rem;
+					font-size: 0.9rem;
+					width: 40%;
+				}
 			}
 		}
+		@media (max-width: 600px) {
+			padding: 1rem;
 
+			.filters {
+				padding: 0.5rem;
+				gap: 0.5rem;
+				border: none;
+				box-shadow: none; // Removes shadow on smaller screens
+
+				.searchinput input[type='text'],
+				.coursetype select {
+					padding: 0.4rem;
+					font-size: 0.85rem;
+				}
+
+				.right {
+					flex-direction: column;
+					align-items: center;
+
+					.btn {
+						padding: 0.4rem 0.8rem;
+						font-size: 0.85rem;
+						width: 100%;
+					}
+				}
+			}
+		}
 		.courses {
 			// background-image: url('/assets/Images/pattern.png');
 			// background-attachment: fixed;
