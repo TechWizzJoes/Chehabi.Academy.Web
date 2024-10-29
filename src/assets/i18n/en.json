@@ -119,8 +119,12 @@
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
+		"searchPlaceholder": "Course name",
 		"searchButton": "Search",
-		"classType": "Class Type",
+		"courseTypePlaceholder": "Course type",
+		"courseType": "Course Type",
+		"rating": "Rating",
+		"level": "Level",
 		"beginner": "Beginner",
 		"intermediate": "Intermediate",
 		"advanced": "Advanced",

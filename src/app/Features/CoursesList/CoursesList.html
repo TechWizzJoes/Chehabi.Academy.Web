@@ -14,40 +14,36 @@
 						name="searchInput"
 						[(ngModel)]="Filter.SearchInput"
 						#searchInput="ngModel"
-						placeholder="{{ 'CourseListPage.searchButton' | translate }}" />
+						placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}" />
 					<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
 				</div>
 				<div class="coursetype">
-					<label for="classType" class="form-label">{{ 'CourseListPage.classType' | translate }}</label>
-					<select
-						class="form-select"
-						id="courseType"
-						name="CourseType"
-						[(ngModel)]="Filter.Type"
-						#CourseType="ngModel"
-						required
-						placeholder="Select the course type">
+					<label for="classType" class="form-label">{{ 'CourseListPage.courseType' | translate }}</label>
+					<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
+						<option value="" disabled hidden>{{ 'CourseListPage.courseTypePlaceholder' | translate }}</option>
 						<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
 					</select>
 				</div>
 				<div class="rating">
+					<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
 					<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
 				</div>
 				<div class="levels">
-					<label>
-						<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
-						{{ 'CourseListPage.beginner' | translate }}
-					</label>
-					<br />
-					<label>
-						<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
-						{{ 'CourseListPage.intermediate' | translate }}
-					</label>
-					<br />
-					<label>
-						<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
-						{{ 'CourseListPage.advanced' | translate }}
-					</label>
+					<label for="classType" class="form-label">{{ 'CourseListPage.level' | translate }}</label>
+					<div class="levels-container">
+						<label>
+							<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
+							{{ 'CourseListPage.beginner' | translate }}
+						</label>
+						<label>
+							<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
+							{{ 'CourseListPage.intermediate' | translate }}
+						</label>
+						<label>
+							<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
+							{{ 'CourseListPage.advanced' | translate }}
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="right">

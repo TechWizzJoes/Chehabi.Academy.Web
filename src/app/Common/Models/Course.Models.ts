@@ -82,7 +82,7 @@ export namespace CourseModels {
 	export class Filter {
 		SearchInput!: string;
 		Rating!: number;
-		Type!: string;
+		Type: string = "";
 		Level: Levels = new Levels();
 
 	}
