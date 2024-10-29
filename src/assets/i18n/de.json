@@ -52,6 +52,7 @@
 		"AllRightsReserved": "Alle Rechte vorbehalten."
 	},
 	"AboutPage": {
+		"start_learning": "Lernen Sie los",
 		"title": "Die Seele unserer Plattform",
 		"paragraph1": "Die Chehabi Academy wurde 2023 aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch, kulturelle Unterschiede zu überbrücken, gegründet. Wir erkennen die Bedeutung des Arabischen in der globalen Kommunikation, im Erbe und in den Künsten und haben es uns zur Aufgabe gemacht, ein umfassendes Lernerlebnis zu bieten, das über reinen Wortschatz und Grammatik hinausgeht.",
 		"paragraph2": "Unsere Plattform lehrt nicht nur eine Sprache; sie taucht die Schüler in eine Welt voller Traditionen, Poesie, Geschichte und zeitgenössischer Einsichten ein. Mit einem Team von engagierten Fachleuten, die alle leidenschaftlich für Arabisch und Pädagogik sind, bieten wir eine Mischung aus bewährten Lehrmethoden und modernen E-Learning-Tools. An der Chehabi Academy ist jede Lektion ein Schritt näher daran, nicht nur ein Sprecher, sondern ein wahrer Kenner der arabischen Sprache und Kultur zu werden.",
@@ -67,7 +68,15 @@
 			"item6": "Stiftung Karlshöhe Ludwigsburg",
 			"item7": "Jugendamt Stuttgart",
 			"item8": "Polizeipräsidium Stuttgart"
-		}
+		},
+		"courses_title": "Unsere Kurse",
+		"courses_paragraph": "An der Chehabi Akademie bieten wir eine vielfältige Auswahl an Kursen, die auf die Bedürfnisse jedes Lernenden zugeschnitten sind. Von personalisierten 1-zu-1-Sitzungen über spannende Gruppen-Live-Kurse bis hin zu flexiblen aufgezeichneten Sitzungen – wir haben für jeden etwas dabei. Egal, ob Sie gerade Ihre Sprachreise beginnen oder Ihre bestehenden Fähigkeiten erweitern möchten, unsere sorgfältig gestalteten Kurse werden Sie inspirieren, Ihre Ziele zu erreichen.",
+
+		"approach_title": "Unser Ansatz",
+		"approach_paragraph": "An der Chehabi Akademie dreht sich unsere Lehrmethode ganz um Sie—den Schüler. Wir legen Wert auf interaktive und immersive Sprachlernerfahrungen, die Ihre Neugier wecken. Durch die Kombination moderner Lehrtechniken mit traditionellem Unterricht schaffen wir eine dynamische Umgebung, in der Sie nicht nur das Sprechen lernen, sondern auch den reichen kulturellen Kontext der Sprache schätzen. Machen Sie sich bereit, eine transformative Reise anzutreten, die Sie mit praktischen Fähigkeiten und kulturellen Einblicken ausstattet.",
+		"journey_title": "Lassen Sie uns unsere Reise beginnen!",
+		"call_to_action": "Bist du bereit, dein Sprachlernerlebnis zu beginnen? Schließe dich uns noch heute an und entdecke die Freude, mit der Chehabi Academy eine neue Sprache zu meistern!",
+		"join_now_de": "Jetzt Beitreten!"
 	},
 	"ContactPage": {
 		"title": "Kontaktieren Sie uns",

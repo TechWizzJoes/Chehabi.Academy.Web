@@ -1,7 +1,20 @@
 <div class="page-inner bg-gradient-3">
 	<!-- <h1 class="">About Us</h1> -->
+	<div class="content-section">
+		<div class="video-background"></div>
+		<div class="text-container">
+			<div class="text-left">
+				<h1>{{ 'AboutPage.title' | translate }}</h1>
+			</div>
+			<a class="button btn btn-primary" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]"
+				>{{ 'AboutPage.start_learning' | translate }}</a
+			>
+			<a class="button btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Courses]"
+				>{{ 'AboutPage.start_learning' | translate }}</a
+			>
+		</div>
+	</div>
 
-	<h1>{{ 'AboutPage.title' | translate }}</h1>
 	<div class="page-section no-min">
 		<div class="partition content">
 			<p>{{ 'AboutPage.paragraph1' | translate }}</p>
@@ -11,26 +24,39 @@
 			<img src="" alt="" />
 		</div>
 	</div>
-	<h1>{{'AboutPage.founder_title'| translate}}</h1>
-	<div class="page-section no-min">
-		<div class="partition content">
-			<p>{{ 'AboutPage.founder_paragraph1' | translate }}</p>
-			<div>
-				{{ 'AboutPage.founder_paragraph2' | translate }}
-				<ul>
-					<li>{{ 'AboutPage.founder_list.item1' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item2' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item3' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item4' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item5' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item6' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item7' | translate }}</li>
-					<li>{{ 'AboutPage.founder_list.item8' | translate }}</li>
-				</ul>
-			</div>
+	<h2 class="px-4">{{ 'AboutPage.courses_title' | translate }}</h2>
+	<p class="px-4">{{ 'AboutPage.courses_paragraph' | translate }}</p>
+
+	<h2 class="px-4">{{ 'AboutPage.approach_title' | translate }}</h2>
+	<p class="px-4">{{ 'AboutPage.approach_paragraph' | translate }}</p>
+
+	<div class="founder-section">
+		<h2>{{'AboutPage.founder_title'| translate}}</h2>
+		<div class="founder-info">
+			<img src="assets/Images/founder.png" alt="Founder" class="founder-image" />
+
+			<div class="founder-name">Bashir Alshihabi</div>
+			<div class="founder-title">{{ 'AboutPage.founder_paragraph1' | translate }}</div>
+			<div class="founder-title">{{ 'AboutPage.founder_paragraph2' | translate }}</div>
+
+			<ul class="list-courses px-4">
+				<li>{{ 'AboutPage.founder_list.item1' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item2' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item3' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item4' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item5' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item6' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item7' | translate }}</li>
+				<li>{{ 'AboutPage.founder_list.item8' | translate }}</li>
+			</ul>
 		</div>
-		<div class="partition image">
-			<img src="assets/Images/founder.png" />
-		</div>
+	</div>
+
+	<div class="bottom-section">
+		<h2>{{ 'AboutPage.journey_title' | translate }}</h2>
+		<p>{{ 'AboutPage.call_to_action' | translate }}</p>
+
+		<a class="btn btn-primary" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'AboutPage.join_now' | translate}}</a>
+		<a class="btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Courses]">{{'AboutPage.join_now' | translate}}</a>
 	</div>
 </div>

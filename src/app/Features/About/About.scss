@@ -1,11 +1,113 @@
+$font-family: 'Manrope', 'Noto Sans', sans-serif;
+$bg-color: #f8fafc; // slate-50
+$text-color: #0d151c;
+$button-color: #2094f3;
+$border-color: #cedde8;
+$link-color: #49779c;
 .page-inner {
 	min-height: calc(100vh - var(--header-height));
-	&.bg-gradient-3 {
-		background: var(--background-horizontal-gradient-180);
+	// &.bg-gradient-3 {
+	// 	background: var(--background-horizontal-gradient-180);
+	// }
+	.content-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 2.5rem; // Adjust padding as needed
+
+		@media (min-width: 480px) {
+			gap: 0.5rem; // Adjust gap for smaller screens
+		}
+
+		@media (min-width: 864px) {
+			flex-direction: row;
+		}
 	}
-	h1 {
-		padding-inline-start: var(--page-inner-content-padding);
+
+	.video-background {
+		background-image: url('https://cdn.usegalileo.ai/sdxl10/3298a1a5-6647-4ee8-8312-165ad0b4543d.png');
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		aspect-ratio: 16 / 9; // Maintain aspect ratio
+		object-fit: fill;
+		border-radius: 1rem;
+
+		@media (min-width: 480px) {
+			min-width: 400px;
+		}
 	}
+
+	.text-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+
+		@media (min-width: 480px) {
+			min-width: 400px;
+			gap: 0.5rem; // Adjust gap for smaller screens
+		}
+
+		@media (min-width: 864px) {
+			justify-content: center;
+		}
+
+		.text-left {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+
+			h1 {
+				color: var(--primary-color1);
+				font-size: 2.25rem; // 4xl
+				font-weight: 800;
+				line-height: 1.25; // leading-tight
+				letter-spacing: -0.033em;
+
+				@media (min-width: 480px) {
+					font-size: 3rem; // 5xl
+				}
+			}
+
+			h2 {
+				color: $text-color;
+				font-size: 0.875rem; // sm
+				font-weight: 400;
+				line-height: 1.5; // leading-normal
+
+				@media (min-width: 480px) {
+					font-size: 1rem; // base
+				}
+			}
+		}
+
+		.button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			overflow: hidden;
+			border-radius: 1rem;
+			height: 2.5rem; // h-10
+			padding: 0 1rem; // px-4
+			background-color: var(--primary-color2);
+			color: #f8fafc; // slate-50
+			font-size: 0.875rem; // sm
+			font-weight: 700;
+			line-height: 1.5; // leading-normal
+			letter-spacing: 0.015em;
+
+			@media (min-width: 480px) {
+				height: 3rem; // h-12
+				padding: 0 1.25rem; // px-5
+				font-size: 1rem; // base
+			}
+		}
+	}
+	// h1 {
+	// 	padding-inline-start: var(--page-inner-content-padding);
+	// }
 	.page-section {
 		min-height: auto !important;
 		.content {
@@ -20,6 +122,140 @@
 			img {
 				width: 100%;
 			}
+		}
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+		gap: 0.75rem; // gap-3
+		padding: 1rem; // p-4
+
+		.feature-card {
+			display: flex;
+			flex-direction: column;
+			border-radius: 0.5rem; // rounded-lg
+			border: 1px solid $border-color;
+			background-color: $bg-color;
+			padding: 1rem; // p-4
+			gap: 0.25rem; // gap-3
+
+			.icon {
+				background-size: cover;
+				background-repeat: no-repeat;
+				border-radius: 0.5rem;
+				width: 2.5rem; // w-10
+				height: 2.5rem; // aspect-square
+
+				&.software-engineering {
+					background-image: url('https://cdn.usegalileo.ai/stability/54ef94f0-de31-498e-b7b4-8aece17f406e.png');
+				}
+
+				&.data-science {
+					background-image: url('https://cdn.usegalileo.ai/stability/3e1d35c8-9990-47b0-96bd-e800c7ceafb7.png');
+				}
+
+				&.product-management {
+					background-image: url('https://cdn.usegalileo.ai/stability/005d40e3-84e6-4092-98fe-af5206d87c6c.png');
+				}
+
+				&.ui-design {
+					background-image: url('https://cdn.usegalileo.ai/stability/f49b1c3f-f0fc-4183-86db-ce632844a4a4.png');
+				}
+
+				&.cybersecurity {
+					background-image: url('https://cdn.usegalileo.ai/stability/20a8d9d4-d5f0-47f5-a847-bf90942389eb.png');
+				}
+
+				&.blockchain {
+					background-image: url('https://cdn.usegalileo.ai/stability/3e39f856-6720-408e-b56a-bce55cf045ef.png');
+				}
+			}
+
+			.feature-title {
+				color: $text-color;
+				font-size: 1rem; // base
+				font-weight: 700;
+				line-height: 1.25; // leading-tight
+			}
+
+			.feature-description {
+				color: $link-color;
+				font-size: 0.875rem; // sm
+				font-weight: 400;
+				line-height: 1.5; // leading-normal
+			}
+		}
+	}
+
+	// Founder Section
+	.founder-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem 1rem; // Adjust as necessary
+		background-color: $bg-color;
+
+		h2 {
+			color: $text-color;
+			font-size: 1.75rem; // 28px
+			font-weight: 700;
+			line-height: 1.25; // leading-tight
+			margin-bottom: 1rem; // mb-4
+		}
+
+		.founder-info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.founder-name {
+				font-size: 1.5rem; // 24px
+				font-weight: 600;
+				color: $text-color;
+			}
+
+			.founder-title {
+				font-size: 1rem; // base
+				font-weight: 400;
+				color: var(--primary-color2);
+				margin-top: 0.5rem; // mt-2
+			}
+
+			.founder-image {
+				border-radius: 50%;
+				width: 150px; // Adjust as needed
+				height: 150px; // Adjust as needed
+				margin-top: 1rem; // mt-4
+				object-fit: cover;
+			}
+			ul {
+				&.list-courses {
+					align-self: flex-start;
+					list-style: none;
+					list-style-type: circle;
+					color: var(--primary-color2);
+				}
+			}
+		}
+	}
+}
+
+// Bottom Section
+.bottom-section {
+	display: flex;
+	justify-content: center;
+	padding: 1rem; // Adjust as needed
+	flex-direction: column;
+	align-items: center;
+
+	h4 {
+		font-size: 0.875rem; // sm
+		font-weight: 400;
+		line-height: 1.5; // leading-normal
+
+		@media (min-width: 480px) {
+			font-size: 1rem; // base
 		}
 	}
 }

@@ -52,6 +52,8 @@
 		"AllRightsReserved": "All rights reserved."
 	},
 	"AboutPage": {
+		"start_learning": "Start Learning",
+
 		"title": "The Soul Of Our Platform",
 		"paragraph1": "Established in 2023, Chehabi Academy was born out a profound love for the Arabic language and a desire to bridge cultural divides. Recognizing the significance of Arabic in global communication, heritage, and arts, we embarked on a mission to offer a comprehensive learning experience that goes beyond mere vocabulary and grammar.",
 		"paragraph2": "Our platform doesn't just teach a language; it immerses students in a world of tradition, poetry, history, and contemporary insights. With a team of dedicated professionals, all passionate about Arabic and pedagogy, we provide a blend of time-tested teaching methodologies and cutting-edge e-learning tools. At Chehabi Academy, every lesson is a step closer to becoming not just a speaker, but a true connoisseur of the Arabic language and culture.",
@@ -67,7 +69,16 @@
 			"item6": "Stiftung Karlshöhe Ludwigsburg",
 			"item7": "Jugendamt Stuttgart",
 			"item8": "Polizeipräsidium Stuttgart"
-		}
+		},
+		"courses_title": "Our Courses",
+		"courses_paragraph": "At Chehabi Academy, we offer a diverse range of courses tailored to meet the needs of every learner. From personalized 1-on-1 private sessions to engaging group live courses and flexible pre-recorded sessions, we have something for everyone. Whether you are just starting your language journey or seeking to elevate your existing skills, our thoughtfully designed courses will inspire you to achieve your goals.",
+
+		"approach_title": "Our Approach",
+		"approach_paragraph": "At Chehabi Academy, our teaching methodology is all about you—the student. We prioritize interactive and immersive language learning experiences that captivate your curiosity. By blending modern teaching techniques with traditional instruction, we create a dynamic environment where you not only learn to speak but also appreciate the rich cultural context of the language. Prepare to embark on a transformative journey that equips you with practical skills and cultural insights.",
+
+		"journey_title": "Let us start our journey!",
+		"call_to_action": "Are you ready to embark on your language learning adventure? Join us today and discover the joy of mastering a new language with Chehabi Academy!",
+		"join_now": "Join Us Now!"
 	},
 	"ContactPage": {
 		"title": "Contact Us",
