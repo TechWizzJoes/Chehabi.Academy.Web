@@ -21,4 +21,5 @@ export class RoutePaths {
 	public static Class = 'class';
 	public static UpcomingSessions = 'upcoming-sessions';
 	public static Notifications = 'notifications';
+	public static Faq = 'faq';
 }

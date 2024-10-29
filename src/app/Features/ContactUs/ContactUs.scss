@@ -9,42 +9,6 @@
 	align-items: flex-start !important;
 }
 
-.faq-section {
-	padding: 40px 20px;
-	background-color: #f9f9f9;
-
-	.faq-section h2 {
-		text-align: center;
-		font-size: 36px;
-		margin-bottom: 30px;
-	}
-
-	.faq {
-		max-width: 800px;
-		margin: 0 auto;
-	}
-
-	.faq-item {
-		margin-bottom: 20px;
-	}
-
-	.faq-item h3 {
-		font-size: 22px;
-		color: #333;
-		cursor: pointer;
-		margin-bottom: 10px;
-	}
-
-	.faq-item p {
-		font-size: 16px;
-		color: #555;
-		// display: none;
-	}
-
-	.faq-item.active p {
-		display: block;
-	}
-}
 /* Container for the form */
 
 .container {
