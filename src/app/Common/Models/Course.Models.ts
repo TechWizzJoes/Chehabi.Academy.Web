@@ -13,6 +13,7 @@ export namespace CourseModels {
 		Duration!: number;
 		VideoPath!: string;
 		FilePath!: string;
+		FreeFilePath!: string;
 		StartDate: string = Constants.convertDateToYYYYMMDD(new Date());
 		IsActive: boolean = true;
 		IsDeleted!: boolean;

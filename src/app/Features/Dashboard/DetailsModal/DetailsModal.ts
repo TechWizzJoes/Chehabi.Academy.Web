@@ -32,6 +32,7 @@ export class DetailsModalComponent implements OnInit {
     NewClass: CourseModels.Class = new CourseModels.Class();
     NewCourse: CourseModels.Course = new CourseModels.Course();
     CourseFile!: File;
+    CourseSampleFile!: File;
     CourseImage!: File;
     ModalPropertyEnum = ModalPropertyEnum;
     DynamicValue: string = '';
@@ -152,7 +153,7 @@ export class DetailsModalComponent implements OnInit {
             this.HttpService.Post<CourseModels.Course, CourseModels.Course>(endPoint, this.NewCourse).subscribe({
                 next: async data => {
                     this.NewCourse = data;
-                    if ((this.CourseFile || this.CourseImage)) {
+                    if ((this.CourseFile || this.CourseSampleFile || this.CourseImage)) {
                         await this.Courses.editCourse();
                     }
                     this.IsDisabled = false;
@@ -173,11 +174,13 @@ export class DetailsModalComponent implements OnInit {
             let endPoint = HttpEndPoints.Courses.EditCourse;
             endPoint = endPoint.replace('{id}', this.NewCourse.Id.toString())
             this.IsDisabled = true;
-            if ((this.CourseFile || this.CourseImage)) {
+            if ((this.CourseFile || this.CourseSampleFile || this.CourseImage)) {
                 if (this.CourseFile) {
-                    await this.uploadFile(HttpEndPoints.Courses.Uploadfile, this.CourseFile, false)
+                    await this.uploadFile(HttpEndPoints.Courses.Uploadfile.replace("{IsSample}", "false"), this.CourseFile, false)
                 }
-
+                if (this.CourseSampleFile) {
+                    await this.uploadFile(HttpEndPoints.Courses.Uploadfile.replace("{IsSample}", "true"), this.CourseSampleFile, false)
+                }
                 if (this.CourseImage) {
                     await this.uploadFile(HttpEndPoints.Courses.UploadImage, this.CourseImage, true)
                 }
@@ -303,15 +306,16 @@ export class DetailsModalComponent implements OnInit {
         }
     }
 
-    onFileChange(event: any, isImage: boolean = true) {
+    onImageChange(event: any) {
+        this.CourseImage = event.target.files[0];
+    }
 
-        if (isImage) {
-            this.CourseImage = event.target.files[0];
-
+    onFileChange(event: any, isSample: boolean = false) {
+        if (isSample) {
+            this.CourseSampleFile = event.target.files[0];
         } else {
             this.CourseFile = event.target.files[0];
         }
-
     }
 
     async uploadFile(endPoint: string, file: File, isImage: boolean): Promise<void> {
@@ -331,14 +335,16 @@ export class DetailsModalComponent implements OnInit {
                     if (res.type === HttpEventType.Response) {
                         this.IsDisabled = false;
                         let filePath = this.HttpService.ApiUrl + 'courses/' + res.body.filePath.replaceAll('\\', '/');
-
                         if (isImage) {
                             this.NewCourse.ImageUrl = filePath;
-                            console.log(this.NewCourse);
                         } else {
-                            this.NewCourse.FilePath = filePath;
+                            if (endPoint.includes('true')) {// the sample file is uploaded
+                                this.NewCourse.FreeFilePath = filePath;
+                            } else {
+                                this.NewCourse.FilePath = filePath;
+                            }
                         }
-                        resolve(); // Resolve the promise once the upload is complete
+                        resolve();
                     }
 
                     if (res.type === HttpEventType.UploadProgress) {
@@ -352,7 +358,7 @@ export class DetailsModalComponent implements OnInit {
                 },
                 error: (err) => {
                     this.IsDisabled = false;
-                    reject(err); // Reject the promise if an error occurs
+                    reject(err);
                 }
             });
         });

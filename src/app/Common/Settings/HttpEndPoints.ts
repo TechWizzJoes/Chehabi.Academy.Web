@@ -19,7 +19,7 @@ export class HttpEndPoints {
 		EditCourse: 'courses/{id}',
 		DeleteCourse: 'courses/{id}',
 		UploadImage: 'courses/upload/image/{id}',
-		Uploadfile: 'courses/upload/file/{id}',
+		Uploadfile: 'courses/upload/file/{id}?IsSample={IsSample}',
 		AddCourse: 'courses',
 	}
 
