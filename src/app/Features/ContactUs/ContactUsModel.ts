@@ -4,6 +4,6 @@ export namespace ContactUsModel {
             public Email: string,
             public FirstName: string,
             public LastName: string,
-            public Descriabtion: string,) { }
+            public Description: string,) { }
     }
 }

@@ -56,7 +56,7 @@
 		<h2>{{ 'AboutPage.journey_title' | translate }}</h2>
 		<p>{{ 'AboutPage.call_to_action' | translate }}</p>
 
-		<a class="btn btn-primary" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'AboutPage.join_now' | translate}}</a>
-		<a class="btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Courses]">{{'AboutPage.join_now' | translate}}</a>
+		<a class="btn btn-primary" *ngIf="!AuthService.IsAuthenticated" [routerLink]="['/',RoutePaths.Login]">{{'AboutPage.join_now' | translate}}</a>
+		<a class="btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="['/',RoutePaths.Courses]">{{'AboutPage.join_now' | translate}}</a>
 	</div>
 </div>

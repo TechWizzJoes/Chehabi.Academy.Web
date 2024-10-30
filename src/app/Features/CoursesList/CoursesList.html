@@ -4,51 +4,53 @@
 		<app-loader></app-loader>
 	</div> -->
 	<div class="page-section">
-		<div class="page-container filters">
-			<div class="left">
-				<div class="searchinput">
-					<input
-						type="text"
-						class="form-control"
-						id="searchInput"
-						name="searchInput"
-						[(ngModel)]="Filter.SearchInput"
-						#searchInput="ngModel"
-						placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}" />
-					<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
-				</div>
-				<div class="coursetype">
-					<label for="classType" class="form-label">{{ 'CourseListPage.courseType' | translate }}</label>
-					<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
-						<option value="" disabled hidden>{{ 'CourseListPage.courseTypePlaceholder' | translate }}</option>
-						<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
-					</select>
-				</div>
-				<div class="rating">
-					<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
-					<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
-				</div>
-				<div class="levels">
-					<label for="classType" class="form-label">{{ 'CourseListPage.level' | translate }}</label>
-					<div class="levels-container">
-						<label>
-							<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
-							{{ 'CourseListPage.beginner' | translate }}
-						</label>
-						<label>
-							<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
-							{{ 'CourseListPage.intermediate' | translate }}
-						</label>
-						<label>
-							<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
-							{{ 'CourseListPage.advanced' | translate }}
-						</label>
+		<div class="page-container">
+			<div class="filters">
+				<div class="left">
+					<div class="searchinput">
+						<input
+							type="text"
+							class="form-control"
+							id="searchInput"
+							name="searchInput"
+							[(ngModel)]="Filter.SearchInput"
+							#searchInput="ngModel"
+							placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}" />
+						<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
+					</div>
+					<div class="coursetype">
+						<label for="classType" class="form-label">{{ 'CourseListPage.courseType' | translate }}</label>
+						<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
+							<option value="" disabled hidden>{{ 'CourseListPage.courseTypePlaceholder' | translate }}</option>
+							<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+						</select>
+					</div>
+					<div class="rating">
+						<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
+						<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
+					</div>
+					<div class="levels">
+						<label for="classType" class="form-label">{{ 'CourseListPage.level' | translate }}</label>
+						<div class="levels-container">
+							<label>
+								<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
+								{{ 'CourseListPage.beginner' | translate }}
+							</label>
+							<label>
+								<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
+								{{ 'CourseListPage.intermediate' | translate }}
+							</label>
+							<label>
+								<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
+								{{ 'CourseListPage.advanced' | translate }}
+							</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="right">
-				<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>
-				<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.filterButton' | translate }}</button>
+				<div class="right">
+					<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>
+					<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.filterButton' | translate }}</button>
+				</div>
 			</div>
 		</div>
 		<div class="page-section" *ngIf="!IsLoaded">

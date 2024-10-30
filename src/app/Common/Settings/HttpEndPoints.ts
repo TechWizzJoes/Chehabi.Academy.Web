@@ -76,6 +76,9 @@ export class HttpEndPoints {
 		addRating: 'ratings',
 		GetCourseRating: 'ratings/course/:courseId/user',
 		GetAllByUser: 'ratings/user/{id}'
+	}
 
+	public static Contact = {
+		Add: 'contact-us',
 	}
 }

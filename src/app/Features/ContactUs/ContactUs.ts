@@ -22,8 +22,8 @@ import { TranslateModule } from '@ngx-translate/core';
 	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule, TranslateModule]
 })
 export class ContactUsComponent implements OnInit {
-	contactForm: FormGroup;
-	ReqContactusModel: ContactUsModel.ContactUsModelReq
+	contactForm!: FormGroup;
+	ReqContactusModel!: ContactUsModel.ContactUsModelReq
 
 	constructor(
 		private router: Router,
@@ -34,10 +34,9 @@ export class ContactUsComponent implements OnInit {
 		private AuthService: AuthService,
 		private StorageService: StorageService,
 		private FormBuilder: FormBuilder,
+	) { }
 
-
-
-	) {
+	ngOnInit() {
 		this.contactForm = this.FormBuilder.group({
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
@@ -46,33 +45,39 @@ export class ContactUsComponent implements OnInit {
 			description: ['', Validators.required]
 		});
 		this.ReqContactusModel = new ContactUsModel.ContactUsModelReq('', '', '', '');
-
 	}
 
-
 	onSubmit() {
-
-
 		if (this.contactForm.valid) {
 			this.ReqContactusModel.FirstName = this.contactForm.value['firstName'];
 			this.ReqContactusModel.LastName = this.contactForm.value['lastName'];
 			this.ReqContactusModel.Email = this.contactForm.value['Email'];
-			this.ReqContactusModel.Descriabtion = this.contactForm.value['description'];
+			this.ReqContactusModel.Description = this.contactForm.value['description'];
 
-			let httpEndPoint = HttpEndPoints.Email.EmailSender;
-			this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint, this.ReqContactusModel
+			// let httpEndPoint = HttpEndPoints.Email.EmailSender;
+			// this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint, this.ReqContactusModel
+			// ).subscribe(
+			// 	{
+			// 		next: (response) => {
+			// 			this.NotifyService.Success("Email Sent", "check your email");
+			// 			this.contactForm.reset();
+			// 		},
+			// 		error: (errorResponse) => {
+			// 			this.NotifyService.Error(errorResponse, 'Error')
+			// 		}
+			// 	}
+			// );
+
+			let httpEndPoint2 = HttpEndPoints.Contact.Add;
+			this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint2, this.ReqContactusModel
 			).subscribe(
 				{
 					next: (response) => {
-						this.NotifyService.Success("Email Sent", "check your email");
+						this.NotifyService.Success("Your inquiry has reached us", "Thank you!");
 						this.contactForm.reset();
 					},
 					error: (errorResponse) => {
 						this.NotifyService.Error(errorResponse, 'Error')
-						// 	console.log("Error");
-						// 	console.log(errorResponse);
-						// 	// to show the error on login panel
-						// 	console.log(this.ErrorCodesService.GetErrorCode(errorResponse.error));
 					}
 				}
 			);
@@ -85,6 +90,4 @@ export class ContactUsComponent implements OnInit {
 			// console.log(this.contactForm.);
 		}
 	}
-
-	ngOnInit() { }
 }
