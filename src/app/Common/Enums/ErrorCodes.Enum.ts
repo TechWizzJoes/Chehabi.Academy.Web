@@ -17,5 +17,18 @@ export enum ErrorCodesEnum {
 	CLASS_INACTIVE = 'Class is currently inactive.',
 	CLASS_DELETED = 'Class is deleted!',
 	CLASS_Started = 'Class has already started.',
-	CLASS_HAS_NO_FREETRIAL = 'This class doesn\'t have a free trial!'
+	CLASS_HAS_NO_FREETRIAL = 'This class doesn\'t have a free trial!',
+
+	USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS',
+	COURSE_NOT_FOUND = 'COURSE_NOT_FOUND',
+
+	STRIPE_WEBHOOK_ERROR = 'STRIPE_WEBHOOK_ERROR',
+
+	//Notification template error
+	EMAIL_NOT_Sent = 'Email not sent:',
+	Invalid_Notification_Type = 'Invalid notification type',
+	Template_Not_Found = 'Template not found',
+	USER_NOT_CREATOR = 'USER_NOT_CREATOR',
+	USER_NOT_ADMIN = 'USER_NOT_ADMIN'
+
 }

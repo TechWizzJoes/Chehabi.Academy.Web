@@ -7,7 +7,9 @@
 			<h1>{{ 'FeedbackPage.title' | translate }}</h1>
 			<p>{{ 'FeedbackPage.description' | translate }}<br /></p>
 			<div>
-				<a class="btn btn-primary me-2">{{ 'FeedbackPage.shareYourThoughts' | translate }}</a>
+				<a [routerLink]="['/', RoutePaths.Dashboard, RoutePaths.Classes]" class="btn btn-primary me-2"
+					>{{ 'Join and share your thoughts of our content' | translate }}</a
+				>
 				<a (click)="scrollToTarget()" class="btn btn-outline-primary">{{ 'FeedbackPage.browseFeedbacks' | translate }}</a>
 			</div>
 		</div>

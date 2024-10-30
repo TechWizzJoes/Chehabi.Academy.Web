@@ -64,10 +64,12 @@
 					</small>
 				</div>
 				<div class="lower-section">
-					<app-StarRating
-						[Rate]="getRatingForCourse(userClass.Class.CourseId)"
-						[ReadOnly]="RatingReadOnly"
-						(RateChange)="onRateChange($event,userClass.Class.CourseId)"></app-StarRating>
+					<div class="d-flex flex-column">
+						<app-StarRating [Rate]="getCourseRating(userClass.Class.CourseId)" [ReadOnly]="true"></app-StarRating>
+						<a class="rate-link" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId)">
+							{{(!UserRatings[userClass.Class.CourseId] ? 'Leave a rating' : 'your rating') | translate }}
+						</a>
+					</div>
 					<span>
 						<i class="fa fa-usd" aria-hidden="true"></i>
 						<small class="ps-2">{{userClass.Class.Course.Price || '0'}}</small>

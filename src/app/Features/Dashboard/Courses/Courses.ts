@@ -22,7 +22,6 @@ import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { Constants } from '@App/Common/Settings/Constants';
-import { RatingModels } from '@App/Common/Models/Rating.Models';
 
 @Component({
     standalone: true,
@@ -54,7 +53,7 @@ export class CoursesComponent implements OnInit {
     CurrentUser!: AuthModels.CurrentUserResModel;
     CurrentRating: number = 0;
     RatingReadOnly: boolean = false;
-    UserRatings: RatingModels.Rating[] = [];
+
     constructor(
         private Router: Router,
         private ActivatedRoute: ActivatedRoute,

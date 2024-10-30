@@ -57,10 +57,6 @@ export class HttpEndPoints {
 		GetAll: 'whatsnew/list/all',
 	}
 
-	public static Feeback = {
-		GetAll: 'feedback/list/all',
-	}
-
 	public static Payment = {
 		Checkout: 'payment/checkout',
 	}
@@ -72,10 +68,11 @@ export class HttpEndPoints {
 		Checkout: 'cart/checkout',
 	}
 
-	public static Rating = {
-		addRating: 'ratings',
-		GetCourseRating: 'ratings/course/:courseId/user',
-		GetAllByUser: 'ratings/user/{id}'
+	public static Feedback = {
+		GetAll: 'feedback/list/all',
+		addRating: 'feedback',
+		GetCourseRating: 'feedback/course/:courseId/user',
+		GetAllByUser: 'feedback/user/{id}'
 	}
 
 	public static Contact = {

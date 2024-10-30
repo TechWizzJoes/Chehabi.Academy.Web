@@ -13,6 +13,7 @@ import { FeedbackCardComponent } from './FeedbackCard/FeedbackCard';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
 import { TranslateModule } from '@ngx-translate/core';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 // export class Feedback {
 // 	Id!: number;
@@ -28,7 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
 	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, FeedbackCardComponent, TranslateModule]
 })
 export class FeedbackComponent implements OnInit {
-
+	RoutePaths = RoutePaths;
 	Feedbacks: FeedbackModels.Feedback[] = [
 		// { Id: 1, Name: 'Sarah Müller', Paragraph: "Chehabi Academy has been an incredible place to learn Arabic. As a student in Germany, I was looking for a convenient and effective way to improve my Arabic language skills. The courses at Chehabi Academy not only met but exceeded my expectations. The dedicated instructors, interactive lessons, and the supportive community made my learning experience enjoyable and fruitful. I highly recommend Chehabi Academy to anyone looking to master the Arabic language.", ImageUrl: 'assets/courses/c1.jpeg' },
 		// { Id: 2, Name: 'Ahmed Fischer', Paragraph: "I cannot express how grateful I am to have found Chehabi Academy. As an expatriate in Germany, I needed to learn Arabic for personal and professional reasons. The quality of instruction and the flexibility of the classes at Chehabi Academy are exceptional. The teachers are knowledgeable and patient, and the curriculum is well-structured. I've made significant progress in a short time, thanks to their guidance.I couldn't have chosen a better place to learn Arabic.", ImageUrl: 'assets/courses/c2.jpeg' },
@@ -54,7 +55,7 @@ export class FeedbackComponent implements OnInit {
 	}
 
 	getFeedbacks() {
-		let endPoint = HttpEndPoints.Feeback.GetAll;
+		let endPoint = HttpEndPoints.Feedback.GetAll;
 		this.HttpService.Get<FeedbackModels.Feedback[]>(endPoint).subscribe(data => {
 			this.Feedbacks.push(...data)
 		})

@@ -1,0 +1,13 @@
+textarea {
+	resize: vertical;
+}
+
+.modal-footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	.btn-outline-dark {
+		margin-inline-end: 5px;
+	}
+}

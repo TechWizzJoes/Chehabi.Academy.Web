@@ -1,0 +1,29 @@
+<div class="modal-header">
+	<h5 class="modal-title title" *ngIf="isEdit">Edit</h5>
+	<h5 class="modal-title title" *ngIf="!isEdit">Add</h5>
+	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div>
+	<form (ngSubmit)="onSubmit()" #frm="ngForm" [ngClass]="{ 'form-submitted': true }">
+		<div class="modal-body">
+			<div class="mb-3">
+				<label for="rating" class="form-label me-3">Rating</label>
+				<app-StarRating [(Rate)]="feedback.Rating" [ReadOnly]="false"></app-StarRating>
+				<div [ngClass]="{ 'invalid-data': Error }" *ngIf="Error">
+					<div class="invalid-message">{{ Error }}</div>
+				</div>
+			</div>
+
+			<div class="mb-3" *ngIf="ratingConfirmed">
+				<label for="text" class="form-label">Feedback</label>
+				<textarea class="form-control" id="text" name="text" [(ngModel)]="feedback.Text" #text="ngModel"></textarea>
+				<small class="form-text text-muted">You can skip feedback but we highly appreciate your feedback.</small>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
+	<button class="btn btn-primary" *ngIf="!ratingConfirmed" (click)="onRatingConfirmed()">Save Rating</button>
+	<button class="btn btn-primary" *ngIf="ratingConfirmed" (click)="onSubmit()">Submit</button>
+</div>
