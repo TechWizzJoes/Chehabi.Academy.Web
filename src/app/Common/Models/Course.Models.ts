@@ -26,7 +26,8 @@ export namespace CourseModels {
 		ToBeLearned!: string;
 		Price!: number;
 		PriceBeforeDiscount!: number | null;
-		Level!: number;
+		Type!: CourseType;
+		Level!: CourseLevel;
 		IsLive!: boolean;
 		Classes: Class[] = [new Class()];
 		InstructorId!: number;
@@ -91,10 +92,15 @@ export namespace CourseModels {
 		Level: string = "";
 
 	}
-	export class Levels {
-		Beginner!: boolean;
-		Intermediate!: boolean;
-		Advanced!: boolean;
+	export class CourseType {
+		Id!: number;
+		Code!: number;
+		Text!: string;
+	}
 
+	export class CourseLevel {
+		Id!: number;
+		Code!: number;
+		Text!: string;
 	}
 }

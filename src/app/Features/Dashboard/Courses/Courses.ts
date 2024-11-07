@@ -22,6 +22,7 @@ import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { Constants } from '@App/Common/Settings/Constants';
+import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
 
 @Component({
     standalone: true,

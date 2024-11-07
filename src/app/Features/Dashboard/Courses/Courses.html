@@ -18,6 +18,7 @@
 					<span class="status active" *ngIf="Course.IsActive">{{ 'Courses.active' | translate }}</span>
 					<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Courses.inactive' | translate }}</span>
 				</div>
+				<p class="card-text">Level: {{Course.Level.Text}} Type: {{Course.Type.Text}}</p>
 				<p class="card-text">{{Course.Description}}</p>
 				<div class="middle-section">
 					<div class="instructor">
@@ -29,8 +30,7 @@
 				<div class="lower-section">
 					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
 					<span>
-						<i class="fa fa-usd" aria-hidden="true"></i>
-						<small class="ps-2">{{Course.Price || '0'}}</small>
+						<small class="ps-2"><span class="price-before">{{Course.PriceBeforeDiscount | currency}} </span>{{Course.Price | currency}}</small>
 					</span>
 				</div>
 			</div>
