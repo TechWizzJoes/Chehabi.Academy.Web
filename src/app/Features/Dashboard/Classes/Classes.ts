@@ -101,7 +101,11 @@ export class ClassesComponent implements OnInit {
         return this.UserRatings[courseId]?.Rating ?? 0;
     }
 
-    openFeedbackModal(feedback?: FeedbackModels.Feedback, courseId?: number) {
+    openFeedbackModal(feedback: FeedbackModels.Feedback, courseId: number, paid: boolean) {
+        if (!paid) {
+            this.NotifyService.Info("You must be fully enrolled to leave a rating.");
+            return;
+        }
         const modalRef = this.modalService.open(FeedbackModalComponent, { centered: true });
         modalRef.componentInstance.isEdit = !!feedback;
         if (feedback) modalRef.componentInstance.feedback = feedback;

@@ -18,6 +18,7 @@ export enum ErrorCodesEnum {
 	CLASS_DELETED = 'Class is deleted!',
 	CLASS_Started = 'Class has already started.',
 	CLASS_HAS_NO_FREETRIAL = 'This class doesn\'t have a free trial!',
+	COURSE_NOT_PAID_TO_RATE = 'You must be fully enrolled to leave a rating.',
 
 	USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS',
 	COURSE_NOT_FOUND = 'COURSE_NOT_FOUND',

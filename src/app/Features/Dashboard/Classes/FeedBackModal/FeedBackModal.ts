@@ -60,7 +60,6 @@ export class FeedbackModalComponent implements OnInit {
                     this.activeModal.close('save');
                 },
                 error: error => {
-                    this.NotifyService.Error('Error', 'Try Rating Again Later')
                 }
             });
     }

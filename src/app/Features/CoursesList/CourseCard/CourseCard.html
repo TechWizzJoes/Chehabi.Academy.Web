@@ -12,7 +12,7 @@
 			<span class="rate" *ngIf="!Course.Rating">N/A </span>
 
 			<!-- <ngb-rating [max]="5" [rate]="Course.Rating" [readonly]="true"></ngb-rating> ({{Course.Raters}}) -->
-			<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
+			<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
 		</div>
 		<div class="price"><span class="price-before">{{Course.PriceBeforeDiscount | currency}}</span> {{Course.Price | currency}}</div>
 		<!-- <a href="#" class="btn btn-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Go somewhere</a> -->

@@ -66,7 +66,7 @@
 				<div class="lower-section">
 					<div class="d-flex flex-column">
 						<app-StarRating [Rate]="getCourseRating(userClass.Class.CourseId)" [ReadOnly]="true"></app-StarRating>
-						<a class="rate-link" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId)">
+						<a class="rate-link" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId, userClass.IsPaid)">
 							{{(!UserRatings[userClass.Class.CourseId] ? 'Leave a rating' : 'your rating') | translate }}
 						</a>
 					</div>

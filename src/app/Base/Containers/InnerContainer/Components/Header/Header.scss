@@ -67,9 +67,6 @@
 	.white-logo-img {
 		display: block;
 	}
-	i {
-		color: white;
-	}
 	a {
 		color: white !important;
 		margin: 0 5px;
@@ -98,7 +95,18 @@
 		}
 	}
 }
-
+::ng-deep {
+	.navbar.navbar-scrolled {
+		i {
+			color: white;
+		}
+	}
+	.navbar {
+		i {
+			color: var(--primary-color2);
+		}
+	}
+}
 @media (max-width: 576px) {
 	.navbar {
 		.container-fluid {
