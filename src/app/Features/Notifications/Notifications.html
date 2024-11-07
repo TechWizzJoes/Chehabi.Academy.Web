@@ -5,13 +5,14 @@
 			<app-loader></app-loader>
 		</div>
 		<div class="page-container" *ngIf="IsLoaded">
-			<div *ngFor="let notification of Notifications" class="notification-item">
-				<div class="text" [id]="notification.Id">
+			<div *ngFor="let notification of Notifications; index as i" class="notification-item">
+				<div class="item-text" [id]="notification.Id">
 					<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
-					{{notification.Text}}
+					{{i+1}}){{notification.Text}}
 				</div>
 				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm' }}</span>
 			</div>
+			<a href="javascript:;" (click)="viewMore()">view more</a>
 		</div>
 	</div>
 </div>

@@ -1,12 +1,25 @@
-<button type="button" class="icon-button" [ngbPopover]="notificationPopup" placement="bottom-end" container="body" popoverClass="notification-popup">
+<button
+	type="button"
+	class="icon-button"
+	[ngbPopover]="notificationPopup"
+	placement="bottom-end"
+	container="body"
+	popoverClass="notification-popup"
+	(shown)="onPopoverOpen()"
+	(hidden)="onPopoverClose()">
 	<i class="fa fa-bell"></i>
-	<span *ngIf="Notifications.length > 0" class="counter">{{ Notifications.length > 10 ? '10+' : Notifications.length}}</span>
+	<span *ngIf="counter > 0" class="counter">{{ counter > 9 ? '9+' : counter}}</span>
 </button>
 
 <ng-template #notificationPopup>
+	<a [routerLink]="['/',RoutePaths.Notifications]">view all</a>
 	<div *ngFor="let notification of Notifications">
-		<div>{{notification.Text}}</div>
+		<div class="item-text-popup" [id]="notification.Id">
+			<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
+			{{notification.Text}}
+		</div>
 		<hr />
 	</div>
-	<a [routerLink]="['/',RoutePaths.Notifications]">notification page</a>
+
+	<div *ngIf="Notifications.length == 0">No new notifications</div>
 </ng-template>

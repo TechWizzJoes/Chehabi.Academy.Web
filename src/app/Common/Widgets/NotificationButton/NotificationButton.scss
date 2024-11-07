@@ -11,7 +11,7 @@ button {
 		border-radius: 50%;
 		width: 20px;
 		height: 20px;
-		color: var(--primary-color1);
+		color: var(--primary-font-color);
 		background-color: var(--primary-bg-color);
 		background-color: red;
 		margin: 0;
@@ -27,6 +27,17 @@ button {
 		max-height: 300px;
 		overflow: auto;
 
-		// add dot next to unread
+		.item-text-popup {
+			.new-item-indicator {
+				padding: 0;
+				display: inline-block;
+
+				border-radius: 50%;
+				width: 15px;
+				height: 15px;
+				color: var(--primary-color1);
+				background-color: var(--primary-color1);
+			}
+		}
 	}
 }
