@@ -1,0 +1,45 @@
+.container {
+	text-align: center;
+	max-width: 600px;
+	background-color: var(--primary-bg-color);
+	padding: 40px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+	font-size: 2.5em;
+	color: var(--primary-color1);
+	margin-bottom: 10px;
+}
+
+.coming-soon {
+	font-size: 1.5em;
+	color: var(--primary-color1);
+	margin-bottom: 20px;
+}
+
+.message {
+	font-size: 1.1em;
+	margin-bottom: 15px;
+	color: #555;
+}
+
+.invite {
+	font-size: 1.1em;
+	margin-bottom: 20px;
+	color: #555;
+}
+
+.contact-link {
+	color: var(--primary-color1);
+	text-decoration: underline;
+	font-weight: bold;
+	transition: color 0.3s;
+}
+
+.thank-you {
+	margin-top: 30px;
+	font-style: italic;
+	color: #888;
+}

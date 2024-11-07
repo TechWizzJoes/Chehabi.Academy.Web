@@ -22,4 +22,5 @@ export class RoutePaths {
 	public static UpcomingSessions = 'upcoming-sessions';
 	public static Notifications = 'notifications';
 	public static Faq = 'faq';
+	public static TeachWithUs = 'teach-with-us';
 }

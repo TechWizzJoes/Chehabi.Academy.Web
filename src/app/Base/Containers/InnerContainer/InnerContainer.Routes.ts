@@ -56,6 +56,10 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/Faq/Faq').then((c) => c.FaqComponent)
 			},
 			{
+				path: 'teach-with-us',
+				loadComponent: () => import('@App/Features/TeachWithUs/TeachWithUs').then((c) => c.TeachWithUsComponent)
+			},
+			{
 				canActivate: [AuthGuard],
 				path: 'dashboard',
 				loadComponent: () => import('@App/Features/Dashboard/Dashboard').then((c) => c.DashboardComponent),
