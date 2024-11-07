@@ -14,7 +14,7 @@
 			<!-- <ngb-rating [max]="5" [rate]="Course.Rating" [readonly]="true"></ngb-rating> ({{Course.Raters}}) -->
 			<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating>
 		</div>
-		<div class="price">{{Course.Price | currency}}</div>
+		<div class="price"><span class="price-before">{{Course.PriceBeforeDiscount | currency}}</span> {{Course.Price | currency}}</div>
 		<!-- <a href="#" class="btn btn-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Go somewhere</a> -->
 	</div>
 </div>

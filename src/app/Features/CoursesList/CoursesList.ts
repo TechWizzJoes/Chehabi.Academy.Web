@@ -16,6 +16,7 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { TranslateModule } from '@ngx-translate/core';
+import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
 
 
 @Component({
@@ -28,6 +29,9 @@ export class CoursesListComponent implements OnInit {
 	RoutePaths = RoutePaths
 	courseTypes = Object.keys(CourseTypeEnum);
 	courseTypesValues = Object.values(CourseTypeEnum);
+
+	CourseLevels = Object.keys(CourseLevelEnum);
+	CourseLevelsValues = Object.values(CourseLevelEnum);
 
 	Filter!: CourseModels.Filter;
 	Courses!: CourseModels.Course[]

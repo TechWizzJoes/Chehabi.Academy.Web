@@ -27,6 +27,11 @@
 		}
 		.price {
 			font-weight: 600;
+
+			.price-before {
+				text-decoration: line-through;
+				font-size: smaller;
+			}
 		}
 	}
 }

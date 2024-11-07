@@ -1,3 +1,4 @@
+import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
 import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
@@ -45,6 +46,9 @@ export class DetailsModalComponent implements OnInit {
     courseTypes = Object.keys(CourseTypeEnum);
     courseTypesValues = Object.values(CourseTypeEnum);
 
+    courseLevels = Object.keys(CourseLevelEnum);
+    courseLevelsValues = Object.values(CourseLevelEnum);
+
     @Input() property!: ModalPropertyEnum;
     @Input() isEdit: string = '';
     @Input() course: CourseModels.Course = new CourseModels.Course();
@@ -66,6 +70,7 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Id = this.course.Id;
         this.NewCourse.Name = this.course.Name;
         this.NewCourse.TypeIdString = this.course.TypeIdString;
+        this.NewCourse.LevelIdString = this.course.LevelIdString;
         this.NewCourse.Description = this.course.Description;
         this.NewCourse.VideoPath = this.course.VideoPath;
         this.NewCourse.FilePath = this.course.FilePath;
@@ -74,6 +79,7 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Prerequisite = this.course.Prerequisite;
         this.NewCourse.ToBeLearned = this.course.ToBeLearned;
         this.NewCourse.Price = this.course.Price;
+        this.NewCourse.PriceBeforeDiscount = this.course.PriceBeforeDiscount;
         this.NewCourse.IsActive = this.course.IsActive;
         this.NewCourse.Classes = this.course.Classes;
         this.NewCourse.MaxStartDate = this.Courses.GetEarliestClassDate(this.course);

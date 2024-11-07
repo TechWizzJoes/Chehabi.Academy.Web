@@ -19,17 +19,24 @@
 						<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
 					</div>
 					<div class="coursetype">
-						<label for="classType" class="form-label">{{ 'CourseListPage.courseType' | translate }}</label>
+						<label for="classType" class="form-label">{{ 'CourseListPage.Type' | translate }}</label>
 						<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
-							<option value="" disabled hidden>{{ 'CourseListPage.courseTypePlaceholder' | translate }}</option>
+							<option value="" disabled hidden>{{ 'CourseListPage.TypePlaceholder' | translate }}</option>
 							<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+						</select>
+					</div>
+					<div class="coursetype">
+						<label for="classType" class="form-label">{{ 'CourseListPage.Level' | translate }}</label>
+						<select class="form-select" name="CourseLevel" [(ngModel)]="Filter.Level" #CourseLevel="ngModel" required>
+							<option value="" disabled hidden>{{ 'CourseListPage.LevelPlaceholder' | translate }}</option>
+							<option *ngFor="let type of CourseLevelsValues; index as i" [value]="type">{{ CourseLevels[i] }}</option>
 						</select>
 					</div>
 					<div class="rating">
 						<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
 						<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
 					</div>
-					<div class="levels">
+					<!-- <div class="levels">
 						<label for="classType" class="form-label">{{ 'CourseListPage.level' | translate }}</label>
 						<div class="levels-container">
 							<label>
@@ -45,7 +52,7 @@
 								{{ 'CourseListPage.advanced' | translate }}
 							</label>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="right">
 					<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>

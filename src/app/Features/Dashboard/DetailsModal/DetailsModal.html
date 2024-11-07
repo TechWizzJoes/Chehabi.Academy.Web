@@ -171,13 +171,29 @@
 					<input type="text" class="form-control" id="class" name="Name" [(ngModel)]="NewCourse.Name" #Name="ngModel" required />
 				</div>
 				<div class="col">
-					<label for="price" class="form-label">Price</label>
-					<input type="number" class="form-control" id="price" name="Price" [(ngModel)]="NewCourse.Price" #Price="ngModel" />
+					<label for="start" class="form-label">Starts on</label>
+					<input type="date" class="form-control" id="start" name="StartDate" [min]="Today" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="classType" class="form-label required">Course Type</label>
+					<label for="price" class="form-label required">Price</label>
+					<input type="number" class="form-control" id="price" name="Price" [(ngModel)]="NewCourse.Price" #Price="ngModel" />
+				</div>
+				<div class="col">
+					<label for="PriceBeforeDiscount" class="form-label">Price befoure discount</label>
+					<input
+						type="number"
+						class="form-control"
+						id="PriceBeforeDiscount"
+						name="PriceBeforeDiscount"
+						[(ngModel)]="NewCourse.PriceBeforeDiscount"
+						#PriceBeforeDiscount="ngModel" />
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col">
+					<label for="classType" class="form-label required">Type</label>
 					<select
 						class="form-select"
 						id="courseType"
@@ -190,8 +206,17 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="start" class="form-label">Starts on</label>
-					<input type="date" class="form-control" id="start" name="StartDate" [min]="Today" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
+					<label for="classLevel" class="form-label required">Level</label>
+					<select
+						class="form-select"
+						id="courseLevel"
+						name="CourseLevel"
+						[(ngModel)]="NewCourse.LevelIdString"
+						#CourseLevel="ngModel"
+						required
+						placeholder="Select the course level">
+						<option *ngFor="let type of courseLevelsValues; index as i" [value]="type">{{ courseLevels[i] }}</option>
+					</select>
 				</div>
 			</div>
 			<div class="mb-3">
@@ -303,11 +328,11 @@
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseInfo">
-			<div class="mb-3">
-				<label for="title" class="form-label required">Name</label>
-				<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
-			</div>
 			<div class="row mb-3">
+				<div class="col">
+					<label for="title" class="form-label required">Name</label>
+					<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
+				</div>
 				<div class="col">
 					<label for="start" class="form-label required">Starts on</label>
 					<input
@@ -324,9 +349,21 @@
 						<div class="invalid-message pb-2">{{DateError}}</div>
 					</div>
 				</div>
+			</div>
+			<div class="row mb-3">
 				<div class="col">
-					<label for="price" class="form-label required">Price in USD</label>
+					<label for="price" class="form-label required">Price</label>
 					<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
+				</div>
+				<div class="col">
+					<label for="PriceBeforeDiscount" class="form-label">Price befoure discount</label>
+					<input
+						type="number"
+						class="form-control"
+						id="PriceBeforeDiscount"
+						name="PriceBeforeDiscount"
+						[(ngModel)]="NewCourse.PriceBeforeDiscount"
+						#PriceBeforeDiscount="ngModel" />
 				</div>
 			</div>
 

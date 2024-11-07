@@ -25,7 +25,7 @@
 						></span>
 					</h5>
 					<!-- <p class="card-text" *ngIf="Course.Description">{{Course.Description.substring(0, 200) + '...'}}</p> -->
-					<p class="card-text" *ngIf="Course.Price">${{Course.Price}}</p>
+					<p class="card-text"><span class="price-before">{{Course.PriceBeforeDiscount | currency}}</span> {{Course.Price | currency}}</p>
 
 					<div class="meta">
 						<p class="card-text">

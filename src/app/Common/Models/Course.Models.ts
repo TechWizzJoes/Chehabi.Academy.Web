@@ -1,3 +1,4 @@
+import { CourseLevelEnum } from "../Enums/CourseLevel.Enum";
 import { CourseTypeEnum } from "../Enums/CourseType.Enum";
 import { Constants } from "../Settings/Constants";
 import { InstructorModels } from "./Instructor.Models";
@@ -9,6 +10,7 @@ export namespace CourseModels {
 		Id!: number;
 		Name!: string;
 		TypeIdString: CourseTypeEnum = CourseTypeEnum.Live;
+		LevelIdString: CourseLevelEnum = CourseLevelEnum.Beginner;
 		Description!: string;
 		Duration!: number;
 		VideoPath!: string;
@@ -23,6 +25,9 @@ export namespace CourseModels {
 		Prerequisite!: string;
 		ToBeLearned!: string;
 		Price!: number;
+		PriceBeforeDiscount!: number | null;
+		Level!: number;
+		IsLive!: boolean;
 		Classes: Class[] = [new Class()];
 		InstructorId!: number;
 		Instructor!: InstructorModels.Instructor;
@@ -83,7 +88,7 @@ export namespace CourseModels {
 		SearchInput!: string;
 		Rating!: number;
 		Type: string = "";
-		Level: Levels = new Levels();
+		Level: string = "";
 
 	}
 	export class Levels {
