@@ -1,1 +1,18 @@
-<p>notifications works!</p>
+<div class="page-inner">
+	<h1>{{ 'Notifications' | translate }}</h1>
+	<div class="page-section">
+		<div class="page-section" *ngIf="!IsLoaded">
+			<app-loader></app-loader>
+		</div>
+		<div class="page-container" *ngIf="IsLoaded">
+			<div *ngFor="let notification of Notifications" class="notification-item">
+				<div class="text" [id]="notification.Id">
+					<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
+					{{notification.Text}}
+				</div>
+				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm' }}</span>
+			</div>
+		</div>
+	</div>
+</div>
+

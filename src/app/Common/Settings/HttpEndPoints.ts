@@ -51,6 +51,7 @@ export class HttpEndPoints {
 	public static Notifications = {
 		Subscribe: 'notifications/subscribe',
 		Publish: 'notifications/publish',
+		GetInApp: 'notifications/in-app?isRead={isRead}',
 	}
 
 	public static WhatsNew = {

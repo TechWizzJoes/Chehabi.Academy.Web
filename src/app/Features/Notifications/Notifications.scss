@@ -1,0 +1,16 @@
+.notification-item {
+	padding: 1em;
+
+	.text {
+		.new-item-indicator {
+			padding: 0;
+			display: inline-block;
+
+			border-radius: 50%;
+			width: 15px;
+			height: 15px;
+			color: var(--primary-color1);
+			background-color: var(--primary-color1);
+		}
+	}
+}

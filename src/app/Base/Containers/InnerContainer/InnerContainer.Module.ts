@@ -28,9 +28,11 @@ import { NotificationButtonComponent } from '@App/Common/Widgets/NotificationBut
 		TranslateModule,
 		CartButtonComponent,
 		LanguagePopUpComponent,
-		NotificationButtonComponent
+		NotificationButtonComponent,
+		HeaderComponent,
+		FooterComponent
 	],
-	declarations: [InnerContainer, HeaderComponent, MenuComponent, FooterComponent],
+	declarations: [InnerContainer, MenuComponent],
 	providers: [ApplicationService]
 })
 export class InnerContainerModule { }

@@ -19,3 +19,14 @@ button {
 		font-weight: bold;
 	}
 }
+
+::ng-deep {
+	.notification-popup {
+		max-width: none;
+		width: 400px;
+		max-height: 300px;
+		overflow: auto;
+
+		// add dot next to unread
+	}
+}

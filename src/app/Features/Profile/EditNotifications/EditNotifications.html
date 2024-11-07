@@ -1,6 +1,6 @@
 <div class="right-section">
 	<h6 class="title">{{ 'NotificationSettings.title' | translate }}</h6>
-	<form (ngSubmit)="onSubmit(frm)" name="notificationForm" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
+	<form (ngSubmit)="onSubmit(frm)" name="notificationForm" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }" *ngIf="User">
 		<div class="form-check mb-3">
 			<input
 				type="checkbox"

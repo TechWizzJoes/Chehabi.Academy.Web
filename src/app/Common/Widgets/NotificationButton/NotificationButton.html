@@ -1,11 +1,12 @@
-<button type="button" class="icon-button" [ngbPopover]="notificationPopup" container="body" popoverClass="notification-popup">
+<button type="button" class="icon-button" [ngbPopover]="notificationPopup" placement="bottom-end" container="body" popoverClass="notification-popup">
 	<i class="fa fa-bell"></i>
-	<span *ngIf="Notifications.length > 0" class="counter">{{ Notifications.length }}</span>
+	<span *ngIf="Notifications.length > 0" class="counter">{{ Notifications.length > 10 ? '10+' : Notifications.length}}</span>
 </button>
 
 <ng-template #notificationPopup>
 	<div *ngFor="let notification of Notifications">
-		<div>{{notification.message}}</div>
+		<div>{{notification.Text}}</div>
+		<hr />
 	</div>
 	<a [routerLink]="['/',RoutePaths.Notifications]">notification page</a>
 </ng-template>
