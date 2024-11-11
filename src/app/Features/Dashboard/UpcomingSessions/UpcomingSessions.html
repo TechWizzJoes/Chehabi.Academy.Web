@@ -58,6 +58,6 @@
 			</div>
 		</div>
 
-		<div class="m-3 text-center" *ngIf="UpcomingSessions.length == 0">{{ 'UpcomingSessions.No session in the current week' | translate }}</div>
+		<div class="m-3 text-center" *ngIf="IsLoaded && UpcomingSessions.length == 0">{{ 'UpcomingSessions.No session in the current week' | translate }}</div>
 	</div>
 </div>

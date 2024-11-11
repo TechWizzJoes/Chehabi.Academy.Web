@@ -55,6 +55,7 @@ export class CoursePageComponent implements OnInit {
 
 	IsLoaded: boolean = false;
 	IsJoinClass!: boolean;
+	IsJoinedClass!: boolean;
 	SelectedClass?: CourseModels.Class;
 
 	constructor(
@@ -104,8 +105,10 @@ export class CoursePageComponent implements OnInit {
 				c.AvailableSlots = c.MaxCapacity - c.UserClasses.length;
 				const joinedClass = c.UserClasses.find(uc => uc.UserId == currentUser.Id);
 				if (joinedClass)
-					if (joinedClass.IsPaid)
+					if (joinedClass.IsPaid) {
 						c.IsJoined = true;
+						this.IsJoinedClass = true;
+					}
 					else
 						c.IsJoinedFreeTrial = true;
 			})
@@ -147,7 +150,7 @@ export class CoursePageComponent implements OnInit {
 		});
 	}
 
-	DownloadMaterial() {
-		// download
+	downloadMaterial(fileUrl: string, free?: boolean) {
+		this.HttpService.DownloadFile(fileUrl + (free ? '' : '/false'));
 	}
 }

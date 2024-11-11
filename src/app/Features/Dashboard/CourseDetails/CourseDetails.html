@@ -175,7 +175,11 @@
 								class="fa fa-pencil-square-o btn-custom"
 								aria-hidden="true"
 								(click)="openEditModal(ModalPropertyEnum.CourseSampleMaterial, 'FreeFilePath')"></i>
-							<i class="fa fa-download btn-custom" aria-hidden="true" (click)="downloadMaterial(Course.FreeFilePath)"></i>
+							<i
+								class="fa fa-download btn-custom"
+								*ngIf="Course.FreeFilePath"
+								aria-hidden="true"
+								(click)="downloadMaterial(Course.FreeFilePath)"></i>
 						</div>
 						<p class="text" *ngIf="Course.FilePath">{{Course.FreeFilePath.split('/').pop()?.replace(".sample","")}}</p>
 						<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>
@@ -188,7 +192,7 @@
 								class="fa fa-pencil-square-o btn-custom"
 								aria-hidden="true"
 								(click)="openEditModal(ModalPropertyEnum.CourseMaterial, 'FilePath')"></i>
-							<i class="fa fa-download btn-custom" aria-hidden="true" (click)="downloadMaterial(Course.FilePath)"></i>
+							<i class="fa fa-download btn-custom" *ngIf="Course.FilePath" aria-hidden="true" (click)="downloadMaterial(Course.FilePath)"></i>
 						</div>
 						<p class="text" *ngIf="Course.FilePath">{{Course.FilePath.split('/').pop()}}</p>
 						<p class="no-data" *ngIf="!Course.FilePath">{{ 'CourseDetailsPage.noMaterial' | translate }}</p>

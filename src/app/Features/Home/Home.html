@@ -12,11 +12,19 @@
 			<p>{{ 'HomePage.welcomeParagraph' | translate }}</p> -->
 			<h1 class="main-title mb-2">Unlock Your Potential with Expert Language Coaching</h1>
 			<p class="subtitle">
-				Master Arabic and German through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.
+				Master new languages through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.
 			</p>
 			<div class="search-bar mb-2">
-				<input type="text" placeholder="Search for courses" />
-				<button class="btn btn-primary"><i class="fa fa-search"></i></button>
+				<input
+					type="text"
+					class="form-control"
+					id="courseSearchTextInput"
+					name="courseSearchTextInput"
+					[(ngModel)]="courseSearchText"
+					#courseSearchTextInput="ngModel"
+					placeholder="{{ 'Search in courses' | translate }}"
+					(keydown.enter)="searchInCourses()" />
+				<button class="btn btn-primary" (click)="searchInCourses()"><i class="fa fa-search"></i></button>
 			</div>
 			<div>
 				<button class="btn btn-outline-primary me-2">{{ 'HomePage.learnMoreButton' | translate }}</button>
@@ -61,7 +69,9 @@
 	<section class="what-we-offer">
 		<h2>What We Offer: Tailored Language Programs for Every Learner</h2>
 		<p>
-			Explore our wide range of courses, from beginner to advanced, including 1-on-1 private lessons, <br />
+			Explore our wide range of courses, from beginner to advanced
+			<!-- , including 1-on-1 private lessons, -->
+			<br />
 			group classes, and self-paced recorded sessions designed to meet your language goals.
 		</p>
 
@@ -72,9 +82,9 @@
 				</div>
 				<h3>Recorded Courses</h3>
 				<p>
-					Unlock the freedom to learn at your own pace! Our expertly crafted recorded courses cover all levels of Arabic and German language learning,
-					from beginner to advanced. Enjoy lifetime access to high-quality video lessons, downloadable resources, and practical exercises that make
-					mastering a new language engaging and convenient. Start your language journey today, anytime, anywhere.
+					Unlock the freedom to learn at your own pace! Our expertly crafted recorded courses cover all levels of language learning, from beginner to
+					advanced. Enjoy lifetime access to high-quality video lessons, downloadable resources, and practical exercises that make mastering a new
+					language engaging and convenient. Start your language journey today, anytime, anywhere.
 				</p>
 			</div>
 			<div class="course-card">
@@ -83,10 +93,9 @@
 				</div>
 				<h3>Live Course Sessions</h3>
 				<p>
-					Get the classroom experience without leaving your home—or join us on-site for a truly immersive environment! Our live course sessions bring
-					the classroom to you, featuring interactive lessons led by expert instructors. Participate in real-time discussions, ask questions, and get
-					personalized feedback to accelerate your progress. Choose between online classes for flexibility or on-site classes for a traditional
-					experience. Don’t just learn—experience language mastery.
+					Get the classroom experience without leaving your home, Our live course sessions bring the classroom to you, featuring interactive lessons
+					led by expert instructors. Participate in real-time discussions, ask questions, and get personalized feedback to accelerate your progress.
+					Use online classes for flexibility. Don't just learn—experience language mastery.
 				</p>
 			</div>
 		</div>
@@ -188,10 +197,7 @@
 			<div class="step">
 				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
 				<h3>Step 1: Choose a Course</h3>
-				<p>
-					Browse our selection of language courses to find the one that fits your goals and learning style. Whether you're interested in Arabic or
-					German, we have the right course for you.
-				</p>
+				<p>Browse our selection of language courses to find the one that fits your goals and learning style.</p>
 			</div>
 			<div class="step">
 				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
@@ -209,17 +215,14 @@
 			<div class="step">
 				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
 				<h3>Step 4: Make Your Payment</h3>
-				<p>
-					Once you're ready to proceed, complete the payment securely through our online platform. We accept a variety of payment methods to make the
-					process as convenient as possible.
-				</p>
+				<p>Once you're ready to proceed, complete the payment securely through our online platform.</p>
 			</div>
 			<div class="step">
 				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
 				<h3>Step 5: Start Learning!</h3>
 				<p>
-					Gain full access to the live course sessions and recorded materials. Engage with expert instructors, participate in interactive classes, and
-					track your progress toward language mastery.
+					Gain full access to the live course sessions and recorded materials. Engage with expert instructors, participate in interactive classes, to
+					progress toward language mastery.
 				</p>
 			</div>
 		</div>

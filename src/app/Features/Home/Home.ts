@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
-import { StorageService } from '@App/Common/Services/Storage.Service';
+import { StorageEnum, StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { LaptopComponent } from './Laptop/Laptop';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { WhatsNewModels } from '@App/Common/Models/WhatsNew.Models';
+import { CourseModels } from '@App/Common/Models/Course.Models';
 
 @Component({
 	standalone: true,
@@ -24,6 +25,7 @@ import { WhatsNewModels } from '@App/Common/Models/WhatsNew.Models';
 })
 export class HomeComponent implements OnInit {
 	WhatsNew!: WhatsNewModels.WhatsNew[];
+	courseSearchText!: string;
 
 	RoutePaths = RoutePaths
 
@@ -47,15 +49,22 @@ export class HomeComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getWhatsNew()
+		// this.getWhatsNew()
 	}
 
-	getWhatsNew() {
-		let endPoint = HttpEndPoints.WhatsNew.GetAll;
-		this.HttpService.Get<WhatsNewModels.WhatsNew[]>(endPoint).subscribe(data => {
-			console.log(data);
+	// getWhatsNew() {
+	// 	let endPoint = HttpEndPoints.WhatsNew.GetAll;
+	// 	this.HttpService.Get<WhatsNewModels.WhatsNew[]>(endPoint).subscribe(data => {
+	// 		console.log(data);
 
-			this.WhatsNew = data
-		})
+	// 		this.WhatsNew = data
+	// 	})
+	// }
+
+	searchInCourses() {
+		const filter = new CourseModels.Filter();
+		filter.SearchInput = this.courseSearchText;
+		this.StorageService.SetLocalStorage(StorageEnum.CoursesFilter, filter);
+		this.router.navigate([RoutePaths.Courses])
 	}
 }

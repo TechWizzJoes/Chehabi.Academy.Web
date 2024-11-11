@@ -135,11 +135,21 @@ export class HttpService {
 	}
 
 	DownloadFile(fileUrl: string) {
-		this.HttpClient.get(fileUrl, { responseType: 'blob' }).subscribe((blob) => {
+		this.HttpClient.get(fileUrl, { observe: 'response', responseType: 'blob' }).subscribe((response) => {
+			const blob = response.body as Blob;
+			let filename = 'downloaded_file';
+			const contentDisposition = response.headers.get('Content-Disposition');
+			if (contentDisposition) {
+				const matches = contentDisposition.match(/filename="(.+)"/);
+				if (matches && matches[1]) {
+					filename = matches[1];
+				}
+			}
+
 			const url = window.URL.createObjectURL(blob);
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = fileUrl.split('/').pop() || '';
+			a.download = filename;
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);

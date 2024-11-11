@@ -86,11 +86,13 @@
 					[disabled]="!SelectedClass || (SelectedClass.CurrentIndex && !SelectedClass.IsJoinedFreeTrial) || SelectedClass.IsJoined">
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
-				<a class="btn btn-outline-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
+				<a class="btn btn-outline-primary" *ngIf="!IsJoinedClass && Course.FreeFilePath" (click)="downloadMaterial(Course.FreeFilePath, true)">
 					{{ 'CoursePage.downloadFreeMaterial' | translate }}
+					<i class="fa fa-download btn-custom"></i>
 				</a>
-				<a class="btn btn-outline-primary" *ngIf="IsJoinClass" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">
+				<a class="btn btn-outline-primary" *ngIf="IsJoinedClass && Course.FilePath" (click)="downloadMaterial(Course.FilePath)">
 					{{ 'CoursePage.downloadFullMaterial' | translate }}
+					<i class="fa fa-download btn-custom"></i>
 				</a>
 				<hr />
 			</div>

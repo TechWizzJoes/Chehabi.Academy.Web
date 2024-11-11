@@ -107,6 +107,6 @@ export class CourseDetailsComponent implements OnInit {
     }
 
     downloadMaterial(fileUrl: string) {
-        this.HttpService.DownloadFile(fileUrl);
+        this.HttpService.DownloadFile(fileUrl + '/true');
     }
 }

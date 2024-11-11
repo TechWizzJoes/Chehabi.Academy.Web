@@ -15,8 +15,8 @@
 							name="searchInput"
 							[(ngModel)]="Filter.SearchInput"
 							#searchInput="ngModel"
-							placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}" />
-						<button class="btn btn-primary">{{ 'CourseListPage.searchButton' | translate }}</button>
+							placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}"
+							(keydown.enter)="Data.FilterRows()" />
 					</div>
 					<div class="coursetype">
 						<label for="classType" class="form-label">{{ 'CourseListPage.Type' | translate }}</label>
@@ -56,7 +56,7 @@
 				</div>
 				<div class="right">
 					<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>
-					<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.filterButton' | translate }}</button>
+					<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.searchButton' | translate }}</button>
 				</div>
 			</div>
 		</div>
@@ -67,6 +67,9 @@
 			<div *ngFor="let course of Courses">
 				<app-course-card [Course]="course" (click)="GotoCourse(course.Id)"></app-course-card>
 			</div>
+		</div>
+		<div class="page-container m-3 text-center" *ngIf="IsLoaded &&Courses.length == 0">
+			{{ 'CourseListPage.No Courses match current search' | translate }}
 		</div>
 	</div>
 </div>

@@ -24,6 +24,6 @@
 </div>
 <div class="modal-footer">
 	<button class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
-	<button class="btn btn-primary" *ngIf="!ratingConfirmed" (click)="onRatingConfirmed()">Save Rating</button>
+	<button class="btn btn-primary" *ngIf="!ratingConfirmed" (click)="onRatingConfirmed()">Continue</button>
 	<button class="btn btn-primary" *ngIf="ratingConfirmed" (click)="onSubmit()">Submit</button>
 </div>
