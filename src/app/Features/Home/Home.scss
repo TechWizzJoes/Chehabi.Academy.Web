@@ -256,34 +256,15 @@
 
 	.testimonials {
 		padding: 40px;
-		// background-color: var(--primary-color3);
 		border-radius: 10px;
 
-		.testimonial-cards {
+		.feedbacks {
 			display: flex;
-			gap: 1em;
-
-			.testimonial-card {
-				background-color: var(--primary-bg-color);
-				padding: 20px;
-				border-radius: 8px;
-				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-				margin-bottom: 20px;
-				font-style: italic;
-				transition: transform 0.3s;
-
-				p {
-					font-size: 16px;
-					line-height: 1.6;
-					margin-bottom: 15px;
-				}
-			}
-
-			/* Responsive Styles for Testimonials */
-			@media (max-width: 768px) {
-				.testimonial-card {
-					padding: 15px;
-				}
+			justify-content: space-around;
+			flex-wrap: wrap;
+			.feedback {
+				margin: 10px;
+				width: 350px;
 			}
 		}
 	}

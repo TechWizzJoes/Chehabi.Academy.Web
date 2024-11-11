@@ -16,16 +16,28 @@ import { LaptopComponent } from './Laptop/Laptop';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { WhatsNewModels } from '@App/Common/Models/WhatsNew.Models';
 import { CourseModels } from '@App/Common/Models/Course.Models';
+import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
+import { FeedbackCardComponent } from '../Feedback/FeedbackCard/FeedbackCard';
 
 @Component({
 	standalone: true,
 	templateUrl: './Home.html',
 	styleUrls: ['Home.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule, LaptopComponent]
+	imports: [
+		FormsModule,
+		CommonModule,
+		RouterModule,
+		NgxChartsModule,
+		TranslateModule,
+		NgbCarouselModule,
+		LaptopComponent,
+		FeedbackCardComponent
+	]
 })
 export class HomeComponent implements OnInit {
-	WhatsNew!: WhatsNewModels.WhatsNew[];
 	courseSearchText!: string;
+	WhatsNew!: WhatsNewModels.WhatsNew[];
+	Feedbacks: FeedbackModels.Feedback[] = []
 
 	RoutePaths = RoutePaths
 
@@ -50,6 +62,7 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit() {
 		// this.getWhatsNew()
+		this.getFeedbacks();
 	}
 
 	// getWhatsNew() {
@@ -66,5 +79,12 @@ export class HomeComponent implements OnInit {
 		filter.SearchInput = this.courseSearchText;
 		this.StorageService.SetLocalStorage(StorageEnum.CoursesFilter, filter);
 		this.router.navigate([RoutePaths.Courses])
+	}
+
+	getFeedbacks() {
+		let endPoint = HttpEndPoints.Feedback.GetForHome.replace('{take}', '3');
+		this.HttpService.Get<FeedbackModels.Feedback[]>(endPoint).subscribe(data => {
+			this.Feedbacks = data;
+		})
 	}
 }

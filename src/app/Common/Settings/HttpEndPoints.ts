@@ -72,6 +72,7 @@ export class HttpEndPoints {
 
 	public static Feedback = {
 		GetAll: 'feedback/list/all',
+		GetForHome: 'feedback/list/home/{take}',
 		addRating: 'feedback',
 		GetCourseRating: 'feedback/course/:courseId/user',
 		GetAllByUser: 'feedback/user/{id}'

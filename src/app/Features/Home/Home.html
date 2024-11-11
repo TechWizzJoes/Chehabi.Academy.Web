@@ -125,7 +125,7 @@
 
 	<section class="testimonials">
 		<h2>What Our Students Say</h2>
-		<div class="testimonial-cards">
+		<!-- <div class="testimonial-cards">
 			<div class="testimonial-card">
 				<p>
 					"Chehabi Academy has been a game-changer for me. The recorded courses allowed me to learn at my own pace, and the live sessions gave me the
@@ -133,19 +133,10 @@
 				</p>
 				<h4>- Sarah M., German Course Student</h4>
 			</div>
-			<div class="testimonial-card">
-				<p>
-					"The interactive nature of the live classes made learning Arabic so much fun. The instructors are not only knowledgeable but also make the
-					learning process enjoyable. Plus, the free trial session was a great way to get started!"
-				</p>
-				<h4>- Ahmed K., Arabic Course Student</h4>
-			</div>
-			<div class="testimonial-card">
-				<p>
-					"I loved the flexibility Chehabi Academy offers. I could switch between recorded lessons when I was busy and live sessions when I had time
-					for more hands-on practice. It's the perfect balance."
-				</p>
-				<h4>- Lina S., Dual Language Learner</h4>
+		</div> -->
+		<div class="feedbacks">
+			<div class="feedback" *ngFor="let feedback of Feedbacks">
+				<app-feedback-card [Feedback]="feedback"></app-feedback-card>
 			</div>
 		</div>
 		<p class="supporting-text">want to add a feedback or browse more? <a [routerLink]="['/',RoutePaths.Feedback]" class="faq-link">Feedback page</a></p>

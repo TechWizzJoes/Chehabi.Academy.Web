@@ -1,8 +1,5 @@
 <div class="page-inner">
 	<div class="page-section">
-		<div class="partition graphics">
-			<img src="assets/Images/feedback-rating.png" alt="" class="image" />
-		</div>
 		<div class="partition content">
 			<h1>{{ 'FeedbackPage.title' | translate }}</h1>
 			<p>{{ 'FeedbackPage.description' | translate }}<br /></p>
@@ -12,6 +9,9 @@
 				>
 				<a (click)="scrollToTarget()" class="btn btn-outline-primary">{{ 'FeedbackPage.browseFeedbacks' | translate }}</a>
 			</div>
+		</div>
+		<div class="partition graphics">
+			<img src="assets/Images/feedback-rating.png" alt="" class="image" />
 		</div>
 	</div>
 	<div id="feedbacks" class="page-section no-min">

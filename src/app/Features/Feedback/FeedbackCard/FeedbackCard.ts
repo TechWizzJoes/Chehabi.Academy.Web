@@ -9,13 +9,14 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
+import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 
 @Component({
 	standalone: true,
 	templateUrl: './FeedbackCard.html',
 	styleUrls: ['FeedbackCard.scss'],
 	selector: 'app-feedback-card',
-	imports: [FormsModule, CommonModule, RouterModule]
+	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent]
 })
 export class FeedbackCardComponent implements OnInit {
 	@Input('Feedback') Feedback!: FeedbackModels.Feedback;

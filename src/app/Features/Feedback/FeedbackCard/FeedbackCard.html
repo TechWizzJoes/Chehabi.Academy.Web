@@ -1,10 +1,16 @@
 <div class="card">
-	<img [src]="Feedback.User.ProfilePicturePath" alt="Card image cap" />
+	<div class="card-title">
+		<img [src]="Feedback.User.ProfilePicturePath? Feedback.User.ProfilePicturePath : 'assets/Images/default-pp.png'" alt="user image" />
+		<h5 class="text-center">{{Feedback.User.FirstName + ' ' + Feedback.User.LastName}}</h5>
+	</div>
 	<div class="card-body">
+		<div class="course">
+			<div class="text-start">{{Feedback.Course.Name}}</div>
+			<app-StarRating [ReadOnly]="true" [Rate]="Feedback.Rating" scl></app-StarRating>
+		</div>
 		<p class="card-text">
 			<i class="fa fa-quote-left"></i> {{Feedback.Text}}
 			<i class="fa fa-quote-right"></i>
 		</p>
-		<h5 class="text-center">{{Feedback.User.FirstName + ' ' + Feedback.User.LastName}}</h5>
 	</div>
 </div>

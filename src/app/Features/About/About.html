@@ -1,7 +1,6 @@
 <div class="page-inner bg-gradient-3">
 	<!-- <h1 class="">About Us</h1> -->
 	<div class="content-section">
-		<div class="video-background"></div>
 		<div class="text-container">
 			<div class="text-left">
 				<h1>{{ 'AboutPage.title' | translate }}</h1>
@@ -9,10 +8,11 @@
 			<a class="button btn btn-primary" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]"
 				>{{ 'AboutPage.start_learning' | translate }}</a
 			>
-			<a class="button btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Courses]"
+			<a class="button btn btn-primary" *ngIf="AuthService.IsAuthenticated" [routerLink]="['/', RoutePaths.Courses]"
 				>{{ 'AboutPage.start_learning' | translate }}</a
 			>
 		</div>
+		<div class="video-background"></div>
 	</div>
 
 	<div class="page-section no-min">
