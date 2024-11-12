@@ -8,22 +8,32 @@
 					<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 						<div class="form">
 							<div class="form-group">
-								<label for="firstName">{{ 'FirstName' | translate }}</label>
+								<label for="firstName">{{ 'ContactPage.FirstName' | translate }}</label>
 								<input
 									type="text"
 									class="form-control"
 									id="firstName"
 									formControlName="firstName"
-									placeholder="{{ 'FirstName' | translate }}" />
+									placeholder="{{ 'ContactPage.FirstName' | translate }}" />
 							</div>
 
 							<div class="form-group">
-								<label for="lastName">{{ 'LastName' | translate }}</label>
-								<input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="{{ 'LastName' | translate }}" />
+								<label for="lastName">{{ 'ContactPage.LastName' | translate }}</label>
+								<input
+									type="text"
+									class="form-control"
+									id="lastName"
+									formControlName="lastName"
+									placeholder="{{ 'ContactPage.LastName' | translate }}" />
 							</div>
 							<div class="form-group email">
-								<label for="Email">{{ 'Email' | translate }}</label>
-								<input type="email" class="form-control" id="Email" formControlName="Email" placeholder="{{ 'Email' | translate }}" />
+								<label for="Email">{{ 'ContactPage.Email' | translate }}</label>
+								<input
+									type="email"
+									class="form-control"
+									id="Email"
+									formControlName="Email"
+									placeholder="{{ 'ContactPage.Email' | translate }}" />
 							</div>
 
 							<div class="form-group">

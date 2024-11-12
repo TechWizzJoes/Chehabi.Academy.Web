@@ -82,7 +82,10 @@
 		"title": "Kontaktieren Sie uns",
 		"intro": "Egal, ob Sie Fragen, Feedback haben oder einfach nur über die Schönheit der arabischen Sprache sprechen möchten, wir sind für Sie da. Kontaktieren Sie uns über eine der untenstehenden Methoden, und unser engagiertes Team wird sich so schnell wie möglich bei Ihnen melden.",
 		"description": "Teilen Sie uns mit",
-		"submit": "Absenden"
+		"submit": "Absenden",
+		"FirstName": "First Name",
+		"LastName": "Last Name",
+		"Email": "Email"
 	},
 	"ClassDetailsPage": {
 		"title": "Kursmaterial",

@@ -33,7 +33,7 @@ export class ContactUsComponent implements OnInit {
 		private HttpService: HttpService,
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService,
-		private AuthService: AuthService,
+		public AuthService: AuthService,
 		private StorageService: StorageService,
 		private FormBuilder: FormBuilder,
 	) { }
@@ -47,13 +47,18 @@ export class ContactUsComponent implements OnInit {
 			description: ['', Validators.required]
 		});
 		this.ReqContactusModel = new ContactUsModel.ContactUsModelReq('', '', '', '');
+
+		if (this.AuthService.IsAuthenticated) {
+			this.contactForm.get('Email')?.setValue(this.AuthService.CurrentUser.Email)
+			this.contactForm.get('Email')?.disable()
+		}
 	}
 
 	onSubmit() {
 		if (this.contactForm.valid) {
 			this.ReqContactusModel.FirstName = this.contactForm.value['firstName'];
 			this.ReqContactusModel.LastName = this.contactForm.value['lastName'];
-			this.ReqContactusModel.Email = this.contactForm.value['Email'];
+			this.ReqContactusModel.Email = this.AuthService.IsAuthenticated ? this.AuthService.CurrentUser.Email : this.contactForm.value['Email'];
 			this.ReqContactusModel.Description = this.contactForm.value['description'];
 
 			// let httpEndPoint = HttpEndPoints.Email.EmailSender;
