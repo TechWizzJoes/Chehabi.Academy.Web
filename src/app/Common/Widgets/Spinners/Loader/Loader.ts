@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
     standalone: true,
     templateUrl: './Loader.html',
     styleUrls: ['Loader.scss'],
-    imports: []
+    imports: [CommonModule]
 })
 export class LoaderComponent implements OnInit {
-    constructor(
-    ) { }
+    @Input('Size') Size: number = 4;
+
+    constructor() { }
 
     ngOnInit() { }
 }

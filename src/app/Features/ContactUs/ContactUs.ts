@@ -12,18 +12,20 @@ import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
-import { ContactUsModel } from './ContactUsModel';
+import { ContactUsModel } from '../../Common/Models/ContactUsModel';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 
 @Component({
 	standalone: true,
 	templateUrl: './ContactUs.html',
 	styleUrls: ['ContactUs.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule, TranslateModule]
+	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule, TranslateModule, LoaderComponent]
 })
 export class ContactUsComponent implements OnInit {
 	contactForm!: FormGroup;
 	ReqContactusModel!: ContactUsModel.ContactUsModelReq
+	IsLoaded: boolean = true;
 
 	constructor(
 		private router: Router,
@@ -67,16 +69,18 @@ export class ContactUsComponent implements OnInit {
 			// 		}
 			// 	}
 			// );
-
+			this.IsLoaded = false;
 			let httpEndPoint2 = HttpEndPoints.Contact.Add;
 			this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint2, this.ReqContactusModel
 			).subscribe(
 				{
 					next: (response) => {
+						this.IsLoaded = true;
 						this.NotifyService.Success("Your inquiry has reached us", "Thank you!");
 						this.contactForm.reset();
 					},
 					error: (errorResponse) => {
+						this.IsLoaded = true;
 						this.NotifyService.Error(errorResponse, 'Error')
 					}
 				}

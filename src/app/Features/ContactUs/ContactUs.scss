@@ -57,6 +57,11 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
+	button {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
 }
 textarea {
 	resize: vertical;

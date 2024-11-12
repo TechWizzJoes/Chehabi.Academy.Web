@@ -37,7 +37,12 @@
 						</div>
 
 						<div class="submit-button">
-							<button type="submit" class="btn btn-primary">{{ 'ContactPage.submit' | translate }}</button>
+							<button type="submit" class="btn btn-primary">
+								{{ 'ContactPage.submit' | translate }}
+								<span *ngIf="!IsLoaded">
+									<app-loader [Size]="2"></app-loader>
+								</span>
+							</button>
 						</div>
 					</form>
 				</div>
