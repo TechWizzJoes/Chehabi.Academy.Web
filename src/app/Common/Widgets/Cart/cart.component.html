@@ -3,38 +3,30 @@
 		<div class="cart">
 			<h2>Your Cart</h2>
 			<ul *ngIf="Cart.CartItems.length > 0">
-				<li *ngFor="let item of Cart.CartItems">
+				<li *ngFor="let item of Cart.CartItems" class="cart-item">
 					<div *ngIf="item.ClassId">
-						{{ item.Class.Name }} ({{ item.Quantity }})
-						<div>Price: {{ item.Price }}</div>
-						<div>SubTotal: {{ item.SubTotal }}</div>
+						<span class="item-name">{{ item.Class.Name }}</span>
+						<span class="item-quantity">({{ item.Quantity }})</span>
+						<div class="item-details">Price: {{ item.Price }}</div>
+						<div class="item-details">SubTotal: {{ item.SubTotal }}</div>
 					</div>
 					<div *ngIf="item.CourseId">
-						{{ item.Course.Name }} ({{ item.Quantity }})
-						<div>Price: {{ item.Price }}</div>
-						<div>SubTotal: {{ item.SubTotal }}</div>
+						<span class="item-name">{{ item.Course.Name }}</span>
+						<span class="item-quantity">({{ item.Quantity }})</span>
+						<div class="item-details">Price: {{ item.Price }}</div>
+						<div class="item-details">SubTotal: {{ item.SubTotal }}</div>
 					</div>
-					<button (click)="removeFromCart(item.Id)">Remove</button>
+					<button (click)="removeFromCart(item.Id)" class="btn-remove">Remove</button>
 				</li>
-
-				Total:
-				{{
-					Cart.Total
-				}},
-				{{
-					Cart.Currency
-				}}
-				{{
-					Cart.UpdatedAt
-				}}
+				<div class="cart-total">
+					<span>Total:</span>
+					<span>{{ Cart.Total }} {{ Cart.Currency }}</span>
+				</div>
+				<div class="updated-at">Updated: {{ Cart.UpdatedAt }}</div>
 			</ul>
-
-			<p *ngIf="Cart.CartItems.length === 0">Your cart is empty.</p>
-			<!-- <button (click)="clearCart()">Clear Cart</button> -->
-
-			<div>
-				<!-- <a [routerLink]="'/checkout'">CHECKOUT</a> -->
-				<button class="c" (click)="getLink()">CHECKOUT</button>
+			<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">Your cart is empty.</p>
+			<div class="checkout-container">
+				<button class="btn-checkout" (click)="getLink()">CHECKOUT</button>
 			</div>
 			<app-tos></app-tos>
 		</div>
