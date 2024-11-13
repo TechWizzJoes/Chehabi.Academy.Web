@@ -2,7 +2,7 @@
 	<div class="page-section" *ngIf="!IsLoaded">
 		<app-loader></app-loader>
 	</div>
-	<div *ngIf="IsLoaded">
+	<div *ngIf="IsLoaded && Course">
 		<h1>{{Course.Name}}</h1>
 		<div class="page-section no-min">
 			<div class="partition content">
@@ -97,5 +97,8 @@
 				<hr />
 			</div>
 		</div>
+	</div>
+	<div *ngIf="IsLoaded && !Course" class="text-center">
+		<h3>{{ 'CoursePage.CourseDeleted' | translate }}</h3>
 	</div>
 </div>

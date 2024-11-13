@@ -15,6 +15,7 @@ export class RoutePaths {
 	public static Profile = 'profile';
 	public static EditProfile = 'edit';
 	public static EditNotifications = 'notifications';
+	public static PaymentHistory = 'payment-history';
 	public static EditPassword = 'password';
 	public static Dashboard = 'dashboard';
 	public static Account = 'account';

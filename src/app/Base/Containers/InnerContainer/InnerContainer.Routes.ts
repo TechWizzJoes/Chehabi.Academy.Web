@@ -119,6 +119,10 @@ export const routes: Routes = [
 						loadComponent: () => import('@App/Features/Profile/EditNotifications/EditNotifications').then((c) => c.EditNotificationsComponent)
 					},
 					{
+						path: 'payment-history',
+						loadComponent: () => import('@App/Features/Profile/PaymentHistory/PaymentHistory').then((c) => c.PaymentHistoryComponent)
+					},
+					{
 						path: 'password',
 						loadComponent: () => import('@App/Features/Profile/EditPassword/Password').then((c) => c.PasswordComponent)
 					}

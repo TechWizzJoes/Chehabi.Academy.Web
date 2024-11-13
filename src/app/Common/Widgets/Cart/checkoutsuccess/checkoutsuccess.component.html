@@ -1,1 +1,25 @@
-<p>checkoutsuccess works!</p>
+<!-- http://localhost:4200/success?session_id=cs_test_a1yOYdpMI062Dpr9sDBw5PgOPxVmc4uEM1srnU3QIP3rby4MBRLHdwkEH7 -->
+
+<div class="page-inner">
+	<div class="page-section">
+		<div class="container">
+			<div class="thank-you-message">
+				<h1>Thank You for Your Purchase!</h1>
+				<p>
+					<strong>Order Refrence Number:</strong> <br />
+					{{ referenceNumber }}
+					<button class="btn" [title]="'Copy RefrenceNumber' | translate" (click)="copyRefrenceNumber()">
+						<i class="fa fa-copy"></i>
+					</button>
+				</p>
+				<p>
+					Your purchase was successful! Thank you for enrolling in our course. Please note, it may take a minute to fully process your payment. Once
+					it's confirmed,you'll get notified and gain access to your enrolled courses. If you encounter any issues, feel free to reach out to our
+					support team.
+				</p>
+				<p>We're excited to have you on board! Start exploring your enrolled courses and make the most out of your learning experience.</p>
+				<a [routerLink]="['/', RoutePaths.Dashboard, RoutePaths.Classes]" class="btn btn-primary">Go to My Courses</a>
+			</div>
+		</div>
+	</div>
+</div>

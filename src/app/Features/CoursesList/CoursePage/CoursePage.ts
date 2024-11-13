@@ -100,6 +100,8 @@ export class CoursePageComponent implements OnInit {
 		this.HttpService.Get<CourseModels.Course>(endPoint).subscribe(data => {
 			this.IsLoaded = true;
 			this.Course = data;
+			if (!this.Course) return; // for deleted courses
+
 			let currentUser = this.AuthService.CurrentUser;
 			this.Course.Classes.forEach(c => {
 				c.AvailableSlots = c.MaxCapacity - c.UserClasses.length;

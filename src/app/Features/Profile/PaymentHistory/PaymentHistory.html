@@ -1,0 +1,25 @@
+<div class="right-section">
+	<h6 class="title">{{ 'PaymentSettings.title' | translate }}</h6>
+	<table class="table table-striped table-responsive table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Currency</th>
+				<th>Amount</th>
+				<th>Payment Date</th>
+				<th>Refrence Number</th>
+			</tr>
+		</thead>
+
+		<tbody *ngIf="IsLoaded">
+			<tr *ngFor="let payment of Payments">
+				<td>{{ payment.TotalAmount | currency }}</td>
+				<td>{{ payment.Currency }}</td>
+				<td>{{ payment.CreatedOn | date: 'dd/MM/YYYY' }}</td>
+				<td>{{ payment.RefrenceNumber }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="text-center" *ngIf="!IsLoaded">
+		<app-loader></app-loader>
+	</div>
+</div>

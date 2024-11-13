@@ -57,7 +57,7 @@ export class CartService {
 
     // 4242 4242 4242 4242  success
     // 4000 0000 0000 9995  failure
-    const data: any = await firstValueFrom(this.HttpService.Get(HttpEndPoints.Cart.Checkout));
+    const data: any = await firstValueFrom(this.HttpService.Get(HttpEndPoints.Payment.Checkout));
     // return data.url
     window.location.assign(data.url);
   }

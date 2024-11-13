@@ -61,13 +61,13 @@ export class HttpEndPoints {
 
 	public static Payment = {
 		Checkout: 'payment/checkout',
+		GetAll: 'payment'
 	}
 
 	public static Cart = {
 		Get: 'cart',
 		AddItem: 'cart/add',
 		RemoveItem: 'cart/remove/{id}',
-		Checkout: 'cart/checkout',
 	}
 
 	public static Feedback = {

@@ -157,7 +157,8 @@
 		"addToCart": "Add To Cart",
 		"downloadFullMaterial": "Download full Material",
 		"downloadFreeMaterial": "Download free Material",
-		"freeTrialSession": "Try a free trial session"
+		"freeTrialSession": "Try a free trial session",
+		"CourseDeleted": "This course isn't available!"
 	},
 	"Courses": {
 		"dashboard": "Dashboard",
@@ -174,7 +175,8 @@
 		"showSessions": "Show Sessions",
 		"hideSessions": "Hide Sessions",
 		"startsOn": "Starts on:",
-		"startedOn": "Started on:"
+		"startedOn": "Started on:",
+		"JoinedOn": "Joined on"
 	},
 	"FeedbackPage": {
 		"title": "We'd Appreciate Your Feedback",
@@ -256,7 +258,8 @@
 		"dashboard": "Dashboard",
 		"editProfile": "Edit Profile",
 		"password": "Password",
-		"editNotifications": "Notifications"
+		"editNotifications": "Notifications",
+		"payments": "Payments"
 	},
 	"NotificationSettings": {
 		"title": "I want to recieve:",
@@ -265,6 +268,9 @@
 		"sessionUpdates": "Email Sessions updates.",
 		"sessionReminders": "Email Sessions reminders.",
 		"save": "Save"
+	},
+	"PaymentSettings": {
+		"title": "Payment History"
 	},
 	"PasswordPage": {
 		"title": "Reset Password",
