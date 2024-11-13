@@ -39,6 +39,8 @@ export class CartComponent {
   // check out customizations
   // https://docs.stripe.com/payments/checkout/customization
   getLink() {
+    if (this.Cart.CartItems.length == 0)
+      return;
     this.cartService.getCheckoutLink();
   }
 }

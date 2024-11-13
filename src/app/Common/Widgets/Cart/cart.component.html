@@ -1,7 +1,7 @@
 <div class="page-inner">
 	<div class="page-section">
 		<div class="cart">
-			<h2>Your Cart</h2>
+			<h2>Cart</h2>
 			<ul *ngIf="Cart.CartItems.length > 0">
 				<li *ngFor="let item of Cart.CartItems" class="cart-item">
 					<div *ngIf="item.ClassId">
@@ -26,7 +26,7 @@
 			</ul>
 			<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">Your cart is empty.</p>
 			<div class="checkout-container">
-				<button class="btn-checkout" (click)="getLink()">CHECKOUT</button>
+				<button class="btn btn-primary" (click)="getLink()" [disabled]="Cart.CartItems.length == 0">CHECKOUT</button>
 			</div>
 			<app-tos></app-tos>
 		</div>
