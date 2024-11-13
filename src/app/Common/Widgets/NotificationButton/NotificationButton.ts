@@ -70,9 +70,7 @@ export class NotificationButtonComponent implements OnInit, AfterViewInit {
   subscribeToNewItems() {
     this.WebSocketService.onMessage('notification').subscribe({
       next: (notification) => {
-        this.Notifications.push({
-          Text: notification.message
-        } as NotificationModels.InApp);
+        this.Notifications.push(notification);
         this.UpdateCounter();
       }
     })

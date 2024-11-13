@@ -122,7 +122,7 @@
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
-		"searchPlaceholder": "Course name",
+		"searchPlaceholder": "Search in courses",
 		"searchButton": "Search",
 		"TypePlaceholder": "Course type",
 		"Type": "Type",
