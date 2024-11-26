@@ -22,7 +22,7 @@
 
 	.courses-container {
 		display: flex;
-		align-items: center;
+		align-items: stretch;
 		// justify-content: space-between;
 		width: 100%;
 
@@ -39,10 +39,11 @@
 			min-height: 210px;
 			border: none;
 			border-radius: 10px;
+			background-color: var(--secondary-bg-color);
 
 			&:hover {
 				cursor: pointer;
-				background-color: rgba(0, 0, 0, 0.1);
+				// background-color: rgba(0, 0, 0, 0.1);
 			}
 
 			.upper-section {

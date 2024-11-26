@@ -31,7 +31,7 @@
 		}
 		&.landing {
 			position: relative;
-			color: var(--primary-font-color);
+			color: var(--primary-invert-font-color);
 			.img-container {
 				width: 100%;
 				height: 70%;
@@ -230,18 +230,6 @@
 			margin-bottom: 20px;
 		}
 
-		.browse-link {
-			color: var(--primary-color1);
-			font-weight: bold;
-			text-decoration: none;
-			border-bottom: 2px solid var(--primary-color1);
-			transition: color 0.3s;
-		}
-
-		.browse-link:hover {
-			color: #e63950;
-		}
-
 		/* Responsive Styles */
 		@media (max-width: 768px) {
 			.course-types {
@@ -288,87 +276,13 @@
 				}
 
 				h3 {
-					font-size: 1.2rem;
 					margin-top: 15px;
 				}
 
 				p {
-					font-size: 1rem;
 					margin-top: 10px;
-					color: #555;
 				}
 			}
-		}
-	}
-
-	.enrollment-process {
-		padding: 50px 20px;
-		text-align: center;
-		background-color: #f0f0f0;
-		color: #333;
-
-		.enrollment-process h2 {
-			font-size: 36px;
-			margin-bottom: 20px;
-		}
-
-		.enrollment-process p {
-			font-size: 18px;
-			margin-bottom: 40px;
-		}
-
-		.steps {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
-
-		.step {
-			background-color: #fff;
-			border-radius: 8px;
-			padding: 20px;
-			margin: 10px;
-			flex-basis: 30%;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s;
-		}
-
-		.step:hover {
-			transform: translateY(-5px);
-		}
-
-		.step h3 {
-			font-size: 22px;
-			color: var(--primary-color1);
-		}
-
-		.step p {
-			font-size: 16px;
-			color: #555;
-		}
-
-		.cta {
-			margin-top: 40px;
-		}
-
-		.cta p {
-			font-size: 20px;
-			margin-bottom: 20px;
-		}
-
-		.cta-button {
-			display: inline-block;
-			padding: 15px 30px;
-			background-color: var(--primary-color1);
-			color: #fff;
-			text-decoration: none;
-			border-radius: 5px;
-			font-size: 18px;
-			transition: background-color 0.3s;
-		}
-
-		.cta-button:hover {
-			background-color: #e63950;
 		}
 	}
 
@@ -414,12 +328,6 @@
 			margin-top: 10px;
 		}
 
-		.faq-link,
-		.contact-link {
-			text-decoration: underline;
-			font-weight: bold;
-			transition: color 0.3s;
-		}
 		/* Responsive Styles for CTA Section */
 		@media (max-width: 768px) {
 			.cta-button {

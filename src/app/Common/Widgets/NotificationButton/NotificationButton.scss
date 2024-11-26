@@ -23,9 +23,20 @@ button {
 ::ng-deep {
 	.notification-popup {
 		max-width: none;
-		width: 400px;
-		max-height: 300px;
-		overflow: auto;
+		width: 402px;
+
+		.popover-body {
+			background-color: var(--primary-color3);
+			color: var(--primary-font-color);
+			overflow: auto;
+			max-height: 300px;
+			max-width: none;
+			width: 400px;
+		}
+
+		.popover-arrow::after {
+			border-bottom-color: var(--primary-color3);
+		}
 
 		.item-text-popup {
 			.new-item-indicator {
@@ -38,6 +49,10 @@ button {
 				color: var(--primary-color1);
 				background-color: var(--primary-color1);
 			}
+		}
+		::-webkit-scrollbar-track {
+			background: var(--primary-color3);
+			width: 0px;
 		}
 	}
 }

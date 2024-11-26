@@ -4,9 +4,9 @@
 	&:has(.show),
 	&:has(.collapsing) {
 		box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
-		background-color: white !important;
+		background-color: var(--primary-bg-color) !important;
 		.container-fluid {
-			background-color: white;
+			background-color: var(--primary-bg-color);
 			.navbar-collapse {
 				padding-top: 10px;
 			}
@@ -26,12 +26,12 @@
 		padding-left: 5px;
 		border-radius: 5px;
 		&:hover.nav-link {
-			color: white !important;
+			color: var(--primary-invert-font-color) !important;
 			background-color: var(--primary-color2);
-			opacity: 0.7;
+			// opacity: 0.7;
 		}
 		&.active.nav-link {
-			color: white !important;
+			color: var(--primary-invert-font-color) !important;
 			background-color: var(--primary-color2);
 			border-radius: 5px;
 		}
@@ -68,18 +68,18 @@
 		display: block;
 	}
 	a {
-		color: white !important;
+		color: var(--primary-invert-font-color) !important;
 		margin: 0 5px;
 		padding-right: 5px;
 		padding-left: 5px;
 		border-radius: 5px;
 		&:hover.nav-link {
-			color: white !important;
+			color: var(--primary-invert-font-color) !important;
 			background-color: var(--primary-color2);
-			opacity: 0.7;
+			// opacity: 0.7;
 		}
 		&.active.nav-link {
-			color: white !important;
+			color: var(--primary-invert-font-color) !important;
 			background-color: var(--primary-color2);
 			border-radius: 5px;
 		}
@@ -89,7 +89,7 @@
 		background-color: inherit;
 	}
 	.navbar-toggler {
-		border-color: white;
+		border-color: var(--primary-invert-font-color);
 		.navbar-toggler-icon {
 			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 		}
@@ -98,7 +98,7 @@
 ::ng-deep {
 	.navbar.navbar-scrolled {
 		i {
-			color: white;
+			color: var(--primary-invert-font-color);
 		}
 	}
 	.navbar {
@@ -136,6 +136,12 @@
 		.popover-body {
 			display: flex;
 			flex-direction: column;
+			color: var(--primary-font-color);
+			background-color: var(--primary-color3);
+		}
+
+		.popover-arrow::after {
+			border-bottom-color: var(--primary-color3);
 		}
 	}
 }

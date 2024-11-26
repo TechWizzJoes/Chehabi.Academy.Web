@@ -2,10 +2,19 @@
 // https://css-tricks.com/difference-between-types-of-css-variables/
 :root {
 	--primary-bg-color: #fff;
+	--secondary-bg-color: rgb(233, 233, 233);
 	--primary-color1: #364555;
 	--primary-color2: #536d87;
 	--primary-color3: rgba(207, 216, 217, 1);
-	--primary-font-color: rgba(255, 255, 255, 1);
+	--primary-font-color: rgb(0, 0, 0);
+	--primary-invert-font-color: white;
+
+	--primary-bg-color: rgb(228, 228, 228);
+	--primary-color1: #6700a7;
+	--primary-color2: #8800dd;
+	--primary-color3: #e8c3ff;
+	--primary-font-color: rgb(0, 0, 0);
+
 	--header-height: 56px;
 	--page-inner-content-padding: 20px;
 	--page-inner-sm-content-padding: 100px;

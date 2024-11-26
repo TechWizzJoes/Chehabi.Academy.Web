@@ -35,8 +35,8 @@
 .btn-outline-primary {
 	@include button(
 		var(--primary-color1),
-		#fff,
-		#fff,
+		var(--primary-bg-color),
+		var(--primary-bg-color),
 		var(--primary-color2),
 		var(--primary-color1),
 		var(--primary-color1)

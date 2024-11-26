@@ -17,7 +17,7 @@
 			// flex-wrap: wrap;
 			gap: 1rem;
 			padding: 1rem;
-			border: 1px solid #e0e0e0;
+			border: 1px solid;
 			border-radius: 8px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adds a subtle shadow for focus
 
@@ -61,7 +61,6 @@
 					min-height: 60px;
 					label {
 						font-size: 0.85rem;
-						color: #495057;
 					}
 
 					select {

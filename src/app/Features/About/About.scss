@@ -1,6 +1,5 @@
 $font-family: 'Manrope', 'Noto Sans', sans-serif;
-$bg-color: #f8fafc; // slate-50
-$text-color: #0d151c;
+$bg-color: var(--primary-bg-color); // #f8fafc; // slate-50
 $button-color: #2094f3;
 $border-color: #cedde8;
 $link-color: #49779c;
@@ -71,7 +70,6 @@ $link-color: #49779c;
 			}
 
 			h2 {
-				color: $text-color;
 				font-size: 0.875rem; // sm
 				font-weight: 400;
 				line-height: 1.5; // leading-normal
@@ -91,8 +89,6 @@ $link-color: #49779c;
 			border-radius: 1rem;
 			height: 2.5rem; // h-10
 			padding: 0 1rem; // px-4
-			background-color: var(--primary-color2);
-			color: #f8fafc; // slate-50
 			font-size: 0.875rem; // sm
 			font-weight: 700;
 			line-height: 1.5; // leading-normal
@@ -173,7 +169,6 @@ $link-color: #49779c;
 			}
 
 			.feature-title {
-				color: $text-color;
 				font-size: 1rem; // base
 				font-weight: 700;
 				line-height: 1.25; // leading-tight
@@ -197,7 +192,6 @@ $link-color: #49779c;
 		background-color: $bg-color;
 
 		h2 {
-			color: $text-color;
 			font-size: 1.75rem; // 28px
 			font-weight: 700;
 			line-height: 1.25; // leading-tight
@@ -212,13 +206,11 @@ $link-color: #49779c;
 			.founder-name {
 				font-size: 1.5rem; // 24px
 				font-weight: 600;
-				color: $text-color;
 			}
 
 			.founder-title {
 				font-size: 1rem; // base
 				font-weight: 400;
-				color: var(--primary-color2);
 				margin-top: 0.5rem; // mt-2
 			}
 
@@ -234,7 +226,6 @@ $link-color: #49779c;
 					align-self: flex-start;
 					list-style: none;
 					list-style-type: circle;
-					color: var(--primary-color2);
 				}
 			}
 		}

@@ -117,3 +117,26 @@ body {
 		transform: translateX(0);
 	}
 }
+
+a {
+	color: var(--primary-color1);
+	font-weight: bold;
+	&:hover {
+		color: var(--primary-color1);
+		opacity: 0.9;
+	}
+}
+
+.card {
+	&:hover {
+		scale: 1.01;
+		box-shadow: var(--box-shadow-course-card);
+		-webkit-box-shadow: var(--box-shadow-course-card);
+	}
+}
+::ng-deep {
+	.popover-body {
+		background-color: var(--primary-color3) !important;
+		color: var(--primary-font-color) !important;
+	}
+}
