@@ -10,7 +10,6 @@
 		font-weight: 600;
 		font-size: 1.1rem;
 		letter-spacing: 0.35px;
-		color: rgba(54, 69, 85, 0.7);
 		margin: 0;
 	}
 
@@ -39,7 +38,7 @@
 			min-height: 210px;
 			border: none;
 			border-radius: 10px;
-			background-color: var(--secondary-bg-color);
+			background-color: var(--primary-color3);
 
 			&:hover {
 				cursor: pointer;

@@ -26,7 +26,7 @@ button {
 		width: 402px;
 
 		.popover-body {
-			background-color: var(--primary-color3);
+			background-color: var(--secondary-bg-color);
 			color: var(--primary-font-color);
 			overflow: auto;
 			max-height: 300px;
@@ -35,7 +35,7 @@ button {
 		}
 
 		.popover-arrow::after {
-			border-bottom-color: var(--primary-color3);
+			border-bottom-color: var(--secondary-bg-color);
 		}
 
 		.item-text-popup {

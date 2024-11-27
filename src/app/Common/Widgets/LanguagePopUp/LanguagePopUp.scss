@@ -1,12 +1,12 @@
 ::ng-deep {
 	.language-popup {
 		.popover-body {
-			background-color: var(--primary-color3);
+			background-color: var(--secondary-bg-color);
 			color: var(--primary-font-color);
 		}
 
 		.popover-arrow::after {
-			border-bottom-color: var(--primary-color3);
+			border-bottom-color: var(--secondary-bg-color);
 		}
 	}
 }

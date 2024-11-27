@@ -26,7 +26,9 @@
 		"all-rights-reserved": "All Rights Reserved.",
 		"version": "Version",
 		"logo-alt": "Company Logo",
-		"home": "Home"
+		"home": "Home",
+		"FAQ": "FAQ",
+		"Feedback": "Feedback"
 	},
 	"Login": {
 		"LogInToYourAccount": "Log in to your account",
@@ -250,6 +252,8 @@
 	},
 	"DashboardPage": {
 		"dashboard": "Dashboard",
+		"courses": "Courses",
+		"classes": "Classes",
 		"editProfile": "Edit Profile",
 		"password": "Password",
 		"upcomingSessions": "Upcoming Sessions"
