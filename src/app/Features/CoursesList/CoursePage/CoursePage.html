@@ -1,5 +1,5 @@
 <div class="page-inner bg-gradient-3">
-	<div class="page-section" *ngIf="!IsLoaded">
+	<div class="page-section loading" *ngIf="!IsLoaded">
 		<app-loader></app-loader>
 	</div>
 	<div *ngIf="IsLoaded && Course">

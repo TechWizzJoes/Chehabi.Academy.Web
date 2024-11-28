@@ -9,6 +9,10 @@
 	.page-section {
 		align-items: flex-start;
 		justify-content: space-between;
+		&.loading {
+			align-items: center;
+			justify-content: center;
+		}
 		.content {
 			padding: var(--page-inner-content-padding);
 			font-size: 14px;
