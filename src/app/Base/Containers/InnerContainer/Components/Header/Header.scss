@@ -124,11 +124,11 @@
 				width: 60%;
 				// margin: 0 auto; /* Automatically center the middle div */
 			}
-			.ppp {
+			.user-buttons {
 				order: 3;
 				width: 15%;
 				display: flex;
-				justify-content: end;
+				justify-content: flex-end;
 			}
 
 			&:has(.show),

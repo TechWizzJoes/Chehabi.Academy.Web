@@ -7,6 +7,8 @@ footer {
 		justify-content: space-around;
 		img {
 			height: 30px;
+			width: 20%;
+			object-fit: contain;
 		}
 		ul {
 			list-style: none;
@@ -29,8 +31,11 @@ footer {
 			}
 		}
 		.social {
+			width: 20%;
 			text-align: center;
 			padding-bottom: 10px;
+			display: flex;
+			justify-content: flex-end;
 			a {
 				i {
 					font-size: 24px;
@@ -58,10 +63,19 @@ footer {
 	footer {
 		.main {
 			flex-direction: column;
+			align-items: center;
 			img {
 				width: 100px;
 				object-fit: cover;
 				margin: auto;
+				margin-bottom: 15px;
+			}
+			ul {
+				margin-bottom: 15px;
+			}
+			.social {
+				width: 100%;
+				justify-content: center;
 			}
 		}
 		.copyright {
