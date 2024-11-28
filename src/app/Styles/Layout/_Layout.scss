@@ -134,6 +134,40 @@ a {
 		-webkit-box-shadow: var(--box-shadow-course-card);
 	}
 }
+
+.coming-soon-badge {
+	position: relative;
+
+	&::before {
+		content: 'COMING';
+		position: absolute;
+		top: 0;
+		inset-inline-end: 0;
+		background: #f9a825;
+		color: white;
+		font-weight: bold;
+		padding: 1px 10px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		font-size: small;
+		z-index: 1;
+	}
+
+	&::after {
+		content: 'SOON';
+		position: absolute;
+		top: 18px;
+		inset-inline-end: 0;
+		background: #333;
+		color: #f9a825;
+		font-weight: bold;
+		padding: 1px 10px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		font-size: small;
+	}
+}
+
 ::ng-deep {
 	.popover-body {
 		background-color: var(--primary-color3) !important;

@@ -22,6 +22,8 @@ import { Constants } from '@App/Common/Settings/Constants';
 export class CourseCardComponent implements OnInit {
 	Constants = Constants;
 	@Input('Course') Course!: CourseModels.Course;
+	today = new Date();
+	coursedate = new Date();
 
 	constructor(
 		private router: Router,
@@ -33,7 +35,9 @@ export class CourseCardComponent implements OnInit {
 		private StorageService: StorageService
 	) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.coursedate = new Date(this.Course.StartDate);
+	}
 
 
 }
