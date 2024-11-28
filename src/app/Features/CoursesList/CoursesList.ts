@@ -58,18 +58,7 @@ export class CoursesListComponent implements OnInit {
 	Data = {
 		GetCourses: () => {
 			this.IsLoaded = false;
-			// console.log(this.Filter);
-			if (!this.Filter) {
-				this.Filter = this.StorageService.GetLocalStorage<CourseModels.Filter>(StorageEnum.CoursesFilter);
-				// no filter in storage
-				if (Object.keys(this.Filter).length == 0) {
-					this.Filter = new CourseModels.Filter();
-					// console.log('get filter from code', this.Filter);
-				} else {
-					// console.log('get filter from storage', this.Filter);
-				}
-			}
-
+			this.Data.CheckFilter();
 			let endPoint = HttpEndPoints.Courses.GetAll
 			this.HttpService.Post<CourseModels.Filter, CourseModels.Course[]>(endPoint, this.Filter).subscribe(data => {
 				this.IsLoaded = true
@@ -78,9 +67,8 @@ export class CoursesListComponent implements OnInit {
 		},
 
 		FilterRows: () => {
-			// console.log(this.Filter);
+			this.Filter.Time = new Date();
 			this.StorageService.SetLocalStorage(StorageEnum.CoursesFilter, this.Filter);
-			// console.log('saved filter so storage');
 			this.Data.GetCourses();
 		},
 
@@ -88,6 +76,25 @@ export class CoursesListComponent implements OnInit {
 			this.Filter = new CourseModels.Filter();
 			this.StorageService.RemoveLocalStorage(StorageEnum.CoursesFilter);
 			this.Data.GetCourses();
+		},
+
+		CheckFilter: () => {
+			if (!this.Filter) {
+				this.Filter = this.StorageService.GetLocalStorage<CourseModels.Filter>(StorageEnum.CoursesFilter);
+
+				if (Object.keys(this.Filter).length == 0) {
+					// no filter in storage
+					this.Filter = new CourseModels.Filter();
+				} else {
+					const now = new Date();
+					const diffInMinutes = now.getMinutes() - (new Date(this.Filter.Time)).getMinutes()
+					if (diffInMinutes > 5) {
+						// reset filter after 5 minutes
+						this.Filter = new CourseModels.Filter();
+						this.StorageService.RemoveLocalStorage(StorageEnum.CoursesFilter);
+					}
+				}
+			}
 		}
 	}
 

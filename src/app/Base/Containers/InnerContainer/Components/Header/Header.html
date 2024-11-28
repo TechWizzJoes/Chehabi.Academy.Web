@@ -4,16 +4,18 @@
 			<img src="/assets/Images/full-logo.png" alt="logo-img" class="logo-img" />
 			<img src="/assets/Images/white-full-logo.png" alt="logo-img" class="white-logo-img" />
 		</a>
-		<button
-			class="navbar-toggler"
-			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNavDropdown"
-			aria-controls="navbarNavDropdown"
-			aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<div class="navbar-toggler-div">
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown"
+				aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
 
 		<div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -92,47 +94,47 @@
 					data-bs-target=".navbar-collapse.show">
 					{{'TeachWithUs' | translate}}
 				</a>
-
-				<li *ngIf="AuthService.IsAuthenticated">
-					<app-notification-button></app-notification-button>
-				</li>
-				<li *ngIf="AuthService.IsAuthenticated">
-					<app-cart-button></app-cart-button>
-				</li>
-				<li>
-					<app-language-popup></app-language-popup>
-				</li>
 			</ul>
 		</div>
-
-		<!-- user popup -->
-		<button
-			type="button"
-			class="profile-pic"
-			data-bs-toggle="collapse"
-			data-bs-target=".navbar-collapse.show"
-			[ngbPopover]="userPopup"
-			container="body"
-			popoverClass="user-popover">
-			<img [src]="CurrentUser.ProfilePicturePath? CurrentUser.ProfilePicturePath : 'assets/Images/default-pp.png'" data-toggle="dropdown" />
-		</button>
-		<ng-template #userPopup>
-			<div class="text-center">
-				<strong> {{'Header.Hello' | translate}}, </strong>
-				<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
-				<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
-			</div>
-			<hr />
-			<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-			<a class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]">
-				{{'Header.Profile' | translate}}
-			</a>
-			<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Header.Sign Out' | translate}}</a>
-			<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
-				{{'Header.Want to join the academy' | translate}}?<br />
-				{{"Header.It'll only take a few minutes" | translate}}
-			</div>
-			<a class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Header.Sign In' | translate}}</a>
-		</ng-template>
+		<div class="ppp">
+			<span *ngIf="AuthService.IsAuthenticated">
+				<app-notification-button></app-notification-button>
+			</span>
+			<span *ngIf="AuthService.IsAuthenticated">
+				<app-cart-button></app-cart-button>
+			</span>
+			<span>
+				<app-language-popup></app-language-popup>
+			</span>
+			<!-- user popup -->
+			<button
+				type="button"
+				class="profile-pic"
+				data-bs-toggle="collapse"
+				data-bs-target=".navbar-collapse.show"
+				[ngbPopover]="userPopup"
+				container="body"
+				popoverClass="user-popover">
+				<img [src]="CurrentUser.ProfilePicturePath? CurrentUser.ProfilePicturePath : 'assets/Images/default-pp.png'" data-toggle="dropdown" />
+			</button>
+			<ng-template #userPopup>
+				<div class="text-center">
+					<strong> {{'Header.Hello' | translate}}, </strong>
+					<span>{{CurrentUser.FirstName}} {{ CurrentUser.LastName}}</span>
+					<!-- <button class="dropdown-item" (click)="goToProfile()">Profile</button> -->
+				</div>
+				<hr />
+				<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
+				<a class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]">
+					{{'Header.Profile' | translate}}
+				</a>
+				<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Header.Sign Out' | translate}}</a>
+				<div class="text-center pb-2" *ngIf="!AuthService.IsAuthenticated">
+					{{'Header.Want to join the academy' | translate}}?<br />
+					{{"Header.It'll only take a few minutes" | translate}}
+				</div>
+				<a class="btn btn-danger btn-sm" *ngIf="!AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Login]">{{'Header.Sign In' | translate}}</a>
+			</ng-template>
+		</div>
 	</div>
 </nav>

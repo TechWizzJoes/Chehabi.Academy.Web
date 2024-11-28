@@ -1,6 +1,5 @@
 button {
 	position: relative;
-	margin-inline-end: 12px;
 
 	.counter {
 		position: absolute;
@@ -53,6 +52,16 @@ button {
 		::-webkit-scrollbar-track {
 			background: var(--primary-color3);
 			width: 0px;
+		}
+	}
+
+	@media (max-width: 576px) {
+		.notification-popup {
+			width: 302px;
+
+			.popover-body {
+				width: 300px;
+			}
 		}
 	}
 }

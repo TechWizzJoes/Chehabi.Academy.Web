@@ -143,8 +143,8 @@ a {
 		position: absolute;
 		top: 0;
 		inset-inline-end: 0;
-		background: #f9a825;
-		color: white;
+		background: var(--coming-soon-gradient-color);
+		color: var(--primary-invert-font-color);
 		font-weight: bold;
 		padding: 1px 10px;
 		border-top-left-radius: 5px;
@@ -158,8 +158,8 @@ a {
 		position: absolute;
 		top: 18px;
 		inset-inline-end: 0;
-		background: #333;
-		color: #f9a825;
+		background: var(--primary-color1);
+		color: var(--coming-soon-color);
 		font-weight: bold;
 		padding: 1px 10px;
 		border-bottom-left-radius: 5px;

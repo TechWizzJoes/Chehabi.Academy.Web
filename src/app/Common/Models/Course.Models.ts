@@ -90,7 +90,7 @@ export namespace CourseModels {
 		Rating!: number;
 		Type: string = "";
 		Level: string = "";
-
+		Time!: Date;
 	}
 	export class CourseType {
 		Id!: number;

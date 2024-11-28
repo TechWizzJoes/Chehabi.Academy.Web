@@ -79,60 +79,6 @@
 				}
 			}
 		}
-		&.courses-overview {
-			justify-content: space-between;
-			img {
-				max-width: 100px;
-			}
-		}
-		&.offer {
-			padding: 20px;
-			// border-bottom: 1px solid black;
-			background: var(--background-horizontal-gradient-180);
-			.sub-section {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-around;
-				align-items: center;
-				width: 80%;
-				.offer-card {
-					background-color: var(--primary-color3);
-					width: 100%;
-					max-width: 250px;
-					min-height: 350px;
-					height: auto;
-					border-radius: 20px;
-					margin: 10px;
-					padding: 15px;
-					display: flex;
-					flex-direction: column;
-					justify-content: flex-start;
-					align-items: center;
-					box-shadow: var(--box-shadow-offer-card);
-					-webkit-box-shadow: var(--box-shadow-offer-card);
-					-moz-box-shadow: var(--box-shadow-offer-card);
-
-					img {
-						width: 100px;
-						height: 100px;
-						margin-bottom: 15px;
-						object-fit: contain;
-					}
-					.body {
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						.title {
-							text-align: center;
-						}
-						.text {
-							text-align: center;
-							word-wrap: break-word;
-						}
-					}
-				}
-			}
-		}
 		&.new {
 			padding: 20px;
 			justify-content: space-around;
@@ -165,7 +111,6 @@
 	.what-we-offer {
 		padding: 40px;
 
-		/* Styles for Course Types */
 		.course-types {
 			display: flex;
 			flex-wrap: wrap;
@@ -174,7 +119,7 @@
 		}
 
 		.course-card {
-			background-color: var(--primary-color3);
+			background-color: var(--secondary-bg-color);
 			border-radius: 10px;
 			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 			padding: 30px;
@@ -195,9 +140,6 @@
 	}
 
 	.why-us {
-		// background-color: var(--primary-color3);
-		// color: var(--primary-font-color);
-		// border-radius: 10px;
 		padding: 40px;
 		text-align: left;
 
@@ -258,18 +200,15 @@
 	}
 
 	.how-it-works {
-		margin: 50px auto;
+		padding: 40px;
 
 		.steps {
-			display: flex;
-			justify-content: space-around;
-			flex-wrap: wrap;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			grid-auto-rows: minmax(300px, auto);
+			grid-gap: 20px;
 
 			.step {
-				flex: 1 1 18%;
-				max-width: 200px;
-				margin: 20px;
-
 				img {
 					width: 100%;
 					height: auto;
@@ -290,7 +229,6 @@
 		padding: 40px;
 		text-align: center;
 		border-radius: 10px;
-		margin-top: 40px;
 
 		.cta-section h2 {
 			font-size: 32px;
@@ -388,6 +326,12 @@
 			}
 			.scroll {
 				bottom: 80px;
+			}
+		}
+
+		.what-we-offer {
+			.course-types {
+				flex-direction: column;
 			}
 		}
 	}

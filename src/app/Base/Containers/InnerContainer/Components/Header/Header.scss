@@ -65,14 +65,14 @@
 		display: none;
 	}
 	.white-logo-img {
-		display: block;
+		display: inline-block;
 	}
 	a {
 		color: var(--primary-invert-font-color) !important;
-		margin: 0 5px;
-		padding-right: 5px;
-		padding-left: 5px;
-		border-radius: 5px;
+		// margin: 0 5px;
+		// padding-right: 5px;
+		// padding-left: 5px;
+		// border-radius: 5px;
 		&:hover.nav-link {
 			color: var(--primary-invert-font-color) !important;
 			background-color: var(--primary-color2);
@@ -109,17 +109,28 @@
 }
 @media (max-width: 576px) {
 	.navbar {
+		a {
+			text-align: center;
+		}
+
 		.container-fluid {
 			// background-color: red;
-			.navbar-toggler {
+			.navbar-toggler-div {
 				order: 1;
+				width: 15%;
 			}
 			.logo {
 				order: 2;
+				width: 60%;
+				// margin: 0 auto; /* Automatically center the middle div */
 			}
-			.profile-pic {
+			.ppp {
 				order: 3;
+				width: 15%;
+				display: flex;
+				justify-content: end;
 			}
+
 			&:has(.show),
 			&:has(.collapsing) {
 				.navbar-collapse {
