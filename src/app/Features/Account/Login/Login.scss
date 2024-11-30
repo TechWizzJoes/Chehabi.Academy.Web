@@ -44,7 +44,7 @@
 		}
 		.login-title {
 			color: #fff;
-			font-size: 25px;
+			font-size: var(--font-size-25);
 			letter-spacing: 1.1px;
 			margin: 20px 0;
 			z-index: 2;
@@ -53,7 +53,7 @@
 				font-weight: 600;
 			}
 			.sub-title {
-				font-size: 16px;
+				font-size: var(--font-size-base);
 			}
 		}
 		.login-form {
@@ -65,7 +65,7 @@
 			.form-group {
 				padding-bottom: 20px;
 				label {
-					font-size: 16px;
+					font-size: var(--font-size-base);
 					font-weight: 600;
 					margin-bottom: 6px;
 				}
@@ -80,7 +80,7 @@
 						color: #8ca3bd;
 						position: absolute;
 						z-index: 3;
-						font-size: 16px;
+						font-size: var(--font-size-base);
 						top: 50%;
 						transform: translateY(-50%);
 						&.left {
@@ -98,7 +98,7 @@
 		}
 		.forgot-password {
 			a {
-				font-size: 16px;
+				font-size: var(--font-size-base);
 				text-decoration: none;
 				color: #8ca3bd;
 				&:hover {

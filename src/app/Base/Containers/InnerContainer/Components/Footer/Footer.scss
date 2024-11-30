@@ -13,7 +13,7 @@ footer {
 		ul {
 			list-style: none;
 			text-align: center;
-			font-size: 18px;
+			font-size: var(--font-size-md);
 			line-height: 1.6;
 			margin-bottom: 0;
 			display: flex;
@@ -38,7 +38,7 @@ footer {
 			justify-content: flex-end;
 			a {
 				i {
-					font-size: 24px;
+					font-size: var(--font-size-xl);
 				}
 				padding: 10px;
 				color: var(--primary-color3);

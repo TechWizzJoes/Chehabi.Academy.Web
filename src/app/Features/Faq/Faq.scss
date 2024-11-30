@@ -16,14 +16,14 @@
 	}
 
 	.faq-item h3 {
-		font-size: 22px;
+		font-size: var(--font-size-22);
 		color: #333;
 		cursor: pointer;
 		margin-bottom: 10px;
 	}
 
 	.faq-item p {
-		font-size: 16px;
+		font-size: var(--font-size-base);
 		color: #555;
 		// display: none;
 	}

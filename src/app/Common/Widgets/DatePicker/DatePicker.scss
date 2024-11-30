@@ -4,7 +4,7 @@
 		color: #aaa;
 		position: absolute;
 		z-index: 3;
-		font-size: 16px;
+		font-size: var(--font-size-base);
 		right: 20px;
 		left: auto;
 		top: 50%;

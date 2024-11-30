@@ -144,7 +144,7 @@
 		text-align: left;
 
 		h3 {
-			font-size: 28px;
+			font-size: var(--font-size-2xl);
 			margin-bottom: 20px;
 		}
 
@@ -154,7 +154,7 @@
 		}
 
 		li {
-			font-size: 18px;
+			font-size: var(--font-size-md);
 			margin-bottom: 10px;
 		}
 
@@ -168,7 +168,7 @@
 		}
 
 		.cta p {
-			font-size: 20px;
+			font-size: var(--font-size-lg);
 			margin-bottom: 20px;
 		}
 
@@ -237,7 +237,7 @@
 		}
 
 		.cta-section p {
-			font-size: 18px;
+			font-size: var(--font-size-md);
 			color: #555;
 			margin-bottom: 20px;
 		}
@@ -252,7 +252,7 @@
 			text-decoration: none;
 			padding: 12px 30px;
 			border-radius: 5px;
-			font-size: 18px;
+			font-size: var(--font-size-md);
 			margin: 0 10px;
 			transition: background-color 0.3s;
 		}
@@ -262,7 +262,7 @@
 		}
 
 		.supporting-text {
-			font-size: 16px;
+			font-size: var(--font-size-base);
 			margin-top: 10px;
 		}
 

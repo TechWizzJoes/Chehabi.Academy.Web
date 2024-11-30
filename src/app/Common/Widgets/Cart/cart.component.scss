@@ -5,7 +5,7 @@
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-	font-size: 16px;
+	font-size: var(--font-size-base);
 	-webkit-font-smoothing: antialiased;
 	display: flex;
 	justify-content: center;
@@ -28,7 +28,7 @@ body {
 
 .cart h2 {
 	text-align: center;
-	font-size: 28px;
+	font-size: var(--font-size-2xl);
 	margin-bottom: 20px;
 	color: #2c3e50;
 }
@@ -63,7 +63,7 @@ body {
 }
 
 .item-details {
-	font-size: 16px;
+	font-size: var(--font-size-base);
 	color: #555;
 	margin-top: 5px;
 }
@@ -83,7 +83,7 @@ body {
 }
 
 .cart-total {
-	font-size: 20px;
+	font-size: var(--font-size-lg);
 	font-weight: bold;
 	text-align: right;
 	margin-top: 15px;
@@ -104,7 +104,7 @@ body {
 	background: #2980b9;
 	color: #fff;
 	padding: 14px 20px;
-	font-size: 18px;
+	font-size: var(--font-size-md);
 	border-radius: 10px;
 	border: none;
 	cursor: pointer;
@@ -118,7 +118,7 @@ body {
 
 .empty-cart {
 	text-align: center;
-	font-size: 18px;
+	font-size: var(--font-size-md);
 	color: #7f8c8d;
 	margin-top: 20px;
 }
@@ -145,18 +145,18 @@ body {
 	}
 
 	.cart-total {
-		font-size: 18px;
+		font-size: var(--font-size-md);
 	}
 
 	.btn-checkout {
-		font-size: 16px;
+		font-size: var(--font-size-base);
 		padding: 12px 18px;
 	}
 }
 
 @media (max-width: 480px) {
 	.cart h2 {
-		font-size: 24px;
+		font-size: var(--font-size-xl);
 	}
 
 	.cart-item {
