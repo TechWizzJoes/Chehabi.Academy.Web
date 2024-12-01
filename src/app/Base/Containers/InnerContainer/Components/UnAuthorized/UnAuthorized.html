@@ -2,9 +2,9 @@
 	<div class="page-section">
 		<!-- <h1>Forbidden Resource</h1> -->
 		<div class="unauthorized-container">
-			<h1>Access Denied</h1>
-			<p>You do not have permission to view this page.</p>
-			<a [routerLink]="['/',RoutePaths.Home]">Return to Home</a>
+			<h1>{{ 'Unauthorized.AccessDenied' | translate }}</h1>
+			<p>{{ 'Unauthorized.Paragraph' | translate }}</p>
+			<a [routerLink]="['/',RoutePaths.Home]">{{ 'Unauthorized.Link' | translate }}</a>
 		</div>
 	</div>
 </div>

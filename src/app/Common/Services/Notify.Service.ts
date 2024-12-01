@@ -3,12 +3,14 @@ import { ActiveToast, ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 declare let $: any;
 import { HelperService } from '@App/Common/Services/Helper.Service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class NotifyService {
 	constructor(
 		private Toastr: ToastrService,
-		private HelperService: HelperService
+		private HelperService: HelperService,
+		private translate: TranslateService
 	) { }
 
 	ToastrOptions = {
@@ -23,7 +25,12 @@ export class NotifyService {
 		countDuplicates: true,
 	};
 
+	private GetLocalizedMessage(msg: string): string {
+		return this.translate.instant("Errors." + msg);
+	}
+
 	Success(message: string, title: string = '') {
+		message = this.GetLocalizedMessage(message);
 		this.Toastr.success(message, title, this.ToastrOptions);
 		// Swal.fire({
 		// 	position: 'top-end',
@@ -37,6 +44,7 @@ export class NotifyService {
 	}
 
 	Error(message: string, title: string = '', timeOut = 3000): number {
+		message = this.GetLocalizedMessage(message);
 		return this.Toastr.error(message, title, { ...this.ToastrOptions, timeOut }).toastId;
 		// Swal.fire({
 		// 	position: 'top-end',

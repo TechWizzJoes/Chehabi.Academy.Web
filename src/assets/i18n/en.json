@@ -460,7 +460,17 @@
 		"p2_b": "Share your ideas, suggestions, and any questions with us to help make this experience better.",
 		"thankYou": "Thank you for your interest in teaching with us!"
 	},
+
+	"Unauthorized": {
+		"AccessDenied": "Access Denied",
+		"Paragraph": "You do not have permission to view this page.",
+		"Link": "Return to Home"
+	},
 	"Errors": {
-		"You have to specify a rating.": "******You have to specify a rating."
+		"NETWORK_ERROR": "******No internet connection! \nOr server is down",
+		"WRONG_PASSWORD_RESET": "******Wrong password.",
+		"RATING_NULL": "******You have to specify a rating.",
+		"NO_INTERNET_CONNECTION": "No internet connection",
+		"RECONNECTED": "Re-connected"
 	}
 }
