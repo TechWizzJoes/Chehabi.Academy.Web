@@ -4,14 +4,46 @@
 	position: absolute;
 	top: 0;
 	z-index: 100;
-	background-color: white;
+	background-color: var(--primary-bg-color);
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	animation: init 0.5s ease-out;
 
 	img {
 		height: 10vh;
+	}
+
+	.loader {
+		width: 100%;
+		height: 4.8px;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		&::after {
+			content: '';
+			width: 60px;
+			height: 4.8px;
+			background: var(--primary-color1);
+			position: absolute;
+			top: 0;
+			left: 0;
+			box-sizing: border-box;
+			animation: hitZak 0.5s ease-in-out infinite alternate;
+			border-radius: 5px;
+		}
+
+		@keyframes hitZak {
+			0% {
+				left: 0;
+				transform: translateX(-1%);
+			}
+			100% {
+				left: 100%;
+				transform: translateX(-99%);
+			}
+		}
 	}
 }
 

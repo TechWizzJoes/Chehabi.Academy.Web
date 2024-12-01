@@ -1,24 +1,24 @@
 <div class="modal-header">
-	<h5 class="modal-title title" *ngIf="isEdit">Edit {{property}}</h5>
-	<h5 class="modal-title title" *ngIf="!isEdit">Add {{property}}</h5>
+	<h5 class="modal-title title" *ngIf="isEdit">{{"DetailsModal.Edit" | translate}} {{('DetailsModal.'+ property) | translate}}</h5>
+	<h5 class="modal-title title" *ngIf="!isEdit">{{"DetailsModal.Add" | translate}} {{('DetailsModal.'+ property) | translate}}</h5>
 	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div [ngSwitch]="property">
 	<form (ngSubmit)="onSubmit(frm)" name="form" id="form" #frm="ngForm" [ngClass]="{ 'form-submitted': frm.submitted }">
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Class">
 			<div class="mb-3">
-				<label for="name" class="form-label required">Name</label>
+				<label for="name" class="form-label required">{{"DetailsModal.Name" | translate}}</label>
 				<input type="text" class="form-control" id="name" name="name" [(ngModel)]="NewClass.Name" #name="ngModel" required />
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="capacity" class="form-label required">Capacity</label>
+					<label for="capacity" class="form-label required">{{"DetailsModal.Capacity" | translate}}</label>
 					<!-- m-0 for label -->
 					<!-- <div class="form-text m-0">Maximum number of students to enroll.</div> -->
 					<input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="NewClass.MaxCapacity" #capacity="ngModel" required />
 				</div>
 				<div class="col">
-					<label for="noOfSessions" class="form-label required">Number of sessions</label>
+					<label for="noOfSessions" class="form-label required">{{"DetailsModal.NumberOfSessions" | translate}}</label>
 					<input
 						type="number"
 						class="form-control"
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="start" class="form-label required">Starts on</label>
+				<label for="start" class="form-label required">{{"DetailsModal.StartsOn" | translate}}</label>
 				<input
 					type="date"
 					class="form-control"
@@ -49,8 +49,8 @@
 			<div class="row mb-3">
 				<div class="d-flex justify-content-between align-items-end">
 					<div>
-						<label for="period" class="form-label required m-0">Schedule</label>
-						<div class="form-text m-0">The weekday and time to calculate the sessions for this class.</div>
+						<label for="period" class="form-label required m-0">{{"DetailsModal.Schedule" | translate}}</label>
+						<div class="form-text m-0">{{"DetailsModal.weekDayTime" | translate}}</div>
 						<!-- <input type="text" class="form-control" id="period" name="period" [(ngModel)]="NewClass.Period" #period="ngModel" /> -->
 					</div>
 					<div class="" *ngIf="!isEdit">
@@ -61,14 +61,14 @@
 				<ng-container *ngIf="!isEdit">
 					<div class="row mb-2" *ngFor="let period of NewClass.Period; index as i">
 						<div class="col">
-							<label for="dayOfWeek" class="form-label">Day of Week</label>
+							<label for="dayOfWeek" class="form-label">{{"DetailsModal.DayOfWeek" | translate}}</label>
 							<select class="form-select" id="dayOfWeek" name="dayOfWeek" (change)="Classes.onDayChange($event, i)" required>
 								<option *ngFor="let day of daysOfWeek" [value]="day.Id" [selected]="day.Id==period.Day">{{ day.Name }}</option>
 							</select>
 						</div>
 
 						<div class="col">
-							<label for="timeOfDay" class="form-label">Time of Day</label>
+							<label for="timeOfDay" class="form-label">{{"DetailsModal.TimeOfDay" | translate}}</label>
 							<input
 								type="time"
 								class="form-control"
@@ -80,7 +80,7 @@
 						</div>
 
 						<div class="col">
-							<label for="duration" class="form-label">Duration: minutes</label>
+							<label for="duration" class="form-label">{{"DetailsModal.Duration" | translate}}</label>
 							<select class="form-select" id="duration" name="duration" (change)="Classes.onDurationChange($event, i)" required>
 								<option *ngFor="let duration of SessionMinutes" [value]="duration.Name">{{ duration.Name }}</option>
 							</select>
@@ -90,7 +90,7 @@
 				<ng-container *ngIf="isEdit">
 					<div class="row mb-4" *ngFor="let period of NewClass.LiveSessions; index as i">
 						<div class="col">
-							<label for="start" class="form-label">Session {{i+1}}:</label>
+							<label for="start" class="form-label">{{"DetailsModal.Session" | translate}} {{i+1}}:</label>
 							<input
 								type="date"
 								class="form-control"
@@ -103,7 +103,7 @@
 						</div>
 
 						<div class="col">
-							<label for="timeOfDay" class="form-label">Time of Day</label>
+							<label for="timeOfDay" class="form-label">{{"DetailsModal.TimeOfDay" | translate}}</label>
 							<input
 								type="time"
 								class="form-control"
@@ -116,7 +116,7 @@
 						</div>
 
 						<div class="col">
-							<label for="link" class="form-label">Link</label>
+							<label for="link" class="form-label">{{"DetailsModal.Link" | translate}}</label>
 							<input
 								type="text"
 								class="form-control"
@@ -146,7 +146,7 @@
 							[checked]="NewClass.IsActive"
 							[(ngModel)]="NewClass.IsActive"
 							#isActive="ngModel" />
-						<label class="form-check-label" for="isActive"> Active </label>
+						<label class="form-check-label" for="isActive">{{"DetailsModal.Active" | translate}} </label>
 					</div>
 				</div>
 				<div class="col">
@@ -159,7 +159,7 @@
 							[checked]="NewClass.HasFreeTrial"
 							[(ngModel)]="NewClass.HasFreeTrial"
 							#hasFreeTrial="ngModel" />
-						<label class="form-check-label" for="hasFreeTrial"> Has free trial session </label>
+						<label class="form-check-label" for="hasFreeTrial">{{"DetailsModal.HasFreeTrial" | translate}} </label>
 					</div>
 				</div>
 			</div>
@@ -167,21 +167,21 @@
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Course">
 			<div class="row mb-3">
 				<div class="col">
-					<label for="class" class="form-label required">Name</label>
+					<label for="class" class="form-label required">{{"DetailsModal.Name" | translate}}</label>
 					<input type="text" class="form-control" id="class" name="Name" [(ngModel)]="NewCourse.Name" #Name="ngModel" required />
 				</div>
 				<div class="col">
-					<label for="start" class="form-label">Starts on</label>
+					<label for="start" class="form-label">{{"DetailsModal.StartsOn" | translate}}</label>
 					<input type="date" class="form-control" id="start" name="StartDate" [min]="Today" [(ngModel)]="NewCourse.StartDate" #StartDate="ngModel" />
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="price" class="form-label required">Price</label>
+					<label for="price" class="form-label required">{{"DetailsModal.Price" | translate}}</label>
 					<input type="number" class="form-control" id="price" name="Price" [(ngModel)]="NewCourse.Price" #Price="ngModel" />
 				</div>
 				<div class="col">
-					<label for="PriceBeforeDiscount" class="form-label">Price befoure discount</label>
+					<label for="PriceBeforeDiscount" class="form-label">{{"DetailsModal.PriceBeforeDiscount" | translate}}</label>
 					<input
 						type="number"
 						class="form-control"
@@ -193,7 +193,7 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="classType" class="form-label required">Type</label>
+					<label for="classType" class="form-label required">{{"DetailsModal.Type" | translate}}</label>
 					<select
 						class="form-select"
 						id="courseType"
@@ -206,7 +206,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="classLevel" class="form-label required">Level</label>
+					<label for="classLevel" class="form-label required">{{"DetailsModal.Level" | translate}}</label>
 					<select
 						class="form-select"
 						id="courseLevel"
@@ -220,19 +220,19 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="videopath" class="form-label">Video Url</label>
+				<label for="videopath" class="form-label">{{"DetailsModal.VideoUrl" | translate}}</label>
 				<input
 					type="text"
 					class="form-control"
 					id="videopath"
 					name="VideoPath"
-					placeholder="Add a youtube video url for course description"
+					[placeholder]="'DetailsModal.VideoUrlPlaceholder' | translate"
 					[(ngModel)]="NewCourse.VideoPath"
 					#VideoPath="ngModel" />
 			</div>
 			<div class="mb-3">
-				<label for="image" class="form-label m-0">Cover Image</label>
-				<div class="form-text m-0">The course main cover image appearing in search.</div>
+				<label for="image" class="form-label m-0">{{"DetailsModal.CoverImage" | translate}}</label>
+				<div class="form-text m-0">{{"DetailsModal.CoverImageDesc" | translate}}</div>
 				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onImageChange($event)" />
 				<div class="progress-container" *ngIf="ImageProgress.start">
 					<div class="progress">
@@ -248,8 +248,8 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="filepath" class="form-label m-0">Upload Sample File</label>
-				<div class="form-text m-0">PDF file that would be in the course's main page.</div>
+				<label for="filepath" class="form-label m-0">{{"DetailsModal.SampleFile" | translate}}</label>
+				<div class="form-text m-0">{{"DetailsModal.SampleFileDesc" | translate}}</div>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, true)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
@@ -266,8 +266,8 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="filepath" class="form-label m-0">Upload Main File</label>
-				<div class="form-text m-0">PDF file that would be in the course's main page.</div>
+				<label for="filepath" class="form-label m-0">{{"DetailsModal.MainFile" | translate}}</label>
+				<div class="form-text m-0">{{"DetailsModal.MainFileDesc" | translate}}</div>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
@@ -284,7 +284,7 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<label for="description" class="form-label required">Description</label>
+				<label for="description" class="form-label required">{{"DetailsModal.Description" | translate}}</label>
 				<textarea
 					class="form-control"
 					id="description"
@@ -295,7 +295,7 @@
 					required></textarea>
 			</div>
 			<div class="mb-3">
-				<label for="prerequisite" class="form-label">Prerequisite</label>
+				<label for="prerequisite" class="form-label">{{"DetailsModal.Prerequisite" | translate}}</label>
 				<textarea
 					class="form-control"
 					id="prerequisite"
@@ -306,7 +306,7 @@
 					#Prerequisite="ngModel"></textarea>
 			</div>
 			<div class="mb-3">
-				<label for="prerequisite" class="form-label">To Be Learned</label>
+				<label for="prerequisite" class="form-label">{{"DetailsModal.ToBeLearned" | translate}}</label>
 				<textarea
 					class="form-control"
 					id="prerequisite"
@@ -324,17 +324,17 @@
 					[checked]="NewCourse.IsActive"
 					[(ngModel)]="NewCourse.IsActive"
 					#isActive="ngModel" />
-				<label class="form-check-label" for="active"> Active </label>
+				<label class="form-check-label" for="active"> {{"DetailsModal.Active" | translate}} </label>
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseInfo">
 			<div class="row mb-3">
 				<div class="col">
-					<label for="title" class="form-label required">Name</label>
+					<label for="title" class="form-label required">{{"DetailsModal.Name" | translate}}</label>
 					<input type="text" class="form-control" id="title" name="title" [(ngModel)]="NewCourse.Name" #title="ngModel" required />
 				</div>
 				<div class="col">
-					<label for="start" class="form-label required">Starts on</label>
+					<label for="start" class="form-label required">{{"DetailsModal.StartsOn" | translate}}</label>
 					<input
 						type="date"
 						class="form-control"
@@ -352,11 +352,11 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="price" class="form-label required">Price</label>
+					<label for="price" class="form-label required">{{"DetailsModal.Price" | translate}}</label>
 					<input type="text" class="form-control" id="price" name="price" [(ngModel)]="NewCourse.Price" #price="ngModel" />
 				</div>
 				<div class="col">
-					<label for="PriceBeforeDiscount" class="form-label">Price befoure discount</label>
+					<label for="PriceBeforeDiscount" class="form-label">{{"DetailsModal.PriceBeforeDiscount" | translate}}</label>
 					<input
 						type="number"
 						class="form-control"
@@ -368,7 +368,7 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="image" class="form-label">Upload Image</label>
+				<label for="image" class="form-label">{{"DetailsModal.CoverImage" | translate}}</label>
 				<input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="image" (change)="onFileChange($event)" />
 				<div class="progress-container" *ngIf="ImageProgress.start">
 					<div class="progress">
@@ -392,12 +392,12 @@
 					[checked]="NewCourse.IsActive"
 					[(ngModel)]="NewCourse.IsActive"
 					#isActive="ngModel" />
-				<label class="form-check-label" for="isActive"> Active </label>
+				<label class="form-check-label" for="isActive"> {{"DetailsModal.Active" | translate}} </label>
 			</div>
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseMaterial">
 			<div class="mb-3">
-				<label for="filepath" class="form-label">Upload File</label>
+				<label for="filepath" class="form-label">{{"DetailsModal.MainFile" | translate}}</label>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, false)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
@@ -415,7 +415,7 @@
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.CourseSampleMaterial">
 			<div class="mb-3">
-				<label for="filepath" class="form-label">Upload Sample File</label>
+				<label for="filepath" class="form-label">{{"DetailsModal.SampleFile" | translate}}</label>
 				<input type="file" accept="application/pdf" class="form-control" id="filepath" (change)="onFileChange($event, true)" />
 				<div class="progress-container" *ngIf="FileProgress.start">
 					<div class="progress">
@@ -433,8 +433,8 @@
 		</div>
 		<div class="modal-body" *ngSwitchCase="ModalPropertyEnum.Video">
 			<div class="mb-3">
-				<label for="dynamicProperty" class="form-label mb-0">{{property}}</label>
-				<div class="form-text m-0 mb-2">Upload a youtube video then paste it's link here.</div>
+				<label for="dynamicProperty" class="form-label mb-0">{{('DetailsModal.'+ property) | translate}}</label>
+				<div class="form-text m-0 mb-2">{{"DetailsModal.VideoUrlPlaceholder" | translate}}</div>
 				<textarea
 					class="form-control"
 					id="property"
@@ -448,7 +448,7 @@
 		</div>
 		<div class="modal-body" *ngSwitchDefault>
 			<div class="mb-3">
-				<label for="dynamicProperty" class="form-label">{{property}}</label>
+				<label for="dynamicProperty" class="form-label">{{('DetailsModal.'+ property) | translate}}</label>
 				<textarea class="form-control" id="property" rows="7" name="dynamicProperty" [(ngModel)]="DynamicValue" #dynamicProperty="ngModel"></textarea>
 			</div>
 		</div>
@@ -459,13 +459,17 @@
 </div>
 <div class="modal-footer">
 	<div class="left-section" *ngIf="property == ModalPropertyEnum.CourseInfo">
-		<button type="button" class="btn btn-danger" (click)="Courses.deleteCourse()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Course</button>
+		<button type="button" class="btn btn-danger" (click)="Courses.deleteCourse()">
+			<i class="fa fa-trash" aria-hidden="true"></i>{{"DetailsModal.DeleteCourse" | translate}}
+		</button>
 	</div>
 	<div class="left-section" *ngIf="property == ModalPropertyEnum.Class && isEdit">
-		<button type="button" class="btn btn-danger" (click)="Classes.deleteClass()"><i class="fa fa-trash" aria-hidden="true"></i>Delete Class</button>
+		<button type="button" class="btn btn-danger" (click)="Classes.deleteClass()">
+			<i class="fa fa-trash" aria-hidden="true"></i>{{"DetailsModal.DeleteClass" | translate}}
+		</button>
 	</div>
 	<div class="right-section" [ngClass]="(property == ModalPropertyEnum.CourseInfo || (property == ModalPropertyEnum.Class && isEdit))? '' : 'block'">
-		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
-		<button type="submit" form="form" class="btn btn-primary" [disabled]="IsDisabled">Save</button>
+		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">{{"DetailsModal.Close" | translate}}</button>
+		<button type="submit" form="form" class="btn btn-primary" [disabled]="IsDisabled">{{"DetailsModal.Save" | translate}}</button>
 	</div>
 </div>

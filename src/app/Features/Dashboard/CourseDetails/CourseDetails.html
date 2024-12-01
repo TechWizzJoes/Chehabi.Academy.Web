@@ -8,7 +8,7 @@
 				<a class="current">{{Course.Name}}</a>
 			</p>
 
-			<div class="card bg-dark text-white">
+			<div class="card no-scale bg-dark text-white">
 				<img *ngIf="Course.ImageUrl" [src]="Course.ImageUrl || '/assets/Images/white-full-logo.png'" class="card-img" alt="no image" height="275px" />
 				<div *ngIf="!Course.ImageUrl" class="card-img"></div>
 				<div class="btn-header" (click)="openEditModal(ModalPropertyEnum.CourseInfo)">
@@ -87,7 +87,11 @@
 					<div class="sections section">
 						<div class="row-custom">
 							<h6 class="title">{{ 'CourseDetailsPage.classes' | translate }}</h6>
-							<i class="fa fa-plus btn-custom" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class,'',false)"></i>
+							<i
+								class="fa fa-plus btn-custom"
+								aria-hidden="true"
+								[title]=" 'CourseDetailsPage.addClass' | translate"
+								(click)="openEditModal(ModalPropertyEnum.Class,'',false)"></i>
 						</div>
 						<p class="no-data" *ngIf="Course.Classes.length == 0">{{ 'CourseDetailsPage.noClasses' | translate }}</p>
 
@@ -102,12 +106,12 @@
 										aria-expanded="false"
 										[attr.aria-controls]="'#collapse' + i">
 										{{ class.Name}}
-										<span class="status active" *ngIf="class.IsActive" title="{{ 'CourseDetailsPage.active' | translate }}"
-											><i class="fa fa-check" aria-hidden="true"></i
-										></span>
-										<span class="status inactive" *ngIf="!class.IsActive" title="{{ 'CourseDetailsPage.inactive' | translate }}"
-											><i class="fa fa-times" aria-hidden="true"></i
-										></span>
+										<span class="status active" *ngIf="class.IsActive" title="{{ 'CourseDetailsPage.active' | translate }}">
+											<i class="fa fa-check" aria-hidden="true"> </i>
+										</span>
+										<span class="status inactive" *ngIf="!class.IsActive" title="{{ 'CourseDetailsPage.inactive' | translate }}">
+											<i class="fa fa-times" aria-hidden="true"> </i>
+										</span>
 										<a [routerLink]="[RoutePaths.Class, class.Id]">{{ 'CourseDetailsPage.goToClass' | translate }}</a>
 									</button>
 									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>

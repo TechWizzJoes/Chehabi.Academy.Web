@@ -8,7 +8,7 @@
 				<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,Class.Course.Id]">{{Class.Course.Name}}</a> &nbsp;>&nbsp;
 				<a class="current">{{Class.Name}}</a>
 			</p>
-			<div class="card bg-dark text-white">
+			<div class="card no-scale bg-dark text-white">
 				<img
 					*ngIf="Class.Course.ImageUrl"
 					[src]="Class.Course.ImageUrl || '/assets/Images/white-full-logo.png'"
@@ -76,7 +76,7 @@
 									<th scope="row">{{i+1}}</th>
 									<td>{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
 									<td>{{session.EndDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
-									<td>{{session.Link ?? 'N/A'}}</td>
+									<td>{{session.Link ?? ('ClassDetailsPage.notAvailable' | translate)}}</td>
 									<td class="text-center">
 										<i *ngIf="session.IsCompleted" class="fa fa-check"></i>
 									</td>
@@ -140,7 +140,7 @@
 				<div class="material section">
 					<div class="row-custom">
 						<h6 class="title">{{ 'ClassDetailsPage.material' | translate }}</h6>
-						<small>{{ 'ClassDetailsPage.notAvailable' | translate }}</small>
+						<small>{{ 'ClassDetailsPage.notAvailableYet' | translate }}</small>
 					</div>
 				</div>
 			</div>

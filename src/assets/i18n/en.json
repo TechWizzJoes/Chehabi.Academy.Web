@@ -18,7 +18,8 @@
 		"Want to join the academy": "Want to join the academy",
 		"It'll only take a few minutes": "It'll only take a few minutes",
 		"Sign In": "Sign In",
-		"Sign Out": "Sign Out"
+		"Sign Out": "Sign Out",
+		"TeachWithUs": "Teach with us"
 	},
 	"Footer": {
 		"contact-us": "Contact Us",
@@ -30,6 +31,7 @@
 		"FAQ": "FAQ",
 		"Feedback": "Feedback"
 	},
+
 	"Login": {
 		"LogInToYourAccount": "Log in to your account",
 		"Email": "Email",
@@ -52,6 +54,72 @@
 		"Register": "Register",
 		"Copyright": "Copyright",
 		"AllRightsReserved": "All rights reserved."
+	},
+
+	"HomePage": {
+		"welcomeTitle": "Welcome To Chehabi Academy!",
+		"welcomeParagraph": "Dive into the enchanting world of Arabic with us. Combining expert guidance, interactive modules, and cultural immersion, we make mastering Arabic an engaging and rewarding journey. Begin your linguistic adventure today.",
+		"joinNowButton": "Join Now",
+		"landing": {
+			"title": "Unlock Your Potential with Expert Language Coaching",
+			"subTitle": "Master new languages through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.",
+			"searchCourses": "Search in courses",
+			"learnMoreButton": "Learn More",
+			"exploreCoursesButton": "Explore Courses"
+		},
+		"whatWeOffer": {
+			"title": "What We Offer: Tailored Language Programs for Every Learner",
+			"subTitle": "Explore our wide range of courses from beginner to advanced, <br /> group classes and self-paced recorded sessions designed to meet your language goals.",
+			"liveSessions_title": "Live Course Sessions",
+			"liveSessions_paragraph": "Get the classroom experience without leaving your home, Our live course sessions bring the classroom to you, featuring interactive lessons led by expert instructors. Participate in real-time discussions, ask questions, and get personalized feedback to accelerate your progress. Use online classes for flexibility. Don't just learn—experience language mastery.",
+			"recordedSessions_title": "Recorded Courses",
+			"recordedSessions_paragraph": "Unlock the freedom to learn at your own pace! Our expertly crafted recorded courses cover all levels of language learning, from beginner to advanced. Enjoy lifetime access to high-quality video lessons, downloadable resources, and practical exercises that make mastering a new language engaging and convenient. Start your language journey today, anytime, anywhere."
+		},
+		"whyUs": {
+			"title": "Why Chehabi Academy?",
+			"ctaP_a": "Ready to start your language-learning journey?",
+			"ctaP_link": "Browse our courses",
+			"ctaP_b": "today and find the perfect fit for you!",
+			"reason1": "<strong>Expert Instructors:</strong> Learn from language professionals who bring real-world teaching experience.",
+			"reason2": "<strong>Flexible Learning Options:</strong> Whether you prefer self-paced learning or live sessions, we have options that fit your lifestyle.",
+			"reason3": "<strong>Community Support:</strong> Join a community of learners where you can connect, share experiences, and grow together.",
+			"reason4": "<strong>Certification:</strong> Earn a certificate upon course completion to showcase your language skills.",
+			"reason5": "<strong>Affordable Pricing:</strong> High-quality language courses that won't break the bank."
+		},
+		"testimonials": {
+			"title": "What Our Students Say",
+			"ctaP_a": "want to add a feedback or browse more?",
+			"ctaP_link": "Feedback page"
+		},
+		"about": {
+			"title": "About The Academy",
+			"paragraph": "Established in 2023, Chehabi Academy was born out of a profound love for the Arabic language and a desire to bridge cultural divides. Recognizing the significance of Arabic in global communication, heritage, and arts, we embarked on a mission to offer a comprehensive learning experience that goes beyond mere vocabulary and grammar.",
+			"learnMoreLink": "Learn More"
+		},
+		"howItWorks": {
+			"title": "How it works?",
+			"subTitle": "Getting started is easy! Follow these simple steps to access our language courses and begin your learning journey today.",
+			"step1_title": "Step 1: Choose a Course",
+			"step1_description": "Browse our selection of language courses to find the one that fits your goals and learning style.",
+			"step2_title": "Step 2: Sign Up or Log In",
+			"step2_description": "Create a free account or log in if you're already a member.Signing up allows you to access a free trial session and manage your courses.",
+			"step3_title": "Step 3: Book Your Free Trial",
+			"step3_description": "Experience our teaching methods firsthand by booking a free trial session for any live course. It's a risk-free way to see if the course meets your needs before making a commitment.",
+			"step4_title": "Step 4: Make Your Payment",
+			"step4_description": "Once you're ready to proceed, complete the payment securely through our online platform.",
+			"step5_title": "Step 5: Start Learning!",
+			"step5_description": "Gain full access to the live course sessions and recorded materials. Engage with expert instructors, participate in interactive classes, to progress toward language mastery."
+		},
+		"ctaSection": {
+			"title": "Ready to Start Your Language Learning Journey?",
+			"introP_a": "Whether you prefer learning at your own pace or in a dynamic, interactive setting, Chehabi Academy has the perfect course for you. Don't wait to unlock your potential, Join our community of passionate language learners and skilled instructors who are dedicated to helping you succeed. Your language mastery starts here — ",
+			"introP_link": "start learning today!",
+			"ctaP_a": "Got any questions?",
+			"ctaP_linka": "Visit our FAQ page",
+			"ctaP_b": "for answers to commonly asked questions, or",
+			"ctaP_linkb": "reach out to us directly.",
+			"ctaP_c": "We're here to help!"
+		}
 	},
 	"AboutPage": {
 		"start_learning": "Start Learning",
@@ -81,46 +149,6 @@
 		"journey_title": "Let us start our journey!",
 		"call_to_action": "Are you ready to embark on your language learning adventure? Join us today and discover the joy of mastering a new language with Chehabi Academy!",
 		"join_now": "Join Us Now!"
-	},
-	"ContactPage": {
-		"title": "Contact Us",
-		"intro": "Whether you have questions, feedback, or just want to chat about the beauty of the Arabic language, we're here for you. Reach out to us through any of the methods below, and our dedicated team will get back to you as soon as possible.",
-		"description": "Tell us",
-		"submit": "Submit",
-		"FirstName": "First Name",
-		"LastName": "Last Name",
-		"Email": "Email"
-	},
-	"ClassDetailsPage": {
-		"title": "Class Material",
-		"notAvailable": "Not available yet.",
-		"dashboard": "Dashboard",
-		"courses": "Courses",
-		"active": "Active",
-		"inactive": "Inactive",
-		"createdOn": "Created On",
-		"lastUpdatedOn": "Last Updated On",
-		"starts": "Starts",
-		"ends": "Ends",
-		"sessions": "Sessions",
-		"noLiveSessions": "No Live Sessions added.",
-		"startDate": "Start Date",
-		"endDate": "End Date",
-		"link": "Link",
-		"users": "Users",
-		"noUsers": "No users yet.",
-		"dp": "Dp",
-		"firstName": "First Name",
-		"lastName": "Last Name",
-		"email": "Email",
-		"birthDate": "Birth date",
-		"loadMoreUsers": "Load More Users",
-		"material": "Material",
-		"joinDate": "Join Date",
-		"Completed": "Completed",
-		"paid": "Paid",
-		"blocked": "Blocked",
-		"freetrial": "Free-trial"
 	},
 	"CourseListPage": {
 		"title": "Explore Our Courses",
@@ -162,6 +190,15 @@
 		"freeTrialSession": "Try a free trial session",
 		"CourseDeleted": "This course isn't available!"
 	},
+
+	"DashboardPage": {
+		"dashboard": "Dashboard",
+		"courses": "Courses",
+		"classes": "Classes",
+		"editProfile": "Edit Profile",
+		"password": "Password",
+		"upcomingSessions": "Upcoming Sessions"
+	},
 	"Courses": {
 		"dashboard": "Dashboard",
 		"courses": "Courses",
@@ -178,46 +215,28 @@
 		"hideSessions": "Hide Sessions",
 		"startsOn": "Starts on:",
 		"startedOn": "Started on:",
-		"JoinedOn": "Joined on"
+		"JoinedOn": "Joined on",
+		"by": "By:",
+		"rate": "Leave a rating",
+		"level": "Level:",
+		"type": "Type:"
 	},
-	"FeedbackPage": {
-		"title": "We'd Appreciate Your Feedback",
-		"description": "We're committed to enhancing your learning experience. Share your insights with us.",
-		"shareYourThoughts": "Share your thoughts",
-		"browseFeedbacks": "Browse feedbacks"
+	"FeedbackModal": {
+		"edit": "Edit",
+		"add": "Add",
+		"rating": "Rating",
+		"feedback": "Feedback",
+		"canSkip": "You can skip feedback but we highly appreciate your feedback.",
+		"close": "Close",
+		"continue": "Continue",
+		"submit": "Submit"
 	},
-	"HomePage": {
-		"welcomeTitle": "Welcome To Chehabi Academy!",
-		"welcomeParagraph": "Dive into the enchanting world of Arabic with us. Combining expert guidance, interactive modules, and cultural immersion, we make mastering Arabic an engaging and rewarding journey. Begin your linguistic adventure today.",
-		"learnMoreButton": "Learn More",
-		"joinNowButton": "Join Now",
-		"weOfferTitle": "We Offer",
-		"customizedCoursesTitle": "Customized Courses",
-		"customizedCoursesText": "You can choose between four types of courses: Arabic for daily life, Arabic for Academics (grammar and literature), Arabic for Islamic purposes and Arabic in the Syrian Damascene dialect.",
-		"privateLessonsTitle": "Private Lessons",
-		"privateLessonsText": "Do you learn better alone, and would like to progress on your own pace? Then you can easily book private lessons with us.",
-		"activeLearningTitle": "Active Learning",
-		"activeLearningText": "Unlike the traditional method 'sit down and listen,' you will have the opportunity to participate actively in the course.",
-		"whatsNewTitle": "What's New?",
-		"latestNewsTitle": "We'd like to share our latest",
-		"latestNewsText": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error officiis recusandae, est aspernatur facere maiores porro veniam cumque? Illo debitis magnam necessitatibus odio quibusdam. Eius quisquam cum voluptas qui accusamus.",
-		"aboutAcademyTitle": "About The Academy",
-		"aboutAcademyParagraph": "Established in 2023, Chehabi Academy was born out of a profound love for the Arabic language and a desire to bridge cultural divides. Recognizing the significance of Arabic in global communication, heritage, and arts, we embarked on a mission to offer a comprehensive learning experience that goes beyond mere vocabulary and grammar.",
-		"learnMoreLink": "Learn More"
-	},
-	"EditProfilePage": {
-		"editProfileTitle": "Edit Profile",
-		"uploadImageButton": "Upload Image",
-		"deleteButton": "Delete",
-		"firstNameLabel": "First Name",
-		"firstNamePlaceholder": "First Name",
-		"lastNameLabel": "Last Name",
-		"lastNamePlaceholder": "Last Name",
-		"emailLabel": "E-mail",
-		"emailPlaceholder": "E-mail",
-		"birthdateLabel": "Birthdate",
-		"saveButton": "Save",
-		"invalidMessage": "Please correct the errors and try again."
+	"UpcomingSessions": {
+		"dashboard": "Dashboard",
+		"title": "Upcoming Sessions for next 7 days",
+		"link": "Link",
+		"copylink": "Copy link",
+		"paynow": "subscribe now to get full access"
 	},
 	"CourseDetailsPage": {
 		"dashboard": "Dashboard",
@@ -231,6 +250,7 @@
 		"prerequisites": "Prerequisites",
 		"noPrerequisites": "This course has no prerequisites.",
 		"classes": "Classes",
+		"addClass": "Add classes",
 		"noClasses": "No classes.",
 		"goToClass": "go to class",
 		"duration": "Duration",
@@ -250,20 +270,107 @@
 		"lastUpdatedOn": "Last Updated On",
 		"starts": "Starts"
 	},
-	"DashboardPage": {
+	"ClassDetailsPage": {
+		"title": "Class Material",
+		"notAvailableYet": "Not available yet.",
 		"dashboard": "Dashboard",
 		"courses": "Courses",
-		"classes": "Classes",
-		"editProfile": "Edit Profile",
-		"password": "Password",
-		"upcomingSessions": "Upcoming Sessions"
+		"active": "Active",
+		"inactive": "Inactive",
+		"createdOn": "Created On",
+		"lastUpdatedOn": "Last Updated On",
+		"starts": "Starts",
+		"ends": "Ends",
+		"sessions": "Sessions",
+		"noLiveSessions": "No Live Sessions added.",
+		"startDate": "Start Date",
+		"endDate": "End Date",
+		"link": "Link",
+		"users": "Users",
+		"noUsers": "No users yet.",
+		"dp": "Dp",
+		"firstName": "First Name",
+		"lastName": "Last Name",
+		"email": "Email",
+		"birthDate": "Birth date",
+		"loadMoreUsers": "Load More Users",
+		"material": "Material",
+		"joinDate": "Join Date",
+		"Completed": "Completed",
+		"paid": "Paid",
+		"blocked": "Blocked",
+		"freetrial": "Free-trial",
+		"notAvailable": "N/A"
 	},
+	"DetailsModal": {
+		"Class": "Class",
+		"Course": "Course",
+		"Course Info": "Course Info",
+		"Course Material": "Course Material",
+		"Class Material": "Course Material",
+		"Course Sample Material": "Course Sample Material",
+		"Video URL": "Video URL",
+		"Course Overview": "Course Overview",
+		"To Be Learned": "To Be Learned",
+		"Prerequisites": "Prerequisites",
+
+		"Edit": "Edit",
+		"Add": "Add",
+		"Name": "Name",
+		"Capacity": "Capacity",
+		"NumberOfSessions": "Number of sessions",
+		"StartsOn": "Starts on",
+		"Schedule": "Schedule",
+		"weekDayTime": "The weekday and time to calculate the sessions for this class.",
+		"DayOfWeek": "Day of Week",
+		"TimeOfDay": "Time of Day",
+		"Duration": "Duration: minutes",
+		"Session": "Session",
+		"Link": "Link",
+		"Active": "Active",
+		"HasFreeTrial": "Has free trial session",
+
+		"Price": "Price",
+		"PriceBeforeDiscount": "Price Before Discount",
+		"Type": "Type",
+		"Level": "Level",
+		"VideoUrl": "Video Url",
+		"VideoUrlPlaceholder": "Add a youtube video url for course description.",
+		"CoverImage": "Cover Image",
+		"CoverImageDesc": "The course main cover image appearing in search.",
+		"SampleFile": "Upload Sample File",
+		"SampleFileDesc": "sample PDF file that would be in the course's main page before payment.",
+		"MainFile": "Upload Main File",
+		"MainFileDesc": "PDF file that would be in the course's main page after purchasing the course.",
+		"Description": "Description",
+		"Prerequisite": "Prerequisite",
+		"ToBeLearned": "ToBeLearned",
+
+		"DeleteCourse": "Delete Course",
+		"DeleteClass": "Delete Class",
+		"Close": "Close",
+		"Save": "Save"
+	},
+
 	"ProfilePage": {
-		"dashboard": "Dashboard",
 		"editProfile": "Edit Profile",
 		"password": "Password",
 		"editNotifications": "Notifications",
 		"payments": "Payments"
+	},
+	"EditProfilePage": {
+		"editProfileTitle": "Edit Profile",
+		"uploadImageButton": "Upload Image",
+		"deleteButton": "Delete",
+		"firstNameLabel": "First Name",
+		"firstNamePlaceholder": "First Name",
+		"lastNameLabel": "Last Name",
+		"lastNamePlaceholder": "Last Name",
+		"emailLabel": "E-mail",
+		"emailPlaceholder": "E-mail",
+		"birthdateLabel": "Birthdate",
+		"saveButton": "Save",
+		"invalidMessage": "Please correct the errors and try again."
 	},
 	"NotificationSettings": {
 		"title": "I want to recieve:",
@@ -271,10 +378,15 @@
 		"announcements": "Email Announcements from instructors of classes enrolled in.",
 		"sessionUpdates": "Email Sessions updates.",
 		"sessionReminders": "Email Sessions reminders.",
+		"disclaimer": "you'll still get notified for important notifications such as payments",
 		"save": "Save"
 	},
-	"PaymentSettings": {
-		"title": "Payment History"
+	"PaymentHistory": {
+		"title": "Payment History",
+		"Currency": "Currency",
+		"Amount": "Amount",
+		"PaymentDate": "Payment Date",
+		"RefrenceNumber": "Refrence Number"
 	},
 	"PasswordPage": {
 		"title": "Reset Password",
@@ -288,11 +400,67 @@
 		"hidePasswords": "Hide Passwords",
 		"save": "Save"
 	},
-	"UpcomingSessions": {
-		"dashboard": "Dashboard",
-		"title": "Upcoming Sessions for next 7 days",
-		"link": "Link",
-		"copylink": "Copy link",
-		"paynow": "subscribe now to get full access"
+
+	"FeedbackPage": {
+		"title": "We'd Appreciate Your Feedback",
+		"description": "We're committed to enhancing your learning experience. Share your insights with us.",
+		"shareYourThoughts": "Join and share your thoughts of our content",
+		"browseFeedbacks": "Browse feedbacks"
+	},
+	"Faq": {
+		"title": "Frequently Asked Questions",
+		"questions": {
+			"q1": "What types of courses does Chehabi Academy offer?",
+			"a1": "We offer two distinct learning options: recorded courses and live sessions. Recorded courses enable you to learn at your own pace through pre-recorded video lessons and resources. Live sessions provide real-time, interactive learning experiences online.",
+
+			"q2": "Are the live sessions conducted online or in-person?",
+			"a2": "We offer live sessions online from the comfort of your home. This format provides a high level of interaction and learning quality.",
+
+			"q3": "What languages do you teach?",
+			"a3": "We specialize in Arabic language courses. Our courses cater to different levels, from complete beginners to advanced learners looking to master the language.",
+
+			"q4": "Do I get a certificate after completing a course?",
+			"a4": "Yes, upon successfully completing a course, you will receive a certificate that verifies your language proficiency and can be used to showcase your skills.",
+
+			"q5": "How can I enroll in a course?",
+			"a5": "You can browse our courses on the 'Courses' page. Once you find a course you're interested in, simply click the 'Enroll' button and follow the registration steps. You can choose to pay for the course online.",
+
+			"q6": "Can I try a course before committing to it?",
+			"a6": "Yes, we offer a free trial class for live sessions so you can experience our teaching methods before making a commitment. For recorded courses, you can preview some lessons for free.",
+
+			"q7": "What payment methods are accepted?",
+			"a7": "We accept various payment methods, including credit/debit cards and online payment platforms like Stripe. If you have any questions regarding payment, please reach out to our support team.",
+
+			"q8": "Can I access recorded course materials after completing the course?",
+			"a8": "Yes, you will have lifetime access to the recorded course materials, including videos, downloadable resources, and exercises, even after you complete the course.",
+
+			"q9": "Is there a refund policy?",
+			"a9": "Yes, we offer a refund policy for our courses. If you’re not satisfied with your purchase, you can request a refund within a specified period. For more details, please refer to our refund policy page."
+		},
+		"ctaP_title": "Still have questions?",
+		"ctaP_a": "If you couldn't find the answer you were looking for, our support team is here to help! Feel free to reach out by visiting our",
+		"ctaP_link": "Contact us",
+		"ctaP_b": "page, and we'll be happy to assist you."
+	},
+	"ContactPage": {
+		"title": "Contact Us",
+		"intro": "Whether you have questions, feedback, or just want to chat about the beauty of the Arabic language, we're here for you. Reach out to us through any of the methods below, and our dedicated team will get back to you as soon as possible.",
+		"description": "Tell us",
+		"submit": "Submit",
+		"FirstName": "First Name",
+		"LastName": "Last Name",
+		"Email": "Email"
+	},
+	"TeachWithUs": {
+		"title": "Teach with us",
+		"subTitle": "Coming Soon!",
+		"p1": "We're excited to bring you the opportunity to join our academy as a teacher. Our team is currently working on creating a platform that makes teaching with us easy and rewarding.",
+		"p2_a": "If you're interested in becoming part of our teaching community,",
+		"p2_link": "please reach out to us",
+		"p2_b": "Share your ideas, suggestions, and any questions with us to help make this experience better.",
+		"thankYou": "Thank you for your interest in teaching with us!"
+	},
+	"Errors": {
+		"You have to specify a rating.": "******You have to specify a rating."
 	}
 }

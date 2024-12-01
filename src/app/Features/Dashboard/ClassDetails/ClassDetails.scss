@@ -57,6 +57,11 @@
 	div:hover .btn-header {
 		opacity: 1;
 	}
+	@media (max-width: 576px) {
+		div .btn-header {
+			opacity: 1;
+		}
+	}
 
 	.card {
 		border: none;

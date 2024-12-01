@@ -2,8 +2,27 @@
 	<div class="page-section">
 		<div class="partition">
 			<section class="faq-section">
-				<h2>Frequently Asked Questions</h2>
+				<h2>{{ "Faq.title" | translate }}</h2>
 				<div class="accordion" id="faqAccordion">
+					<div class="accordion-item" *ngFor="let faq of faqs; let i = index">
+						<h3 class="accordion-header" [id]="'heading' + i">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								[attr.data-bs-target]="'#collapse' + i"
+								[attr.aria-controls]="'collapse' + i"
+								aria-expanded="false">
+								{{ faq.question | translate }}
+							</button>
+						</h3>
+						<div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + 1">
+							<div class="accordion-body">{{ faq.answer | translate }}</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="accordion" id="faqAccordion">
 					<div class="accordion-item">
 						<h3 class="accordion-header" id="headingOne">
 							<button
@@ -23,205 +42,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingTwo">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseTwo"
-								aria-expanded="false"
-								aria-controls="collapseTwo">
-								Are the live sessions conducted online or in-person?
-							</button>
-						</h3>
-						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-							<div class="accordion-body">
-								We offer live sessions online from the comfort of your home. This formats provide the high level of interaction and learning
-								quality.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingThree">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseThree"
-								aria-expanded="false"
-								aria-controls="collapseThree">
-								What languages do you teach?
-							</button>
-						</h3>
-						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
-							<div class="accordion-body">
-								We specialize in Arabic language courses. Our courses cater to different levels, from complete beginners to advanced learners
-								looking to master the language.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingFour">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseFour"
-								aria-expanded="false"
-								aria-controls="collapseFour">
-								Do I get a certificate after completing a course?
-							</button>
-						</h3>
-						<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
-							<div class="accordion-body">
-								Yes, upon successfully completing a course, you will receive a certificate that verifies your language proficiency and can be
-								used to showcase your skills.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingFive">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseFive"
-								aria-expanded="false"
-								aria-controls="collapseFive">
-								How can I enroll in a course?
-							</button>
-						</h3>
-						<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
-							<div class="accordion-body">
-								You can browse our courses on the 'Courses' page. Once you find a course you're interested in, simply click the 'Enroll' button
-								and follow the registration steps. You can choose to pay for the course online.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingSix">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseSix"
-								aria-expanded="false"
-								aria-controls="collapseSix">
-								Can I try a course before committing to it?
-							</button>
-						</h3>
-						<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
-							<div class="accordion-body">
-								Yes, we offer a free trial class for live sessions so you can experience our teaching methods before making a commitment. For
-								recorded courses, you can preview some lessons for free.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingSeven">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseSeven"
-								aria-expanded="false"
-								aria-controls="collapseSeven">
-								What payment methods are accepted?
-							</button>
-						</h3>
-						<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven">
-							<div class="accordion-body">
-								We accept various payment methods, including credit/debit cards and online payment platforms like Stripe. If you have any
-								questions regarding payment, please reach out to our support team.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingEight">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseEight"
-								aria-expanded="false"
-								aria-controls="collapseEight">
-								Can I access recorded course materials after completing the course?
-							</button>
-						</h3>
-						<div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight">
-							<div class="accordion-body">
-								Yes, you will have lifetime access to the recorded course materials, including videos, downloadable resources, and exercises,
-								even after you complete the course.
-							</div>
-						</div>
-					</div>
-					<!-- <div class="accordion-item">
-						<h3 class="accordion-header" id="headingNine">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseNine"
-								aria-expanded="false"
-								aria-controls="collapseNine">
-								Are the instructors qualified?
-							</button>
-						</h3>
-						<div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine">
-							<div class="accordion-body">
-								Absolutely! All our instructors are highly qualified and experienced language professionals. They bring a wealth of real-world
-								teaching experience and a passion for helping students learn.
-							</div>
-						</div>
-					</div> -->
-					<!-- <div class="accordion-item">
-						<h3 class="accordion-header" id="headingTen">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseTen"
-								aria-expanded="false"
-								aria-controls="collapseTen">
-								What if I miss a live session?
-							</button>
-						</h3>
-						<div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen">
-							<div class="accordion-body">
-								If you miss a live session, don’t worry. We record all live classes, and you will have access to the recording to catch up on
-								what was covered.
-							</div>
-						</div>
-					</div> -->
-					<div class="accordion-item">
-						<h3 class="accordion-header" id="headingEleven">
-							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapseEleven"
-								aria-expanded="false"
-								aria-controls="collapseEleven">
-								Is there a refund policy?
-							</button>
-						</h3>
-						<div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven">
-							<div class="accordion-body">
-								Yes, we offer a refund policy for our courses. If you’re not satisfied with your purchase, you can request a refund within a
-								specified period. For more details, please refer to our refund policy page.
-							</div>
-						</div>
-					</div>
-				</div>
+				</div> -->
 			</section>
 			<section class="cta-section">
-				<h2>Still have questions?</h2>
+				<h2>{{ "Faq.ctaP_title" | translate }}</h2>
 
 				<p class="supporting-text">
-					If you couldn't find the answer you were looking for, our support team is here to help! Feel free to reach out by visiting our
-					<a [routerLink]="['/',RoutePaths.Contactus]" class="faq-link">Contact us</a>
-					page, and we'll be happy to assist you.
+					{{ "Faq.ctaP_a" | translate }}
+					<a [routerLink]="['/',RoutePaths.Contactus]" class="faq-link">{{ "Faq.ctaP_link" | translate }}</a>
+					{{ "Faq.ctaP_b" | translate }}
 				</p>
 			</section>
 		</div>

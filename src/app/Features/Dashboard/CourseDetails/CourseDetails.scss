@@ -58,6 +58,12 @@
 		opacity: 1;
 	}
 
+	@media (max-width: 576px) {
+		.btn-header {
+			opacity: 1;
+		}
+	}
+
 	.card {
 		border: none;
 		border-radius: 10px;
@@ -188,6 +194,11 @@
 			div:hover i {
 				opacity: 1;
 			}
+			@media (max-width: 576px) {
+				div i {
+					opacity: 1;
+				}
+			}
 
 			.accordion {
 				max-height: 500px;
@@ -225,6 +236,11 @@
 
 						&:hover i {
 							opacity: 1;
+						}
+						@media (max-width: 576px) {
+							i {
+								opacity: 1;
+							}
 						}
 					}
 

@@ -10,10 +10,8 @@
 		<div class="titles m-5">
 			<!-- <h1>{{ 'HomePage.welcomeTitle' | translate }}</h1>
 			<p>{{ 'HomePage.welcomeParagraph' | translate }}</p> -->
-			<h1 class="main-title mb-2">Unlock Your Potential with Expert Language Coaching</h1>
-			<p class="subtitle">
-				Master new languages through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.
-			</p>
+			<h1 class="main-title mb-2">{{ 'HomePage.landing.title' | translate }}</h1>
+			<p class="subtitle">{{ 'HomePage.landing.subTitle' | translate }}</p>
 			<div class="search-bar mb-2">
 				<input
 					type="text"
@@ -22,13 +20,13 @@
 					name="courseSearchTextInput"
 					[(ngModel)]="courseSearchText"
 					#courseSearchTextInput="ngModel"
-					placeholder="{{ 'Search in courses' | translate }}"
+					placeholder="{{ 'HomePage.landing.searchCourses' | translate }}"
 					(keydown.enter)="searchInCourses()" />
 				<button class="btn btn-primary" (click)="searchInCourses()"><i class="fa fa-search"></i></button>
 			</div>
-			<div>
-				<button class="btn btn-outline-primary me-2">{{ 'HomePage.learnMoreButton' | translate }}</button>
-				<button class="btn btn-primary">{{ 'Explore Courses' | translate }}</button>
+			<div class="action-btns">
+				<a [routerLink]="['/',RoutePaths.About]" class="btn btn-outline-primary me-2">{{ 'HomePage.landing.learnMoreButton' | translate }}</a>
+				<a [routerLink]="['/',RoutePaths.Courses]" class="btn btn-primary">{{ 'HomePage.landing.exploreCoursesButton' | translate }}</a>
 			</div>
 		</div>
 		<!-- <img src="assets/Images/laptop.svg" alt="" class="image" /> -->
@@ -67,64 +65,49 @@
 	<hr class="bg-3" /> -->
 
 	<section class="what-we-offer">
-		<h2>What We Offer: Tailored Language Programs for Every Learner</h2>
-		<p>
-			Explore our wide range of courses, from beginner to advanced
-			<!-- , including 1-on-1 private lessons, -->
-			<br />
-			group classes, and self-paced recorded sessions designed to meet your language goals.
-		</p>
+		<h2>{{ 'HomePage.whatWeOffer.title' | translate }}</h2>
+		<p [innerHTML]="'HomePage.whatWeOffer.subTitle' | translate"></p>
 
 		<div class="course-types">
 			<div class="course-card">
 				<div class="icon">
 					<i class="fa fa-book" aria-hidden="true"></i>
 				</div>
-				<h3>Live Course Sessions</h3>
-				<p>
-					Get the classroom experience without leaving your home, Our live course sessions bring the classroom to you, featuring interactive lessons
-					led by expert instructors. Participate in real-time discussions, ask questions, and get personalized feedback to accelerate your progress.
-					Use online classes for flexibility. Don't just learn—experience language mastery.
-				</p>
+				<h3>{{ 'HomePage.whatWeOffer.liveSessions_title' | translate }}</h3>
+				<p>{{ 'HomePage.whatWeOffer.liveSessions_paragraph' | translate }}</p>
 			</div>
 			<div class="course-card coming-soon-badge">
 				<div class="icon">
 					<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 				</div>
-				<h3>Recorded Courses</h3>
-				<p>
-					Unlock the freedom to learn at your own pace! Our expertly crafted recorded courses cover all levels of language learning, from beginner to
-					advanced. Enjoy lifetime access to high-quality video lessons, downloadable resources, and practical exercises that make mastering a new
-					language engaging and convenient. Start your language journey today, anytime, anywhere.
-				</p>
+				<h3>{{ 'HomePage.whatWeOffer.recordedSessions_title' | translate }}</h3>
+				<p>{{ 'HomePage.whatWeOffer.recordedSessions_paragraph' | translate }}</p>
 			</div>
 		</div>
 	</section>
 
 	<section class="why-us">
 		<div>
-			<h3>Why Chehabi Academy?</h3>
+			<h3>{{ 'HomePage.whyUs.title' | translate }}</h3>
 			<ul>
-				<li><strong>Expert Instructors:</strong> Learn from language professionals who bring real-world teaching experience.</li>
-				<li>
-					<strong>Flexible Learning Options:</strong> Whether you prefer self-paced learning or live sessions, we have options that fit your
-					lifestyle.
-				</li>
-				<li><strong>Community Support:</strong> Join a community of learners where you can connect, share experiences, and grow together.</li>
-				<li><strong>Certification:</strong> Earn a certificate upon course completion to showcase your language skills.</li>
-				<li><strong>Affordable Pricing:</strong> High-quality language courses that won’t break the bank.</li>
+				<li [innerHTML]="'HomePage.whyUs.reason1' | translate"></li>
+				<li [innerHTML]="'HomePage.whyUs.reason2' | translate"></li>
+				<li [innerHTML]="'HomePage.whyUs.reason3' | translate"></li>
+				<li [innerHTML]="'HomePage.whyUs.reason4' | translate"></li>
+				<li [innerHTML]="'HomePage.whyUs.reason5' | translate"></li>
 			</ul>
 		</div>
 		<div class="cta">
 			<p>
-				Ready to start your language-learning journey? <a [routerLink]="['/',RoutePaths.Courses]" class="browse-link">Browse our courses</a> today and
-				find the perfect fit for you!
+				{{ 'HomePage.whyUs.ctaP_a' | translate }}
+				<a [routerLink]="['/',RoutePaths.Courses]" class="browse-link">{{ 'HomePage.whyUs.ctaP_link' | translate }}</a>
+				{{ 'HomePage.whyUs.ctaP_b' | translate }}
 			</p>
 		</div>
 	</section>
 
 	<section class="testimonials">
-		<h2>What Our Students Say</h2>
+		<h2>{{ 'HomePage.testimonials.title' | translate }}</h2>
 		<!-- <div class="testimonial-cards">
 			<div class="testimonial-card">
 				<p>
@@ -139,7 +122,10 @@
 				<app-feedback-card [Feedback]="feedback"></app-feedback-card>
 			</div>
 		</div>
-		<p class="supporting-text">want to add a feedback or browse more? <a [routerLink]="['/',RoutePaths.Feedback]" class="faq-link">Feedback page</a></p>
+		<p class="supporting-text">
+			{{ 'HomePage.testimonials.ctaP_a' | translate }}
+			<a [routerLink]="['/',RoutePaths.Feedback]" class="faq-link">{{ 'HomePage.testimonials.ctaP_link' | translate }}</a>
+		</p>
 	</section>
 
 	<!-- <div class="page-section no-min new">
@@ -172,63 +158,39 @@
 			<img src="assets/Images/landing-people.png" alt="" class="image" />
 		</div>
 		<div class="partition content">
-			<h1>{{ 'HomePage.aboutAcademyTitle' | translate }}</h1>
-			<p>{{ 'HomePage.aboutAcademyParagraph' | translate }}</p>
+			<h1>{{ 'HomePage.about.title' | translate }}</h1>
+			<p>{{ 'HomePage.about.paragraph' | translate }}</p>
 			<div>
-				<a class="btn btn-outline-primary me-2" [routerLink]="['/',RoutePaths.About]">{{ 'HomePage.learnMoreLink' | translate }}</a>
+				<a class="btn btn-outline-primary me-2" [routerLink]="['/',RoutePaths.About]">{{ 'HomePage.about.learnMoreLink' | translate }}</a>
 			</div>
 		</div>
 	</section>
 
 	<section class="how-it-works">
-		<h2>How it works?</h2>
-		<p>Getting started is easy! Follow these simple steps to access our language courses and begin your learning journey today.</p>
+		<h2>{{ 'HomePage.howItWorks.title' | translate }}</h2>
+		<p>{{ 'HomePage.howItWorks.subTitle' | translate }}</p>
 
 		<div class="steps">
-			<div class="step">
-				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
-				<h3>Step 1: Choose a Course</h3>
-				<p>Browse our selection of language courses to find the one that fits your goals and learning style.</p>
-			</div>
-			<div class="step">
-				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
-				<h3>Step 2: Sign Up or Log In</h3>
-				<p>Create a free account or log in if you’re already a member. Signing up allows you to access a free trial session and manage your courses.</p>
-			</div>
-			<div class="step">
-				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
-				<h3>Step 3: Book Your Free Trial</h3>
-				<p>
-					Experience our teaching methods firsthand by booking a free trial session for any live course. It's a risk-free way to see if the course
-					meets your needs before making a commitment.
-				</p>
-			</div>
-			<div class="step">
-				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
-				<h3>Step 4: Make Your Payment</h3>
-				<p>Once you're ready to proceed, complete the payment securely through our online platform.</p>
-			</div>
-			<div class="step">
-				<img src="assets/Images/laptop.jpg" alt="Select a course and enroll" />
-				<h3>Step 5: Start Learning!</h3>
-				<p>
-					Gain full access to the live course sessions and recorded materials. Engage with expert instructors, participate in interactive classes, to
-					progress toward language mastery.
-				</p>
+			<div class="step" *ngFor="let step of steps">
+				<img [src]="step.imgSrc" [alt]="step.alt" />
+				<h3>{{ step.title | translate }}</h3>
+				<p>{{ step.description | translate }}</p>
 			</div>
 		</div>
 	</section>
 
 	<section class="cta-section">
-		<h2>Ready to Start Your Language Learning Journey?</h2>
+		<h2>{{ 'HomePage.ctaSection.title' | translate }}</h2>
 		<p>
-			Whether you prefer learning at your own pace or in a dynamic, interactive setting, Chehabi Academy has the perfect course for you. Don't wait to
-			unlock your potential, Join our community of passionate language learners and skilled instructors who are dedicated to helping you succeed. Your
-			language mastery starts here — <a [routerLink]="['/',RoutePaths.About]" class="faq-link">start learning today!</a>
+			{{ 'HomePage.ctaSection.introP_a' | translate }}
+			<a [routerLink]="['/',RoutePaths.About]" class="faq-link">{{ 'HomePage.ctaSection.introP_link' | translate }}</a>
 		</p>
 		<p class="supporting-text">
-			Got any questions? <a [routerLink]="['/',RoutePaths.Faq]" class="faq-link">Visit our FAQ page</a> for answers to commonly asked questions, or
-			<a [routerLink]="['/',RoutePaths.Contactus]" class="faq-link">reach out to us directly</a>. We're here to help!
+			{{ 'HomePage.ctaSection.ctaP_a' | translate }}
+			<a [routerLink]="['/',RoutePaths.Faq]" class="faq-link">{{ 'HomePage.ctaSection.ctaP_linka' | translate }}</a>
+			{{ 'HomePage.ctaSection.ctaP_b' | translate }}
+			<a [routerLink]="['/',RoutePaths.Contactus]" class="faq-link">{{ 'HomePage.ctaSection.ctaP_linkb' | translate }}</a>
+			{{ 'HomePage.ctaSection.ctaP_c' | translate }}
 		</p>
 	</section>
 </div>

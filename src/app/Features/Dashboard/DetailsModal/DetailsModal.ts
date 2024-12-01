@@ -14,6 +14,7 @@ import { HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 import { observable } from 'rxjs';
 
 @Component({
@@ -21,7 +22,7 @@ import { observable } from 'rxjs';
     standalone: true,
     templateUrl: './DetailsModal.html',
     styleUrls: ['./DetailsModal.scss'],
-    imports: [CommonModule, FormsModule]
+    imports: [CommonModule, FormsModule, TranslateModule]
 })
 export class DetailsModalComponent implements OnInit {
     daysOfWeek: ConstantsType[] = Constants.Weekdays;

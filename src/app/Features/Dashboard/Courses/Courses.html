@@ -18,7 +18,10 @@
 					<span class="status active" *ngIf="Course.IsActive">{{ 'Courses.active' | translate }}</span>
 					<span class="status inactive" *ngIf="!Course.IsActive">{{ 'Courses.inactive' | translate }}</span>
 				</div>
-				<p class="card-text">Level: {{Course.Level.Text}} Type: {{Course.Type.Text}}</p>
+				<p class="card-text">
+					{{ 'Courses.level' | translate }}&nbsp;{{Course.Level.Text}} <br />
+					{{ 'Courses.type' | translate }}&nbsp;{{Course.Type.Text}}
+				</p>
 				<p class="card-text">{{Course.Description}}</p>
 				<div class="middle-section">
 					<div class="instructor">

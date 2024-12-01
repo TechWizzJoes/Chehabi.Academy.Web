@@ -54,7 +54,10 @@
 					<div class="instructor">
 						<!-- <span class="initials"> {{Constants.GetInitialName(userClass.Class.Course.Instructor.User.FirstName, userClass.Class.Course.Instructor.User.LastName)}} 	</span>
 						<p>{{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}</p> -->
-						<p>By: {{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}</p>
+						<p>
+							{{ 'Courses.by' | translate}} {{userClass.Class.Course.Instructor.User.FirstName + ' ' +
+							userClass.Class.Course.Instructor.User.LastName}}
+						</p>
 					</div>
 
 					<small>
@@ -67,7 +70,7 @@
 					<div class="d-flex flex-column">
 						<app-StarRating [Rate]="getCourseRating(userClass.Class.CourseId)" [ReadOnly]="true"></app-StarRating>
 						<a class="rate-link" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId, userClass.IsPaid)">
-							{{(!UserRatings[userClass.Class.CourseId] ? 'Leave a rating' : 'your rating') | translate }}
+							{{(!UserRatings[userClass.Class.CourseId] ? 'Courses.rate' : 'your rating') | translate }}
 						</a>
 					</div>
 					<span>

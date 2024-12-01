@@ -77,6 +77,10 @@
 						width: 100%;
 					}
 				}
+
+				.action-btns {
+					display: flex;
+				}
 			}
 		}
 		&.new {
@@ -289,9 +293,25 @@
 	.page-inner {
 		.page-section {
 			&.landing {
-				.content {
-					padding: 50px;
-					justify-content: center;
+				// .content {
+				// 	padding: 50px;
+				// 	justify-content: center;
+				// }
+				.titles {
+					width: 100%;
+					.search-bar {
+						width: 100%;
+						input {
+							padding: 0.5rem;
+							border-radius: 5px;
+							border: 1px solid gray;
+							outline: none;
+							width: 100%;
+						}
+					}
+					.action-btns {
+						justify-content: center;
+					}
 				}
 			}
 			&.landing,

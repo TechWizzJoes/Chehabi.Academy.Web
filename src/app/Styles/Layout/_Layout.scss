@@ -3,6 +3,7 @@
 
 body {
 	scroll-behavior: smooth;
+	background-color: var(--primary-bg-color);
 }
 
 .inner-container {
@@ -132,6 +133,9 @@ a {
 		scale: 1.01;
 		box-shadow: var(--box-shadow-course-card);
 		-webkit-box-shadow: var(--box-shadow-course-card);
+	}
+	&.no-scale:hover {
+		scale: 1;
 	}
 }
 

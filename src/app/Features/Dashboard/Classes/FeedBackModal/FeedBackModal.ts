@@ -13,13 +13,14 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'ngbd-modal-content',
     standalone: true,
     templateUrl: './FeedBackModal.html',
     styleUrls: ['./FeedBackModal.scss'],
-    imports: [CommonModule, FormsModule, StarRatingComponent]
+    imports: [CommonModule, FormsModule, StarRatingComponent, TranslateModule]
 })
 export class FeedbackModalComponent implements OnInit {
     activeModal = inject(NgbActiveModal);
@@ -33,7 +34,8 @@ export class FeedbackModalComponent implements OnInit {
     constructor(
         private HttpService: HttpService,
         private ErrorCodesService: ErrorCodesService,
-        private NotifyService: NotifyService
+        private NotifyService: NotifyService,
+        private translate: TranslateService
     ) { }
 
     ngOnInit() {
@@ -42,7 +44,7 @@ export class FeedbackModalComponent implements OnInit {
 
     onRatingConfirmed() {
         if (!this.feedback.Rating) {
-            this.Error = ErrorMessagesEnum.RATING_NULL;
+            this.Error = this.translate.instant("Errors." + ErrorMessagesEnum.RATING_NULL);
         } else {
             this.ratingConfirmed = true;
             this.Error = null;

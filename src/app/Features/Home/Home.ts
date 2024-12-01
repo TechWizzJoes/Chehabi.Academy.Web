@@ -30,16 +30,48 @@ import { FeedbackCardComponent } from '../Feedback/FeedbackCard/FeedbackCard';
 		NgxChartsModule,
 		TranslateModule,
 		NgbCarouselModule,
-		LaptopComponent,
+		// LaptopComponent,
 		FeedbackCardComponent
 	]
 })
 export class HomeComponent implements OnInit {
+	RoutePaths = RoutePaths
 	courseSearchText!: string;
 	WhatsNew!: WhatsNewModels.WhatsNew[];
 	Feedbacks: FeedbackModels.Feedback[] = []
 
-	RoutePaths = RoutePaths
+	steps = [
+		{
+			imgSrc: 'assets/Images/laptop.jpg',
+			alt: 'Select a course and enroll',
+			title: 'HomePage.howItWorks.step1_title',
+			description: 'HomePage.howItWorks.step1_description',
+		},
+		{
+			imgSrc: 'assets/Images/laptop.jpg',
+			alt: 'Select a course and enroll',
+			title: 'HomePage.howItWorks.step2_title',
+			description: 'HomePage.howItWorks.step2_description',
+		},
+		{
+			imgSrc: 'assets/Images/laptop.jpg',
+			alt: 'Select a course and enroll',
+			title: 'HomePage.howItWorks.step3_title',
+			description: 'HomePage.howItWorks.step3_description',
+		},
+		{
+			imgSrc: 'assets/Images/laptop.jpg',
+			alt: 'Select a course and enroll',
+			title: 'HomePage.howItWorks.step4_title',
+			description: 'HomePage.howItWorks.step4_description',
+		},
+		{
+			imgSrc: 'assets/Images/laptop.jpg',
+			alt: 'Select a course and enroll',
+			title: 'HomePage.howItWorks.step5_title',
+			description: 'HomePage.howItWorks.step5_description',
+		},
+	];
 
 	constructor(
 		private router: Router,
