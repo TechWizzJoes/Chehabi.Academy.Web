@@ -19,6 +19,7 @@ import { Constants } from '@App/Common/Settings/Constants';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '@App/Common/Services/cart.service';
 import { CartModels } from '@App/Common/Models/Cart.Models';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 
 @Component({
 	standalone: true,
@@ -137,9 +138,9 @@ export class CoursePageComponent implements OnInit {
 		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
 			// this.IsLoaded = true
 			// this.Course = data
-			console.log(data);
+			// console.log(data);
 			this.getCourse(this.Course.Id.toString());
-			this.NotifyService.Success("Congratulations! You've joined this course's free trial and will be eligible to the first session.")
+			this.NotifyService.Success(MessagesEnum.FREE_TRIAL_SUCCESS);
 		})
 	}
 
@@ -148,7 +149,8 @@ export class CoursePageComponent implements OnInit {
 		let newCartItem = new CartModels.CartItem();
 		newCartItem.ClassId = this.SelectedClass.Id;
 		this.CartService.addToCart(newCartItem).then(() => {
-			this.NotifyService.Success(`${this.SelectedClass!.Name} class is added to your cart!`);
+			// this.NotifyService.Success(`${this.SelectedClass!.Name} ${MessagesEnum.CLASS_ADDED_TO_CART}`);
+			this.NotifyService.Success(MessagesEnum.CLASS_ADDED_TO_CART);
 		});
 	}
 

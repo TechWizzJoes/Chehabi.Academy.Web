@@ -1,5 +1,6 @@
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
@@ -57,7 +58,7 @@ export class FeedbackModalComponent implements OnInit {
         this.HttpService.Post<FeedbackModels.Feedback, FeedbackModels.Feedback>(endpoint, this.feedback)
             .subscribe({
                 next: data => {
-                    this.NotifyService.Success("Success", "Thank For Your Rating");
+                    this.NotifyService.Success(MessagesEnum.RATING_THANKS, MessagesEnum.SUCCESS);
                     this.ratingConfirmed = false;
                     this.activeModal.close('save');
                 },

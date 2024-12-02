@@ -466,11 +466,26 @@
 		"Paragraph": "You do not have permission to view this page.",
 		"Link": "Return to Home"
 	},
-	"Errors": {
+	"Error": {
 		"NETWORK_ERROR": "******No internet connection! \nOr server is down",
 		"WRONG_PASSWORD_RESET": "******Wrong password.",
 		"RATING_NULL": "******You have to specify a rating.",
-		"NO_INTERNET_CONNECTION": "No internet connection",
-		"RECONNECTED": "Re-connected"
+		"NO_INTERNET_CONNECTION": "No internet connection"
+	},
+	"Success": {
+		"SUCCESS": "Success",
+		"RATING_THANKS": "Thank For Your Rating",
+		"RECONNECTED": "Re-connected",
+		"PROFILE_UPDATED_SUCCESS": "Profile info updated successfully",
+		"PASSWORD_UPDATED_SUCCESS": "Password updated successfully",
+		"LINK_COPIED_SUCCESS": "Link copied to clipboard",
+		"LINK_COPIED_FAIL": "Link copying failed",
+		"PEREFRENCES_UPDATED_SUCCESS": "Preferences updated successfully",
+		"REFRENCE_NUMBER_COPIED_SUCCESS": "Refrence number copying failed",
+		"REFRENCE_NUMBER_COPIED_FAIL": "Refrence number copied to clipboard",
+		"THANK_YOU": "Thank you!",
+		"INQUIRY_SENT": "Your inquiry has reached us",
+		"FREE_TRIAL_SUCCESS": "You've joined this course's free trial and will be eligible to the first session.",
+		"CLASS_ADDED_TO_CART": "class is added to your cart!"
 	}
 }

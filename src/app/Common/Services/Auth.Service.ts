@@ -13,7 +13,6 @@ import { WebSocketService } from './Websocket.Service';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 	CurrentUserSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-	ProfilePicUpdate: Subject<any> = new Subject();
 	private isGoogleLoggedin!: boolean;
 	private socialUser!: SocialUser;
 
@@ -80,11 +79,9 @@ export class AuthService {
 		return this.CurrentUser.ProfilePicturePath;
 	}
 
-	set ProfilePicture(value) {
-		let user = this.StorageService.GetLocalStorage<AuthModels.CurrentUserResModel>(StorageEnum.CurrentUser)
-		user.ProfilePicturePath = value;
-
-		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, user);
+	set CurrentUser(value) {
+		this.StorageService.SetLocalStorage(StorageEnum.CurrentUser, value);
+		this.CurrentUserSub.next(true);
 	}
 
 	get CurrentUser(): AuthModels.CurrentUserResModel {
@@ -147,7 +144,7 @@ export class AuthService {
 					next: (response) => {
 						console.log(response);
 						this.SignIn(response);
-						this.CurrentUserSub.next(true)
+						this.CurrentUserSub.next(true);
 					}
 				});
 			}

@@ -15,6 +15,7 @@ import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { ContactUsModel } from '../../Common/Models/ContactUsModel';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 
 @Component({
 	standalone: true,
@@ -61,19 +62,6 @@ export class ContactUsComponent implements OnInit {
 			this.ReqContactusModel.Email = this.AuthService.IsAuthenticated ? this.AuthService.CurrentUser.Email : this.contactForm.value['Email'];
 			this.ReqContactusModel.Description = this.contactForm.value['description'];
 
-			// let httpEndPoint = HttpEndPoints.Email.EmailSender;
-			// this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint, this.ReqContactusModel
-			// ).subscribe(
-			// 	{
-			// 		next: (response) => {
-			// 			this.NotifyService.Success("Email Sent", "check your email");
-			// 			this.contactForm.reset();
-			// 		},
-			// 		error: (errorResponse) => {
-			// 			this.NotifyService.Error(errorResponse, 'Error')
-			// 		}
-			// 	}
-			// );
 			this.IsLoaded = false;
 			let httpEndPoint2 = HttpEndPoints.Contact.Add;
 			this.HttpService.Post<ContactUsModel.ContactUsModelReq, any>(httpEndPoint2, this.ReqContactusModel
@@ -81,7 +69,7 @@ export class ContactUsComponent implements OnInit {
 				{
 					next: (response) => {
 						this.IsLoaded = true;
-						this.NotifyService.Success("Your inquiry has reached us", "Thank you!");
+						this.NotifyService.Success(MessagesEnum.INQUIRY_SENT, MessagesEnum.THANK_YOU);
 						this.contactForm.reset();
 					},
 					error: (errorResponse) => {

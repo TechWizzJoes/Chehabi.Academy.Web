@@ -25,12 +25,14 @@ export class NotifyService {
 		countDuplicates: true,
 	};
 
-	private GetLocalizedMessage(msg: string): string {
-		return this.translate.instant("Errors." + msg);
+	private GetLocalizedMessage(msg: string, isError: boolean = false): string {
+		const prefix = isError ? "Error." : "Success.";
+		return this.translate.instant(prefix + msg);
 	}
 
 	Success(message: string, title: string = '') {
 		message = this.GetLocalizedMessage(message);
+		title = this.GetLocalizedMessage(title);
 		this.Toastr.success(message, title, this.ToastrOptions);
 		// Swal.fire({
 		// 	position: 'top-end',
@@ -44,7 +46,7 @@ export class NotifyService {
 	}
 
 	Error(message: string, title: string = '', timeOut = 3000): number {
-		message = this.GetLocalizedMessage(message);
+		message = this.GetLocalizedMessage(message, true);
 		return this.Toastr.error(message, title, { ...this.ToastrOptions, timeOut }).toastId;
 		// Swal.fire({
 		// 	position: 'top-end',

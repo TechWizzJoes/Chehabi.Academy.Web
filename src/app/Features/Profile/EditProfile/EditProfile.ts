@@ -20,7 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
 	standalone: true,
 	templateUrl: './EditProfile.html',
 	styleUrls: ['EditProfile.scss'],
-	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, TranslateModule]
 })
 export class EditProfileComponent implements OnInit {
 	IsLoaded: boolean = false;
@@ -108,9 +108,7 @@ export class EditProfileComponent implements OnInit {
 			newProfile,
 		).subscribe({
 			next: (response) => {
-				this.AuthService.ProfilePicture = this.Account.ProfilePicturePath;
-				this.AuthService.ProfilePicUpdate.next({});
-
+				this.AuthService.CurrentUser = response;
 				this.Account = response;
 				this.NotifyService.Success(MessagesEnum.PROFILE_UPDATED_SUCCESS);
 			},

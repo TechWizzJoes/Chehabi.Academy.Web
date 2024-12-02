@@ -66,7 +66,8 @@ export class UpcomingSessionsComponent implements OnInit {
         newCartItem.ClassId = selectedClass.Id;
 
         this.CartService.addToCart(newCartItem).then(() => {
-            this.NotifyService.Success(`${selectedClass!.Name} class is added to your cart!`);
+            // this.NotifyService.Success(`${selectedClass!.Name} ${MessagesEnum.CLASS_ADDED_TO_CART}`);
+            this.NotifyService.Success(MessagesEnum.CLASS_ADDED_TO_CART);
         });
     }
 }

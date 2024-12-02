@@ -45,9 +45,5 @@ export class AboutComponent implements OnInit {
 				this.CurrentUser = this.AuthService.CurrentUser;
 			}
 		});
-		this.AuthService.ProfilePicUpdate.subscribe((data) => {
-			// console.log(this.AuthService.CurrentUser)
-			this.CurrentUser = this.AuthService.CurrentUser;
-		})
 	}
 }

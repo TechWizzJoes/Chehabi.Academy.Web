@@ -63,7 +63,7 @@
 				<p [innerText]="Course.Prerequisite"></p>
 			</div>
 			<div class="partition image">
-				<img *ngIf="!Course.VideoPath" [src]="Course.ImageUrl" alt="" />
+				<img *ngIf="!Course.VideoPath" [src]="Course.ImageUrl? Course.ImageUrl : 'assets/Images/default-course.jpg'" alt="" />
 				<iframe
 					*ngIf="Course.VideoPath"
 					[src]="'https://www.youtube.com/embed/' + Course.VideoPath.split('=')[1] | safe"

@@ -12,6 +12,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { LanguageService } from '@App/Common/Services/Language.Service';
 import { WebSocketService } from '@App/Common/Services/Websocket.Service';
 import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
+import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 
 @Component({
 	selector: 'app-root',
@@ -88,7 +89,7 @@ export class AppComponent {
 
 		addEventListener('online', e => {
 			this.NotifyService.RemoveToast(this.ErrorToast);
-			this.NotifyService.Success(ErrorMessagesEnum.RECONNECTED);
+			this.NotifyService.Success(MessagesEnum.RECONNECTED);
 		})
 	}
 

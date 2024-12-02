@@ -22,9 +22,9 @@ import { AuthModels } from '@App/Common/Models/Auth.Models';
 	standalone: true,
 	templateUrl: './Profile.html',
 	styleUrls: ['Profile.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, LoaderComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, RouterModule, TranslateModule]
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 	RoutePaths = RoutePaths;
 	IsLoaded: boolean = false;
 	Account: UserModels.User = new UserModels.User();
@@ -44,85 +44,5 @@ export class ProfileComponent implements OnInit {
 		private StorageService: StorageService
 	) {
 		this.currentUser = this.AuthService.CurrentUser;
-
-	}
-
-	ngOnInit() {
-		let endPoint = HttpEndPoints.Profile.GetProfile
-		this.HttpService.Get<UserModels.User>(endPoint).subscribe(data => {
-			this.IsLoaded = true
-			this.Account = data;
-		})
-	}
-
-	onFileChange(event: any) {
-		let Image = event.target.files[0];
-
-		let endPoint = HttpEndPoints.Profile.UploadImage;
-		endPoint = endPoint.replace('{id}', this.Account.Id.toString())
-
-		const formData = new FormData();
-		formData.append('file', Image);
-
-		this.IsUploadDisabled = true;
-		this.IsDisabled = true;
-		this.HttpService.PostWithOptions(endPoint, formData, {
-			reportProgress: true,
-			observe: 'events'
-		}).subscribe((res: any) => {
-			if (res.type === HttpEventType.Response) {
-				this.IsUploadDisabled = false;
-				this.IsDisabled = false;
-				let filePath = this.HttpService.ApiUrl + 'user/' + res.body.filePath.replaceAll('\\', '/');
-				this.Account.ProfilePicturePath = filePath;
-				this.editProfile();
-			}
-			if (res.type === HttpEventType.UploadProgress) {
-				this.Progress.start = Math.round(100 * res.loaded / res.total);
-			}
-		})
-	}
-
-	removeProfilePicture() {
-		this.Account.ProfilePicturePath = '';
-		// console.log(this.Account.ProfilePicturePath)
-		this.editProfile();
-	}
-
-	onSubmit(form: NgForm) {
-		if (form.invalid) {
-			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
-			return;
-		}
-
-		this.editProfile();
-	}
-
-	editProfile() {
-		let newProfile = new UserModels.UserReqModel();
-		newProfile.Id = this.Account.Id;
-		newProfile.FirstName = this.Account.FirstName;
-		newProfile.LastName = this.Account.LastName;
-		newProfile.Birthdate = this.Account.Birthdate;
-		newProfile.Email = this.Account.Email;
-		newProfile.ProfilePicturePath = this.Account.ProfilePicturePath;
-
-
-		let httpEndPoint = HttpEndPoints.Profile.EditProfile;
-		this.HttpService.Put2<UserModels.UserReqModel, UserModels.User>(
-			httpEndPoint,
-			newProfile,
-		).subscribe({
-			next: (response) => {
-				this.AuthService.ProfilePicture = this.Account.ProfilePicturePath;
-				this.AuthService.ProfilePicUpdate.next({});
-
-				this.Account = response;
-				this.NotifyService.Success(MessagesEnum.PROFILE_UPDATED_SUCCESS);
-			},
-			error: (errorResponse) => {
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
-			}
-		});
 	}
 }
