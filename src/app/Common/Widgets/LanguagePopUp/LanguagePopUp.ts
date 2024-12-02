@@ -17,14 +17,24 @@ export class Language {
   templateUrl: './LanguagePopUp.html',
   styleUrl: './LanguagePopUp.scss',
 })
-export class LanguagePopUpComponent {
+export class LanguagePopUpComponent implements OnInit {
   AvailableLanguages: Language[] = [{ Name: 'English', Key: 'en' }, { Name: 'German', Key: 'de' }]
+  currentLang: string = '';
 
   constructor(
-    private LanguageService: LanguageService) { }
+    private LanguageService: LanguageService
+  ) { }
 
+  ngOnInit(): void {
+    this.setCurrentLanguage();
+  }
 
   useLanguage(language: string): void {
     this.LanguageService.useLanguage(language);
+    this.setCurrentLanguage();
+  }
+
+  setCurrentLanguage(): void {
+    this.currentLang = this.LanguageService.getCurrentLanguage();
   }
 }

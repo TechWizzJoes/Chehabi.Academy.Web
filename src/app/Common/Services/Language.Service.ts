@@ -29,8 +29,8 @@ export class LanguageService {
 
     useLanguage(language: string): void {
         this.TranslateService.use(language);
-        localStorage.setItem('lang', language)
-        this.SetDirection()
+        localStorage.setItem('lang', language);
+        this.SetDirection();
     }
 
     private SetDirection() {
@@ -42,5 +42,12 @@ export class LanguageService {
         }
         const renderer = this.RendererFactory.createRenderer(null, null);
         renderer.setAttribute(document.body, 'dir', this.textDirection);
+    }
+
+    getCurrentLanguage(): string {
+        let localStorageLang = localStorage.getItem('lang');
+        // console.log('service language', this.TranslateService.currentLang);
+        // console.log('storage language', localStorageLang);
+        return this.TranslateService.currentLang;
     }
 }
