@@ -216,6 +216,8 @@
 				img {
 					width: 100%;
 					height: auto;
+					max-height: 160px;
+					object-fit: contain;
 				}
 
 				h3 {

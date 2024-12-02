@@ -32,7 +32,7 @@
 		}
 		&.active.nav-link {
 			color: var(--primary-invert-font-color) !important;
-			background-color: var(--primary-color2);
+			background-color: var(--primary-color1);
 			border-radius: 5px;
 		}
 	}
@@ -103,7 +103,7 @@
 	}
 	.navbar {
 		i {
-			color: var(--primary-color2);
+			color: var(--primary-color1);
 		}
 	}
 }

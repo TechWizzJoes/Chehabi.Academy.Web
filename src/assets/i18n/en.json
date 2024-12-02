@@ -33,10 +33,10 @@
 	},
 
 	"Login": {
-		"LogInToYourAccount": "Log in to your account",
+		"LogInToYourAccount": "Sign in to your account",
 		"Email": "Email",
 		"Password": "Password",
-		"Login": "Login",
+		"Login": "Sign in",
 		"DontHaveAccount": "Don't have an account yet?",
 		"Register": "Register",
 		"Or": "Or",
@@ -146,7 +146,7 @@
 		"approach_title": "Our Approach",
 		"approach_paragraph": "At Chehabi Academy, our teaching methodology is all about you—the student. We prioritize interactive and immersive language learning experiences that captivate your curiosity. By blending modern teaching techniques with traditional instruction, we create a dynamic environment where you not only learn to speak but also appreciate the rich cultural context of the language. Prepare to embark on a transformative journey that equips you with practical skills and cultural insights.",
 
-		"journey_title": "Let us start our journey!",
+		"journey_title": "Let's start our journey!",
 		"call_to_action": "Are you ready to embark on your language learning adventure? Join us today and discover the joy of mastering a new language with Chehabi Academy!",
 		"join_now": "Join Us Now!"
 	},

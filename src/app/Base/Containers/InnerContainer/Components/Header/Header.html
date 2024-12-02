@@ -23,7 +23,7 @@
 					<a
 						class="nav-link"
 						aria-current="page"
-						[routerLink]="['home']"
+						[routerLink]="[RoutePaths.Home]"
 						routerLinkActive="active"
 						data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show">
@@ -50,16 +50,6 @@
 						{{'Header.courses' | translate}}
 					</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a
-						class="nav-link"
-						[routerLink]="[RoutePaths.Feedback]"
-						routerLinkActive="active"
-						data-bs-toggle="collapse"
-						data-bs-target=".navbar-collapse.show">
-						{{'Header.feedback' | translate}}
-					</a>
-				</li> -->
 				<li class="nav-item">
 					<a
 						class="nav-link"
@@ -125,7 +115,11 @@
 				</div>
 				<hr />
 				<!-- <button class="dropdown-item" (click)="goToSettings()">Settings</button> -->
-				<a class="btn btn-primary-outline btn-sm mb-2" *ngIf="AuthService.IsAuthenticated" [routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]">
+				<a
+					class="btn btn-primary-outline btn-sm mb-2"
+					*ngIf="AuthService.IsAuthenticated"
+					[routerLink]="[RoutePaths.Profile, RoutePaths.EditProfile]"
+					routerLinkActive="active">
 					{{'Header.Profile' | translate}}
 				</a>
 				<a class="btn btn-danger btn-sm" *ngIf="AuthService.IsAuthenticated" (click)="signOut()">{{'Header.Sign Out' | translate}}</a>
