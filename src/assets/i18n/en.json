@@ -461,6 +461,55 @@
 		"thankYou": "Thank you for your interest in teaching with us!"
 	},
 
+	"Cart": {
+		"title": "Cart",
+		"price": "Price:",
+		"subTotal": "SubTotal:",
+		"remove": "Remove",
+		"total": "Total:",
+		"updated": "Updated:",
+		"emptyCart": "Your cart is empty.",
+		"checkout": "Checkout"
+	},
+	"Checkout": {
+		"thanks": "Thank You for Your Purchase!",
+		"refrenceNumber": "Order Refrence Number:",
+		"copyRefrenceNumber": "Copy refrence number",
+		"p_1": "Your purchase was successful! Thank you for enrolling in our course. Please note, it may take a minute to fully process your payment. Once it's confirmed,you'll get notified and gain access to your enrolled courses. If you encounter any issues, feel free to reach out to our support team.",
+		"p_2": "We're excited to have you on board! Start exploring your enrolled courses and make the most out of your learning experience.",
+		"link": "Go to My Courses"
+	},
+	"Tos": {
+		"link": "Terms of service",
+		"title": "Terms of Service",
+		"close": "Close",
+		"terms": {
+			"t1": "1. Introduction",
+			"c1": "Welcome to Chehabi Academy.<br />These Terms of Service govern your use of the Academy's website, courses, classes, and related services. <br />By enrolling in any course or class, you agree to be bound by these Terms.",
+
+			"t2": "2. Payment and Enrollment",
+			"c2": "- Payment in full is required to enroll in any course or class.<br />- Enrollment is confirmed once payment has been received.<br />- Payment grants the student access to course materials and scheduled classes, but does not guarantee attendance or participation.<br />- Payment records will be maintained for auditing purposes, and the Academy reserves the right to verify any payment claims.",
+
+			"t3": "3. Class Attendance and Access",
+			"c3": "- Students are responsible for attending scheduled classes. The Academy is not liable for any missed classes or failure to participate.<br />- Course materials may be provided to enrolled students for missed sessions, but the availability of such materials is not guaranteed.<br />- No refunds will be issued for non-attendance or missed classes.<br />- If the Academy offers recordings, students may access recorded sessions as per the course's terms.",
+
+			"t4": "4. Refund Policy",
+			"c4": "- Refunds will not be issued after payment is confirmed, except in cases where the Academy cancels a course or class.<br />- The Academy reserves the right to modify or cancel a class schedule due to unforeseen circumstances. In such cases, alternative arrangements will be made.",
+
+			"t5": "5. Audit and Record Keeping",
+			"c5": "- The Academy will keep records of all payments, enrollment, and class participation.<br />- Payment records and attendance logs are subject to review for legal and auditing purposes.",
+
+			"t6": "6. Limited Liability",
+			"c6": "- The Academy does not guarantee specific learning outcomes or skills resulting from the course or class.<br />- Liability for any loss, damage, or injury resulting from participation in the Academy's courses is limited to the amount paid for the course or class.",
+
+			"t7": "7. Dispute Resolution",
+			"c7": "- Any disputes arising from these Terms shall be resolved through mediation. If mediation fails, the dispute will be subject to binding arbitration.",
+
+			"t8": "8. Changes to Terms",
+			"c8": "- The Academy reserves the right to modify these Terms at any time. Changes will be effective immediately upon posting on the website."
+		}
+	},
+
 	"Unauthorized": {
 		"AccessDenied": "Access Denied",
 		"Paragraph": "You do not have permission to view this page.",

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbActiveModal, NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { TosModalComponent } from './TosModal/TosModal';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tos',
   standalone: true,
-  imports: [CommonModule, RouterModule,
+  imports: [CommonModule, RouterModule, TranslateModule
     // NgbModalModule
   ],
   templateUrl: './Tos.html',
@@ -22,6 +23,6 @@ export class TosComponent {
   ngOnInit(): void { }
 
   OnTosClick() {
-    const modalRef = this.modalService.open(TosModalComponent, { centered: true });
+    const modalRef = this.modalService.open(TosModalComponent, { centered: true, size: 'lg' });
   }
 }

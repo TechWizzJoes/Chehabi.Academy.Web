@@ -1,68 +1,16 @@
 <div class="modal-header">
-	<h2>Terms of Service</h2>
+	<h2>{{ 'Tos.title' | translate }}</h2>
 	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-	<p>Last updated: 14/10/2024</p>
-
-	<h4>1. Introduction</h4>
-	<p>
-		Welcome to Chehabi Academy. <br />
-		These Terms of Service govern your use of the Academy's website, courses, classes, and related services. By enrolling in any course or class, you agree
-		to be bound by these Terms.
-	</p>
-	<br />
-
-	<h4>2. Payment and Enrollment</h4>
-	<p>
-		- Payment in full is required to enroll in any course or class.<br />
-		- Enrollment is confirmed once payment has been received.<br />
-		- Payment grants the student access to course materials and scheduled classes, but does not guarantee attendance or participation.<br />
-		- Payment records will be maintained for auditing purposes, and the Academy reserves the right to verify any payment claims.
-	</p>
-	<br />
-
-	<h4>3. Class Attendance and Access</h4>
-	<p>
-		- Students are responsible for attending scheduled classes. The Academy is not liable for any missed classes or failure to participate.<br />
-		- Course materials may be provided to enrolled students for missed sessions, but the availability of such materials is not guaranteed.<br />
-		- No refunds will be issued for non-attendance or missed classes.<br />
-		- If the Academy offers recordings, students may access recorded sessions as per the course's terms.
-	</p>
-	<br />
-
-	<h4>4. Refund Policy</h4>
-	<p>
-		- Refunds will not be issued after payment is confirmed, except in cases where the Academy cancels a course or class.<br />
-		- The Academy reserves the right to modify or cancel a class schedule due to unforeseen circumstances. In such cases, alternative arrangements will be
-		made.
-	</p>
-	<br />
-
-	<h4>5. Audit and Record Keeping</h4>
-	<p>
-		- The Academy will keep records of all payments, enrollment, and class participation.<br />
-		- Payment records and attendance logs are subject to review for legal and auditing purposes.
-	</p>
-	<br />
-
-	<h4>6. Limited Liability</h4>
-	<p>
-		- The Academy does not guarantee specific learning outcomes or skills resulting from the course or class.<br />
-		- Liability for any loss, damage, or injury resulting from participation in the Academy's courses is limited to the amount paid for the course or class.
-	</p>
-	<br />
-
-	<h4>7. Dispute Resolution</h4>
-	<p>- Any disputes arising from these Terms shall be resolved through mediation. If mediation fails, the dispute will be subject to binding arbitration.</p>
-	<br />
-
-	<h4>8. Changes to Terms</h4>
-	<p>- The Academy reserves the right to modify these Terms at any time. Changes will be effective immediately upon posting on the website.</p>
-	<br />
+	<ng-container *ngFor="let term of terms">
+		<h4>{{ term.title | translate }}</h4>
+		<p [innerHTML]="term.content | translate"></p>
+		<br />
+	</ng-container>
 </div>
 <div class="modal-footer">
 	<div class="right-section">
-		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">Close</button>
+		<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('close')">{{ 'Tos.close' | translate }}</button>
 	</div>
 </div>

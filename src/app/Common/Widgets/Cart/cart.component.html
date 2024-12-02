@@ -1,32 +1,40 @@
 <div class="page-inner">
 	<div class="page-section">
 		<div class="cart">
-			<h2>Cart</h2>
-			<ul *ngIf="Cart.CartItems.length > 0">
+			<h2>{{ 'Cart.title' | translate }}</h2>
+			<ul *ngIf="Cart.CartItems.length > 0" class="p-0">
 				<li *ngFor="let item of Cart.CartItems" class="cart-item">
 					<div *ngIf="item.ClassId">
 						<span class="item-name">{{ item.Class.Name }}</span>
 						<span class="item-quantity">({{ item.Quantity }})</span>
-						<div class="item-details">Price: {{ item.Price }}</div>
-						<div class="item-details">SubTotal: {{ item.SubTotal }}</div>
+						<div class="item-details">
+							<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
+						</div>
+						<div class="item-details">
+							<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
+						</div>
 					</div>
 					<div *ngIf="item.CourseId">
 						<span class="item-name">{{ item.Course.Name }}</span>
 						<span class="item-quantity">({{ item.Quantity }})</span>
-						<div class="item-details">Price: {{ item.Price }}</div>
-						<div class="item-details">SubTotal: {{ item.SubTotal }}</div>
+						<div class="item-details">
+							<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
+						</div>
+						<div class="item-details">
+							<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
+						</div>
 					</div>
-					<button (click)="removeFromCart(item.Id)" class="btn-remove">Remove</button>
+					<button (click)="removeFromCart(item.Id)" class="btn-remove">{{ 'Cart.remove' | translate }}</button>
 				</li>
 				<div class="cart-total">
-					<span>Total:</span>
+					<span>{{ 'Cart.total' | translate }}</span>
 					<span>{{ Cart.Total }} {{ Cart.Currency }}</span>
 				</div>
-				<div class="updated-at">Updated: {{ Cart.UpdatedAt }}</div>
+				<div class="updated-at">{{ 'Cart.updated' | translate }} {{ Cart.UpdatedAt | date : 'EEEE, dd/MM/yyyy, hh:mm a' }}</div>
 			</ul>
-			<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">Your cart is empty.</p>
+			<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">{{ 'Cart.emptyCart' | translate }}</p>
 			<div class="checkout-container">
-				<button class="btn btn-primary" (click)="getLink()" [disabled]="Cart.CartItems.length == 0">CHECKOUT</button>
+				<button class="btn btn-primary" (click)="getLink()" [disabled]="Cart.CartItems.length == 0">{{ 'Cart.checkout' | translate }}</button>
 			</div>
 			<app-tos></app-tos>
 		</div>

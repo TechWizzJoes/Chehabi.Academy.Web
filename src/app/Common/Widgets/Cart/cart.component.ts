@@ -5,11 +5,12 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 import { CartService } from '@App/Common/Services/cart.service';
 import { CartModels } from '@App/Common/Models/Cart.Models';
 import { TosComponent } from './Tos/Tos';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule, TosComponent],
+  imports: [CommonModule, RouterModule, TosComponent, TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
