@@ -19,6 +19,8 @@ export enum ErrorCodesEnum {
 	CLASS_Started = 'Class has already started.',
 	CLASS_HAS_NO_FREETRIAL = 'This class doesn\'t have a free trial!',
 	COURSE_NOT_PAID_TO_RATE = 'You must be fully enrolled to leave a rating.',
+	INVALID_COURSE_TYPE = 'invalid course type id',
+	INVALID_COURSE_LEVEL = 'invalid course level id',
 
 	USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS',
 	COURSE_NOT_FOUND = 'COURSE_NOT_FOUND',

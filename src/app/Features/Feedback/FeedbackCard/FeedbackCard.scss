@@ -23,6 +23,10 @@
 
 		.course {
 			display: flex;
+			justify-content: space-between;
+			.title {
+				font-weight: bold;
+			}
 		}
 	}
 }

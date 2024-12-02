@@ -3,8 +3,8 @@
 		<div class="partition content">
 			<h1>{{ 'FeedbackPage.title' | translate }}</h1>
 			<p>{{ 'FeedbackPage.description' | translate }}<br /></p>
-			<div>
-				<a [routerLink]="['/', RoutePaths.Dashboard, RoutePaths.Classes]" class="btn btn-primary me-2">
+			<div class="buttons">
+				<a [routerLink]="['/', RoutePaths.Dashboard, RoutePaths.Classes]" class="btn btn-primary">
 					{{ 'FeedbackPage.shareYourThoughts' | translate }}
 				</a>
 				<a (click)="scrollToTarget()" class="btn btn-outline-primary">{{ 'FeedbackPage.browseFeedbacks' | translate }}</a>

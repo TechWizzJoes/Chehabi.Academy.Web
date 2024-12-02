@@ -1,5 +1,5 @@
 <div class="card" [ngClass]="{'coming-soon-badge':coursedate > today}">
-	<img class="card-img-top" [src]="Course.ImageUrl" alt="Card image cap" />
+	<img class="card-img-top" [src]="Course.ImageUrl? Course.ImageUrl : 'assets/Images/default-course.jpg'" alt="Card image cap" />
 	<div class="card-body">
 		<h5 class="card-title">{{Course.Name}}</h5>
 		<span class="instructor">
