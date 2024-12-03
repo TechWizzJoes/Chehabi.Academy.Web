@@ -42,31 +42,31 @@ export class HomeComponent implements OnInit {
 
 	steps = [
 		{
-			imgSrc: 'assets/Images/laptop.jpg',
+			imgSrc: 'assets/Images/LaptopChoice.png',
 			alt: 'Select a course and enroll',
 			title: 'HomePage.howItWorks.step1_title',
 			description: 'HomePage.howItWorks.step1_description',
 		},
 		{
-			imgSrc: 'assets/Images/laptop.jpg',
+			imgSrc: 'assets/Images/Login.png',
 			alt: 'Select a course and enroll',
 			title: 'HomePage.howItWorks.step2_title',
 			description: 'HomePage.howItWorks.step2_description',
 		},
 		{
-			imgSrc: 'assets/Images/laptop.jpg',
+			imgSrc: 'assets/Images/freeTrial.png',
 			alt: 'Select a course and enroll',
 			title: 'HomePage.howItWorks.step3_title',
 			description: 'HomePage.howItWorks.step3_description',
 		},
 		{
-			imgSrc: 'assets/Images/laptop.jpg',
+			imgSrc: 'assets/Images/Payment.png',
 			alt: 'Select a course and enroll',
 			title: 'HomePage.howItWorks.step4_title',
 			description: 'HomePage.howItWorks.step4_description',
 		},
 		{
-			imgSrc: 'assets/Images/laptop.jpg',
+			imgSrc: 'assets/Images/StartLearning.png',
 			alt: 'Select a course and enroll',
 			title: 'HomePage.howItWorks.step5_title',
 			description: 'HomePage.howItWorks.step5_description',
