@@ -40,12 +40,7 @@
 			min-height: none;
 			border: none;
 			border-radius: 10px;
-			background-color: var(--primary-color3);
-
-			&:hover {
-				cursor: pointer;
-				// background-color: rgba(0, 0, 0, 0.1);
-			}
+			background-color: var(--card-bg-color);
 
 			.upper-section {
 				display: flex;
@@ -53,90 +48,18 @@
 				align-items: center;
 				flex-direction: column;
 
-				.card-title {
-					font-size: 1.1rem;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					overflow: hidden;
-				}
-
-				.status {
-					border-radius: 15px;
-					font-size: 0.7rem;
-					padding: 0.05rem 0.7rem;
-					background-color: var(--active-color);
-					margin-bottom: 8px;
-
-					&.inactive {
-						background-color: var(--inactive-color);
-					}
-				}
-			}
-
-			.session-instance {
-				&.done {
-					text-decoration: line-through;
-				}
-			}
-			// .card-text {
-			// 	overflow: hidden;
-			// 	display: -webkit-box;
-			// 	-webkit-line-clamp: 3;
-			// 	line-clamp: 3;
-			// 	-webkit-box-orient: vertical;
-			// }
-
-			.middle-section {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin: 1rem 0;
-
-				.instructor {
+				.titles {
 					display: flex;
-					justify-content: center;
+					flex-direction: column;
 					align-items: center;
-
-					p {
-						margin: 0;
+					.card-title {
+						font-size: 1.1rem;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
 					}
-
-					.initials {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						width: 40px;
-						height: 40px;
-						color: white;
-						background-color: var(--primary-color1);
-						border-radius: 25%;
-						font-weight: 700;
-						margin-right: 10px;
-					}
-				}
-			}
-
-			.lower-section {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				i {
-					font-size: 1rem;
-					margin-right: 5px;
 				}
 			}
 		}
-	}
-
-	.fa-plus {
-		font-size: 0.9rem !important;
-		margin-right: 0.5rem;
-	}
-}
-
-@media (max-width: 1024px) {
-	.card {
-		width: 100% !important;
 	}
 }

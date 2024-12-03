@@ -21,9 +21,8 @@
 
 	.courses-container {
 		display: flex;
-		align-items: center;
-		flex-direction: column;
-		// justify-content: space-between;
+		// align-items: stretch;
+		// justify-content: center;
 		width: 100%;
 
 		app-loader {
@@ -35,21 +34,20 @@
 
 		.card {
 			margin: 0.75rem;
-			// width: 30%;
+			// width: 45%;
 			min-height: 210px;
 			border: none;
 			border-radius: 10px;
-			background-color: var(--primary-color3);
+			background-color: var(--card-bg-color);
 
-			&:hover {
+			a {
 				cursor: pointer;
-				// background-color: rgba(0, 0, 0, 0.1);
 			}
 
 			.upper-section {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
+				align-items: flex-start;
 
 				.card-title {
 					font-size: 1.1rem;
@@ -74,73 +72,45 @@
 				}
 			}
 
-			.session-instance {
-				&.done {
-					text-decoration: line-through;
+			.sessions {
+				.next-session {
+					display: flex;
+					flex-direction: column;
+				}
+
+				ol {
+					margin: 0;
+					.session-instance {
+						&.done {
+							text-decoration: line-through;
+						}
+					}
 				}
 			}
-			// .card-text {
-			// 	overflow: hidden;
-			// 	display: -webkit-box;
-			// 	-webkit-line-clamp: 3;
-			// 	line-clamp: 3;
-			// 	-webkit-box-orient: vertical;
-			// }
 
 			.middle-section {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
-				margin: 1rem 0;
-
-				.instructor {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-
-					p {
-						margin: 0;
-					}
-
-					.initials {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						width: 40px;
-						height: 40px;
-						color: white;
-						background-color: var(--primary-color1);
-						border-radius: 25%;
-						font-weight: 700;
-						margin-right: 10px;
-					}
-				}
+				align-items: flex-start;
 			}
 
 			.lower-section {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
-
-				i {
-					font-size: 1rem;
-					margin-right: 5px;
+				align-items: flex-end;
+				.left {
+					display: flex;
+					flex-direction: column;
+					.fa-eur {
+						font-size: 14px;
+					}
 				}
-
-				.rate-link {
+				.dates {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-end;
 				}
 			}
 		}
-	}
-
-	.fa-plus {
-		font-size: 0.9rem !important;
-		margin-right: 0.5rem;
-	}
-}
-
-@media (max-width: 1024px) {
-	.card {
-		width: 100% !important;
 	}
 }

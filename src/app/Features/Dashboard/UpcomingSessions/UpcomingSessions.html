@@ -11,7 +11,7 @@
 		<div class="card" *ngFor="let session of UpcomingSessions; let i = index">
 			<div class="card-body">
 				<div class="upper-section">
-					<div *ngIf="currentUser.IsAdmin">
+					<div class="titles" *ngIf="currentUser.IsAdmin">
 						<a [routerLink]="['/',RoutePaths.Dashboard,RoutePaths.Courses,session.Class.Course.Id]" class="card-title">
 							{{session.Class.Course.Name}}
 						</a>
@@ -21,7 +21,7 @@
 							{{session.Class.Name}}
 						</a>
 					</div>
-					<div *ngIf="!currentUser.IsAdmin">
+					<div class="titles" *ngIf="!currentUser.IsAdmin">
 						<a [routerLink]="['/',RoutePaths.Course,session.Class.Course.Id]" class="card-title"> {{session.Class.Course.Name}} </a>
 						<h6 class="card-title">{{session.Class.Name}}</h6>
 					</div>
@@ -41,20 +41,15 @@
 						{{ 'UpcomingSessions.paynow' | translate }}
 					</button>
 				</div>
-				<div></div>
+				<!-- <div></div>
 				<div class="middle-section">
 					<div class="instructor">
-						<!-- <span class="initials"> {{Constants.GetInitialName(class.Course.Instructor.User.FirstName, class.Course.Instructor.User.LastName)}} 	</span>
-						<p>{{class.Course.Instructor.User.FirstName + ' ' + class.Course.Instructor.User.LastName}}</p> -->
 					</div>
 
 					<small> </small>
 				</div>
 				<div class="lower-section">
-					<!-- <span>
-						<i class="fa fa-usd" aria-hidden="true"></i>
-					</span> -->
-				</div>
+				</div> -->
 			</div>
 		</div>
 

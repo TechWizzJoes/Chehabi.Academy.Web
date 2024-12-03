@@ -10,9 +10,9 @@
 		<app-loader *ngIf="!IsLoaded"></app-loader>
 		<div class="card" *ngFor="let userClass of UserClasses; let i = index">
 			<div class="card-body">
-				<h3>
+				<h5>
 					<a [routerLink]="['/',RoutePaths.Course, userClass.Class.Course.Id]">{{userClass.Class.Course.Name}}</a>
-				</h3>
+				</h5>
 				<div class="upper-section">
 					<h5 class="card-title">{{userClass.Class.Name}}</h5>
 					<div class="status-wrap">
@@ -27,57 +27,61 @@
 						<span class="status free-trial" *ngIf="!userClass.IsPaid"> {{ 'Courses.freeTrial' | translate }} </span>
 					</div>
 				</div>
-				<div>
-					<div class="next-session" *ngIf="userClass.Class.CurrentIndex < userClass.Class.NumberOfSessions">
-						<strong>{{Constants.getOrdinalNumber(userClass.Class.CurrentIndex)}}</strong>
-						{{ 'Courses.nextSession' | translate}}
-						<strong>{{userClass.Class.LiveSessions[userClass.Class.CurrentIndex].StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</strong>
-					</div>
-
-					<div>
-						{{ 'Courses.sessions' | translate }}: #{{userClass.Class.NumberOfSessions}}
-						<a class="show-sessions" (click)="showSessions($event, i)"
-							>{{userClass.Class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}</a
-						>
-					</div>
-
-					<ol *ngIf="userClass.Class.ShowSessions" [@fadeInOut]>
-						<li
-							*ngFor="let occ of userClass.Class.LiveSessions; index as i"
-							class="session-instance"
-							[ngClass]="{'done': i < userClass.Class.CurrentIndex}">
-							{{occ.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
-						</li>
-					</ol>
-				</div>
 				<div class="middle-section">
-					<div class="instructor">
-						<!-- <span class="initials"> {{Constants.GetInitialName(userClass.Class.Course.Instructor.User.FirstName, userClass.Class.Course.Instructor.User.LastName)}} 	</span>
-						<p>{{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}</p> -->
-						<p>
-							{{ 'Courses.by' | translate}} {{userClass.Class.Course.Instructor.User.FirstName + ' ' +
-							userClass.Class.Course.Instructor.User.LastName}}
-						</p>
-					</div>
+					<div class="sessions">
+						<div class="next-session" *ngIf="userClass.Class.CurrentIndex < userClass.Class.NumberOfSessions">
+							<strong>{{ 'Courses.upNext' | translate}}</strong>
+							<div>
+								<strong>{{Constants.getOrdinalNumber(userClass.Class.CurrentIndex)}}</strong>
+								{{ 'Courses.nextSession' | translate}}
+								<strong>{{userClass.Class.LiveSessions[userClass.Class.CurrentIndex].StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</strong>
+							</div>
+						</div>
 
-					<small>
-						<ng-container *ngIf="!userClass.Class.CurrentIndex">{{ 'Courses.startsOn' | translate }}</ng-container>
-						<ng-container *ngIf="userClass.Class.CurrentIndex">{{ 'Courses.startedOn' | translate }}</ng-container>
-						{{userClass.Class.StartDate | date: 'dd/MM/YYYY'}}
-					</small>
+						<!-- <strong>{{ 'Courses.sessions' | translate }}:</strong> #{{userClass.Class.NumberOfSessions}} -->
+						<a (click)="showSessions($event, i)" class="btn btn-sm btn-primary">
+							{{userClass.Class.ShowSessions ? ('Courses.hideSessions' | translate) : ('Courses.showSessions' | translate)}}
+						</a>
+
+						<ol *ngIf="userClass.Class.ShowSessions" [@fadeInOut]>
+							<li
+								*ngFor="let occ of userClass.Class.LiveSessions; index as i"
+								class="session-instance"
+								[ngClass]="{'done': i < userClass.Class.CurrentIndex}">
+								{{occ.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+							</li>
+						</ol>
+					</div>
 				</div>
 				<div class="lower-section">
-					<div class="d-flex flex-column">
-						<app-StarRating [Rate]="getCourseRating(userClass.Class.CourseId)" [ReadOnly]="true"></app-StarRating>
-						<a class="rate-link" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId, userClass.IsPaid)">
-							{{(!UserRatings[userClass.Class.CourseId] ? 'Courses.rate' : 'your rating') | translate }}
-						</a>
+					<div class="left">
+						<span>
+							<strong>{{ 'Courses.price' | translate}}</strong>
+
+							<small class="ps-2">{{userClass.Class.Course.Price || '0'}}</small>
+							<i class="fa fa-eur"></i>
+						</span>
+						<div>
+							<strong>{{ 'Courses.by' | translate}}</strong>
+							{{userClass.Class.Course.Instructor.User.FirstName + ' ' + userClass.Class.Course.Instructor.User.LastName}}
+						</div>
 					</div>
-					<span>
-						<i class="fa fa-usd" aria-hidden="true"></i>
-						<small class="ps-2">{{userClass.Class.Course.Price || '0'}}</small>
-					</span>
-					<small>{{ 'Courses.JoinedOn' | translate }} {{userClass.CreatedOn | date: 'dd/MM/YYYY'}} </small>
+					<div class="dates">
+						<small><strong>{{ 'Courses.JoinedOn' | translate }}</strong> {{userClass.CreatedOn | date: 'dd/MM/YYYY'}} </small>
+						<small>
+							<strong
+								><ng-container *ngIf="!userClass.Class.CurrentIndex">{{ 'Courses.startsOn' | translate }}</ng-container>
+								<ng-container *ngIf="userClass.Class.CurrentIndex">{{ 'Courses.startedOn' | translate }}</ng-container>
+							</strong>
+							{{userClass.Class.StartDate | date: 'dd/MM/YYYY'}}
+						</small>
+						<div class="d-flex">
+							<a class="me-1" (click)="openFeedbackModal(UserRatings[userClass.Class.CourseId],  userClass.Class.CourseId, userClass.IsPaid)">
+								<small>{{(!UserRatings[userClass.Class.CourseId] ? 'Courses.rate' : 'Courses.editRate') | translate }}</small>
+							</a>
+							<app-StarRating [Rate]="getCourseRating(userClass.Class.CourseId)" [ReadOnly]="true"></app-StarRating>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

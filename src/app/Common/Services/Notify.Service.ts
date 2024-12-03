@@ -32,7 +32,8 @@ export class NotifyService {
 
 	Success(message: string, title: string = '') {
 		message = this.GetLocalizedMessage(message);
-		title = this.GetLocalizedMessage(title);
+		if (title)
+			title = this.GetLocalizedMessage(title);
 		this.Toastr.success(message, title, this.ToastrOptions);
 		// Swal.fire({
 		// 	position: 'top-end',
