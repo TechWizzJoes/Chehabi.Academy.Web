@@ -38,8 +38,7 @@ export class PaymentHistoryComponent implements OnInit {
 		this.HttpService.Get<PaymentModels.Payment[]>(endPoint).subscribe(data => {
 			this.IsLoaded = true
 			this.Payments = data;
-			console.log(this.Payments);
-
+			// console.log(this.Payments);
 		})
 	}
 

@@ -71,7 +71,7 @@ export class RegisterComponent {
 			requestModel,
 		).subscribe({
 			next: (response) => {
-				console.log(response);
+				// console.log(response);
 				this.AuthService.SignIn(response);
 
 				// this.Router.navigateByUrl(this.RoutePaths.Dashboard);

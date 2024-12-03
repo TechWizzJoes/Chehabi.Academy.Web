@@ -108,27 +108,6 @@ export class Constants {
 	};
 
 	// use date pipe!!  | date: 'EEEE, dd/MM/yyyy, hh:mm a'
-	// public static formatDate(dateString: Date | string, gmtOffset?: number): string {
-	// 	// Parse the date string
-	// 	const date = new Date(dateString);
-
-	// 	// Adjust the time to your local timezone based on the GMT offset (in hours)
-	// 	// const localDate = new Date(date.getTime() + gmtOffset * 60 * 60 * 1000);
-	// 	const localDate = new Date(date.getTime());
-
-	// 	// Format the date to "Tuesday 20/08/2024 02:00 pm"
-	// 	const options: Intl.DateTimeFormatOptions = {
-	// 		weekday: 'long',    // Full weekday name
-	// 		year: 'numeric',    // Full year
-	// 		month: '2-digit',   // Month as two digits
-	// 		day: '2-digit',     // Day as two digits
-	// 		hour: '2-digit',    // Hour in 12-hour format
-	// 		minute: '2-digit',  // Minutes as two digits
-	// 		hour12: true        // 12-hour format with AM/PM
-	// 	};
-
-	// 	return new Intl.DateTimeFormat('en-GB', options).format(localDate);
-	// }
 
 	public static getOrdinalNumber(index: number) {
 		const number = index + 1; // Convert index to human-readable number
@@ -146,10 +125,10 @@ export class Constants {
 			// Check if the clipboard API is supported by the browser
 			if (navigator.clipboard) {
 				navigator.clipboard.writeText(text).then(() => {
-					console.log('Text copied to clipboard!');
+					// console.log('Text copied to clipboard!');
 					resolve(true);  // Resolve the promise with true
 				}).catch(err => {
-					console.error('Failed to copy text to clipboard', err);
+					// console.error('Failed to copy text to clipboard', err);
 					resolve(false);  // Resolve the promise with false in case of an error
 				});
 			} else {
@@ -160,18 +139,18 @@ export class Constants {
 				textArea.select();
 				try {
 					document.execCommand('copy');
-					console.log('Text copied to clipboard!');
+					// console.log('Text copied to clipboard!');
 					resolve(true);  // Resolve the promise with true
 				} catch (err) {
-					console.error('Failed to copy text to clipboard', err);
+					// console.error('Failed to copy text to clipboard', err);
 					resolve(false);  // Resolve the promise with false in case of an error
 				}
 				document.body.removeChild(textArea);
 			}
 		});
 	}
-
 }
+
 export class ConstantsType {
 	Id!: number;
 	Name!: string;

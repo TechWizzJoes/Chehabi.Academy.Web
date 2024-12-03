@@ -12,7 +12,7 @@
 </button>
 
 <ng-template #notificationPopup>
-	<a [routerLink]="['/',RoutePaths.Notifications]">view all</a>
+	<a [routerLink]="['/',RoutePaths.Notifications]">{{ 'Notifications.ViewAll' | translate }}</a>
 	<div *ngFor="let notification of Notifications">
 		<div class="item-text-popup" [id]="notification.Id">
 			<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
@@ -21,5 +21,5 @@
 		<hr />
 	</div>
 
-	<div *ngIf="Notifications.length == 0">No new notifications</div>
+	<div *ngIf="Notifications.length == 0">{{ 'Notifications.noNew' | translate }}</div>
 </ng-template>

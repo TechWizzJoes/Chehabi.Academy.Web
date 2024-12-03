@@ -35,11 +35,11 @@ export class WebSocketService {
         });
 
         this.socket.on('connect', () => {
-            console.log('Connected to WebSocket server');
+            // console.log('Connected to WebSocket server');
         });
 
         this.socket.on('disconnect', () => {
-            console.log('Disconnected from WebSocket server');
+            // console.log('Disconnected from WebSocket server');
         });
 
         this.socket.on('notification', (data) => {
@@ -56,8 +56,7 @@ export class WebSocketService {
         return new Observable((observer) => {
             this.socket?.on(event, (data: any) => {
                 observer.next(data);
-                console.log(data);
-
+                // console.log(data);
             });
         });
     }

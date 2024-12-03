@@ -1,5 +1,5 @@
 <div class="page-inner">
-	<h1>{{ 'Notifications' | translate }}</h1>
+	<h1>{{ 'Notifications.title' | translate }}</h1>
 	<div class="page-section">
 		<div class="page-section" *ngIf="!IsLoaded">
 			<app-loader></app-loader>
@@ -12,7 +12,7 @@
 				</div>
 				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm' }}</span>
 			</div>
-			<a href="javascript:;" (click)="viewMore()">view more</a>
+			<a href="javascript:;" (click)="viewMore()">{{ 'Notifications.ViewMore' | translate }}</a>
 		</div>
 	</div>
 </div>

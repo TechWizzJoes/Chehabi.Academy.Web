@@ -17,10 +17,10 @@ export class AppConfig {
 	constructor(private HttpClient: HttpClient) { }
 
 	async LoadAppConfig() {
-		console.log('Client: ' + this.hostname);
+		// console.log('Client: ' + this.hostname);
 		this.HttpClient.get<Env[]>('assets/Config/Env.json').subscribe((envArray) => {
 			this.env = envArray.find((env) => env.Web == this.hostname)!;
-			console.log('env: ', { ...this.env });
+			// console.log('env: ', { ...this.env });
 			this.ApiUrl.next(this.env.ApiUrl);
 		});
 	}

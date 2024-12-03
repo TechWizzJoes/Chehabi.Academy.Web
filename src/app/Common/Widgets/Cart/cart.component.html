@@ -27,7 +27,7 @@
 					<button (click)="removeFromCart(item.Id)" class="btn-remove">{{ 'Cart.remove' | translate }}</button>
 				</li>
 				<div class="cart-total">
-					<span>{{ 'Cart.total' | translate }}</span>
+					<span class="me-1">{{ 'Cart.total' | translate }}</span>
 					<span>{{ Cart.Total }} {{ Cart.Currency }}</span>
 				</div>
 				<div class="updated-at">{{ 'Cart.updated' | translate }} {{ Cart.UpdatedAt | date : 'EEEE, dd/MM/yyyy, hh:mm a' }}</div>

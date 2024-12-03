@@ -31,7 +31,9 @@ export class LanguagePopUpComponent implements OnInit {
 
   useLanguage(language: string): void {
     this.LanguageService.useLanguage(language);
-    this.setCurrentLanguage();
+    setTimeout(() => {
+      this.setCurrentLanguage();
+    }, 0);
   }
 
   setCurrentLanguage(): void {

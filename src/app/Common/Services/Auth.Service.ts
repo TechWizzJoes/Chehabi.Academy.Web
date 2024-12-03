@@ -107,7 +107,7 @@ export class AuthService {
 			requestModel,
 		).pipe(
 			tap((data) => {
-				console.log('access token refreshed');
+				// console.log('access token refreshed');
 
 				this.SignIn(data)
 			})
@@ -116,7 +116,7 @@ export class AuthService {
 
 	AuthStateSubscribe(): void {
 		this.socialAuthService.authState.subscribe((user) => {
-			console.log('auth state sub', user);
+			// console.log('auth state sub', user);
 			this.socialUser = user;
 			this.isGoogleLoggedin = user != null;
 			if (user)
@@ -142,7 +142,7 @@ export class AuthService {
 					requestModel,
 				).subscribe({
 					next: (response) => {
-						console.log(response);
+						// console.log(response);
 						this.SignIn(response);
 						this.CurrentUserSub.next(true);
 					}

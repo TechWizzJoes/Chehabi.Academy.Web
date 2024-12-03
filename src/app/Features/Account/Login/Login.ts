@@ -76,13 +76,13 @@ export class LoginComponent {
 			requestModel,
 		).subscribe({
 			next: (response) => {
-				console.log(response);
+				// console.log(response);
 				this.AuthService.SignIn(response);
 				this.NavigateTo();
 			},
 			error: (errorResponse) => {
 				// to show the error on login panel
-				console.log(errorResponse);
+				// console.log(errorResponse);
 
 				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error.Message)];
 			}
@@ -115,7 +115,7 @@ export class LoginComponent {
 					requestModel,
 				).subscribe({
 					next: (response) => {
-						console.log(response);
+						// console.log(response);
 						this.AuthService.SignIn(response);
 						this.NavigateTo();
 					},

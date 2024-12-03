@@ -46,8 +46,8 @@ export class AppComponent {
 
 		setTimeout(() => {
 			this.ConnectionSub();
-			this.UpdateVersionPrompt();
-			this.PushNotificationSub();
+			// this.UpdateVersionPrompt();
+			// this.PushNotificationSub();
 		}, 0);
 
 	}
@@ -96,12 +96,12 @@ export class AppComponent {
 	UpdateVersionPrompt() {
 		if (this.swUpdate.isEnabled) {
 			this.swUpdate.versionUpdates.subscribe(async (value: VersionEvent) => {
-				console.log(value);
+				// console.log(value);
 
 				if (value.type == 'VERSION_READY') {
 					const version = ((value.currentVersion.appData) as any).version
 					const latestVersion = ((value.latestVersion.appData) as any).version
-					console.log('version ready');
+					// console.log('version ready');
 
 					if (await this.NotifyService.Confirm('Version Update', `New version ${latestVersion} available.\n Load New Version?`, 'Update Now', 'Later')) {
 						window.location.reload();
@@ -117,11 +117,11 @@ export class AppComponent {
 			serverPublicKey: this.VAPID_PUBLIC_KEY
 		}).then(sub => {
 
-			console.log(sub);
+			// console.log(sub);
 
 			return this.HttpService.Post(HttpEndPoints.Notifications.Subscribe, sub).subscribe({
 				next: data => {
-					console.log("subscribed to push notification successfully");
+					// console.log("subscribed to push notification successfully");
 				},
 				error: err => console.log(err)
 			});
@@ -133,7 +133,7 @@ export class AppComponent {
 			({ action, notification }) => {
 				// do whatever you want according to the action or the notification
 				// but don't use httpclient, only fetch() due to SW limitations
-				console.log(notification); // the whole not object payload
+				// console.log(notification); // the whole not object payload
 				if (action === "go") {
 					this.Router.navigate(['/', RoutePaths.Courses])
 				}
