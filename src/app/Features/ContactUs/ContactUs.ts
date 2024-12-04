@@ -10,7 +10,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { ContactUsModel } from '../../Common/Models/ContactUsModel';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,7 +21,7 @@ import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 	standalone: true,
 	templateUrl: './ContactUs.html',
 	styleUrls: ['ContactUs.scss'],
-	imports: [FormsModule, CommonModule, NgxChartsModule, ReactiveFormsModule, TranslateModule, LoaderComponent]
+	imports: [FormsModule, CommonModule, ReactiveFormsModule, TranslateModule, LoaderComponent]
 })
 export class ContactUsComponent implements OnInit {
 	contactForm!: FormGroup;

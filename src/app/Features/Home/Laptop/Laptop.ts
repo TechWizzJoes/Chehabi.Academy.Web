@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
@@ -18,7 +18,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 	selector: 'app-landing-laptop',
 	templateUrl: './Laptop.html',
 	styleUrls: ['Laptop.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, TranslateModule, NgbCarouselModule]
+	imports: [FormsModule, CommonModule, RouterModule, TranslateModule, NgbCarouselModule]
 })
 export class LaptopComponent implements OnInit {
 	constructor(

@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageEnum, StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
@@ -18,6 +18,7 @@ import { WhatsNewModels } from '@App/Common/Models/WhatsNew.Models';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
 import { FeedbackCardComponent } from '../Feedback/FeedbackCard/FeedbackCard';
+import { DirectivesModule } from '@App/Common/Directives/Directives.Module';
 
 @Component({
 	standalone: true,
@@ -27,11 +28,11 @@ import { FeedbackCardComponent } from '../Feedback/FeedbackCard/FeedbackCard';
 		FormsModule,
 		CommonModule,
 		RouterModule,
-		NgxChartsModule,
 		TranslateModule,
 		NgbCarouselModule,
 		// LaptopComponent,
-		FeedbackCardComponent
+		FeedbackCardComponent,
+		DirectivesModule
 	]
 })
 export class HomeComponent implements OnInit {

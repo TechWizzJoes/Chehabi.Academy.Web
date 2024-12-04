@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { CourseModels } from '@App/Common/Models/Course.Models';

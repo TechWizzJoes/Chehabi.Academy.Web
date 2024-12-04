@@ -1,6 +1,8 @@
 {
 	"coming-soon": "Coming soon",
 	"sub-soon": " Chehabi academy is under construction.",
+	"coming": "COMING",
+	"soon": "SOON",
 
 	"Language": {
 		"English": "English",
@@ -477,6 +479,7 @@
 		"total": "Total:",
 		"updated": "Updated:",
 		"emptyCart": "Your cart is empty.",
+		"acceptTos": "I have read and accepted the",
 		"checkout": "Checkout"
 	},
 	"Checkout": {

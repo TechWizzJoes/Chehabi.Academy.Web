@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { FeedbackCardComponent } from './FeedbackCard/FeedbackCard';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { FeedbackModels } from '@App/Common/Models/Feedback.Models';
@@ -19,7 +19,7 @@ import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 	standalone: true,
 	templateUrl: './Feedback.html',
 	styleUrls: ['Feedback.scss'],
-	imports: [FormsModule, CommonModule, RouterModule, NgxChartsModule, FeedbackCardComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, RouterModule, FeedbackCardComponent, TranslateModule]
 })
 export class FeedbackComponent implements OnInit {
 	RoutePaths = RoutePaths;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Observable, Subscription } from 'rxjs';
 import { CartModels } from '../Models/Cart.Models';
 import { HttpService } from './Http.Service';
 import { HttpEndPoints } from '../Settings/HttpEndPoints';
@@ -21,8 +21,8 @@ export class CartService {
 
   constructor(private HttpService: HttpService) { }
 
-  GetCart() {
-    this.HttpService.Get<any>(HttpEndPoints.Cart.Get).subscribe({
+  GetCart(): Subscription {
+    return this.HttpService.Get<any>(HttpEndPoints.Cart.Get).subscribe({
       next: cart => {
         this.Cart = cart
       }

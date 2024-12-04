@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { CourseModels } from '@App/Common/Models/Course.Models';
@@ -24,7 +24,7 @@ import { Constants } from '@App/Common/Settings/Constants';
     standalone: true,
     templateUrl: './CourseDetails.html',
     styleUrls: ['CourseDetails.scss'],
-    imports: [FormsModule, CommonModule, NgxChartsModule, LoaderComponent, PipesModule, RouterModule, TranslateModule]
+    imports: [FormsModule, CommonModule, LoaderComponent, PipesModule, RouterModule, TranslateModule]
 })
 export class CourseDetailsComponent implements OnInit {
     RoutePaths = RoutePaths;

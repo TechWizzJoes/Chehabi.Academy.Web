@@ -2,41 +2,51 @@
 	<div class="page-section">
 		<div class="cart">
 			<h2>{{ 'Cart.title' | translate }}</h2>
-			<ul *ngIf="Cart.CartItems.length > 0" class="p-0">
-				<li *ngFor="let item of Cart.CartItems" class="cart-item">
-					<div *ngIf="item.ClassId">
-						<span class="item-name">{{ item.Class.Name }}</span>
-						<span class="item-quantity">({{ item.Quantity }})</span>
-						<div class="item-details">
-							<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
-						</div>
-						<div class="item-details">
-							<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
-						</div>
-					</div>
-					<div *ngIf="item.CourseId">
-						<span class="item-name">{{ item.Course.Name }}</span>
-						<span class="item-quantity">({{ item.Quantity }})</span>
-						<div class="item-details">
-							<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
-						</div>
-						<div class="item-details">
-							<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
-						</div>
-					</div>
-					<button (click)="removeFromCart(item.Id)" class="btn-remove">{{ 'Cart.remove' | translate }}</button>
-				</li>
-				<div class="cart-total">
-					<span class="me-1">{{ 'Cart.total' | translate }}</span>
-					<span>{{ Cart.Total }} {{ Cart.Currency }}</span>
-				</div>
-				<div class="updated-at">{{ 'Cart.updated' | translate }} {{ Cart.UpdatedAt | date : 'EEEE, dd/MM/yyyy, hh:mm a' }}</div>
-			</ul>
-			<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">{{ 'Cart.emptyCart' | translate }}</p>
-			<div class="checkout-container">
-				<button class="btn btn-primary" (click)="getLink()" [disabled]="Cart.CartItems.length == 0">{{ 'Cart.checkout' | translate }}</button>
+			<div class="page-section no-min" *ngIf="!IsLoaded">
+				<app-loader></app-loader>
 			</div>
-			<app-tos></app-tos>
+			<div *ngIf="IsLoaded">
+				<ul *ngIf="Cart.CartItems.length > 0" class="p-0">
+					<li *ngFor="let item of Cart.CartItems" class="cart-item">
+						<div *ngIf="item.ClassId">
+							<span class="item-name">{{ item.Class.Name }}</span>
+							<span class="item-quantity">({{ item.Quantity }})</span>
+							<div class="item-details">
+								<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
+							</div>
+							<div class="item-details">
+								<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
+							</div>
+						</div>
+						<div *ngIf="item.CourseId">
+							<span class="item-name">{{ item.Course.Name }}</span>
+							<span class="item-quantity">({{ item.Quantity }})</span>
+							<div class="item-details">
+								<strong> {{ 'Cart.price' | translate }}</strong> {{ item.Price }}
+							</div>
+							<div class="item-details">
+								<strong> {{ 'Cart.subTotal' | translate }}</strong> {{ item.SubTotal }}
+							</div>
+						</div>
+						<button (click)="removeFromCart(item.Id)" class="btn-remove">{{ 'Cart.remove' | translate }}</button>
+					</li>
+					<div class="cart-total">
+						<span class="me-1">{{ 'Cart.total' | translate }}</span>
+						<span>{{ Cart.Total }} {{ Cart.Currency }}</span>
+					</div>
+					<div class="updated-at">{{ 'Cart.updated' | translate }} {{ Cart.UpdatedAt | date : 'EEEE, dd/MM/yyyy, hh:mm a' }}</div>
+				</ul>
+				<p *ngIf="Cart.CartItems.length === 0" class="empty-cart">{{ 'Cart.emptyCart' | translate }}</p>
+			</div>
+			<div class="checkout-container">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="accept-tos" [(ngModel)]="isAccepted" />
+					<label class="form-check-label" for="accept-tos"> {{ 'Cart.acceptTos' | translate }} <app-tos></app-tos>. </label>
+				</div>
+				<button class="btn btn-primary" (click)="getLink()" [disabled]="Cart.CartItems.length == 0 || !isAccepted">
+					{{ 'Cart.checkout' | translate }}
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
