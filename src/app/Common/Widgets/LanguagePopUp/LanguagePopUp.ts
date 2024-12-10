@@ -33,7 +33,7 @@ export class LanguagePopUpComponent implements OnInit {
     this.LanguageService.useLanguage(language);
     setTimeout(() => {
       this.setCurrentLanguage();
-    }, 0);
+    }, 100);
   }
 
   setCurrentLanguage(): void {
