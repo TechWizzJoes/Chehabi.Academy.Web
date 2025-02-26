@@ -2,22 +2,31 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './Auth.Service';
 import { io, Socket } from "socket.io-client";
+import { AppConfig } from '@App/Base/AppConfig';
 
 @Injectable({
     providedIn: 'root',
 })
 export class WebSocketService {
     private socket!: Socket | null;
+    private ApiUrl: string = '';
 
-    constructor(private AuthService: AuthService) {
-        this.connect();
+    constructor(private AuthService: AuthService, private AppConfig: AppConfig) {
+        this.SetApiUrl();
+    }
+
+    SetApiUrl() {
+        this.AppConfig.ApiUrl.subscribe((url) => {
+            (this.ApiUrl = url);
+            this.connect();
+        });
     }
 
     connect(): void {
         if (!this.AuthService.IsAuthenticated) return;
         if (this.socket) return;
 
-        this.socket = io("http://localhost:3001", {
+        this.socket = io(this.ApiUrl.replace('api/', ''), {
             // path: '/socket.io',
             // transports: ['websocket'], // Force WebSocket transport only,
             autoConnect: true,
