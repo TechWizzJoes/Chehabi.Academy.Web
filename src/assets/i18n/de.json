@@ -1,6 +1,7 @@
 {
 	"coming-soon": "Kommt bald",
 	"sub-soon": "Chehabi-Akademie befindet sich im Aufbau.",
+
 	"coming": "KOMMT",
 	"soon": "BALD",
 
@@ -17,7 +18,7 @@
 		"dashboard": "Dashboard",
 		"Hello": "Hallo",
 		"Profile": "Profil",
-		"Want to join the academy": "Möchten Sie der Akademie beitreten",
+		"Want to join the academy": "Möchten Sie der Akademie Beitreten?",
 		"It'll only take a few minutes": "Es dauert nur ein paar Minuten",
 		"Sign In": "Anmelden",
 		"Sign Out": "Abmelden",
@@ -60,8 +61,8 @@
 
 	"HomePage": {
 		"welcomeTitle": "Willkommen bei der Chehabi Academy!",
-		"welcomeParagraph": "Tauchen Sie mit uns in die faszinierende Welt der arabischen Sprache ein. Mit professioneller Anleitung, interaktiven Modulen und kultureller Immersion machen wir das Erlernen der arabischen Sprache zu einer spannenden und lohnenden Reise. Beginnen Sie Ihr sprachliches Abenteuer noch heute.",
-		"joinNowButton": "Jetzt Beitreten",
+		"welcomeParagraph": "Tauchen Sie mit uns in die faszinierende Welt der arabischen Sprache ein. Mit professioneller Anleitung, interaktiven Modulen und kulturellen Einblicken oder Hintergründen machen wir das Erlernen der arabischen Sprache zu einer spannenden und lohnenden Reise. Beginnen Sie Ihr sprachliches Abenteuer noch heute.",
+		"joinNowButton": "Jetzt beitreten",
 		"landing": {
 			"title": "Entfalten Sie Ihr Potenzial mit professionellem Sprachcoaching",
 			"subTitle": "Meistern Sie neue Sprachen durch interaktive Kurse, persönliche Sitzungen und flexibel Lernzeiten, die sich Ihrem Lebensstil anpassen.",
@@ -73,9 +74,9 @@
 			"title": "Was wir anbieten: Maßgeschneiderte Sprachprogramme für jeden Lernenden",
 			"subTitle": "Entdecken Sie unser breites Angebot an Kursen von Anfänger bis Fortgeschrittene, <br /> Gruppenkurse und aufgezeichnete Sitzungen, die auf Ihre Sprachziele zugeschnitten sind.",
 			"liveSessions_title": "Live-Kurssitzungen",
-			"liveSessions_paragraph": "Erleben Sie das Klassenzimmer, ohne Ihr Zuhause zu verlassen. Unsere Live-Kurssitzungen bringen den Unterricht zu Ihnen, mit interaktiven Lektionen, die von Experten geleitet werden. Nehmen Sie an Diskussionen in Echtzeit teil, stellen Sie Fragen und erhalten Sie persönliches Rückmeldung, um Ihren Fortschritt zu beschleunigen. Nutzen Sie Online-Kurse für Flexibilität. Lernen Sie nicht nur – meistern Sie die Sprache.",
+			"liveSessions_paragraph": "Erleben Sie das Klassenzimmer, ohne Ihr Zuhause zu verlassen. Unsere Live-Kurssitzungen bringen den Unterricht zu Ihnen, mit interaktiven Lektionen, die von Experten geleitet werden. Nehmen Sie an Diskussionen in Echtzeit teil, stellen Sie Fragen und erhalten Sie persönliche Rückmeldung / persönliches Feedback, um Ihren Fortschritt zu beschleunigen. Nutzen Sie Online-Kurse für Flexibilität. Lernen Sie nicht nur – meistern Sie die Sprache.",
 			"recordedSessions_title": "Aufgezeichnete Kurse",
-			"recordedSessions_paragraph": "Genießen Sie die Freiheit, in Ihrem eigenen Tempo zu lernen! Unsere professionell gestalteten aufgezeichneten Kurse decken alle Niveaus des Sprachenlernens ab, von Anfänger bis Fortgeschrittene. Genießen Sie lebenslangen Zugang zu hochwertigen Video-Lektionen, herunterladbaren Ressourcen und praktischen Übungen, die das Erlernen einer neuen Sprache spannend und bequem machen. Beginnen Sie Ihre Sprachreise heute, jederzeit und überall."
+			"recordedSessions_paragraph": "Genießen Sie die Freiheit, in Ihrem eigenen Tempo zu lernen! Unsere professionell gestalteten aufgezeichneten Kurse decken alle Niveaus des Sprachenlernens ab, von Anfängern bis Fortgeschrittene. Genießen Sie lebenslangen Zugang zu hochwertigen Video-Lektionen, herunterladbaren Ressourcen und praktischen Übungen, die das Erlernen einer neuen Sprache spannend und bequem machen. Beginnen Sie Ihre Sprachreise heute, jederzeit und überall."
 		},
 		"whyUs": {
 			"title": "Warum Chehabi Academy?",
@@ -83,15 +84,15 @@
 			"ctaP_link": "Durchsuchen Sie unsere Kurse",
 			"ctaP_b": "und finden Sie heute den perfekten Kurs für Sie!",
 			"reason1": "<strong>Expertenlehrer:</strong> Lernen Sie von Sprachprofis mit praktischer Unterrichtserfahrung.",
-			"reason2": "<strong>flexibel Lernoptionen:</strong> Egal, ob Sie selbstständig lernen oder an Live-Sitzungen teilnehmen möchten, wir haben die passenden Optionen für Sie.",
-			"reason3": "<strong>Gemeinschaft-Unterstützung:</strong> Treten Sie einer Gemeinschaft von Lernenden bei, wo Sie Erfahrungen teilen und gemeinsam wachsen können.",
+			"reason2": "<strong> flexible Lernoptionen:</strong> Egal, ob Sie selbstständig lernen oder an Live-Sitzungen teilnehmen möchten, wir haben die passenden Optionen für Sie.",
+			"reason3": "<strong> Gemeinschaft/Unterstützung:</strong> Treten Sie einer Gemeinschaft von Lernenden bei, wo Sie Erfahrungen teilen und gemeinsam wachsen können.",
 			"reason4": "<strong>Zertifizierung:</strong> Erhalten Sie ein Zertifikat nach Abschluss des Kurses, um Ihre Sprachkenntnisse nachzuweisen.",
 			"reason5": "<strong>Erschwingliche Preise:</strong> Hochwertige Sprachkurse zu einem fairen Preis."
 		},
 		"testimonials": {
-			"title": "Was unsere Schüler sagen",
-			"ctaP_a": "Möchten Sie Rückmeldung hinterlassen oder mehr durchsuchen?",
-			"ctaP_link": "Rückmeldung-Seite"
+			"title": "Was unsere Schüler/innen sagen",
+			"ctaP_a": "Möchten Sie Feedback hinterlassen oder mehr durchsuchen?",
+			"ctaP_link": "Feedback-Seite"
 		},
 		"about": {
 			"title": "Über die Akademie",
@@ -102,7 +103,7 @@
 			"title": "Wie funktioniert es?",
 			"subTitle": "Der Einstieg ist einfach! Folgen Sie diesen Schritten, um auf unsere Sprachkurse zuzugreifen und Ihre Lernreise zu beginnen.",
 			"step1_title": "Schritt 1: Wählen Sie einen Kurs",
-			"step1_description": "Durchsuchen Sie unsere Auswahl an Sprachkursen, um den passenden für Ihre Ziele und Ihren Lernstil zu finden.",
+			"step1_description": "Durchsuchen Sie unser Angebot an Sprachkursen, um den passenden für Ihre Ziele und Ihren Lernstil zu finden.",
 			"step2_title": "Schritt 2: Registrieren oder Anmelden",
 			"step2_description": "Erstellen Sie ein kostenloses Konto oder melden Sie sich an, falls Sie bereits ein Mitglied sind. Mit der Registrierung erhalten Sie Zugriff auf eine kostenlose Probestunde und können Ihre Kurse verwalten.",
 			"step3_title": "Schritt 3: Buchen Sie Ihre kostenlose Probestunde",
@@ -114,7 +115,7 @@
 		},
 		"ctaSection": {
 			"title": "Bereit, Ihre Sprachreise zu beginnen?",
-			"introP_a": "Egal, ob Sie in Ihrem eigenen Tempo lernen oder an interaktiven Sitzungen teilnehmen möchten – die Chehabi Academy hat den perfekten Kurs für Sie. Warten Sie nicht länger, um Ihr Potenzial freizusetzen. Treten Sie unserer Gemeinschaft von begeisterten Sprachlernenden und erfahrenen Lehrern bei, die Ihnen helfen, erfolgreich zu sein. Ihre Sprachmeisterschaft beginnt hier — ",
+			"introP_a": "Egal, ob Sie in Ihrem eigenen Tempo lernen oder an interaktiven Sitzungen teilnehmen möchten – die Chehabi Academy hat den perfekten Kurs für Sie. Warten Sie nicht länger, um Ihr Potenzial freizusetzen. Treten Sie unserer Gemeinschaft von begeisterten Sprachlernenden und erfahrenen Lehrern und Lehrerinnen bei, die Ihnen helfen, erfolgreich zu sein. Ihre Sprachmeisterschaft beginnt hier — ",
 			"introP_link": "starten Sie heute!",
 			"ctaP_a": "Haben Sie Fragen?",
 			"ctaP_linka": "Besuchen Sie unsere FAQ-Seite",
@@ -127,10 +128,10 @@
 		"start_learning": "Beginnen Sie zu lernen",
 		"title": "Die Seele unserer Plattform",
 		"paragraph1": "Gegründet im Jahr 2023, entstand die Chehabi Academy aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch, kulturelle Barrieren zu überwinden. Wir erkennen die Bedeutung der arabischen Sprache in der globalen Kommunikation, dem Erbe und der Kunst an und haben es uns zur Aufgabe gemacht, ein umfassendes Lernerlebnis anzubieten, das über bloßes Vokabular und Grammatik hinausgeht.",
-		"paragraph2": "Unsere Plattform lehrt nicht nur eine Sprache; sie taucht die Lernenden in eine Welt der Tradition, Poesie, Geschichte und zeitgenössischer Einsichten ein. Mit einem Team von engagierten Fachleuten, die alle eine Leidenschaft für Arabisch und Pädagogik teilen, bieten wir eine Mischung aus bewährten Lehrmethoden und modernen E-Learning-Tools. In der Chehabi Academy ist jede Lektion ein Schritt näher, nicht nur ein Sprecher zu werden, sondern ein echter Kenner der arabischen Sprache und Kultur.",
+		"paragraph2": "Unsere Plattform lehrt nicht nur eine Sprache; sie taucht die Lernenden in eine Welt der Tradition, Poesie, Geschichte und zeitgenössischer Einsichten ein. Mit einem Team von engagierten Fachleuten, die alle eine Leidenschaft für Arabisch und Pädagogik teilen, bieten wir eine Mischung aus bewährten Lehrmethoden und modernen E-Learning-Tools.  Mit der Chehabi Academy kommen Sie mit jeder Lektion einen Schritt weiter, nicht nur ein Sprecher, sondern ein echter Kenner der arabischen Sprache und Kultur zu werden.",
 		"founder_title": "Lernen Sie den Gründer kennen",
 		"founder_paragraph1": "Mein Name ist Bashir Alshihabi, Gründer der „Chehabi Academy“ und Sprachlehrer. Ich wurde 1984 in Damaskus, Syrien, geboren und stamme aus einer Dichterfamilie, die sich seit mehr als 300 Jahren mit Literatur und Poesie beschäftigt. Ich bin auch Dichter und Musiker. Ich habe Gitarre und Musiktheorie in Damaskus, Stuttgart und Wien studiert.",
-		"founder_paragraph2": "In Deutschland habe ich viele Arabisch- und Deutschkurse gegeben und übersetzt sowie bei verschiedenen Schulen, Universitäten, Unternehmen und Agenturen wie folgenden gearbeitet:",
+		"founder_paragraph2": "In Deutschland habe ich viele Arabisch- und Deutschkurse gegeben sowie bei verschiedenen Schulen, Universitäten, Unternehmen und Agenturen wie folgt gearbeitet:",
 		"founder_list": {
 			"item1": "Volkshochschule Stuttgart",
 			"item2": "Volkshochschule Ludwigsburg",
@@ -142,21 +143,21 @@
 			"item8": "Polizeipräsidium Stuttgart"
 		},
 		"courses_title": "Unsere Kurse",
-		"courses_paragraph": "In der Chehabi Academy bieten wir eine vielfältige Auswahl an Kursen, die auf die Bedürfnisse jedes Lernenden zugeschnitten sind. Von persönlichen 1-zu-1-Sitzungen bis hin zu spannenden Gruppenkursen und flexibeln aufgezeichneten Sitzungen haben wir für jeden etwas. Ob Sie gerade erst mit Ihrer Sprachreise beginnen oder Ihre bestehenden Fähigkeiten ausbauen möchten, unsere durchdacht gestalteten Kurse werden Sie inspirieren, Ihre Ziele zu erreichen.",
+		"courses_paragraph": "In der Chehabi Academy bieten wir eine vielfältige Auswahl an Kursen, die auf die Bedürfnisse jedes Lernenden zugeschnitten sind. Von persönlichen 1-zu-1-Sitzungen bis hin zu spannenden Gruppenkursen und flexiblen aufgezeichneten Sitzungen ist für jeden/jede etwas dabei. Ob Sie gerade erst mit Ihrer Sprachreise beginnen oder Ihre bestehenden Fähigkeiten ausbauen möchten, unsere gut durchdacht gestalteten Kurse werden Sie inspirieren, Ihre Ziele zu erreichen.",
 
 		"approach_title": "Unser Ansatz",
-		"approach_paragraph": "In der Chehabi Academy geht es in unserer Lehrmethodik vor allem um Sie – den Lernenden. Wir setzen auf interaktive und immersive Sprachlernerfahrungen, die Ihre Neugierde wecken. Durch die Kombination moderner Lehrtechniken mit traditionellem Unterricht schaffen wir eine dynamische Umgebung, in der Sie nicht nur sprechen lernen, sondern auch den reichen kulturellen Kontext der Sprache zu schätzen wissen. Bereiten Sie sich darauf vor, eine transformative Reise zu unternehmen, die Sie mit praktischen Fähigkeiten und kulturellen Erkenntnissen ausstattet.",
+		"approach_paragraph": "In der Chehabi Academy geht es in unserer Lehrmethodik vor allem um Sie – den Lernenden. Wir setzen auf interaktive und umfassende Sprachlernerfahrungen, die Ihre Neugierde wecken. Durch die Kombination moderner Lehrtechniken mit traditionellem Unterricht schaffen wir eine dynamische Umgebung, in der Sie nicht nur sprechen lernen, sondern auch den reichen kulturellen Kontext der Sprache zu schätzen wissen. Bereiten Sie sich darauf vor, eine transformative Reise zu unternehmen, die Sie mit praktischen Fähigkeiten und kulturellen Erkenntnissen ausstattet.",
 
 		"journey_title": "Lassen Sie uns unsere Reise beginnen!",
 		"call_to_action": "Sind Sie bereit, Ihr Abenteuer im Sprachenlernen zu starten? Schließen Sie sich uns heute an und entdecken Sie die Freude, eine neue Sprache mit der Chehabi Academy zu meistern!",
-		"join_now": "Jetzt Beitreten!"
+		"join_now": "Jetzt beitreten!"
 	},
 	"CourseListPage": {
 		"title": "Entdecken Sie unsere Kurse",
 		"searchPlaceholder": "In Kursen suchen",
 		"searchButton": "Suchen",
 		"TypePlaceholder": "Kursart",
-		"Type": "Art",
+		"Type": "Kursart",
 		"LevelPlaceholder": "Kursniveau",
 		"Level": "Niveau",
 		"rating": "Bewertung",
@@ -169,7 +170,7 @@
 	},
 	"CoursePage": {
 		"classes": "Kurse",
-		"noClassesAdded": "Derzeit keine Kurse für diesen Kurs verfügbar.",
+		"noClassesAdded": "Derzeit sind leider keine Plätze für diesen Kurs verfügbar.",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
 		"started": "Kurs bereits gestartet.",
@@ -223,14 +224,14 @@
 		"rate": "Bewertung abgeben",
 		"editRate": "Bewertung bearbeiten",
 		"level": "Level:",
-		"type": "Typ:"
+		"type": "welcher Typ:"
 	},
 	"FeedbackModal": {
 		"edit": "Bearbeiten",
 		"add": "Hinzufügen",
 		"rating": "Bewertung",
-		"feedback": "Rückmeldung",
-		"canSkip": "Sie können das Rückmeldung überspringen, aber wir schätzen Ihr Rückmeldung sehr.",
+		"feedback": "Feedback",
+		"canSkip": "Sie können das Feedback gerne überspringen, wir schätzen aber jegliche Rückmeldung von Ihnen sehr.",
 		"close": "Schließen",
 		"continue": "Fortfahren",
 		"submit": "Absenden"
@@ -248,7 +249,7 @@
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
 		"courseOverview": "Kursübersicht",
-		"noDescription": "Keine Beschreibung für diesen Kurs.",
+		"noDescription": "Keine Beschreibung vorhanden für diesen Kurs.",
 		"toBeLearned": "Zu Lernendes",
 		"noData": "Keine Daten.",
 		"prerequisites": "Voraussetzungen",
@@ -324,7 +325,7 @@
 		"NumberOfSessions": "Anzahl der Sitzungen",
 		"StartsOn": "Beginn am",
 		"Schedule": "Zeitplan",
-		"weekDayTime": "Der Wochentag und die Uhrzeit, um die Sitzungen für diese Klasse zu berechnen.",
+		"weekDayTime": "Wochentag und Uhrzeit für diesen Kurs.",
 		"DayOfWeek": "Wochentag",
 		"TimeOfDay": "Uhrzeit",
 		"Duration": "Dauer: Minuten",
@@ -376,7 +377,7 @@
 	"NotificationSettings": {
 		"title": "Ich möchte erhalten:",
 		"promotions": "E-Mail-Werbung für neue Kurse und Klassen.",
-		"announcements": "E-Mail-Ankündigungen von Lehrern der eingeschriebenen Klassen.",
+		"announcements": "E-Mail-Ankündigungen von Lehrern und Lehrerinnen der eingeschriebenen Klassen.",
 		"sessionUpdates": "E-Mail-Sitzungsaktualisierungen.",
 		"sessionReminders": "E-Mail-Erinnerungen an Sitzungen.",
 		"disclaimer": "Sie werden weiterhin für wichtige Benachrichtigungen wie Zahlungen benachrichtigt.",
@@ -402,10 +403,10 @@
 		"save": "Speichern"
 	},
 	"FeedbackPage": {
-		"title": "Wir würden uns über Ihr Rückmeldung freuen",
+		"title": "Wir würden uns über Ihr Feedback freuen",
 		"description": "Wir setzen uns dafür ein, Ihre Lernerfahrung zu verbessern. Teilen Sie uns Ihre Eindrücke mit.",
 		"shareYourThoughts": "Teilen Sie Ihre Gedanken zu unserem Inhalt",
-		"browseFeedbacks": "Rückmeldung durchsuchen"
+		"browseFeedbacks": "Feedback durchsuchen"
 	},
 	"Faq": {
 		"title": "Häufig gestellte Fragen",
@@ -444,7 +445,7 @@
 	},
 	"ContactPage": {
 		"title": "Kontaktieren Sie uns",
-		"intro": "Ob Sie Fragen haben, Rückmeldung geben möchten oder einfach nur über die Schönheit der arabischen Sprache sprechen möchten, wir sind für Sie da. Kontaktieren Sie uns über eine der untenstehenden Methoden, und unser engagiertes Team wird sich so schnell wie möglich bei Ihnen melden.",
+		"intro": "Ob Sie Fragen haben, Feedback geben möchten oder einfach nur über die Schönheit der arabischen Sprache sprechen möchten, wir sind für Sie da. Kontaktieren Sie uns über eine der untenstehenden Methoden, und unser engagiertes Team wird sich so schnell wie möglich bei Ihnen melden.",
 		"description": "Erzählen Sie uns",
 		"submit": "Absenden",
 		"FirstName": "Vorname",
@@ -454,7 +455,7 @@
 	"TeachWithUs": {
 		"title": "Unterrichten Sie mit uns",
 		"subTitle": "Bald verfügbar!",
-		"p1": "Wir freuen uns, Ihnen die Möglichkeit zu bieten, als Lehrer Teil unserer Akademie zu werden. Unser Team arbeitet derzeit daran, eine Plattform zu erstellen, die das Unterrichten bei uns einfach und lohnend macht.",
+		"p1": "Wir freuen uns, Ihnen die Möglichkeit zu bieten, als Lehrer/Lehrerin Teil unserer Akademie zu werden. Unser Team arbeitet derzeit daran, eine Plattform zu erstellen, die das Unterrichten bei uns einfach und lohnend macht.",
 		"p2_a": "Wenn Sie daran interessiert sind, Teil unserer Lehrgemeinschaft zu werden,",
 		"p2_link": "kontaktieren Sie uns bitte",
 		"p2_b": "Teilen Sie uns Ihre Ideen, Vorschläge und Fragen mit, um diese Erfahrung noch besser zu gestalten.",
