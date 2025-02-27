@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CartService } from '@App/Common/Services/cart.service';
+import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 
 @Component({
   selector: 'app-cart-button',
@@ -12,6 +13,7 @@ import { CartService } from '@App/Common/Services/cart.service';
 })
 export class CartButtonComponent implements OnInit {
   counter: number = 0;
+  RoutePaths = RoutePaths;
   constructor(private CartService: CartService) { }
 
   ngOnInit(): void {

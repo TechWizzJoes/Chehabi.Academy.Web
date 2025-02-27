@@ -24,6 +24,10 @@ export const routes: Routes = [
 				loadComponent: () => import('@App/Features/About/About').then((c) => c.AboutComponent)
 			},
 			{
+				path: 'impressum',
+				loadComponent: () => import('@App/Features/Impressum/Impressum').then((c) => c.ImpressumComponent)
+			},
+			{
 				path: 'courses',
 				loadComponent: () => import('@App/Features/CoursesList/CoursesList').then((c) => c.CoursesListComponent)
 			},

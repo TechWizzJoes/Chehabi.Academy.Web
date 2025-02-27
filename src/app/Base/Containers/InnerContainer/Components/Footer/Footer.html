@@ -2,10 +2,11 @@
 	<div class="main">
 		<img src="/assets/Images/white-full-logo.png" alt="{{'Footer.logo-alt' | translate}}" class="white-logo-img" />
 		<ul class="list-inline">
-			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Home]">{{ 'Footer.home' | translate }}</a></li>
-			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Contactus]">{{ 'Footer.contact-us' | translate }}</a></li>
-			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Faq]">{{ 'Footer.FAQ' | translate }}</a></li>
-			<li class="list-inline-item"><a [routerLink]="['/', RoutePaths.Feedback]">{{ 'Footer.Feedback' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="[RoutePaths.Home]">{{ 'Footer.home' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="[RoutePaths.Contactus]">{{ 'Footer.contact-us' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="[RoutePaths.Faq]">{{ 'Footer.FAQ' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="[RoutePaths.Feedback]">{{ 'Footer.Feedback' | translate }}</a></li>
+			<li class="list-inline-item"><a [routerLink]="[RoutePaths.Impressum]">{{ 'Footer.Impressum' | translate }}</a></li>
 		</ul>
 
 		<div class="social">

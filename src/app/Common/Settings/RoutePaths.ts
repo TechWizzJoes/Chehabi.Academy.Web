@@ -6,6 +6,7 @@ export class RoutePaths {
 	public static Login = 'login';
 	public static Register = 'register';
 	public static About = 'about';
+	public static Impressum = 'impressum';
 	public static Courses = 'courses';
 	public static Classes = 'classes';
 	public static Course = 'course';
@@ -24,4 +25,5 @@ export class RoutePaths {
 	public static Notifications = 'notifications';
 	public static Faq = 'faq';
 	public static TeachWithUs = 'teach-with-us';
+	public static Cart = 'cart';
 }

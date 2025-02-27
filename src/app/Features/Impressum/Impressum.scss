@@ -1,0 +1,10 @@
+.page-inner {
+	min-height: calc(100vh - var(--header-height));
+	h1 {
+		padding-inline-start: var(--page-inner-content-padding);
+	}
+
+	.page-section {
+		justify-content: flex-start;
+	}
+}

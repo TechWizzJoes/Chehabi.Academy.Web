@@ -31,7 +31,8 @@
 		"logo-alt": "Company Logo",
 		"home": "Home",
 		"FAQ": "FAQ",
-		"Feedback": "Feedback"
+		"Feedback": "Feedback",
+		"Impressum": "Imprint"
 	},
 
 	"Login": {
@@ -190,6 +191,23 @@
 		"downloadFreeMaterial": "Download free Material",
 		"freeTrialSession": "Try a free trial session",
 		"CourseDeleted": "This course isn't available!"
+	},
+	"ImpressumPage": {
+		"title": "Title",
+		"business_name": "Business Name",
+		"address": "Address",
+		"contact": "Contact",
+		"email": "Email",
+		"phone": "Phone",
+		"registration_info": "Registration Info",
+		"tax_id": "Tax Id",
+		"business_name_value": "Business Name",
+		"address_value": "Address",
+		"contact_value": "Contact",
+		"email_value": "Email",
+		"phone_value": "Phone",
+		"registration_info_value": "Registration Info",
+		"tax_id_value": "Tax Id"
 	},
 
 	"DashboardPage": {

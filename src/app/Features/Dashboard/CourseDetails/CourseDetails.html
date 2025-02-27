@@ -105,14 +105,13 @@
 										[attr.data-bs-target]="'#collapse' + i"
 										aria-expanded="false"
 										[attr.aria-controls]="'#collapse' + i">
-										{{ class.Name}}
+										<a [title]="'CourseDetailsPage.goToClass' | translate" [routerLink]="[RoutePaths.Class, class.Id]">{{ class.Name}}</a>
 										<span class="status active" *ngIf="class.IsActive" title="{{ 'CourseDetailsPage.active' | translate }}">
 											<i class="fa fa-check" aria-hidden="true"> </i>
 										</span>
 										<span class="status inactive" *ngIf="!class.IsActive" title="{{ 'CourseDetailsPage.inactive' | translate }}">
 											<i class="fa fa-times" aria-hidden="true"> </i>
 										</span>
-										<a [routerLink]="[RoutePaths.Class, class.Id]">{{ 'CourseDetailsPage.goToClass' | translate }}</a>
 									</button>
 									<i class="fa fa-pencil btn-more" aria-hidden="true" (click)="openEditModal(ModalPropertyEnum.Class, i.toString())"></i>
 								</h2>
@@ -139,10 +138,8 @@
 
 											<small>{{class.Period}}</small>
 										</div> -->
-											<div class="class">
-												<p>{{ 'CourseDetailsPage.currentSession' | translate }}</p>
-												<small>{{class.CurrentIndex}}</small>
-											</div>
+											<p>{{ 'CourseDetailsPage.currentSession' | translate }}</p>
+											<small>{{class.CurrentIndex}}</small>
 										</div>
 									</div>
 								</div>
