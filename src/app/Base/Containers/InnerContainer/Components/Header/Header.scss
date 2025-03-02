@@ -122,13 +122,14 @@
 			.logo {
 				order: 2;
 				width: 60%;
-				// margin: 0 auto; /* Automatically center the middle div */
+				margin: 0 auto; /* Automatically center the middle div */
 			}
 			.user-buttons {
 				order: 3;
 				width: 15%;
 				display: flex;
 				justify-content: flex-end;
+				gap: 0;
 			}
 
 			&:has(.show),

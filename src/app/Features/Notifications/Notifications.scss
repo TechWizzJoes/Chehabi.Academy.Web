@@ -1,16 +1,22 @@
-.notification-item {
-	padding: 1em;
+.page-inner {
+	h1 {
+		padding-inline-start: var(--page-inner-content-padding);
+	}
 
-	.item-text {
-		.new-item-indicator {
-			padding: 0;
-			display: inline-block;
+	.notification-item {
+		padding: 0 1em 1em;
 
-			border-radius: 50%;
-			width: 15px;
-			height: 15px;
-			color: var(--primary-color1);
-			background-color: var(--primary-color1);
+		.item-text {
+			.new-item-indicator {
+				padding: 0;
+				display: inline-block;
+
+				border-radius: 50%;
+				width: 15px;
+				height: 15px;
+				color: var(--primary-color1);
+				background-color: var(--primary-color1);
+			}
 		}
 	}
 }

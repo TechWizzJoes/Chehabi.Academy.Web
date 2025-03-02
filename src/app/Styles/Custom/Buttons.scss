@@ -54,6 +54,8 @@ asl-google-signin-button {
 .icon-button {
 	background-color: transparent;
 	border: none;
-	font-size: var(--font-size-lg);
+	// font-size: var(--font-size-lg);
+	font-size: 18px;
 	height: 100%;
+	padding: 5px !important;
 }
