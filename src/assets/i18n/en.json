@@ -193,19 +193,22 @@
 		"CourseDeleted": "This course isn't available!"
 	},
 	"ImpressumPage": {
-		"title": "Title",
+		"title": "Imprint",
 		"business_name": "Business Name",
+		"website_owner": "Website Owner",
 		"address": "Address",
 		"contact": "Contact",
 		"email": "Email",
 		"phone": "Phone",
 		"registration_info": "Registration Info",
 		"tax_id": "Tax Id",
-		"business_name_value": "Business Name",
-		"address_value": "Address",
+
+		"business_name_value": "Chehabi Academy",
+		"website_owner_value": "Bashir Alshihabi",
+		"address_value": "Fleckenweinberg 40A\n70192 Stuttgart, Germany",
 		"contact_value": "Contact",
-		"email_value": "Email",
-		"phone_value": "Phone",
+		"email_value": "info@chehabi-academy.com",
+		"phone_value": "004915732255317",
 		"registration_info_value": "Registration Info",
 		"tax_id_value": "Tax Id"
 	},
