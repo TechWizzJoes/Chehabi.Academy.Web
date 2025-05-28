@@ -36,7 +36,7 @@ export class UpcomingSessionsComponent implements OnInit {
         private AuthService: AuthService,
         private HttpService: HttpService,
         private NotifyService: NotifyService,
-        private CartService: CartService,
+        private CartService: CartService
     ) {
         this.currentUser = this.AuthService.CurrentUser;
     }
@@ -48,9 +48,9 @@ export class UpcomingSessionsComponent implements OnInit {
     getUserClasses() {
         let endPoint = HttpEndPoints.Sessions.GetUpcoming;
         this.HttpService.Get<CourseModels.LiveSession[]>(endPoint).subscribe(data => {
-            this.IsLoaded = true
+            this.IsLoaded = true;
             this.UpcomingSessions = data;
-        })
+        });
     }
 
     async copyLink(sessionLink: string) {

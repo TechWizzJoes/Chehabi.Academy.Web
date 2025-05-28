@@ -73,11 +73,11 @@ export class ClassesComponent implements OnInit {
     }
 
     getUserClasses() {
-        let endPoint = HttpEndPoints.Classes.GetAllByUser
+        let endPoint = HttpEndPoints.Classes.GetAllByUser;
         this.HttpService.Get<UserModels.UserClass[]>(endPoint).subscribe(data => {
-            this.IsLoaded = true
+            this.IsLoaded = true;
             this.UserClasses = data;
-        })
+        });
     }
 
     getUserRatings() {

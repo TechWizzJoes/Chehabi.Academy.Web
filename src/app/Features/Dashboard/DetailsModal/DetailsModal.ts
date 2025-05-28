@@ -109,7 +109,7 @@ export class DetailsModalComponent implements OnInit {
 
             this.NewClass.LiveSessions = this.course.Classes[+this.index].LiveSessions;
             this.NewClass.LiveSessions.forEach(sess => {
-                sess.StartTimeString = Constants.convertDateToHHMM(new Date(sess.StartDate)) // must be before start date as it'd be already modified
+                sess.StartTimeString = Constants.convertDateToHHMM(new Date(sess.StartDate))
                 sess.StartDateString = Constants.convertDateToYYYYMMDD(new Date(sess.StartDate))
             });
         }
@@ -231,7 +231,6 @@ export class DetailsModalComponent implements OnInit {
         },
 
         onTimeChange: (event: any, index: number) => {
-            // ngmodel isn't working with dynamic adding in forms
             if (this.isEdit) {
                 let d = new Date(this.NewClass.LiveSessions[index].StartDate);
                 const [hours, minutes] = event.target.value.split(":").map(Number);
@@ -243,7 +242,6 @@ export class DetailsModalComponent implements OnInit {
                 this.NewClass.LiveSessions[index].StartDate = d;
                 this.NewClass.LiveSessions[index].StartDateString = Constants.convertDateToYYYYMMDD(d);
                 this.NewClass.LiveSessions[index].StartTimeString = event.target.value;
-
             } else {
                 this.NewClass.Period[index].Time = event.target.value;
             }
@@ -258,7 +256,7 @@ export class DetailsModalComponent implements OnInit {
         },
 
         onDateChange: (event: any, index: number) => {
-            let selectedDate = new Date(event.target.value)
+            let selectedDate = new Date(event.target.value);
             const [hours, minutes] = this.NewClass.LiveSessions[index].StartTimeString.split(":").map(Number);
 
             selectedDate.setHours(hours);
@@ -266,7 +264,6 @@ export class DetailsModalComponent implements OnInit {
 
             this.NewClass.LiveSessions[index].StartDate = selectedDate;
             this.NewClass.LiveSessions[index].StartDateString = Constants.convertDateToYYYYMMDD(selectedDate);
-
         },
 
         addClass: () => {
