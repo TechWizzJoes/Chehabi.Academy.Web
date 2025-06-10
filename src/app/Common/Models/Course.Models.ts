@@ -52,6 +52,7 @@ export namespace CourseModels {
 		IsActive: boolean = true;
 		IsDeleted!: boolean;
 		HasFreeTrial!: boolean;
+		UTCHoursOffset!: number;
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
 		LiveSessions!: LiveSession[];
@@ -82,7 +83,7 @@ export namespace CourseModels {
 	export class PeriodDto {
 		Day: number = 0;
 		Time: string = '12:00';
-		DurationInMins: number = 60;
+		DurationInMins: number = 15;
 	}
 
 	export class Filter {

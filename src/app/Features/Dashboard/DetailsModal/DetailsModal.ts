@@ -270,6 +270,7 @@ export class DetailsModalComponent implements OnInit {
             let endPoint = HttpEndPoints.Classes.AddClass;
 
             this.IsDisabled = true;
+            this.NewClass.UTCHoursOffset = Constants.getUtcOffsetInHours();
             this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe({
                 next: data => {
                     this.IsDisabled = false;

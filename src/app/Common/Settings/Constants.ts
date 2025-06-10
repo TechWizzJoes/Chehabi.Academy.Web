@@ -120,6 +120,10 @@ export class Constants {
 		return number + suffix;
 	}
 
+	public static getUtcOffsetInHours(): number {
+		return (new Date().getTimezoneOffset() * -1) / 60;
+	}
+
 	public static copyToClipboard(text: string) {
 		return new Promise((resolve, reject) => {
 			// Check if the clipboard API is supported by the browser
