@@ -262,7 +262,8 @@
 		"title": "Bevorstehende Sitzungen in den nächsten 7 Tagen",
 		"link": "Link",
 		"copylink": "Link kopieren",
-		"paynow": "Jetzt abonnieren, um vollen Zugang zu erhalten"
+		"paynow": "Jetzt abonnieren, um vollen Zugang zu erhalten",
+		"noSession":"Keine Sitzungen in der aktuellen Woche"
 	},
 	"CourseDetailsPage": {
 		"dashboard": "Dashboard",

@@ -261,7 +261,8 @@
 		"title": "Upcoming Sessions for next 7 days",
 		"link": "Link",
 		"copylink": "Copy link",
-		"paynow": "subscribe now to get full access"
+		"paynow": "subscribe now to get full access",
+		"noSession":"No sessions in the current week"
 	},
 	"CourseDetailsPage": {
 		"dashboard": "Dashboard",
