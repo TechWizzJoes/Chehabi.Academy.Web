@@ -16,7 +16,7 @@
 	<div *ngFor="let notification of Notifications">
 		<div class="item-text-popup" [id]="notification.Id">
 			<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
-			{{notification.Text}}
+			{{formatNotificationText(notification.Text)}}
 		</div>
 		<hr />
 	</div>

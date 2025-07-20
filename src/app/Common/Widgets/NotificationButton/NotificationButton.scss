@@ -58,9 +58,16 @@ button {
 	@media (max-width: 576px) {
 		.notification-popup {
 			width: 302px;
+			right: 0 !important;
+			transform: translate3d(-10px, 56px, 0px) !important;
+
+			.popover-arrow {
+				transform: translate3d(185px, 0px, 0px) !important;
+			}
 
 			.popover-body {
 				width: 300px;
+				max-height: 500px;
 			}
 		}
 	}

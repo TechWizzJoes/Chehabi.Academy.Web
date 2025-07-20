@@ -8,9 +8,9 @@
 			<div *ngFor="let notification of Notifications; index as i" class="notification-item">
 				<div class="item-text" [id]="notification.Id">
 					<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
-					{{i+1}}){{notification.Text}}
+					{{i+1}}){{formatNotificationText(notification.Text)}}
 				</div>
-				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm' }}</span>
+				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm  a' }}</span>
 			</div>
 			<a href="javascript:;" (click)="viewMore()">{{ 'Notifications.ViewMore' | translate }}</a>
 		</div>

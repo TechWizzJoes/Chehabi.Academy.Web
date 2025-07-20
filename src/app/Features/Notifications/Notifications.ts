@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NotificationModels } from '@App/Common/Models/Notifications.Models';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
@@ -13,7 +13,8 @@ import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
   standalone: true,
   imports: [CommonModule, TranslateModule, LoaderComponent],
   templateUrl: './Notifications.html',
-  styleUrl: './Notifications.scss'
+  styleUrl: './Notifications.scss',
+  providers: [DatePipe]
 })
 export class NotificationsComponent implements OnInit, AfterViewInit {
   RoutePaths = RoutePaths;
@@ -24,7 +25,11 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   unreadItems: NotificationModels.InApp[] = [];
   interval!: NodeJS.Timer;
 
-  constructor(private WebSocketService: WebSocketService, private HttpService: HttpService) { }
+  constructor(
+    private WebSocketService: WebSocketService,
+    private HttpService: HttpService,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit(): void {
     this.getItems();
@@ -102,6 +107,20 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
         }
       })
     });
+  }
+
+  formatNotificationText(text: string): string {
+    const atIndex = text.toLowerCase().indexOf(' at ');
+    if (atIndex === -1) return text;
+    const before = text.substring(0, atIndex + 4); // include 'at '
+    const after = text.substring(atIndex + 4).trim();
+    const date = new Date(after);
+    if (isNaN(date.getTime())) {
+      return text;
+    }
+    // Use Angular DatePipe for formatting
+    const formatted = this.datePipe.transform(date, 'EEEE, dd/MM/yyyy, hh:mm a');
+    return before + (formatted ?? after);
   }
 
   ngOnDestroy(): void {

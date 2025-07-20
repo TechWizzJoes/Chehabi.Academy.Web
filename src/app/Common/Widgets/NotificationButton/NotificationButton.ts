@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { NotificationModels } from '@App/Common/Models/Notifications.Models';
 import { HttpService } from '@App/Common/Services/Http.Service';
+import { DatePipe } from '@angular/common';
 
 export class Language {
   Name!: string;
@@ -22,6 +23,7 @@ export class Language {
   imports: [CommonModule, RouterModule, NgbPopoverModule, TranslateModule],
   templateUrl: './NotificationButton.html',
   styleUrl: './NotificationButton.scss',
+  providers: [DatePipe]
 })
 export class NotificationButtonComponent implements OnInit, AfterViewInit {
   RoutePaths = RoutePaths;
@@ -31,7 +33,11 @@ export class NotificationButtonComponent implements OnInit, AfterViewInit {
   unreadItems: NotificationModels.InApp[] = [];
   interval!: NodeJS.Timer;
 
-  constructor(private WebSocketService: WebSocketService, private HttpService: HttpService) { }
+  constructor(
+    private WebSocketService: WebSocketService,
+    private HttpService: HttpService,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit(): void {
     this.getItems();
@@ -114,5 +120,19 @@ export class NotificationButtonComponent implements OnInit, AfterViewInit {
 
   UpdateCounter() {
     this.counter = this.Notifications.filter(i => !i.IsRead).length;
+  }
+
+  formatNotificationText(text: string): string {
+    const atIndex = text.toLowerCase().indexOf(' at ');
+    if (atIndex === -1) return text;
+    const before = text.substring(0, atIndex + 4); // include 'at '
+    const after = text.substring(atIndex + 4).trim();
+    const date = new Date(after);
+    if (isNaN(date.getTime())) {
+      return text;
+    }
+    // Use Angular DatePipe for formatting
+    const formatted = this.datePipe.transform(date, 'EEEE, dd/MM/yyyy, hh:mm a');
+    return before + (formatted ?? after);
   }
 }
