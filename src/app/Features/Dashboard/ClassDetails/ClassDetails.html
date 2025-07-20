@@ -29,7 +29,7 @@
 							><i class="fa fa-times" aria-hidden="true"></i
 						></span>
 					</h5>
-					<p class="card-text" *ngIf="Class.Course.Price">${{Class.Course.Price}}</p>
+					<p class="card-text" *ngIf="Class.Course.Price">{{Class.Course.Price | currency}}</p>
 
 					<div class="meta">
 						<div class="starts">

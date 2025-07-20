@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ErrorHandler, NgModule, isDevMode } from '@angular/core';
+import { APP_INITIALIZER, DEFAULT_CURRENCY_CODE, ErrorHandler, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
@@ -77,6 +77,7 @@ import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLo
 				],
 			} as SocialAuthServiceConfig,
 		},
+		{ provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }
 	],
 	bootstrap: [AppComponent]
 })
