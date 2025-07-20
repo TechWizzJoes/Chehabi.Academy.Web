@@ -12,13 +12,14 @@ import { CourseModels } from '@App/Common/Models/Course.Models';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { Constants } from '@App/Common/Settings/Constants';
 import { DirectivesModule } from '@App/Common/Directives/Directives.Module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './CourseCard.html',
 	styleUrls: ['CourseCard.scss'],
 	selector: 'app-course-card',
-	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent, DirectivesModule]
+	imports: [FormsModule, CommonModule, RouterModule, StarRatingComponent, DirectivesModule, TranslateModule]
 })
 export class CourseCardComponent implements OnInit {
 	Constants = Constants;

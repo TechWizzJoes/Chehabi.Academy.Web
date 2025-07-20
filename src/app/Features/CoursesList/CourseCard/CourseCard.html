@@ -1,10 +1,11 @@
 <div class="card" [ComingSoonBadge]="coursedate > today">
-	<img class="card-img-top" [src]="Course.ImageUrl? Course.ImageUrl : 'assets/Images/default-course.jpg'" alt="Card image cap" />
+	<img class="card-img-top" [src]="Course.ImageUrl? Course.ImageUrl : 'assets/Images/default-course.jpg'"
+		alt="Card image cap" />
 	<div class="card-body">
 		<h5 class="card-title">{{Course.Name}}</h5>
 		<span class="instructor">
 			<!-- <span class="initials">{{Constants.GetInitialName(Course.Instructor.User.FirstName, Course.Instructor.User.LastName)}}</span> -->
-			<p>By: {{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
+			<p>{{ 'Courses.by' | translate }} {{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</p>
 		</span>
 		<!-- <p class="card-text">{{Course.Description}}</p> -->
 		<div class="rating">
@@ -14,7 +15,8 @@
 			<!-- <ngb-rating [max]="5" [rate]="Course.Rating" [readonly]="true"></ngb-rating> ({{Course.Raters}}) -->
 			<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
 		</div>
-		<div class="price"><span class="price-before">{{Course.PriceBeforeDiscount | currency}}</span> {{Course.Price | currency}}</div>
+		<div class="price"><span class="price-before">{{Course.PriceBeforeDiscount | currency}}</span> {{Course.Price |
+			currency}}</div>
 		<!-- <a href="#" class="btn btn-primary" [routerLink]="['/',RoutePaths.Course, Course.Id.toString()]">Go somewhere</a> -->
 	</div>
 </div>
