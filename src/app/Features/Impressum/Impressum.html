@@ -11,6 +11,25 @@
 			<p><strong>{{ 'ImpressumPage.phone' | translate }}:</strong> {{ 'ImpressumPage.phone_value' | translate }}</p>
 			<!-- <p><strong>{{ 'ImpressumPage.registration_info' | translate }}:</strong> {{ 'ImpressumPage.registration_info_value' | translate }}</p>
 			<p><strong>{{ 'ImpressumPage.tax_id' | translate }}:</strong> {{ 'ImpressumPage.tax_id_value' | translate }}</p> -->
+
+			<p>
+				<strong>{{ 'ImpressumPage.email' | translate }}:</strong>
+				{{ 'ImpressumPage.email_value' | translate }}
+				<a [href]="'mailto:' + ('ImpressumPage.email_value' | translate)" [title]="('ImpressumPage.email_title' | translate)">
+					<i class="fa fa-envelope"></i>
+				</a>
+			</p>
+
+			<p>
+				<strong>{{ 'ImpressumPage.phone' | translate }}:</strong>
+				{{ 'ImpressumPage.phone_value' | translate }}
+				<a [href]="'tel:' + ('ImpressumPage.phone_value' | translate)" [title]="('ImpressumPage.phone_title' | translate)">
+					<i class="fa fa-phone"></i>
+				</a>
+				<a [href]="'https://wa.me/' + ('ImpressumPage.phone_value' | translate)" target="_blank" [title]="('ImpressumPage.whatsapp_title' | translate)">
+					<i class="fa fa-whatsapp"></i>
+				</a>
+			</p>
 		</div>
 	</div>
 </div>

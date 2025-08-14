@@ -7,4 +7,17 @@
 	.page-section {
 		justify-content: flex-start;
 	}
+
+	.fa-envelope {
+		color: var(--mail-color);
+	}
+
+	.fa-phone {
+		color: var(--call-color);
+		margin-inline-end: 10px;
+	}
+
+	.fa-whatsapp {
+		color: var(--whatsapp-color);
+	}
 }

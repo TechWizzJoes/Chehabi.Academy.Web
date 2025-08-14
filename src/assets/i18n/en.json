@@ -211,7 +211,10 @@
 		"email_value": "info@chehabi-academy.com",
 		"phone_value": "004915732255317",
 		"registration_info_value": "Registration Info",
-		"tax_id_value": "Tax Id"
+		"tax_id_value": "Tax Id",
+		"email_title": "Send us an email",
+		"phone_title": "Call us",
+		"whatsapp_title": "Chat with us on WhatsApp"
 	},
 
 	"DashboardPage": {

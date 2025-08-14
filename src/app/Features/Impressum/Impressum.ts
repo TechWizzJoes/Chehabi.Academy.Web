@@ -34,4 +34,18 @@ export class ImpressumComponent implements OnInit {
 
 	ngOnInit() {
 	}
+
+	sendEmail(email: string) {
+		window.location.href = `mailto:${email}`;
+	}
+
+	callPhone(phone: string) {
+		window.location.href = `tel:${phone}`;
+	}
+
+	openWhatsApp(phone: string) {
+		// Open WhatsApp chat (phone number must include country code, no + or spaces)
+		const formattedPhone = phone.replace(/\D/g, '');
+		window.open(`https://wa.me/${formattedPhone}`, '_blank');
+	}
 }
