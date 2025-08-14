@@ -20,7 +20,7 @@ export namespace CourseModels {
 		IsActive: boolean = true;
 		IsDeleted!: boolean;
 		Rating!: number;
-		Raters!: number;
+		Raters?: number;
 		ImageUrl!: string;
 		Prerequisite!: string;
 		ToBeLearned!: string;

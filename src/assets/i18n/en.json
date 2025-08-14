@@ -185,7 +185,7 @@
 		"hideSessions": "Hide Sessions",
 		"whatYoullLearn": "What you'll learn?",
 		"prerequisites": "Prerequisites",
-		"joinAClass": "Join a class",
+		"showClasses": "Show classes",
 		"addToCart": "Add To Cart",
 		"downloadFullMaterial": "Download full Material",
 		"downloadFreeMaterial": "Download free Material",
@@ -262,7 +262,7 @@
 		"link": "Link",
 		"copylink": "Copy link",
 		"paynow": "subscribe now to get full access",
-		"noSession":"No sessions in the current week"
+		"noSession": "No sessions in the current week"
 	},
 	"CourseDetailsPage": {
 		"dashboard": "Dashboard",

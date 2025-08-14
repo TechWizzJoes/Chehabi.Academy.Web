@@ -55,7 +55,7 @@ export class CoursePageComponent implements OnInit {
 	// Sessions!: CourseModels.LiveSession;
 
 	IsLoaded: boolean = false;
-	IsJoinClass!: boolean;
+	IsShowClasses!: boolean;
 	IsJoinedClass!: boolean;
 	SelectedClass?: CourseModels.Class;
 
@@ -118,21 +118,24 @@ export class CoursePageComponent implements OnInit {
 		})
 	}
 
-	async JoinClass() {
-		if (this.AuthService.IsAuthenticated) {
-
-			this.IsJoinClass! = true
-			return
-		}
-
-		const signin = await this.NotifyService.Confirm('Joining classes', 'Please sign in so you can access and join classes', 'Sign in', 'Later')
-		if (signin) {
-			this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
-		}
+	async ShowClasses() {
+		this.IsShowClasses! = true;
 	}
 
-	JoinFreeTrial(event: Event, classId: number) {
-		event.stopPropagation();
+	async CheckAuthenticationFirst() {
+		if (!this.AuthService.IsAuthenticated) {
+			const signin = await this.NotifyService.Confirm('Joining classes', 'Please sign in so you can access and join classes', 'Sign in', 'Later');
+			if (signin) {
+				this.Router.navigate(['login'], { queryParams: { returnUrl: this.Router.url } });
+			}
+			return false;
+		}
+		return true;
+	}
+
+	async JoinFreeTrial(event: Event, classId: number) {
+		if (!await this.CheckAuthenticationFirst()) return;
+
 		let endPoint = HttpEndPoints.Classes.JoinFreeTrial;
 		endPoint = endPoint.replace('{classId}', classId.toString());
 		this.HttpService.Post<any, any>(endPoint, {}).subscribe(data => {
@@ -144,8 +147,10 @@ export class CoursePageComponent implements OnInit {
 		})
 	}
 
-	AddToCart() {
+	async AddToCart() {
 		if (!this.SelectedClass) return;
+		if (!await this.CheckAuthenticationFirst()) return;
+
 		let newCartItem = new CartModels.CartItem();
 		newCartItem.ClassId = this.SelectedClass.Id;
 		this.CartService.addToCart(newCartItem).then(() => {

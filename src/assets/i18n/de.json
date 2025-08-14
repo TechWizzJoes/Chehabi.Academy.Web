@@ -186,7 +186,7 @@
 		"hideSessions": "Sitzungen ausblenden",
 		"whatYoullLearn": "Was werden Sie lernen?",
 		"prerequisites": "Voraussetzungen",
-		"joinAClass": "Treten Sie einem Kurs bei",
+		"showClasses": "Kurse anzeigen",
 		"addToCart": "In den Warenkorb",
 		"downloadFullMaterial": "Vollständiges Material herunterladen",
 		"downloadFreeMaterial": "Kostenloses Material herunterladen",
@@ -263,7 +263,7 @@
 		"link": "Link",
 		"copylink": "Link kopieren",
 		"paynow": "Jetzt abonnieren, um vollen Zugang zu erhalten",
-		"noSession":"Keine Sitzungen in der aktuellen Woche"
+		"noSession": "Keine Sitzungen in der aktuellen Woche"
 	},
 	"CourseDetailsPage": {
 		"dashboard": "Dashboard",

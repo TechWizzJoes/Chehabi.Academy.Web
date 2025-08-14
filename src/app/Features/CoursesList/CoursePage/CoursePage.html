@@ -6,7 +6,7 @@
 		<h1>{{Course.Name}}</h1>
 		<div class="page-section no-min">
 			<div class="partition content">
-				<div *ngIf="IsJoinClass" class="classes" [@fadeInOut]>
+				<div *ngIf="IsShowClasses" class="classes" [@fadeInOut]>
 					<h3>{{ 'CoursePage.classes' | translate }}</h3>
 					<div *ngIf="Course.Classes.length == 0">{{ 'CoursePage.noClassesAdded' | translate }}</div>
 					<div
@@ -75,14 +75,14 @@
 				<div class="instructor">{{Course.Instructor.User.FirstName + ' ' + Course.Instructor.User.LastName}}</div>
 				<div class="rating">
 					<span class="rate">{{Course.Rating}} </span>
-					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters}})
+					<app-StarRating [Rate]="Course.Rating" [ReadOnly]="true"></app-StarRating> ({{Course.Raters ?? 0}})
 				</div>
 				<div class="price">{{Course.Price | currency}}</div>
-				<button class="btn btn-primary me-2" (click)="JoinClass()" *ngIf="!IsJoinClass">{{ 'CoursePage.joinAClass' | translate }}</button>
+				<button class="btn btn-primary me-2" (click)="ShowClasses()" *ngIf="!IsShowClasses">{{ 'CoursePage.showClasses' | translate }}</button>
 				<button
 					class="btn btn-primary me-2"
 					(click)="AddToCart()"
-					*ngIf="IsJoinClass"
+					*ngIf="IsShowClasses"
 					[disabled]="!SelectedClass || (SelectedClass.CurrentIndex && !SelectedClass.IsJoinedFreeTrial) || SelectedClass.IsJoined">
 					{{ 'CoursePage.addToCart' | translate }}
 				</button>
