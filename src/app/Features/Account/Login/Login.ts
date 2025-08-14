@@ -15,6 +15,7 @@ import { Constants } from '@App/Common/Settings/Constants';
 import { GoogleSigninButtonModule, SocialAuthService } from '@abacritt/angularx-social-login';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '@App/Common/Services/Language.Service';
 
 
 @Component({
@@ -43,14 +44,14 @@ export class LoginComponent {
 		private AuthService: AuthService,
 		private socialAuthService: SocialAuthService,
 		private ErrorCodesService: ErrorCodesService,
-		private TranslateService: TranslateService
+		private languageService: LanguageService
 
 	) { }
 
 	async ngOnInit() {
 		this.AuthService.SignOut();
 		this.SocialLogin.Google.AuthStateSubscribe();
-		this.locale = this.TranslateService.currentLang;
+		this.locale = this.languageService.getCurrentLanguage();
 	}
 
 	toggleShowPW() {

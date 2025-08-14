@@ -25,7 +25,6 @@ export class AppComponent {
 	constructor(
 		private modalService: NgbModal,
 		private PlatformLocation: PlatformLocation,
-		private translate: TranslateService,
 		private Router: Router,
 		private socialAuthService: SocialAuthService,
 		private NotifyService: NotifyService,

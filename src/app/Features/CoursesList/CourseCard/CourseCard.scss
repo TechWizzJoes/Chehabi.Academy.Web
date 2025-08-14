@@ -12,6 +12,14 @@
 		-webkit-box-shadow: var(--box-shadow-course-card);
 		-moz-box-shadow: var(--box-shadow-course-card);
 	}
+	&.inactive {
+		opacity: 0.7;
+		.card-body {
+			.inactive-badge {
+				display: block;
+			}
+		}
+	}
 	.card-body {
 		.card-title {
 			margin: 0;
@@ -32,6 +40,11 @@
 				text-decoration: line-through;
 				font-size: smaller;
 			}
+		}
+
+		.inactive-badge {
+			display: none;
+			color: var(--deletion-color);
 		}
 	}
 }

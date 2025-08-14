@@ -8,7 +8,9 @@ import { forkJoin } from 'rxjs';
 export class ComingSoonDirective implements OnInit {
     @Input() ComingSoonBadge?: boolean = true;
 
-    constructor(private el: ElementRef, private translate: TranslateService) { }
+    constructor(private el: ElementRef,
+        private translate: TranslateService
+    ) { }
 
     ngOnInit(): void {
         if (this.ComingSoonBadge) {

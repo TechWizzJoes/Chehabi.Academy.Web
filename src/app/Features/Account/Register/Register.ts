@@ -38,7 +38,6 @@ export class RegisterComponent {
 		private HttpService: HttpService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
-		private TranslateService: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -89,8 +88,5 @@ export class RegisterComponent {
 		const route = !!this.ReturnUrl ? this.ReturnUrl : RoutePaths.Default;
 		// const route = (!!returnUrl) ? returnUrl : this.AuthService.GetRoleDefaultRoute(role);
 		this.Router.navigateByUrl(route);
-	}
-	useLanguage(language: string): void {
-		this.TranslateService.use(language);
 	}
 }

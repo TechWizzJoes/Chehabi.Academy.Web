@@ -230,6 +230,7 @@
 		"browseCourses": "Browse Courses",
 		"active": "Active",
 		"inactive": "Inactive",
+		"inactive-badge": "This course is currently inactive!",
 		"completed": "Completed",
 		"freeTrial": "Free trial",
 		"upNext": "Up next:",

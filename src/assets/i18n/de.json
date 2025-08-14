@@ -231,6 +231,7 @@
 		"browseCourses": "Kurse durchsuchen",
 		"active": "Aktiv",
 		"inactive": "Inaktiv",
+		"inactive-badge": "Dieser Kurs ist derzeit inaktiv!",
 		"completed": "Abgeschlossen",
 		"freeTrial": "Kostenlose Probe",
 		"upNext": "Als Nächstes:",
