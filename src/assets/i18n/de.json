@@ -181,6 +181,7 @@
 		"available": "verfügbar",
 		"startsOn": "Beginnt am {{date}}",
 		"startedOn": "Gestartet am {{date}}",
+		"capacity": "Kapazität: {{capacity}} Plätze",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
 		"hideSessions": "Sitzungen ausblenden",

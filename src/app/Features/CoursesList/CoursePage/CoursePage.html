@@ -22,7 +22,7 @@
 								<span class="status active" *ngIf="class.IsJoined">{{ 'joined' | translate }}</span>
 								<span class="status free-trial" *ngIf="class.IsJoinedFreeTrial">{{ 'joined free trial' | translate }}</span>
 							</h3>
-							<span *ngIf="class.AvailableSlots <= 10 && !class.CurrentIndex" class="float-end text-1">
+							<span *ngIf="class.AvailableSlots <= 5 && !class.CurrentIndex" class="float-end text-1">
 								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{(class.AvailableSlots == 1 ? 'CoursePage.slot' :
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
 							</span>
@@ -33,6 +33,7 @@
 						<div *ngIf="class.CurrentIndex">
 							{{ 'CoursePage.startedOn' | translate: { date: class.LiveSessions[0].StartDate | date: 'dd/MM/YYYY' } }}
 						</div>
+						<div>{{ 'CoursePage.capacity' | translate: { capacity: class.MaxCapacity } }}</div>
 						<button
 							class="btn btn-primary me-2"
 							(click)="JoinFreeTrial($event,class.Id)"

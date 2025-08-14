@@ -102,19 +102,6 @@ export class CoursePageComponent implements OnInit {
 			this.IsLoaded = true;
 			this.Course = data;
 			if (!this.Course) return; // for deleted courses
-
-			let currentUser = this.AuthService.CurrentUser;
-			this.Course.Classes.forEach(c => {
-				c.AvailableSlots = c.MaxCapacity - c.UserClasses.length;
-				const joinedClass = c.UserClasses.find(uc => uc.UserId == currentUser.Id);
-				if (joinedClass)
-					if (joinedClass.IsPaid) {
-						c.IsJoined = true;
-						this.IsJoinedClass = true;
-					}
-					else
-						c.IsJoinedFreeTrial = true;
-			})
 		})
 	}
 

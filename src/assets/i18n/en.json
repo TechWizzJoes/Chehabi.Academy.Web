@@ -180,6 +180,7 @@
 		"available": "available",
 		"startsOn": "Starts on {{date}}",
 		"startedOn": "Started on {{date}}",
+		"capacity": "Capacity: {{capacity}} students",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
 		"hideSessions": "Hide Sessions",

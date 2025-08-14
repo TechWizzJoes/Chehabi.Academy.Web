@@ -51,6 +51,7 @@
 						padding: 0.05rem 0.7rem;
 						background-color: var(--active-color);
 						margin-bottom: 8px;
+						display: inline-block;
 
 						&.inactive {
 							background-color: var(--inactive-color);

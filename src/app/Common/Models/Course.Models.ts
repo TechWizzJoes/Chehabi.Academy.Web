@@ -59,12 +59,12 @@ export namespace CourseModels {
 		Course!: Course;
 		// CartItems!: CartModels.CartItem[];
 		UserClasses!: UserModels.UserClass[];
-
-		AvailableSlots!: number; // for display
-		ShowSessions: boolean = false; // for display
-		Quantity!: number; // for cart
+		AvailableSlots!: number;
 		IsJoined!: boolean; // for joined badge display
 		IsJoinedFreeTrial!: boolean; // for joined badge display
+
+		ShowSessions: boolean = false; // for display
+		Quantity!: number; // for cart
 	}
 
 	export class LiveSession {
