@@ -7,7 +7,15 @@
 			</div>
 			<a class="button btn btn-primary" [routerLink]="['/', RoutePaths.Courses]"> {{ 'AboutPage.start_learning' | translate }} </a>
 		</div>
-		<div class="video-background"></div>
+		<div class="video-background">
+			<iframe
+				[src]="VideoUrl | safe"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen>
+			</iframe>
+		</div>
 	</div>
 
 	<div class="page-section no-min">

@@ -1,14 +1,18 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
     public textDirection!: string;
+    public LanguageChangedSub = new Subject<string>();
 
     constructor(
         private RendererFactory: RendererFactory2,
         private TranslateService: TranslateService
-    ) { }
+    ) {
+        this.SetOnLanguageChange();
+    }
 
     SetLanguageOnAppInit() {
         this.TranslateService.setDefaultLang('en');
@@ -49,5 +53,11 @@ export class LanguageService {
         // console.log('service language', this.TranslateService.currentLang);
         // console.log('storage language', localStorageLang);
         return this.TranslateService.currentLang;
+    }
+
+    SetOnLanguageChange() {
+        this.TranslateService.onLangChange.subscribe(() => {
+            this.LanguageChangedSub.next(this.TranslateService.currentLang);
+        });
     }
 }

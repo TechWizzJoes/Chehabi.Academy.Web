@@ -24,7 +24,7 @@ $link-color: #49779c;
 	}
 
 	.video-background {
-		background-image: url('/assets/Images/about-bg.webp');
+		// background-image: url('/assets/Images/about-bg.webp');
 		width: 100%;
 		background-size: cover;
 		background-position: center;
@@ -32,9 +32,16 @@ $link-color: #49779c;
 		aspect-ratio: 16 / 9; // Maintain aspect ratio
 		object-fit: fill;
 		border-radius: 1rem;
+		min-height: 250px;
 
 		@media (min-width: 480px) {
 			min-width: 400px;
+		}
+
+		iframe {
+			min-height: 250px;
+			height: 100%;
+			width: 100%;
 		}
 	}
 

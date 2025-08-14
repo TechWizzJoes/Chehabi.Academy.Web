@@ -38,5 +38,8 @@ export class LanguagePopUpComponent implements OnInit {
 
   setCurrentLanguage(): void {
     this.currentLang = this.LanguageService.getCurrentLanguage();
+    this.LanguageService.LanguageChangedSub.subscribe(lang => {
+      this.currentLang = lang;
+    });
   }
 }
