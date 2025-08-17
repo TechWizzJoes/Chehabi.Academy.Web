@@ -128,9 +128,10 @@
 			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 			padding: 30px;
 			text-align: left;
-			flex-basis: 45%;
+			// flex-basis: 45%;
 			transition: transform 0.3s;
-
+			flex: 1 1 calc(33.333% - 20px);
+			min-width: 250px;
 			&:hover {
 				transform: translateY(-5px);
 			}
