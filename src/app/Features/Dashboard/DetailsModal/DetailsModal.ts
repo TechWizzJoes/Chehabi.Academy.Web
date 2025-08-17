@@ -85,8 +85,14 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Price = this.course.Price;
         this.NewCourse.PriceBeforeDiscount = this.course.PriceBeforeDiscount;
         this.NewCourse.IsActive = this.course.IsActive;
+        // debugger
+        this.NewCourse.TypeId = this.course.TypeId;
+        this.NewCourse.LevelId = this.course.LevelId;
+        this.NewCourse.LanguageId = this.course.LanguageId;
+        this.NewCourse.IsActive = this.course.IsActive;
         this.NewCourse.Classes = this.course.Classes;
         this.NewCourse.MaxStartDate = this.Courses.GetEarliestClassDate(this.course);
+        console.log(this.NewCourse);
 
         // to get dynamic proprty value
         if (this.index) {

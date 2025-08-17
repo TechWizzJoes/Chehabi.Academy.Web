@@ -379,7 +379,47 @@
 						#PriceBeforeDiscount="ngModel" />
 				</div>
 			</div>
-
+			<div class="row mb-3">
+				<div class="col">
+					<label for="classType" class="form-label required">{{"DetailsModal.Type" | translate}}</label>
+					<select
+						class="form-select"
+						id="courseType"
+						name="CourseType"
+						[(ngModel)]="NewCourse.TypeId"
+						#CourseType="ngModel"
+						required
+						placeholder="Select the course type">
+						<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+					</select>
+				</div>
+				<div class="col">
+					<label for="classLevel" class="form-label required">{{"DetailsModal.Level" | translate}}</label>
+					<select
+						class="form-select"
+						id="courseLevel"
+						name="CourseLevel"
+						[(ngModel)]="NewCourse.LevelId"
+						#CourseLevel="ngModel"
+						required
+						placeholder="Select the course level">
+						<option *ngFor="let type of courseLevelsValues; index as i" [value]="type">{{ courseLevels[i] }}</option>
+					</select>
+				</div>
+				<div class="col">
+					<label for="classLanguage" class="form-label required">{{"DetailsModal.Language" | translate}}</label>
+					<select
+						class="form-select"
+						id="courseLanguage"
+						name="CourseLanguage"
+						[(ngModel)]="NewCourse.LanguageId"
+						#CourseLanguage="ngModel"
+						required
+						placeholder="Select the course language">
+						<option *ngFor="let lang of courseLanguagesValues; index as i" [value]="lang">{{ courseLanguages[i] }}</option>
+					</select>
+				</div>
+			</div>
 			<div class="mb-3">
 				<label for="image" class="form-label">{{"DetailsModal.CoverImage" | translate}}</label>
 				<input type="file" accept="image/png, image/gif, image/jpeg, image/jpg" class="form-control" id="image" (change)="onImageChange($event)" />

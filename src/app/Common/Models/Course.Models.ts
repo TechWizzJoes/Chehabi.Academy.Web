@@ -28,6 +28,9 @@ export namespace CourseModels {
 		ToBeLearned!: string;
 		Price!: number;
 		PriceBeforeDiscount!: number | null;
+		TypeId!: string;
+		LevelId!: string;
+		LanguageId!: string;
 		Type!: CourseType;
 		Level!: CourseLevel;
 		Language!: CourseLanguage;
