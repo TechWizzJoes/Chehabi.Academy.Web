@@ -1,3 +1,4 @@
+import { CourseLanguageEnum } from '@App/Common/Enums/CourseLanguage.Enum';
 import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
 import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
@@ -43,12 +44,14 @@ export class DetailsModalComponent implements OnInit {
     ImageProgress: any = { start: 0, end: 100 }
     FileProgress: any = { start: 0, end: 100 }
 
-    // CourseTypeEnum = CourseTypeEnum;
     courseTypes = Object.keys(CourseTypeEnum);
     courseTypesValues = Object.values(CourseTypeEnum);
 
     courseLevels = Object.keys(CourseLevelEnum);
     courseLevelsValues = Object.values(CourseLevelEnum);
+
+    courseLanguages = Object.keys(CourseLanguageEnum);
+    courseLanguagesValues = Object.values(CourseLanguageEnum);
 
     @Input() property!: ModalPropertyEnum;
     @Input() isEdit: string = '';

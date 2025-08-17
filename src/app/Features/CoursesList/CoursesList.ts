@@ -17,6 +17,7 @@ import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
 import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { TranslateModule } from '@ngx-translate/core';
 import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
+import { CourseLanguageEnum } from '@App/Common/Enums/CourseLanguage.Enum';
 
 
 @Component({
@@ -32,6 +33,9 @@ export class CoursesListComponent implements OnInit {
 
 	CourseLevels = Object.keys(CourseLevelEnum);
 	CourseLevelsValues = Object.values(CourseLevelEnum);
+
+	CourseLanguages = Object.keys(CourseLanguageEnum);
+	CourseLanguagesValues = Object.values(CourseLanguageEnum);
 
 	Filter!: CourseModels.Filter;
 	Courses!: CourseModels.Course[]

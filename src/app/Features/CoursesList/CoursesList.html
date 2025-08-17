@@ -32,6 +32,13 @@
 							<option *ngFor="let type of CourseLevelsValues; index as i" [value]="type">{{ CourseLevels[i] }}</option>
 						</select>
 					</div>
+					<div class="coursetype">
+						<label for="classType" class="form-label">{{ 'CourseListPage.Language' | translate }}</label>
+						<select class="form-select" name="CourseLanguage" [(ngModel)]="Filter.Language" #CourseLanguage="ngModel" required>
+							<option value="" disabled hidden>{{ 'CourseListPage.LanguagePlaceholder' | translate }}</option>
+							<option *ngFor="let lang of CourseLanguagesValues; index as i" [value]="lang">{{ CourseLanguages[i] }}</option>
+						</select>
+					</div>
 					<div class="rating">
 						<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
 						<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>

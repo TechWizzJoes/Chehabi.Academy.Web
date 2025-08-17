@@ -162,6 +162,8 @@
 		"Type": "Type",
 		"LevelPlaceholder": "Course level",
 		"Level": "Level",
+		"LanguagePlaceholder": "Course language",
+		"Language": "Language",
 		"rating": "Rating",
 		"level": "Level",
 		"beginner": "Beginner",
@@ -251,7 +253,8 @@
 		"rate": "Leave a rating",
 		"editRate": "Edit your rating",
 		"level": "Level:",
-		"type": "Type:"
+		"type": "Type:",
+		"language": "Language:"
 	},
 	"FeedbackModal": {
 		"edit": "Edit",
@@ -367,6 +370,7 @@
 		"PriceBeforeDiscount": "Price Before Discount",
 		"Type": "Type",
 		"Level": "Level",
+		"Language": "Language",
 		"VideoUrl": "Video Url",
 		"VideoUrlPlaceholder": "Add a youtube video url for course description.",
 		"CoverImage": "Cover Image",

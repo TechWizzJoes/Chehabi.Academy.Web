@@ -163,6 +163,8 @@
 		"Type": "Kursart",
 		"LevelPlaceholder": "Kursniveau",
 		"Level": "Niveau",
+		"LanguagePlaceholder": "Kursprache",
+		"Language": "Sprache",
 		"rating": "Bewertung",
 		"level": "Niveau",
 		"beginner": "Anfänger",
@@ -252,7 +254,8 @@
 		"rate": "Bewertung abgeben",
 		"editRate": "Bewertung bearbeiten",
 		"level": "Stufe:",
-		"type": "welcher Typ:"
+		"type": "welcher Typ:",
+		"language": "Sprache:"
 	},
 	"FeedbackModal": {
 		"edit": "Bearbeiten",
@@ -366,6 +369,7 @@
 		"PriceBeforeDiscount": "Preis vor Rabatt",
 		"Type": "Typ",
 		"Level": "Level",
+		"Language": "Sprache",
 		"VideoUrl": "Video-URL",
 		"VideoUrlPlaceholder": "Fügen Sie eine Youtube-Video-URL zur Kursbeschreibung hinzu.",
 		"CoverImage": "Coverbild",
