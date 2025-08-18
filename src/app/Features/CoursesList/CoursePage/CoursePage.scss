@@ -30,12 +30,17 @@
 					&.selected-class {
 						background-color: rgb(194, 194, 194);
 					}
-					.session-instance {
-						&:hover {
-						}
+					ol {
+						.session-instance {
+							&:hover {
+							}
 
-						&.done {
-							text-decoration: line-through;
+							&.done {
+								text-decoration: line-through;
+							}
+						}
+						.note {
+							margin-inline-start: -20px;
 						}
 					}
 

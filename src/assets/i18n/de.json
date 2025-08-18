@@ -65,7 +65,7 @@
 		"welcomeParagraph": "Tauchen Sie mit uns in die faszinierende Welt der arabischen Sprache ein. Mit professioneller Anleitung, interaktiven Modulen und kulturellen Einblicken oder Hintergründen machen wir das Erlernen der arabischen Sprache zu einer spannenden und lohnenden Reise. Beginnen Sie Ihr sprachliches Abenteuer noch heute.",
 		"joinNowButton": "Jetzt beitreten",
 		"landing": {
-			"title": "Entfalten Sie Ihr Potenzial mit professionellem Sprachcoaching",
+			"title": "Entfalten Sie Ihr Potenzial mit Experten für Online-Sprachcoaching",
 			"subTitle": "Meistern Sie neue Sprachen durch interaktive Kurse, persönliche Sitzungen und flexibel Lernzeiten, die sich Ihrem Lebensstil anpassen.",
 			"searchCourses": "Nach Kursen suchen",
 			"learnMoreButton": "Mehr Erfahren",
@@ -130,7 +130,7 @@
 	"AboutPage": {
 		"start_learning": "Beginnen Sie zu lernen",
 		"title": "Die Seele unserer Plattform",
-		"paragraph1": "Gegründet im Jahr 2023, entstand die Chehabi Academy aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch, kulturelle Barrieren zu überwinden. Wir erkennen die Bedeutung der arabischen Sprache in der globalen Kommunikation, dem Erbe und der Kunst an und haben es uns zur Aufgabe gemacht, ein umfassendes Lernerlebnis anzubieten, das über bloßes Vokabular und Grammatik hinausgeht.",
+		"paragraph1": "Die Chehabi Academy wurde 2023 in Deutschland gegründet und entstand aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch, kulturelle Brücken zu schlagen. Angesichts der Bedeutung des Arabischen in globaler Kommunikation, Kultur und Kunst haben wir uns zum Ziel gesetzt, ein umfassendes Lernerlebnis zu bieten, das über Vokabeln und Grammatik hinausgeht.",
 		"paragraph2": "Unsere Plattform lehrt nicht nur eine Sprache; sie taucht die Lernenden in eine Welt der Tradition, Poesie, Geschichte und zeitgenössischer Einsichten ein. Mit einem Team von engagierten Fachleuten, die alle eine Leidenschaft für Arabisch und Pädagogik teilen, bieten wir eine Mischung aus bewährten Lehrmethoden und modernen E-Learning-Tools.  Mit der Chehabi Academy kommen Sie mit jeder Lektion einen Schritt weiter, nicht nur ein Sprecher, sondern ein echter Kenner der arabischen Sprache und Kultur zu werden.",
 		"founder_title": "Lernen Sie den Gründer kennen",
 		"founder_paragraph1": "Mein Name ist Bashir Alshihabi, Gründer der „Chehabi Academy“ und Sprachlehrer. Ich wurde 1984 in Damaskus, Syrien, geboren und stamme aus einer Dichterfamilie, die sich seit mehr als 300 Jahren mit Literatur und Poesie beschäftigt. Ich bin auch Dichter und Musiker. Ich habe Gitarre und Musiktheorie in Damaskus, Stuttgart und Wien studiert.",
@@ -188,6 +188,8 @@
 		"capacity": "Kapazität: {{capacity}} Plätze",
 		"sessions": "Sitzungen",
 		"showSessions": "Sitzungen anzeigen",
+		"to": "bis",
+		"timezoneNote": "* Alle Zeiten werden in der Zeitzone Ihres Geräts angezeigt.",
 		"hideSessions": "Sitzungen ausblenden",
 		"whatYoullLearn": "Was werden Sie lernen?",
 		"prerequisites": "Voraussetzungen",

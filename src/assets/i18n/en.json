@@ -64,7 +64,7 @@
 		"welcomeParagraph": "Dive into the enchanting world of Arabic with us. Combining expert guidance, interactive modules, and cultural immersion, we make mastering Arabic an engaging and rewarding journey. Begin your linguistic adventure today.",
 		"joinNowButton": "Join Now",
 		"landing": {
-			"title": "Unlock Your Potential with Expert Language Coaching",
+			"title": "Unlock Your Potential with Expert Online Language Coaching",
 			"subTitle": "Master new languages through interactive courses, personalized sessions, and flexible learning schedules designed to fit your lifestyle.",
 			"searchCourses": "Search in courses",
 			"learnMoreButton": "Learn More",
@@ -129,7 +129,7 @@
 	"AboutPage": {
 		"start_learning": "Start Learning",
 		"title": "The Soul Of Our Platform",
-		"paragraph1": "Established in 2023, Chehabi Academy was born out a profound love for the Arabic language and a desire to bridge cultural divides. Recognizing the significance of Arabic in global communication, heritage, and arts, we embarked on a mission to offer a comprehensive learning experience that goes beyond mere vocabulary and grammar.",
+		"paragraph1": "Established in 2023 based in germany, Chehabi Academy was born out a profound love for the Arabic language and a desire to bridge cultural divides. Recognizing the significance of Arabic in global communication, heritage, and arts, we embarked on a mission to offer a comprehensive learning experience that goes beyond mere vocabulary and grammar.",
 		"paragraph2": "Our platform doesn't just teach a language; it immerses students in a world of tradition, poetry, history, and contemporary insights. With a team of dedicated professionals, all passionate about Arabic and pedagogy, we provide a blend of time-tested teaching methodologies and cutting-edge e-learning tools. At Chehabi Academy, every lesson is a step closer to becoming not just a speaker, but a true connoisseur of the Arabic language and culture.",
 		"founder_title": "Meet The Founder",
 		"founder_paragraph1": "My name is Bashir Alshihabi, founder of “Chehabi Academy” and language teacher. I was born in 1984 in Damascus, Syria, and I belong to a poet family which has been concerned with literature and poetry for more than 300 years. I am also a poet and a musician. I studied Guitar and Music Theory in Damascus, Stuttgart, and Vienna.",
@@ -187,6 +187,8 @@
 		"capacity": "Capacity: {{capacity}} students",
 		"sessions": "Sessions",
 		"showSessions": "Show Sessions",
+		"to": "to",
+		"timezoneNote": "* All times are shown in your local device timezone.",
 		"hideSessions": "Hide Sessions",
 		"whatYoullLearn": "What you'll learn?",
 		"prerequisites": "Prerequisites",
