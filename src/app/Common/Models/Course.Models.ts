@@ -99,6 +99,7 @@ export namespace CourseModels {
 		Level: string = "";
 		Language: string = "";
 		Time!: Date;
+		SortBy: string = "";
 	}
 	export class CourseType {
 		Id!: number;

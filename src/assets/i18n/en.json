@@ -170,7 +170,8 @@
 		"intermediate": "Intermediate",
 		"advanced": "Advanced",
 		"resetButton": "Reset",
-		"filterButton": "Filter"
+		"filter": "Filter",
+		"noCourses": "No courses available"
 	},
 	"CoursePage": {
 		"classes": "Classes",

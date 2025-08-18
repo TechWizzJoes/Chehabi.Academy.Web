@@ -4,68 +4,21 @@
 		<app-loader></app-loader>
 	</div> -->
 	<div class="page-section">
-		<div class="page-container">
-			<div class="filters">
-				<div class="left">
-					<div class="searchinput">
-						<input
-							type="text"
-							class="form-control"
-							id="searchInput"
-							name="searchInput"
-							[(ngModel)]="Filter.SearchInput"
-							#searchInput="ngModel"
-							placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}"
-							(keydown.enter)="Data.FilterRows()" />
-					</div>
-					<div class="coursetype">
-						<label for="classType" class="form-label">{{ 'CourseListPage.Type' | translate }}</label>
-						<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
-							<option value="" disabled hidden>{{ 'CourseListPage.TypePlaceholder' | translate }}</option>
-							<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
-						</select>
-					</div>
-					<div class="coursetype">
-						<label for="classType" class="form-label">{{ 'CourseListPage.Level' | translate }}</label>
-						<select class="form-select" name="CourseLevel" [(ngModel)]="Filter.Level" #CourseLevel="ngModel" required>
-							<option value="" disabled hidden>{{ 'CourseListPage.LevelPlaceholder' | translate }}</option>
-							<option *ngFor="let type of CourseLevelsValues; index as i" [value]="type">{{ CourseLevels[i] }}</option>
-						</select>
-					</div>
-					<div class="coursetype">
-						<label for="classType" class="form-label">{{ 'CourseListPage.Language' | translate }}</label>
-						<select class="form-select" name="CourseLanguage" [(ngModel)]="Filter.Language" #CourseLanguage="ngModel" required>
-							<option value="" disabled hidden>{{ 'CourseListPage.LanguagePlaceholder' | translate }}</option>
-							<option *ngFor="let lang of CourseLanguagesValues; index as i" [value]="lang">{{ CourseLanguages[i] }}</option>
-						</select>
-					</div>
-					<div class="rating">
-						<label for="classType" class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
-						<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
-					</div>
-					<!-- <div class="levels">
-						<label for="classType" class="form-label">{{ 'CourseListPage.level' | translate }}</label>
-						<div class="levels-container">
-							<label>
-								<input type="checkbox" [(ngModel)]="Filter.Level.Beginner" />
-								{{ 'CourseListPage.beginner' | translate }}
-							</label>
-							<label>
-								<input type="checkbox" [(ngModel)]="Filter.Level.Intermediate" />
-								{{ 'CourseListPage.intermediate' | translate }}
-							</label>
-							<label>
-								<input type="checkbox" [(ngModel)]="Filter.Level.Advanced" />
-								{{ 'CourseListPage.advanced' | translate }}
-							</label>
-						</div>
-					</div> -->
-				</div>
-				<div class="right">
-					<button class="btn btn-outline-primary" (click)="Data.ResetFilter()">{{ 'CourseListPage.resetButton' | translate }}</button>
-					<button class="btn btn-primary" (click)="Data.FilterRows()">{{ 'CourseListPage.searchButton' | translate }}</button>
-				</div>
+		<div class="page-container filter">
+			<div class="coursetype">
+				<select class="form-select" name="SortBy" [(ngModel)]="Filter.SortBy" #SortBy="ngModel" (change)="Data.ChangeSort()">
+					<option value="" disabled hidden>Sort by</option>
+					<option value="newest">{{ 'Newest' | translate }}</option>
+					<option value="PriceLowtoHigh">{{ 'Price: Low to High' | translate }}</option>
+					<option value="PriceHightoLow">{{ 'Price: High to Low' | translate }}</option>
+					<option value="highestRated">{{ 'Highest Rated' | translate }}</option>
+				</select>
 			</div>
+			<button class="btn btn-primary ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas">
+				<i class="fa fa-filter"></i> {{ 'CourseListPage.filter' | translate }}
+			</button>
+
+			<app-course-filter [(Filter)]="Filter" (FilterChange)="Data.GetCourses()"></app-course-filter>
 		</div>
 		<div class="page-section" *ngIf="!IsLoaded">
 			<app-loader></app-loader>
@@ -75,9 +28,7 @@
 				<app-course-card [Course]="course" (click)="GotoCourse(course.Id)"></app-course-card>
 			</div>
 		</div>
-		<div class="page-container m-3 text-center" *ngIf="IsLoaded &&Courses.length == 0">
-			{{ 'CourseListPage.No Courses match current search' | translate }}
-		</div>
+		<div class="page-container m-3 text-center" *ngIf="IsLoaded &&Courses.length == 0">{{ 'CourseListPage.noCourses' | translate }}</div>
 	</div>
 </div>
 

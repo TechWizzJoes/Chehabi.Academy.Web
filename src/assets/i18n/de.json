@@ -171,7 +171,8 @@
 		"intermediate": "Fortgeschrittene",
 		"advanced": "Experten",
 		"resetButton": "Zurücksetzen",
-		"filterButton": "Filtern"
+		"filter": "Filtern",
+		"noCourses": "Derzeit sind leider keine Kurse verfügbar."
 	},
 	"CoursePage": {
 		"classes": "Kurse",

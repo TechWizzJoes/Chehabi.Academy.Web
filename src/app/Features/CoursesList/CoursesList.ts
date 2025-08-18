@@ -13,29 +13,17 @@ import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { CourseModels } from '@App/Common/Models/Course.Models';
-import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
-import { StarRatingComponent } from '@App/Common/Widgets/StarRating/StarRating';
 import { TranslateModule } from '@ngx-translate/core';
-import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
-import { CourseLanguageEnum } from '@App/Common/Enums/CourseLanguage.Enum';
-
+import { CourseFilterComponent } from './CourseFilter/CourseFilter';
 
 @Component({
 	standalone: true,
 	templateUrl: './CoursesList.html',
 	styleUrls: ['CoursesList.scss'],
-	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent, StarRatingComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, CourseCardComponent, LoaderComponent, TranslateModule, CourseFilterComponent]
 })
 export class CoursesListComponent implements OnInit {
 	RoutePaths = RoutePaths
-	courseTypes = Object.keys(CourseTypeEnum);
-	courseTypesValues = Object.values(CourseTypeEnum);
-
-	CourseLevels = Object.keys(CourseLevelEnum);
-	CourseLevelsValues = Object.values(CourseLevelEnum);
-
-	CourseLanguages = Object.keys(CourseLanguageEnum);
-	CourseLanguagesValues = Object.values(CourseLanguageEnum);
 
 	Filter!: CourseModels.Filter;
 	Courses!: CourseModels.Course[]
@@ -70,18 +58,6 @@ export class CoursesListComponent implements OnInit {
 			})
 		},
 
-		FilterRows: () => {
-			this.Filter.Time = new Date();
-			this.StorageService.SetLocalStorage(StorageEnum.CoursesFilter, this.Filter);
-			this.Data.GetCourses();
-		},
-
-		ResetFilter: () => {
-			this.Filter = new CourseModels.Filter();
-			this.StorageService.RemoveLocalStorage(StorageEnum.CoursesFilter);
-			this.Data.GetCourses();
-		},
-
 		CheckFilter: () => {
 			if (!this.Filter) {
 				this.Filter = this.StorageService.GetLocalStorage<CourseModels.Filter>(StorageEnum.CoursesFilter);
@@ -99,6 +75,11 @@ export class CoursesListComponent implements OnInit {
 					}
 				}
 			}
+		},
+
+		ChangeSort: () => {
+			this.StorageService.SetLocalStorage(StorageEnum.CoursesFilter, this.Filter);
+			this.Data.GetCourses();
 		}
 	}
 

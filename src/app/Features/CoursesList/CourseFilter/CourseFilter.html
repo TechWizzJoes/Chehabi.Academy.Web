@@ -1,0 +1,57 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+	<div class="offcanvas-header">
+		<h5 class="offcanvas-title" id="filterOffcanvasLabel"><i class="fa fa-filter"></i>{{ 'CourseListPage.filter' | translate }}</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<div class="filters">
+			<div class="searchinput mb-3">
+				<input
+					type="text"
+					class="form-control"
+					id="searchInput"
+					name="searchInput"
+					[(ngModel)]="Filter.SearchInput"
+					#searchInput="ngModel"
+					placeholder="{{ 'CourseListPage.searchPlaceholder' | translate }}"
+					(keydown.enter)="Data.FilterRows()" />
+			</div>
+
+			<div class="coursetype mb-3">
+				<label class="form-label">{{ 'CourseListPage.Type' | translate }}</label>
+				<select class="form-select" name="CourseType" [(ngModel)]="Filter.Type" #CourseType="ngModel" required>
+					<option value="" disabled hidden>{{ 'CourseListPage.TypePlaceholder' | translate }}</option>
+					<option *ngFor="let type of courseTypesValues; index as i" [value]="type">{{ courseTypes[i] }}</option>
+				</select>
+			</div>
+
+			<div class="coursetype mb-3">
+				<label class="form-label">{{ 'CourseListPage.Level' | translate }}</label>
+				<select class="form-select" name="CourseLevel" [(ngModel)]="Filter.Level" #CourseLevel="ngModel" required>
+					<option value="" disabled hidden>{{ 'CourseListPage.LevelPlaceholder' | translate }}</option>
+					<option *ngFor="let type of CourseLevelsValues; index as i" [value]="type">{{ CourseLevels[i] }}</option>
+				</select>
+			</div>
+
+			<div class="coursetype mb-3">
+				<label class="form-label">{{ 'CourseListPage.Language' | translate }}</label>
+				<select class="form-select" name="CourseLanguage" [(ngModel)]="Filter.Language" #CourseLanguage="ngModel" required>
+					<option value="" disabled hidden>{{ 'CourseListPage.LanguagePlaceholder' | translate }}</option>
+					<option *ngFor="let lang of CourseLanguagesValues; index as i" [value]="lang">{{ CourseLanguages[i] }}</option>
+				</select>
+			</div>
+
+			<div class="rating mb-3">
+				<label class="form-label">{{ 'CourseListPage.rating' | translate }}</label>
+				<app-StarRating [(Rate)]="Filter.Rating"></app-StarRating>
+			</div>
+
+			<div class="d-flex justify-content-between mt-4">
+				<button class="btn btn-outline-primary" (click)="Data.ResetFilter()" data-bs-dismiss="offcanvas">
+					{{ 'CourseListPage.resetButton' | translate }}
+				</button>
+				<button class="btn btn-primary" (click)="Data.FilterRows()" data-bs-dismiss="offcanvas">{{ 'CourseListPage.searchButton' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>
