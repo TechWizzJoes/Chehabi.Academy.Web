@@ -45,7 +45,7 @@ export class FeedbackModalComponent implements OnInit {
 
     onRatingConfirmed() {
         if (!this.feedback.Rating) {
-            this.Error = this.translate.instant("Errors." + ErrorMessagesEnum.RATING_NULL);
+            this.Error = this.translate.instant("Error." + ErrorMessagesEnum.RATING_NULL);
         } else {
             this.ratingConfirmed = true;
             this.Error = null;

@@ -564,9 +564,9 @@
 		"Link": "Zur Startseite zurückkehren"
 	},
 	"Error": {
-		"NETWORK_ERROR": "******Keine Internetverbindung! \nOder der Server ist ausgefallen",
-		"WRONG_PASSWORD_RESET": "******Falsches Passwort.",
-		"RATING_NULL": "******Sie müssen eine Bewertung angeben.",
+		"NETWORK_ERROR": "Keine Internetverbindung! \nOder der Server ist ausgefallen",
+		"WRONG_PASSWORD_RESET": "Falsches Passwort.",
+		"RATING_NULL": "Sie müssen eine Bewertung angeben.",
 		"NO_INTERNET_CONNECTION": "Keine Internetverbindung"
 	},
 	"Success": {
