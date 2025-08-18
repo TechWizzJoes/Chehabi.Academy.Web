@@ -7,11 +7,11 @@
 		<div class="page-container filter">
 			<div class="coursetype">
 				<select class="form-select" name="SortBy" [(ngModel)]="Filter.SortBy" #SortBy="ngModel" (change)="Data.ChangeSort()">
-					<option value="" disabled hidden>Sort by</option>
-					<option value="newest">{{ 'Newest' | translate }}</option>
-					<option value="PriceLowtoHigh">{{ 'Price: Low to High' | translate }}</option>
-					<option value="PriceHightoLow">{{ 'Price: High to Low' | translate }}</option>
-					<option value="highestRated">{{ 'Highest Rated' | translate }}</option>
+					<option value="" disabled hidden>{{ 'CourseListPage.sortBy' | translate }}</option>
+					<option value="newest">{{ 'CourseListPage.newest' | translate }}</option>
+					<option value="priceLowtoHigh">{{ 'CourseListPage.priceLowtoHigh' | translate }}</option>
+					<option value="priceHightoLow">{{ 'CourseListPage.priceHightoLow' | translate }}</option>
+					<option value="highestRated">{{ 'CourseListPage.highestRated' | translate }}</option>
 				</select>
 			</div>
 			<button class="btn btn-primary ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas">

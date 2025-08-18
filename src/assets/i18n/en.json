@@ -171,7 +171,12 @@
 		"advanced": "Advanced",
 		"resetButton": "Reset",
 		"filter": "Filter",
-		"noCourses": "No courses available"
+		"noCourses": "No courses available",
+		"sortBy": "Sort by",
+		"newest": "Newest",
+		"priceLowtoHigh": "Price: Low to High",
+		"priceHightoLow": "Price: High to Low",
+		"highestRated": "Highest Rated"
 	},
 	"CoursePage": {
 		"classes": "Classes",

@@ -172,7 +172,12 @@
 		"advanced": "Experten",
 		"resetButton": "Zurücksetzen",
 		"filter": "Filtern",
-		"noCourses": "Derzeit sind leider keine Kurse verfügbar."
+		"noCourses": "Derzeit sind leider keine Kurse verfügbar.",
+		"sortBy": "Sortieren nach",
+		"newest": "Neueste",
+		"priceLowtoHigh": "Preis: Niedrig bis Hoch",
+		"priceHightoLow": "Preis: Hoch bis Niedrig",
+		"highestRated": "Höchste Bewertung"
 	},
 	"CoursePage": {
 		"classes": "Kurse",
