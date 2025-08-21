@@ -17,6 +17,8 @@ footer {
 			line-height: 1.6;
 			margin-bottom: 0;
 			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
 			// flex-direction: column;
 
 			li {

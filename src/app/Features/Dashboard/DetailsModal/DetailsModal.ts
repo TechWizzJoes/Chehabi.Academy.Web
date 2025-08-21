@@ -92,7 +92,7 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.IsActive = this.course.IsActive;
         this.NewCourse.Classes = this.course.Classes;
         this.NewCourse.MaxStartDate = this.Courses.GetEarliestClassDate(this.course);
-        console.log(this.NewCourse);
+        // console.log(this.NewCourse);
 
         // to get dynamic proprty value
         if (this.index) {
@@ -279,7 +279,7 @@ export class DetailsModalComponent implements OnInit {
             let endPoint = HttpEndPoints.Classes.AddClass;
 
             this.IsDisabled = true;
-            this.NewClass.UTCHoursOffset = Constants.getUtcOffsetInHours();
+            this.NewClass.TimeZone = Constants.getTimezone();
             this.HttpService.Post<CourseModels.Class, CourseModels.Class>(endPoint, this.NewClass).subscribe({
                 next: data => {
                     this.IsDisabled = false;

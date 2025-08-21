@@ -120,8 +120,12 @@ export class Constants {
 		return number + suffix;
 	}
 
-	public static getUtcOffsetInHours(): number {
-		return (new Date().getTimezoneOffset() * -1) / 60;
+	// public static getUtcOffsetInHours(): number {
+	// 	return (new Date().getTimezoneOffset() * -1) / 60;
+	// }
+
+	public static getTimezone(): string {
+		return Intl.DateTimeFormat().resolvedOptions().timeZone;
 	}
 
 	public static copyToClipboard(text: string) {

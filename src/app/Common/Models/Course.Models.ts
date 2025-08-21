@@ -58,7 +58,7 @@ export namespace CourseModels {
 		IsActive: boolean = true;
 		IsDeleted!: boolean;
 		HasFreeTrial!: boolean;
-		UTCHoursOffset!: number;
+		TimeZone!: string;
 		CreatedOn!: Date;
 		UpdatedOn!: Date;
 		LiveSessions!: LiveSession[];
