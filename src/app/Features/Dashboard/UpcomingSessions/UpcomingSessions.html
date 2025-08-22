@@ -25,7 +25,10 @@
 						<a [routerLink]="['/',RoutePaths.Course,session.Class.Course.Id]" class="card-title"> {{session.Class.Course.Name}} </a>
 						<h6 class="card-title">{{session.Class.Name}}</h6>
 					</div>
-					<h6 class="">{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} till {{session.EndDate | date: ' hh:mm a'}}</h6>
+					<h6 class="">
+						{{session.StartDate | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}} till {{session.EndDate | date: ('TIME_FORMAT' |
+						translate)}}
+					</h6>
 					<h6 [ngStyle]="{'color': session.Link == Blocked? 'red' : ''}">
 						{{ 'UpcomingSessions.link' | translate }}: {{session.Link?? 'N/A'}}
 						<button

@@ -10,7 +10,7 @@
 					<span *ngIf="!notification.IsRead" class="new-item-indicator"></span>
 					{{i+1}}){{formatNotificationText(notification.Text)}}
 				</div>
-				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY hh:mm  a' }}</span>
+				<span>{{notification.CreatedOn | date: 'dd/MM/YYYY' + ('TIME_FORMAT' | translate) }}</span>
 			</div>
 			<a href="javascript:;" (click)="viewMore()">{{ 'Notifications.ViewMore' | translate }}</a>
 		</div>

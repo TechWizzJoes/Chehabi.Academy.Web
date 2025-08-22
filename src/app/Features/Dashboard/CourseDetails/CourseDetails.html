@@ -35,11 +35,11 @@
 						<div class="create-update">
 							<p class="card-text">
 								<span class="title"> {{ 'CourseDetailsPage.createdOn' | translate }}: </span>
-								{{Course.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+								{{Course.CreatedOn | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}
 							</p>
 							<p class="card-text" *ngIf="Course.CreatedOn != Course.UpdatedOn">
 								<span class="title"> {{ 'CourseDetailsPage.lastUpdatedOn' | translate }}: </span>
-								{{Course.UpdatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+								{{Course.UpdatedOn | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}
 							</p>
 						</div>
 					</div>
@@ -122,7 +122,8 @@
 											<p>{{ 'CourseDetailsPage.duration' | translate }}</p>
 
 											<small>
-												{{class.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}} - {{class.EndDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+												{{class.StartDate | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}} - {{class.EndDate | date: 'EEEE,
+												dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}
 											</small>
 										</div>
 										<div class="class">

@@ -44,11 +44,11 @@
 						<div class="create-update">
 							<p class="card-text">
 								<span class="title"> {{ 'ClassDetailsPage.createdOn' | translate }}:</span>
-								{{Class.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+								{{Class.CreatedOn | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}
 							</p>
 							<p class="card-text" *ngIf="Class.CreatedOn != Class.UpdatedOn">
 								<span class="title"> {{ 'ClassDetailsPage.lastUpdatedOn' | translate }}:</span>
-								{{Class.UpdatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}
+								{{Class.UpdatedOn | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}
 							</p>
 						</div>
 					</div>
@@ -74,8 +74,8 @@
 							<tbody>
 								<tr *ngFor="let session of Class.LiveSessions; let i = index" [ngClass]="{'completed': session.IsCompleted}">
 									<th scope="row">{{i+1}}</th>
-									<td>{{session.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
-									<td>{{session.EndDate | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
+									<td>{{session.StartDate | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}</td>
+									<td>{{session.EndDate | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}</td>
 									<td>{{session.Link ?? ('ClassDetailsPage.notAvailable' | translate)}}</td>
 									<td class="text-center">
 										<i *ngIf="session.IsCompleted" class="fa fa-check"></i>
@@ -117,7 +117,7 @@
 									<td>{{userClass.User.LastName}}</td>
 									<td>{{userClass.User.Email}}</td>
 									<td>{{userClass.User.Birthdate}}</td>
-									<td>{{userClass.CreatedOn | date: 'EEEE, dd/MM/yyyy, hh:mm a'}}</td>
+									<td>{{userClass.CreatedOn | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate)}}</td>
 									<td class="text-center">
 										<div class="status active" *ngIf="userClass.IsPaid">{{ 'ClassDetailsPage.active' | translate }}</div>
 										<div class="status inactive" *ngIf="!userClass.IsPaid && Class.CurrentIndex">

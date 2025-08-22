@@ -53,8 +53,8 @@
 						<br />
 						<ol *ngIf="class.ShowSessions" [@fadeInOut]>
 							<li *ngFor="let occ of class.LiveSessions; index as i" class="session-instance" [ngClass]="{'done': i < class.CurrentIndex}">
-								{{ occ.StartDate | date: 'EEEE, dd/MM/yyyy, hh:mm a' }} &nbsp; {{ 'CoursePage.to' | translate }} &nbsp; {{ occ.EndDate | date:
-								'hh:mm a' }}
+								{{ occ.StartDate | date: 'EEEE, dd/MM/yyyy' + ('TIME_FORMAT' | translate) }} &nbsp; {{ 'CoursePage.to' | translate }} &nbsp; {{
+								occ.EndDate | date: ('TIME_FORMAT' | translate) }}
 							</li>
 							<span class="note">{{'CoursePage.timezoneNote' | translate }}</span>
 						</ol>

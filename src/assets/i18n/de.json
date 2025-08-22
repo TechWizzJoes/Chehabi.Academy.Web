@@ -1,9 +1,9 @@
 {
 	"coming-soon": "Kommt bald",
 	"sub-soon": "Chehabi-Akademie befindet sich im Aufbau.",
-
 	"coming": "KOMMT",
 	"soon": "BALD",
+	"TIME_FORMAT": " HH:mm",
 
 	"Language": {
 		"English": "Englisch",
