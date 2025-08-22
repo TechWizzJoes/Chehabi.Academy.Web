@@ -1,6 +1,5 @@
 import { ErrorHandler, Inject, Injectable, NgZone } from '@angular/core';
 import { NotifyService } from '../Services/Notify.Service';
-import { ErrorCodesEnum } from '../Enums/ErrorCodes.Enum';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()

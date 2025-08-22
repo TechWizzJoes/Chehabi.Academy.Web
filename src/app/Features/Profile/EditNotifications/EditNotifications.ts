@@ -9,9 +9,7 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageEnum, StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
-import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
@@ -21,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 	standalone: true,
 	templateUrl: './EditNotifications.html',
 	styleUrls: ['EditNotifications.scss'],
-	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, TranslateModule]
 })
 export class EditNotificationsComponent implements OnInit {
 	IsLoaded: boolean = false;

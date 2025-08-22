@@ -11,10 +11,10 @@ import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { HttpEventType } from '@angular/common/http';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
 
 @Component({
 	standalone: true,
@@ -37,7 +37,8 @@ export class EditProfileComponent implements OnInit {
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
-		private StorageService: StorageService
+		private StorageService: StorageService,
+		private translate: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -85,7 +86,7 @@ export class EditProfileComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		if (form.invalid) {
-			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+			this.Error = this.translate.instant("Error." + ErrorMessagesEnum.FILL_REQUIRED_FIELDS);
 			return;
 		}
 
@@ -113,7 +114,8 @@ export class EditProfileComponent implements OnInit {
 				this.NotifyService.Success(MessagesEnum.PROFILE_UPDATED_SUCCESS);
 			},
 			error: (errorResponse) => {
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+				const errMsg = errorResponse.error.Message;
+				this.Error = this.translate.instant("Error." + errMsg);
 			}
 		});
 	}

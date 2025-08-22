@@ -10,7 +10,6 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { AppConfig } from '@App/Base/AppConfig';
 import { ErrorMessagesEnum } from '../Enums/ErrorMessages.Enum';
-import { ErrorCodesEnum } from '../Enums/ErrorCodes.Enum';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -54,9 +53,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 				if (error instanceof HttpErrorResponse) {
 					// Handle HTTP errors
 					const errMsg = error.error.Message;
-					const customMsg = this.ErrorCodesService.GetErrorCode(errMsg)
-					if (customMsg)
-						this.NotifyService.Error(customMsg);
+					// const customMsg = this.ErrorCodesService.GetErrorCode(errMsg)
+					if (errMsg)
+						this.NotifyService.Error(errMsg);
 					// return EMPTY;
 					return throwError(() => error);
 				}

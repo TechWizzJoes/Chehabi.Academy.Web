@@ -9,19 +9,17 @@ import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageEnum, StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
-import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { AuthModels } from '@App/Common/Models/Auth.Models';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
 	standalone: true,
 	templateUrl: './Password.html',
 	styleUrls: ['Password.scss'],
-	imports: [FormsModule, CommonModule, LoaderComponent, TranslateModule]
+	imports: [FormsModule, CommonModule, TranslateModule]
 })
 export class PasswordComponent implements OnInit {
 	Account: AuthModels.CurrentUserResModel = new AuthModels.CurrentUserResModel();
@@ -38,7 +36,8 @@ export class PasswordComponent implements OnInit {
 		private ErrorCodesService: ErrorCodesService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
-		private StorageService: StorageService
+		private StorageService: StorageService,
+		private translate: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -52,12 +51,12 @@ export class PasswordComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		if (form.invalid) {
-			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+			this.Error = this.translate.instant("Error." + ErrorMessagesEnum.FILL_REQUIRED_FIELDS);
 			return;
 		}
 
 		if (this.Password.NewPassword !== this.Password.ReNewPassword) {
-			this.Error = ErrorCodesEnum.PASSWORD_NOT_MATCH;
+			this.Error = this.translate.instant("Error." + ErrorMessagesEnum.PASSWORD_NOT_MATCH);
 			return;
 		}
 

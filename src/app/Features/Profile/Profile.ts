@@ -11,7 +11,6 @@ import { HttpService } from '@App/Common/Services/Http.Service';
 import { HttpEndPoints } from '@App/Common/Settings/HttpEndPoints';
 import { LoaderComponent } from '@App/Common/Widgets/Spinners/Loader/Loader';
 import { UserModels } from '@App/Common/Models/User.Models';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { HttpEventType } from '@angular/common/http';
 import { MessagesEnum } from '@App/Common/Enums/Messages.Enum';
 import { TranslateModule } from '@ngx-translate/core';

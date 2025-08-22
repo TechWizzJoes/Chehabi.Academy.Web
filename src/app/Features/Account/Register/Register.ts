@@ -9,10 +9,10 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
 
 
 @Component({
@@ -38,6 +38,7 @@ export class RegisterComponent {
 		private HttpService: HttpService,
 		private NotifyService: NotifyService,
 		private AuthService: AuthService,
+		private translate: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -51,7 +52,8 @@ export class RegisterComponent {
 
 	Register(frm: NgForm) {
 		if (frm.invalid) {
-			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+			this.Error = this.translate.instant("Error." + ErrorMessagesEnum.FILL_REQUIRED_FIELDS);
+			// this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
 			return;
 		}
 
@@ -78,7 +80,8 @@ export class RegisterComponent {
 			},
 			error: (errorResponse) => {
 				// to show the error on Register panel
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error)];
+				const errMsg = errorResponse.error.Message;
+				this.Error = this.translate.instant("Error." + errMsg);
 			}
 		});
 	}

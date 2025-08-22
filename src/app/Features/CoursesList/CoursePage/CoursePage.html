@@ -22,9 +22,12 @@
 								<span class="status active" *ngIf="class.IsJoined">{{ 'joined' | translate }}</span>
 								<span class="status free-trial" *ngIf="class.IsJoinedFreeTrial">{{ 'joined free trial' | translate }}</span>
 							</h3>
-							<span *ngIf="class.AvailableSlots <= 5 && !class.CurrentIndex" class="float-end text-1">
+							<span *ngIf="class.AvailableSlots <= 5 && class.AvailableSlots > 0 && !class.CurrentIndex" class="float-end text-1">
 								{{'CoursePage.only' | translate}} {{class.AvailableSlots}} {{(class.AvailableSlots == 1 ? 'CoursePage.slot' :
 								'CoursePage.slots') | translate}} {{'CoursePage.available' | translate}}
+							</span>
+							<span *ngIf="class.AvailableSlots == 0 && !class.CurrentIndex" class="float-end text-danger text-1">
+								{{'CoursePage.noSlotsAvailable' | translate}}
 							</span>
 						</div>
 						<div *ngIf="!class.CurrentIndex">

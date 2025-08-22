@@ -9,13 +9,13 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { AuthService } from '@App/Common/Services/Auth.Service';
 
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
 import { CommonModule } from '@angular/common';
 import { Constants } from '@App/Common/Settings/Constants';
 import { GoogleSigninButtonModule, SocialAuthService } from '@abacritt/angularx-social-login';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@App/Common/Services/Language.Service';
+import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
 
 
 @Component({
@@ -44,8 +44,8 @@ export class LoginComponent {
 		private AuthService: AuthService,
 		private socialAuthService: SocialAuthService,
 		private ErrorCodesService: ErrorCodesService,
-		private languageService: LanguageService
-
+		private languageService: LanguageService,
+		private translate: TranslateService
 	) { }
 
 	async ngOnInit() {
@@ -62,7 +62,8 @@ export class LoginComponent {
 	Login(frm: NgForm) {
 		if (frm.invalid) {
 			// this.NotifyService.Error('InvalidFormMsg');
-			this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+			this.Error = this.translate.instant("Error." + ErrorMessagesEnum.FILL_REQUIRED_FIELDS);
+			// this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
 			return;
 		}
 
@@ -84,8 +85,8 @@ export class LoginComponent {
 			error: (errorResponse) => {
 				// to show the error on login panel
 				// console.log(errorResponse);
-
-				this.Error = Object.values(ErrorCodesEnum)[Object.keys(ErrorCodesEnum).indexOf(errorResponse.error.Message)];
+				const errMsg = errorResponse.error.Message;
+				this.Error = this.translate.instant("Error." + errMsg);
 			}
 		});
 	}

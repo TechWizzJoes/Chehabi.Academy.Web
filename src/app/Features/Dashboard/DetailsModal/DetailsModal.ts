@@ -1,7 +1,7 @@
 import { CourseLanguageEnum } from '@App/Common/Enums/CourseLanguage.Enum';
 import { CourseLevelEnum } from '@App/Common/Enums/CourseLevel.Enum';
 import { CourseTypeEnum } from '@App/Common/Enums/CourseType.Enum';
-import { ErrorCodesEnum } from '@App/Common/Enums/ErrorCodes.Enum';
+import { ErrorMessagesEnum } from '@App/Common/Enums/ErrorMessages.Enum';
 import { ModalPropertyEnum } from '@App/Common/Enums/ModalProperties.Enum';
 import { CourseModels } from '@App/Common/Models/Course.Models';
 import { AuthService } from '@App/Common/Services/Auth.Service';
@@ -15,7 +15,7 @@ import { HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { observable } from 'rxjs';
 
 @Component({
@@ -62,7 +62,8 @@ export class DetailsModalComponent implements OnInit {
         private HttpService: HttpService,
         private AuthService: AuthService,
         private ErrorCodesService: ErrorCodesService,
-        private NotifyService: NotifyService
+        private NotifyService: NotifyService,
+        private translate: TranslateService
     ) { }
 
     ngOnInit() {
@@ -85,7 +86,6 @@ export class DetailsModalComponent implements OnInit {
         this.NewCourse.Price = this.course.Price;
         this.NewCourse.PriceBeforeDiscount = this.course.PriceBeforeDiscount;
         this.NewCourse.IsActive = this.course.IsActive;
-        // debugger
         this.NewCourse.TypeId = this.course.TypeId;
         this.NewCourse.LevelId = this.course.LevelId;
         this.NewCourse.LanguageId = this.course.LanguageId;
@@ -126,7 +126,7 @@ export class DetailsModalComponent implements OnInit {
 
     onSubmit(form: NgForm) {
         if (form.invalid) {
-            this.Error = ErrorCodesEnum.FILL_REQUIRED_FIELDS;
+            this.Error = this.translate.instant("Error." + ErrorMessagesEnum.FILL_REQUIRED_FIELDS);
             return;
         }
         switch (this.property) {
