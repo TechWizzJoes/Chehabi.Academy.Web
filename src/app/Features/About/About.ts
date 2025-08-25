@@ -8,7 +8,7 @@ import { NotifyService } from '@App/Common/Services/Notify.Service';
 import { ErrorCodesService } from '@App/Common/Services/ErrorCodes.Service';
 import { StorageService } from '@App/Common/Services/Storage.Service';
 import { HttpService } from '@App/Common/Services/Http.Service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RoutePaths } from '@App/Common/Settings/RoutePaths';
 import { RouterModule } from '@angular/router';
 import { routes } from '../../Base/App.Routes';
@@ -38,7 +38,8 @@ export class AboutComponent implements OnInit {
 		private NotifyService: NotifyService,
 		protected AuthService: AuthService,
 		private StorageService: StorageService,
-		private LanguageService: LanguageService
+		private LanguageService: LanguageService,
+		private translate: TranslateService
 	) { }
 
 	ngOnInit() {
@@ -47,18 +48,6 @@ export class AboutComponent implements OnInit {
 			if (isExisting) {
 				this.CurrentUser = this.AuthService.CurrentUser;
 			}
-		});
-
-		this.SetVideoUrl(this.LanguageService.getCurrentLanguage());
-		this.SetLanguageSubscription();
-	}
-
-	SetVideoUrl(lang: string) {
-		this.VideoUrl = lang === 'en' ? 'https://www.youtube.com/embed/dek2V2yjRLU' : 'https://www.youtube.com/embed/XSZzAXZXHkg';
-	}
-	SetLanguageSubscription() {
-		this.LanguageService.LanguageChangedSub.subscribe(lang => {
-			this.SetVideoUrl(lang);
 		});
 	}
 }

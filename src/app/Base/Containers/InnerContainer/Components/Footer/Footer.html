@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<div class="copyright">
-		<div>© {{ Year }}, <a href="mailto:techwizzjoes@gmail.com">{{ 'Footer.CompanyEmail' | translate }}</a>.</div>
+		<div>© {{ Year }}, <a [href]="'mailto:' + ( 'Footer.CompanyEmail' | translate )">{{ 'Footer.CompanyEmail' | translate }}</a>.</div>
 		<div class="ps-3">
 			{{ 'Footer.all-rights-reserved' | translate }} <small>{{ 'Footer.version' | translate }} {{ ApplicationService.Version | async }}</small>
 		</div>

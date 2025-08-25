@@ -130,6 +130,7 @@
 	"AboutPage": {
 		"start_learning": "Beginnen Sie zu lernen",
 		"title": "Die Seele unserer Plattform",
+		"videoLink": "https://www.youtube.com/embed/rxMtGhFIWcY?si=pg9ijxIl6XWWNMYE",
 		"paragraph1": "Die Chehabi Academy wurde 2023 in Deutschland gegründet und entstand aus einer tiefen Liebe zur arabischen Sprache und dem Wunsch, kulturelle Brücken zu schlagen. Angesichts der Bedeutung des Arabischen in globaler Kommunikation, Kultur und Kunst haben wir uns zum Ziel gesetzt, ein umfassendes Lernerlebnis zu bieten, das über Vokabeln und Grammatik hinausgeht.",
 		"paragraph2": "Unsere Plattform lehrt nicht nur eine Sprache; sie taucht die Lernenden in eine Welt der Tradition, Poesie, Geschichte und zeitgenössischer Einsichten ein. Mit einem Team von engagierten Fachleuten, die alle eine Leidenschaft für Arabisch und Pädagogik teilen, bieten wir eine Mischung aus bewährten Lehrmethoden und modernen E-Learning-Tools.  Mit der Chehabi Academy kommen Sie mit jeder Lektion einen Schritt weiter, nicht nur ein Sprecher, sondern ein echter Kenner der arabischen Sprache und Kultur zu werden.",
 		"founder_title": "Lernen Sie den Gründer kennen",
@@ -222,7 +223,7 @@
 		"website_owner_value": "Bashir Alshihabi",
 		"address_value": "Fleckenweinberg 40A\n70192 Stuttgart, Germany",
 		"contact_value": "Contact",
-		"email_value": "info@chehabi-academy.com",
+		"email_value": "contact@chehabiacademy.com",
 		"phone_value": "004915732255317",
 		"registration_info_value": "Registration Info",
 		"tax_id_value": "Tax Id",
