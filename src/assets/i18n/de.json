@@ -423,6 +423,9 @@
 		"announcements": "E-Mail-Ankündigungen von Lehrern und Lehrerinnen der eingeschriebenen Klassen.",
 		"sessionUpdates": "E-Mail-Sitzungsaktualisierungen.",
 		"sessionReminders": "E-Mail-Erinnerungen an Sitzungen.",
+		"preferredLanguage": "Bevorzugte Sprache",
+		"english": "Englisch",
+		"german": "Deutsch",
 		"disclaimer": "Sie werden weiterhin für wichtige Benachrichtigungen wie Zahlungen benachrichtigt.",
 		"save": "Speichern"
 	},

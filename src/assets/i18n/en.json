@@ -426,6 +426,9 @@
 		"announcements": "Email Announcements from instructors of classes enrolled in.",
 		"sessionUpdates": "Email Sessions updates.",
 		"sessionReminders": "Email Sessions reminders.",
+		"preferredLanguage": "Preferred Language",
+		"english": "English",
+		"german": "German",
 		"disclaimer": "you'll still get notified for important notifications such as payments",
 		"save": "Save"
 	},

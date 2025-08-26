@@ -54,6 +54,7 @@ export namespace UserModels {
 		SessionsReminderNotify!: boolean;
 		SessionsUpdateNotify!: boolean;
 		InstructorsAnnouncementNotify!: boolean;
+		PreferredLanguage!: string;
 		User!: User;
 	}
 }

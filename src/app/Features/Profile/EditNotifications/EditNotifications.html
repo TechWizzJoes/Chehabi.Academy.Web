@@ -45,6 +45,34 @@
 			<label for="promotions" class="form-check-label">{{ 'NotificationSettings.promotions' | translate }}</label>
 		</div>
 
+		<!-- New Radio Button Group for Preferred Notification Language -->
+		<div class="mb-3">
+			<label class="form-label d-block">{{ 'NotificationSettings.preferredLanguage' | translate }}</label>
+
+			<div class="form-check form-check-inline">
+				<input
+					type="radio"
+					class="form-check-input"
+					id="languageEnglish"
+					name="preferredLanguage"
+					value="en"
+					[(ngModel)]="User.UserPrefrence.PreferredLanguage" />
+				<label for="languageEnglish" class="form-check-label">{{ 'NotificationSettings.english' | translate }}</label>
+			</div>
+
+			<div class="form-check form-check-inline">
+				<input
+					type="radio"
+					class="form-check-input"
+					id="languageGerman"
+					name="preferredLanguage"
+					value="de"
+					[(ngModel)]="User.UserPrefrence.PreferredLanguage" />
+				<label for="languageGerman" class="form-check-label">{{ 'NotificationSettings.german' | translate }}</label>
+			</div>
+		</div>
+		<!-- End Radio Button Group -->
+
 		<div>{{ 'NotificationSettings.disclaimer' | translate }}</div>
 
 		<div class="footer">
