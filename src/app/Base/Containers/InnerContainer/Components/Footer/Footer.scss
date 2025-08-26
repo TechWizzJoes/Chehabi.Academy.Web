@@ -59,6 +59,13 @@ footer {
 			color: var(--primary-invert-font-color);
 		}
 	}
+	.powered-by {
+		text-align: center;
+		color: var(--primary-color3);
+		a {
+			color: var(--primary-invert-font-color);
+		}
+	}
 }
 
 @media (max-width: 576px) {

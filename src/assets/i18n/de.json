@@ -27,13 +27,22 @@
 	"Footer": {
 		"contact-us": "Kontaktieren Sie uns",
 		"CompanyEmail": "techwizzjoes@gmail.com",
-		"all-rights-reserved": "Alle Rechte vorbehalten.",
+		"all-rights-reserved": "Chehabi Academy. Alle Rechte vorbehalten.",
 		"version": "Version",
+		"poweredBy": "entwickelt von",
+		"developerName": "TechWizzJoes",
+		"developerLink": "mailto:techwizzjoes@gmail.com",
 		"logo-alt": "Firmenlogo",
 		"home": "Startseite",
 		"FAQ": "FAQ",
 		"Feedback": "Rückmeldung",
-		"Impressum": "Impressum"
+		"Impressum": "Impressum",
+		"social": {
+			"instagramLink": "Instagram",
+			"youtubeLink": "YouTube",
+			"twitterLink": "Twitter",
+			"facebookLink": "Facebook"
+		}
 	},
 
 	"Login": {
@@ -224,7 +233,7 @@
 		"address_value": "Fleckenweinberg 40A\n70192 Stuttgart, Germany",
 		"contact_value": "Contact",
 		"email_value": "contact@chehabiacademy.com",
-		"phone_value": "004915732255317",
+		"phone_value": "+4915732255317",
 		"registration_info_value": "Registration Info",
 		"tax_id_value": "Tax Id",
 		"email_title": "Uns eine E-Mail senden",

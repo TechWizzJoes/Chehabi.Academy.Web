@@ -10,16 +10,20 @@
 		</ul>
 
 		<div class="social">
-			<a href="#"><i class="fa fa-instagram"></i></a>
-			<a href="#"><i class="fa fa-youtube-play"></i></a>
-			<a href="#"><i class="fa fa-twitter-square"></i></a>
-			<a href="#"><i class="fa fa-facebook-square"></i></a>
+			<a href="{{ 'Footer.social.instagramLink' | translate }}"><i class="fa fa-instagram"></i></a>
+			<a href="{{ 'Footer.social.youtubeLink' | translate }}"><i class="fa fa-youtube-play"></i></a>
+			<a href="{{ 'Footer.social.twitterLink' | translate }}"><i class="fa fa-twitter-square"></i></a>
+			<a href="{{ 'Footer.social.facebookLink' | translate }}"><i class="fa fa-facebook-square"></i></a>
 		</div>
 	</div>
 	<div class="copyright">
-		<div>© {{ Year }}, <a [href]="'mailto:' + ( 'Footer.CompanyEmail' | translate )">{{ 'Footer.CompanyEmail' | translate }}</a>.</div>
-		<div class="ps-3">
+		<div>© {{ Year }}</div>
+		<div class="ps-2">
 			{{ 'Footer.all-rights-reserved' | translate }} <small>{{ 'Footer.version' | translate }} {{ ApplicationService.Version | async }}</small>
 		</div>
+	</div>
+	<div class="powered-by">
+		{{ 'Footer.poweredBy' | translate }}
+		<a href="{{ 'Footer.developerLink' | translate }}" target="_blank" rel="noopener">{{ 'Footer.developerName' | translate }}</a>
 	</div>
 </footer>
