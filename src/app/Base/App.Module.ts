@@ -25,6 +25,7 @@ import * as animations from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PreLoaderComponent } from '@App/Common/Widgets/Spinners/PreLoader/PreLoader';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -85,5 +86,8 @@ export class AppModule { }
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-	return new TranslateHttpLoader(http);
+	return new TranslateHttpLoader(http,
+		'./assets/i18n/',
+		`.json?v=${environment.version}` // <-- cache buster
+	);
 }
